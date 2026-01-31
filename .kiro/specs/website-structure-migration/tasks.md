@@ -20,7 +20,7 @@ This implementation plan breaks down the migration of modelmtg.com content and s
   - Test number formatting with decimal places
   - _Requirements: 1.7_
 
-- [ ] 2. Implement calculator logic and validation
+- [~] 2. Implement calculator logic and validation
   - [x] 2.1 Implement affordability calculator logic
     - Create calculation function using DTI ratio and mortgage formula
     - Implement input validation schema
@@ -88,7 +88,7 @@ This implementation plan breaks down the migration of modelmtg.com content and s
     - **Property 3: Calculation Accuracy**
     - **Validates: Requirements 1.3, 1.6**
 
-- [ ] 3. Complete calculator pages
+- [~] 3. Complete calculator pages
   - [~] 3.1 Complete affordability calculator page
     - Update existing page to use shared components and new calculation logic
     - Add proper SEO metadata
@@ -157,7 +157,7 @@ This implementation plan breaks down the migration of modelmtg.com content and s
   - **Property 8: Design System Consistency**
   - **Validates: Requirements 2.5**
 
-- [ ] 6. Implement main content pages
+- [~] 6. Implement main content pages
   - [~] 6.1 Create About Us page
     - Fetch content from modelmtg.com/about-us
     - Structure content in TypeScript file
@@ -195,7 +195,7 @@ This implementation plan breaks down the migration of modelmtg.com content and s
   - **Property 6: Content Page Rendering**
   - **Validates: Requirements 2.2**
 
-- [ ] 7. Implement loan options pages
+- [~] 7. Implement loan options pages
   - [~] 7.1 Create loan options content structure
     - Create TypeScript file with all 11 loan option definitions
     - Include overview, benefits, requirements, ideal for, related calculators
@@ -229,7 +229,7 @@ This implementation plan breaks down the migration of modelmtg.com content and s
 - [~] 8. Checkpoint - Ensure all content page tests pass
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 9. Implement blog system
+- [~] 9. Implement blog system
   - [~] 9.1 Create blog content structure
     - Create TypeScript file with blog post definitions
     - Include at least 10 articles from the "Learn" category
@@ -268,7 +268,7 @@ This implementation plan breaks down the migration of modelmtg.com content and s
   - **Property 12: Blog Post Content Rendering**
   - **Validates: Requirements 4.5**
 
-- [ ] 10. Implement team member profiles
+- [~] 10. Implement team member profiles
   - [~] 10.1 Create team member content structure
     - Create TypeScript file with team member definitions
     - Include Matthew Bramow and Rolston Nicholls profiles
@@ -291,7 +291,7 @@ This implementation plan breaks down the migration of modelmtg.com content and s
   - **Property 13: Team Profile Completeness**
   - **Validates: Requirements 5.2**
 
-- [ ] 11. Implement SEO enhancements
+- [~] 11. Implement SEO enhancements
   - [~] 11.1 Add metadata to all pages
     - Ensure all pages have unique title tags
     - Ensure all pages have meta descriptions ≤160 characters
@@ -325,7 +325,7 @@ This implementation plan breaks down the migration of modelmtg.com content and s
   - **Property 16: Structured Data Validity**
   - **Validates: Requirements 6.6**
 
-- [ ] 12. Implement responsive design and accessibility
+- [~] 12. Implement responsive design and accessibility
   - [~] 12.1 Ensure responsive layouts
     - Test all pages at 320px, 768px, and 1920px viewports
     - Ensure no horizontal scrolling
@@ -381,7 +381,7 @@ This implementation plan breaks down the migration of modelmtg.com content and s
   - **Property 22: Color Contrast**
   - **Validates: Requirements 7.6**
 
-- [ ] 13. Implement performance optimizations
+- [~] 13. Implement performance optimizations
   - [~] 13.1 Optimize images
     - Convert all images to WebP format
     - Use Next.js Image component with responsive sizes
@@ -409,7 +409,7 @@ This implementation plan breaks down the migration of modelmtg.com content and s
   - **Property 28: Link Prefetching**
   - **Validates: Requirements 9.5**
 
-- [ ] 14. Final integration and testing
+- [~] 14. Final integration and testing
   - [~] 14.1 Test navigation flows
     - Verify all navigation links work correctly
     - Verify breadcrumbs on nested pages

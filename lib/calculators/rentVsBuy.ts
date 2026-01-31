@@ -39,8 +39,8 @@ export function calculateRentVsBuy(inputs: RentVsBuyInputs): CalculatorResult[] 
   if (loanAmount === 0) {
     // No loan needed (100% down payment)
     monthlyPI = 0
-  } else if (monthlyInterestRate === 0) {
-    // Handle edge case: 0% interest rate
+  } else if (monthlyInterestRate < 0.000001) {
+    // Handle edge case: 0% or near-zero interest rate (< 0.0001% monthly)
     monthlyPI = loanAmount / numberOfPayments
   } else {
     // Standard mortgage formula: M = P × (r × (1 + r)^n) / ((1 + r)^n - 1)
@@ -84,7 +84,7 @@ export function calculateRentVsBuy(inputs: RentVsBuyInputs): CalculatorResult[] 
   
   if (loanAmount === 0) {
     remainingBalance = 0
-  } else if (monthlyInterestRate === 0) {
+  } else if (monthlyInterestRate < 0.000001) {
     remainingBalance = Math.max(0, loanAmount - (monthlyPI * monthsToStay))
   } else {
     // Calculate remaining balance using amortization formula
