@@ -4,19 +4,18 @@ import { useState } from 'react'
 import CalculatorLayout from '@/components/calculators/CalculatorLayout'
 import CalculatorForm from '@/components/calculators/CalculatorForm'
 import CalculatorResults from '@/components/calculators/CalculatorResults'
-import { purchaseConfig } from '@/lib/calculators/configs/purchase.config'
-import { validatePurchaseInputs } from '@/lib/calculators/purchase'
+import { refinanceConfig } from '@/lib/calculators/configs/refinance.config'
+import { validateRefinanceInputs } from '@/lib/calculators/refinance'
 import type { CalculatorResult } from '@/lib/types/calculator'
 
-export default function PurchaseCalculator() {
+export default function RefinanceCalculator() {
   const [values, setValues] = useState<Record<string, string>>({
-    homePrice: '',
-    downPayment: '',
-    interestRate: '7.0',
-    loanTerm: '30',
-    propertyTaxRate: '1.2',
-    insurance: '1200',
-    hoa: '0'
+    currentBalance: '',
+    currentRate: '',
+    newRate: '',
+    remainingTerm: '',
+    newTerm: '30',
+    closingCosts: '5000'
   })
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [results, setResults] = useState<CalculatorResult[] | null>(null)
@@ -39,17 +38,16 @@ export default function PurchaseCalculator() {
     
     // Convert string values to numbers
     const numericInputs = {
-      homePrice: parseFloat(values.homePrice) || 0,
-      downPayment: parseFloat(values.downPayment) || 0,
-      interestRate: parseFloat(values.interestRate) || 0,
-      loanTerm: parseFloat(values.loanTerm) || 0,
-      propertyTaxRate: parseFloat(values.propertyTaxRate) || 0,
-      insurance: parseFloat(values.insurance) || 0,
-      hoa: parseFloat(values.hoa) || 0
+      currentBalance: parseFloat(values.currentBalance) || 0,
+      currentRate: parseFloat(values.currentRate) || 0,
+      newRate: parseFloat(values.newRate) || 0,
+      remainingTerm: parseFloat(values.remainingTerm) || 0,
+      newTerm: parseFloat(values.newTerm) || 0,
+      closingCosts: parseFloat(values.closingCosts) || 0
     }
 
     // Validate inputs
-    const validation = validatePurchaseInputs(numericInputs)
+    const validation = validateRefinanceInputs(numericInputs)
     
     if (!validation.success) {
       setErrors(validation.errors || {})
@@ -59,7 +57,7 @@ export default function PurchaseCalculator() {
 
     // Calculate results
     try {
-      const calculatedResults = purchaseConfig.calculate(numericInputs)
+      const calculatedResults = refinanceConfig.calculate(numericInputs)
       setResults(calculatedResults)
       setErrors({})
     } catch (error) {
@@ -71,24 +69,24 @@ export default function PurchaseCalculator() {
   }
 
   return (
-    <CalculatorLayout config={purchaseConfig}>
+    <CalculatorLayout config={refinanceConfig}>
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
         gap: '3rem'
       }}>
         <CalculatorForm
-          inputs={purchaseConfig.inputs}
+          inputs={refinanceConfig.inputs}
           values={values}
           errors={errors}
           onChange={handleChange}
           onCalculate={handleCalculate}
-          title="Loan Details"
+          title="Current & New Loan Details"
         />
         <CalculatorResults
           results={results}
           loading={loading}
-          title="Monthly Payment"
+          title="Refinance Analysis"
         />
       </div>
     </CalculatorLayout>

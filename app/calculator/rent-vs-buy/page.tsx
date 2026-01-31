@@ -4,19 +4,18 @@ import { useState } from 'react'
 import CalculatorLayout from '@/components/calculators/CalculatorLayout'
 import CalculatorForm from '@/components/calculators/CalculatorForm'
 import CalculatorResults from '@/components/calculators/CalculatorResults'
-import { purchaseConfig } from '@/lib/calculators/configs/purchase.config'
-import { validatePurchaseInputs } from '@/lib/calculators/purchase'
+import { rentVsBuyConfig } from '@/lib/calculators/configs/rentVsBuy.config'
+import { validateRentVsBuyInputs } from '@/lib/calculators/rentVsBuy'
 import type { CalculatorResult } from '@/lib/types/calculator'
 
-export default function PurchaseCalculator() {
+export default function RentVsBuyCalculator() {
   const [values, setValues] = useState<Record<string, string>>({
     homePrice: '',
     downPayment: '',
     interestRate: '7.0',
-    loanTerm: '30',
-    propertyTaxRate: '1.2',
-    insurance: '1200',
-    hoa: '0'
+    rentAmount: '',
+    yearsToStay: '7',
+    appreciationRate: '3.0'
   })
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [results, setResults] = useState<CalculatorResult[] | null>(null)
@@ -42,14 +41,13 @@ export default function PurchaseCalculator() {
       homePrice: parseFloat(values.homePrice) || 0,
       downPayment: parseFloat(values.downPayment) || 0,
       interestRate: parseFloat(values.interestRate) || 0,
-      loanTerm: parseFloat(values.loanTerm) || 0,
-      propertyTaxRate: parseFloat(values.propertyTaxRate) || 0,
-      insurance: parseFloat(values.insurance) || 0,
-      hoa: parseFloat(values.hoa) || 0
+      rentAmount: parseFloat(values.rentAmount) || 0,
+      yearsToStay: parseFloat(values.yearsToStay) || 0,
+      appreciationRate: parseFloat(values.appreciationRate) || 0
     }
 
     // Validate inputs
-    const validation = validatePurchaseInputs(numericInputs)
+    const validation = validateRentVsBuyInputs(numericInputs)
     
     if (!validation.success) {
       setErrors(validation.errors || {})
@@ -59,7 +57,7 @@ export default function PurchaseCalculator() {
 
     // Calculate results
     try {
-      const calculatedResults = purchaseConfig.calculate(numericInputs)
+      const calculatedResults = rentVsBuyConfig.calculate(numericInputs)
       setResults(calculatedResults)
       setErrors({})
     } catch (error) {
@@ -71,24 +69,24 @@ export default function PurchaseCalculator() {
   }
 
   return (
-    <CalculatorLayout config={purchaseConfig}>
+    <CalculatorLayout config={rentVsBuyConfig}>
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
         gap: '3rem'
       }}>
         <CalculatorForm
-          inputs={purchaseConfig.inputs}
+          inputs={rentVsBuyConfig.inputs}
           values={values}
           errors={errors}
           onChange={handleChange}
           onCalculate={handleCalculate}
-          title="Loan Details"
+          title="Comparison Details"
         />
         <CalculatorResults
           results={results}
           loading={loading}
-          title="Monthly Payment"
+          title="Cost Comparison"
         />
       </div>
     </CalculatorLayout>

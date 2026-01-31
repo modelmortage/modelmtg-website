@@ -20,7 +20,7 @@ This implementation plan breaks down the migration of modelmtg.com content and s
   - Test number formatting with decimal places
   - _Requirements: 1.7_
 
-- [~] 2. Implement calculator logic and validation
+- [x] 2. Implement calculator logic and validation
   - [x] 2.1 Implement affordability calculator logic
     - Create calculation function using DTI ratio and mortgage formula
     - Implement input validation schema
@@ -57,81 +57,81 @@ This implementation plan breaks down the migration of modelmtg.com content and s
     - Implement input validation schema
     - _Requirements: 1.3, 1.4, 1.6_
   
-  - [-] 2.9 Write property test for rent vs buy calculator
+  - [x] 2.9 Write property test for rent vs buy calculator
     - **Property 3: Calculation Accuracy**
     - **Validates: Requirements 1.3, 1.6**
   
-  - [~] 2.10 Implement VA purchase calculator logic
+  - [x] 2.10 Implement VA purchase calculator logic
     - Create calculation function including VA funding fee
     - Implement input validation schema
     - _Requirements: 1.3, 1.4, 1.6_
   
-  - [~] 2.11 Write property test for VA purchase calculator
+  - [x] 2.11 Write property test for VA purchase calculator
     - **Property 3: Calculation Accuracy**
     - **Validates: Requirements 1.3, 1.6**
   
-  - [~] 2.12 Implement VA refinance calculator logic
+  - [x] 2.12 Implement VA refinance calculator logic
     - Create calculation function for VA refinance with funding fee
     - Implement input validation schema
     - _Requirements: 1.3, 1.4, 1.6_
   
-  - [~] 2.13 Write property test for VA refinance calculator
+  - [x] 2.13 Write property test for VA refinance calculator
     - **Property 3: Calculation Accuracy**
     - **Validates: Requirements 1.3, 1.6**
   
-  - [~] 2.14 Implement DSCR investment calculator logic
+  - [x] 2.14 Implement DSCR investment calculator logic
     - Create calculation function for DSCR ratio and cash flow
     - Implement input validation schema
     - _Requirements: 1.3, 1.4, 1.6_
   
-  - [~] 2.15 Write property test for DSCR calculator
+  - [x] 2.15 Write property test for DSCR calculator
     - **Property 3: Calculation Accuracy**
     - **Validates: Requirements 1.3, 1.6**
 
 - [~] 3. Complete calculator pages
-  - [~] 3.1 Complete affordability calculator page
+  - [x] 3.1 Complete affordability calculator page
     - Update existing page to use shared components and new calculation logic
     - Add proper SEO metadata
     - Ensure responsive design
     - _Requirements: 1.1, 1.2, 1.3, 1.7, 6.1, 6.2, 7.1_
   
-  - [~] 3.2 Complete purchase calculator page
+  - [x] 3.2 Complete purchase calculator page
     - Update existing page to use shared components and new calculation logic
     - Add proper SEO metadata
     - Ensure responsive design
     - _Requirements: 1.1, 1.2, 1.3, 1.7, 6.1, 6.2, 7.1_
   
-  - [~] 3.3 Create refinance calculator page
+  - [x] 3.3 Create refinance calculator page
     - Implement page using shared calculator components
     - Add proper SEO metadata
     - Ensure responsive design
     - _Requirements: 1.1, 1.2, 1.3, 1.7, 6.1, 6.2, 7.1_
   
-  - [~] 3.4 Create rent vs buy calculator page
+  - [x] 3.4 Create rent vs buy calculator page
     - Implement page using shared calculator components
     - Add proper SEO metadata
     - Ensure responsive design
     - _Requirements: 1.1, 1.2, 1.3, 1.7, 6.1, 6.2, 7.1_
   
-  - [~] 3.5 Create VA purchase calculator page
+  - [x] 3.5 Create VA purchase calculator page
     - Implement page using shared calculator components
     - Add proper SEO metadata
     - Ensure responsive design
     - _Requirements: 1.1, 1.2, 1.3, 1.7, 6.1, 6.2, 7.1_
   
-  - [~] 3.6 Create VA refinance calculator page
+  - [x] 3.6 Create VA refinance calculator page
     - Implement page using shared calculator components
     - Add proper SEO metadata
     - Ensure responsive design
     - _Requirements: 1.1, 1.2, 1.3, 1.7, 6.1, 6.2, 7.1_
   
-  - [~] 3.7 Create DSCR investment calculator page
+  - [x] 3.7 Create DSCR investment calculator page
     - Implement page using shared calculator components
     - Add proper SEO metadata
     - Ensure responsive design
     - _Requirements: 1.1, 1.2, 1.3, 1.7, 6.1, 6.2, 7.1_
 
-- [~] 3.8 Write property test for calculator interface completeness
+- [x] 3.8 Write property test for calculator interface completeness
   - **Property 2: Calculator Interface Completeness**
   - **Validates: Requirements 1.2**
 

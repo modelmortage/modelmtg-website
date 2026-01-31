@@ -146,7 +146,7 @@ export function calculateRentVsBuy(inputs: RentVsBuyInputs): CalculatorResult[] 
       let balance: number
       if (loanAmount === 0) {
         balance = 0
-      } else if (monthlyInterestRate === 0) {
+      } else if (monthlyInterestRate < 0.000001) {
         balance = Math.max(0, loanAmount - (monthlyPI * months))
       } else {
         const paymentsLeft = numberOfPayments - months

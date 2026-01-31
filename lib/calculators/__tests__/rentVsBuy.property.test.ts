@@ -59,7 +59,7 @@ describe('Rent vs Buy Calculator - Property-Based Tests', () => {
             let expectedMonthlyPI: number
             if (loanAmount === 0) {
               expectedMonthlyPI = 0
-            } else if (monthlyInterestRate === 0) {
+            } else if (monthlyInterestRate < 0.000001) {
               expectedMonthlyPI = loanAmount / numberOfPayments
             } else {
               expectedMonthlyPI = loanAmount * 
@@ -90,7 +90,7 @@ describe('Rent vs Buy Calculator - Property-Based Tests', () => {
             let expectedRemainingBalance: number
             if (loanAmount === 0) {
               expectedRemainingBalance = 0
-            } else if (monthlyInterestRate === 0) {
+            } else if (monthlyInterestRate < 0.000001) {
               expectedRemainingBalance = Math.max(0, loanAmount - (expectedMonthlyPI * monthsToStay))
             } else {
               const paymentsRemaining = numberOfPayments - monthsToStay
