@@ -1,0 +1,375 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* === ROOT VARIABLES === */
+:root {
+  /* Brand Colors - Gold from Logo */
+  --gold-light: #D8B07A;
+  --gold-main: #C89A5B;
+  --gold-deep: #A9793A;
+  
+  /* Core Backgrounds */
+  --midnight-black: #0A0A0C;
+  --deep-charcoal: #141417;
+  --ivory-white: #F7F6F3;
+  
+  /* Accent - Trust/Finance */
+  --emerald-teal: #1FB6A6;
+  
+  /* Typography */
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Inter', sans-serif;
+  
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+  --spacing-xl: 6rem;
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* === RESET & BASE === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--ivory-white);
+  background-color: var(--midnight-black);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* === TYPOGRAPHY === */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--ivory-white);
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 600;
+}
+
+h3 {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+h4 {
+  font-size: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+p {
+  font-family: var(--font-sans);
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  line-height: 1.7;
+  color: var(--ivory-white);
+  opacity: 0.9;
+}
+
+/* === GOLD ACCENT UTILITIES === */
+.text-gold {
+  color: var(--gold-main);
+}
+
+.text-gold-light {
+  color: var(--gold-light);
+}
+
+.gold-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.gold-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold-main), var(--gold-light));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-smooth);
+}
+
+.gold-underline.active::after,
+.gold-underline:hover::after {
+  transform: scaleX(1);
+}
+
+/* === BUTTONS === */
+.btn {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 1rem 2.5rem;
+  border-radius: 2px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+  text-decoration: none;
+  display: inline-block;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold-main), var(--gold-light));
+  color: var(--midnight-black);
+  border-color: var(--gold-main);
+  box-shadow: 0 0 20px rgba(200, 154, 91, 0.3);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 0 40px rgba(200, 154, 91, 0.6);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--gold-main);
+  border-color: var(--gold-main);
+}
+
+.btn-secondary:hover {
+  background: var(--gold-main);
+  color: var(--midnight-black);
+  box-shadow: 0 0 30px rgba(200, 154, 91, 0.4);
+}
+
+/* === CARDS === */
+.card {
+  background: var(--deep-charcoal);
+  border: 1px solid rgba(216, 176, 122, 0.1);
+  border-radius: 4px;
+  padding: var(--spacing-md);
+  transition: all var(--transition-smooth);
+}
+
+.card:hover {
+  border-color: var(--gold-main);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* === SECTIONS === */
+.section {
+  padding: var(--spacing-xl) var(--spacing-md);
+}
+
+.section-dark {
+  background: var(--midnight-black);
+}
+
+.section-charcoal {
+  background: var(--deep-charcoal);
+}
+
+.section-light {
+  background: var(--ivory-white);
+  color: var(--midnight-black);
+}
+
+.section-light h1,
+.section-light h2,
+.section-light h3,
+.section-light h4,
+.section-light p {
+  color: var(--midnight-black);
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* === ANIMATIONS === */
+@keyframes goldGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(200, 154, 91, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(200, 154, 91, 0.6);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes lightRays {
+  0% {
+    transform: translateX(-100%) rotate(-15deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateX(100%) rotate(-15deg);
+    opacity: 0;
+  }
+}
+
+@keyframes particleFloat {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes counterUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === GOLD DIVIDERS === */
+.gold-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-main), transparent);
+  margin: var(--spacing-lg) 0;
+}
+
+/* === SCROLL REVEAL UTILITIES === */
+.fade-in-up {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+/* === STICKY CTA === */
+.sticky-cta {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+  animation: goldGlow 2s infinite;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  :root {
+    --spacing-lg: 3rem;
+    --spacing-xl: 4rem;
+  }
+  
+  .section {
+    padding: var(--spacing-lg) var(--spacing-sm);
+  }
+  
+  .container {
+    padding: 0 var(--spacing-sm);
+  }
+  
+  .btn {
+    padding: 0.875rem 2rem;
+    font-size: 0.8125rem;
+  }
+  
+  .sticky-cta {
+    bottom: 1rem;
+    right: 1rem;
+  }
+}
+
+/* === GRID UTILITIES === */
+.grid {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.grid-4 {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* === FLEX UTILITIES === */
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* === TEXT UTILITIES === */
+.text-center {
+  text-align: center;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* === BACKGROUND UTILITIES === */
+.bg-gradient-dark {
+  background: linear-gradient(135deg, var(--midnight-black), var(--deep-charcoal));
+}
+
+.bg-gradient-gold {
+  background: linear-gradient(135deg, var(--gold-deep), var(--gold-main), var(--gold-light));
+}

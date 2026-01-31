@@ -1,0 +1,302 @@
+.section {
+    background: var(--deep-charcoal);
+    padding: var(--spacing-xl) var(--spacing-md);
+    position: relative;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.header h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    color: var(--ivory-white);
+    margin-bottom: 1rem;
+}
+
+.subtitle {
+    font-family: var(--font-sans);
+    font-size: 1.125rem;
+    color: var(--gold-light);
+    opacity: 0.9;
+}
+
+.dashboardGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background: rgba(10, 10, 12, 0.6);
+    border: 1px solid rgba(200, 154, 91, 0.1);
+    border-radius: 4px;
+    padding: 2rem;
+    transition: all var(--transition-smooth);
+    backdrop-filter: blur(10px);
+}
+
+.card:hover {
+    border-color: var(--gold-main);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.cardHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.cardHeader h3 {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--ivory-white);
+    opacity: 0.7;
+}
+
+.liveDot {
+    font-size: 0.75rem;
+    color: var(--emerald-teal);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Rate Ticker */
+.rateDisplay {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.rateNumber {
+    font-family: var(--font-serif);
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--gold-main);
+    line-height: 1;
+}
+
+.rateLabel {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--ivory-white);
+    opacity: 0.6;
+}
+
+.rateChange {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(200, 154, 91, 0.1);
+}
+
+.changePositive {
+    color: var(--emerald-teal);
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+.changeTime {
+    font-size: 0.75rem;
+    color: var(--ivory-white);
+    opacity: 0.5;
+}
+
+/* Heatmap */
+.heatmapGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.zone {
+    padding: 1.5rem 1rem;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+}
+
+.zone:hover {
+    transform: scale(1.05);
+}
+
+.zoneHot {
+    background: rgba(200, 154, 91, 0.2);
+    border: 1px solid var(--gold-main);
+}
+
+.zoneWarm {
+    background: rgba(200, 154, 91, 0.1);
+    border: 1px solid rgba(200, 154, 91, 0.3);
+}
+
+.zoneCool {
+    background: rgba(31, 182, 166, 0.1);
+    border: 1px solid rgba(31, 182, 166, 0.3);
+}
+
+.zoneName {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--ivory-white);
+}
+
+.zoneTemp {
+    font-size: 0.8125rem;
+    color: var(--gold-light);
+}
+
+/* Equity Chart */
+.chartContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.chartBars {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+    height: 200px;
+}
+
+.bar {
+    flex: 1;
+    background: linear-gradient(to top, var(--gold-deep), var(--gold-main));
+    border-radius: 4px 4px 0 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 0.5rem;
+    transition: all var(--transition-smooth);
+    position: relative;
+}
+
+.bar:hover {
+    filter: brightness(1.2);
+}
+
+.bar span {
+    font-size: 0.75rem;
+    color: var(--midnight-black);
+    font-weight: 600;
+}
+
+.chartValue {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    text-align: center;
+}
+
+.valueNumber {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gold-main);
+}
+
+.valueLabel {
+    font-size: 0.875rem;
+    color: var(--ivory-white);
+    opacity: 0.6;
+}
+
+/* Closing Timer */
+.timerDisplay {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.timerNumber {
+    font-family: var(--font-serif);
+    font-size: 5rem;
+    font-weight: 700;
+    color: var(--gold-main);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.timerLabel {
+    font-family: var(--font-sans);
+    font-size: 1.125rem;
+    color: var(--ivory-white);
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.timerComparison {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(200, 154, 91, 0.1);
+    text-align: center;
+}
+
+.comparisonText {
+    font-size: 0.875rem;
+    color: var(--ivory-white);
+    opacity: 0.6;
+}
+
+.comparisonStat {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--emerald-teal);
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: var(--spacing-lg) var(--spacing-sm);
+    }
+
+    .dashboardGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .heatmapGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .timerNumber {
+        font-size: 4rem;
+    }
+}
