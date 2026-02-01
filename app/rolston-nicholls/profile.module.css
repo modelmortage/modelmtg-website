@@ -1,0 +1,180 @@
+/* Profile Grid Layout */
+.profileGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Main Content */
+.mainContent {
+  order: 2;
+}
+
+.photoContainer {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto 2rem;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.photo {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.bioSection {
+  margin-bottom: 2rem;
+}
+
+.sectionHeading {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--midnight-black);
+  margin-bottom: 1.5rem;
+}
+
+.paragraph {
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: var(--deep-charcoal);
+  margin-bottom: 1.25rem;
+}
+
+.backLink {
+  margin-top: 2rem;
+}
+
+.backLink a {
+  color: var(--gold-main);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.backLink a:hover {
+  color: var(--gold-hover);
+  text-decoration: underline;
+}
+
+/* Sidebar */
+.sidebar {
+  order: 1;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1.5rem;
+}
+
+.cardHeading {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--midnight-black);
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--gold-main);
+}
+
+/* Contact List */
+.contactList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contactItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+.contactItem:hover {
+  color: var(--gold-main);
+}
+
+.contactLabel {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--deep-charcoal);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.contactValue {
+  font-size: 1rem;
+  color: var(--midnight-black);
+}
+
+/* Lists */
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.listItem {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #e5e5e5;
+  color: var(--deep-charcoal);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.listItem:last-child {
+  border-bottom: none;
+}
+
+.listItem::before {
+  content: '✓';
+  color: var(--gold-main);
+  font-weight: bold;
+  margin-right: 0.75rem;
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  .profileGrid {
+    grid-template-columns: 1fr 350px;
+    gap: 4rem;
+  }
+
+  .mainContent {
+    order: 1;
+  }
+
+  .sidebar {
+    order: 2;
+  }
+
+  .photoContainer {
+    float: left;
+    margin: 0 2rem 1.5rem 0;
+    max-width: 300px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .sectionHeading {
+    font-size: 2rem;
+  }
+
+  .paragraph {
+    font-size: 1.125rem;
+  }
+
+  .photoContainer {
+    max-width: 350px;
+  }
+}

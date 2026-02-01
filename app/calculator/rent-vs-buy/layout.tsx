@@ -15,9 +15,12 @@ export const metadata: Metadata = {
     title: rentVsBuyConfig.metadata.title,
     description: rentVsBuyConfig.metadata.description,
   },
+  alternates: {
+    canonical: '/calculator/rent-vs-buy',
+  },
 }
 
-export default function RentVsBuyLayout({
+export default function RentVsBuyCalculatorLayout({
   children,
 }: {
   children: React.ReactNode

@@ -65,7 +65,7 @@ export const affordabilityConfig: CalculatorConfig = {
   },
   metadata: {
     title: 'Home Affordability Calculator | How Much House Can I Afford? | Model Mortgage',
-    description: 'Calculate how much house you can afford based on your income, debts, and down payment. Free home affordability calculator with instant results. Get pre-approved today.',
+    description: 'Calculate how much house you can afford based on income, debts, and down payment. Free affordability calculator with instant results.',
     keywords: [
       'home affordability calculator',
       'how much house can I afford',

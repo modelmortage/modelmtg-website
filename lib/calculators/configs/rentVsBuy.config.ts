@@ -88,7 +88,7 @@ export const rentVsBuyConfig: CalculatorConfig = {
   },
   metadata: {
     title: 'Rent vs Buy Calculator | Should I Rent or Buy a Home? | Model Mortgage',
-    description: 'Compare the costs of renting versus buying a home. Calculate total costs, equity building, and break-even point. Free rent vs buy calculator with instant results.',
+    description: 'Compare costs of renting versus buying. Calculate total costs, equity building, and break-even point. Free calculator with instant results.',
     keywords: [
       'rent vs buy calculator',
       'should I rent or buy',

@@ -77,7 +77,7 @@ export const dscrConfig: CalculatorConfig = {
   },
   metadata: {
     title: 'DSCR Calculator | Investment Property Loan Calculator | Model Mortgage',
-    description: 'Calculate DSCR (Debt Service Coverage Ratio) for investment property loans. Free calculator to analyze rental income, cash flow, and ROI. Get instant qualification status.',
+    description: 'Calculate DSCR for investment property loans. Analyze rental income, cash flow, and ROI. Get instant qualification status with our free calculator.',
     keywords: [
       'DSCR calculator',
       'debt service coverage ratio',

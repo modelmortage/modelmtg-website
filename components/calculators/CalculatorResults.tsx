@@ -40,7 +40,7 @@ export default function CalculatorResults({
       borderRadius: '4px',
       border: '1px solid rgba(200, 154, 91, 0.1)'
     }}>
-      <h3 style={{ marginBottom: '2rem', color: 'var(--ivory-white)' }}>{title}</h3>
+      <h2 style={{ marginBottom: '2rem', color: 'var(--ivory-white)' }}>{title}</h2>
       
       {loading ? (
         <div style={{ textAlign: 'center', padding: '3rem 0' }}>

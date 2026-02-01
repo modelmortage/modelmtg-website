@@ -90,7 +90,7 @@ export const refinanceConfig: CalculatorConfig = {
   },
   metadata: {
     title: 'Mortgage Refinance Calculator | Calculate Refinance Savings | Model Mortgage',
-    description: 'Calculate your potential savings from refinancing your mortgage. Compare monthly payments, break-even point, and lifetime savings. Free refinance calculator with instant results.',
+    description: 'Calculate potential savings from refinancing. Compare monthly payments, break-even point, and lifetime savings. Free calculator with instant results.',
     keywords: [
       'refinance calculator',
       'mortgage refinance',

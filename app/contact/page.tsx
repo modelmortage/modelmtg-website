@@ -6,6 +6,19 @@ export const metadata: Metadata = {
     title: 'Contact Us | Houston Mortgage Broker | Model Mortgage',
     description: 'Contact Matthew Bramow at Model Mortgage. Call (832) 727-4128 or email for expert mortgage guidance in Houston, TX. Fast response guaranteed.',
     keywords: 'contact mortgage broker Houston, Matthew Bramow contact, Model Mortgage phone number',
+    openGraph: {
+        title: 'Contact Us | Houston Mortgage Broker',
+        description: 'Contact Matthew Bramow at Model Mortgage. Call (832) 727-4128 or email for expert mortgage guidance in Houston, TX.',
+        type: 'website',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Contact Us | Houston Mortgage Broker',
+        description: 'Contact Matthew Bramow at Model Mortgage. Call (832) 727-4128 or email for expert mortgage guidance in Houston, TX.',
+    },
+    alternates: {
+        canonical: '/contact',
+    },
 }
 
 export default function ContactPage() {

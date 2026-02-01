@@ -1,0 +1,330 @@
+/* Introduction Section */
+.introduction {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.introduction p {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--deep-charcoal);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Overall Rating Section */
+.overallRating {
+  background: linear-gradient(135deg, var(--gold-main) 0%, #d4a574 100%);
+  border-radius: 12px;
+  padding: 2.5rem;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.ratingDisplay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.ratingValue {
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--midnight-black);
+  line-height: 1;
+}
+
+.ratingDetails {
+  text-align: left;
+}
+
+.stars {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.star {
+  color: var(--midnight-black);
+  font-size: 1.5rem;
+}
+
+.ratingText {
+  font-size: 1rem;
+  color: var(--midnight-black);
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Reviews Section */
+.reviewsSection {
+  margin-bottom: 4rem;
+}
+
+.sectionTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--midnight-black);
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.reviewsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.reviewCard {
+  background: var(--ivory-white);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 1.75rem;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.reviewCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border-color: var(--gold-main);
+}
+
+.reviewHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.reviewStars {
+  display: flex;
+  gap: 0.125rem;
+}
+
+.reviewStar {
+  color: var(--gold-main);
+  font-size: 1.125rem;
+}
+
+.loanType {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--gold-main);
+  background: rgba(198, 146, 72, 0.1);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.reviewText {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--deep-charcoal);
+  margin: 0;
+  flex-grow: 1;
+}
+
+.quote {
+  color: var(--gold-main);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.reviewFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.clientInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.clientAvatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold-main) 0%, #d4a574 100%);
+  color: var(--midnight-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.clientDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.clientName {
+  font-weight: 600;
+  color: var(--midnight-black);
+  margin: 0;
+  font-size: 0.9375rem;
+}
+
+.clientLocation {
+  font-size: 0.875rem;
+  color: var(--deep-charcoal);
+  opacity: 0.7;
+  margin: 0;
+}
+
+.reviewDate {
+  font-size: 0.8125rem;
+  color: var(--deep-charcoal);
+  opacity: 0.6;
+  white-space: nowrap;
+}
+
+/* Trust Badges Section */
+.trustSection {
+  background: var(--ivory-white);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.badgesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.badgeIcon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.badgeInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.badgeName {
+  font-weight: 600;
+  color: var(--midnight-black);
+  margin: 0;
+  font-size: 0.9375rem;
+}
+
+.badgeDescription {
+  font-size: 0.875rem;
+  color: var(--deep-charcoal);
+  opacity: 0.7;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .introduction p {
+    font-size: 1rem;
+  }
+
+  .overallRating {
+    padding: 2rem 1.5rem;
+  }
+
+  .ratingDisplay {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .ratingValue {
+    font-size: 3rem;
+  }
+
+  .ratingDetails {
+    text-align: center;
+  }
+
+  .sectionTitle {
+    font-size: 1.75rem;
+  }
+
+  .reviewsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .reviewCard {
+    padding: 1.5rem;
+  }
+
+  .reviewFooter {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .reviewDate {
+    align-self: flex-end;
+  }
+
+  .trustSection {
+    padding: 2rem 1.5rem;
+  }
+
+  .badgesGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .overallRating {
+    padding: 1.5rem 1rem;
+  }
+
+  .ratingValue {
+    font-size: 2.5rem;
+  }
+
+  .stars {
+    justify-content: center;
+  }
+
+  .star {
+    font-size: 1.25rem;
+  }
+
+  .reviewCard {
+    padding: 1.25rem;
+  }
+
+  .reviewHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .loanType {
+    align-self: flex-start;
+  }
+
+  .trustSection {
+    padding: 1.5rem 1rem;
+  }
+}

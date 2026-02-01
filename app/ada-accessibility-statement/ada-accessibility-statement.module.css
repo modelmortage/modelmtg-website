@@ -1,0 +1,134 @@
+.lastUpdated {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: var(--ivory-white);
+  border-left: 4px solid var(--gold-main);
+  border-radius: 4px;
+}
+
+.lastUpdated p {
+  margin: 0;
+  color: var(--deep-charcoal);
+  font-size: 0.95rem;
+}
+
+.lastUpdated strong {
+  color: var(--midnight-black);
+}
+
+.statementContent {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.section {
+  margin-bottom: 3rem;
+}
+
+.sectionHeading {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--midnight-black);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--gold-main);
+}
+
+.subsections {
+  margin-top: 1.5rem;
+  margin-left: 1rem;
+}
+
+.subsection {
+  margin-bottom: 1.5rem;
+}
+
+.subsectionHeading {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--midnight-black);
+  margin-bottom: 0.75rem;
+}
+
+.paragraph {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--deep-charcoal);
+  margin-bottom: 1rem;
+}
+
+.paragraph:last-child {
+  margin-bottom: 0;
+}
+
+.contactNotice {
+  margin-top: 3rem;
+  padding: 1.5rem;
+  background-color: var(--ivory-white);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.contactNotice p {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--deep-charcoal);
+}
+
+.contactLink {
+  color: var(--gold-main);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.contactLink:hover {
+  color: var(--gold-dark);
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sectionHeading {
+    font-size: 1.5rem;
+  }
+
+  .subsectionHeading {
+    font-size: 1.1rem;
+  }
+
+  .paragraph {
+    font-size: 0.95rem;
+  }
+
+  .subsections {
+    margin-left: 0.5rem;
+  }
+
+  .lastUpdated {
+    padding: 0.75rem;
+  }
+
+  .contactNotice {
+    padding: 1rem;
+  }
+
+  .contactNotice p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionHeading {
+    font-size: 1.35rem;
+  }
+
+  .subsectionHeading {
+    font-size: 1rem;
+  }
+
+  .paragraph {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+}

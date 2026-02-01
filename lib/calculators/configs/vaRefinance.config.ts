@@ -78,7 +78,7 @@ export const vaRefinanceConfig: CalculatorConfig = {
   },
   metadata: {
     title: 'VA Refinance Calculator | IRRRL & Cash-Out | Model Mortgage',
-    description: 'Calculate your VA refinance savings with our free calculator. Compare IRRRL and cash-out refinance options. See monthly savings, cash out amounts, and funding fees instantly.',
+    description: 'Calculate VA refinance savings. Compare IRRRL and cash-out options. See monthly savings, cash out amounts, and funding fees instantly.',
     keywords: [
       'VA refinance calculator',
       'VA IRRRL calculator',

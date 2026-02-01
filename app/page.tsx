@@ -12,7 +12,7 @@ export default function Home() {
     return (
         <>
             <Header />
-            <main>
+            <main id="main-content">
                 <HeroSection />
                 <TrustBar />
                 <LoanProgramsGrid />
@@ -37,6 +37,39 @@ export default function Home() {
             >
                 Get Pre-Approved
             </a>
+
+            {/* Structured Data - Organization Schema */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "Organization",
+                        "name": "Model Mortgage",
+                        "url": "https://modelmtg.com",
+                        "logo": "https://modelmtg.com/logo.png",
+                        "description": "Strategic mortgage planning for buyers who refuse to lose. Expert mortgage broker in Houston, TX.",
+                        "address": {
+                            "@type": "PostalAddress",
+                            "addressLocality": "Houston",
+                            "addressRegion": "TX",
+                            "postalCode": "77002",
+                            "addressCountry": "US"
+                        },
+                        "contactPoint": {
+                            "@type": "ContactPoint",
+                            "telephone": "(832) 727-4128",
+                            "contactType": "customer service",
+                            "areaServed": "US",
+                            "availableLanguage": "English"
+                        },
+                        "sameAs": [
+                            "https://www.facebook.com/modelmortgage",
+                            "https://www.linkedin.com/company/model-mortgage"
+                        ]
+                    })
+                }}
+            />
 
             {/* Structured Data - LocalBusiness Schema */}
             <script

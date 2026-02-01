@@ -1,0 +1,382 @@
+/* Learning Center Page Styles */
+
+.learningCenter {
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, var(--deep-charcoal) 0%, var(--midnight-black) 100%);
+  color: var(--ivory-white);
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.heroContent {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.heroTitle {
+  font-size: 2.75rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--gold-main);
+}
+
+.heroSubtitle {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--ivory-white);
+  opacity: 0.9;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Quick Links Section */
+.quickLinks {
+  padding: 3rem 2rem;
+  background-color: var(--ivory-white);
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--midnight-black);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.sectionDescription {
+  font-size: 1.125rem;
+  color: var(--deep-charcoal);
+  text-align: center;
+  margin-bottom: 2rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.topicsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.topicCard {
+  background: white;
+  border: 2px solid #e5e5e5;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.topicCard:hover {
+  border-color: var(--gold-main);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.topicIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.topicTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--midnight-black);
+  margin-bottom: 0.5rem;
+}
+
+.topicDescription {
+  font-size: 0.95rem;
+  color: var(--deep-charcoal);
+  opacity: 0.8;
+}
+
+/* Category Sections */
+.categorySection {
+  padding: 4rem 2rem;
+  background-color: var(--ivory-white);
+}
+
+.categorySection:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.categoryHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.categoryTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--midnight-black);
+  margin-bottom: 0.75rem;
+}
+
+.categoryDescription {
+  font-size: 1.125rem;
+  color: var(--deep-charcoal);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.postsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+/* Tools & Calculators Section */
+.toolsSection {
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, var(--gold-main) 0%, var(--gold-dark) 100%);
+}
+
+.toolsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.toolCard {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  border: 2px solid transparent;
+}
+
+.toolCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border-color: var(--midnight-black);
+}
+
+.toolTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--midnight-black);
+  margin-bottom: 0.5rem;
+}
+
+.toolDescription {
+  font-size: 1rem;
+  color: var(--deep-charcoal);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.toolArrow {
+  font-size: 1.5rem;
+  color: var(--gold-main);
+  font-weight: 700;
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.toolCard:hover .toolArrow {
+  transform: translateX(8px);
+}
+
+/* Call to Action Section */
+.ctaSection {
+  background: linear-gradient(135deg, var(--midnight-black) 0%, var(--deep-charcoal) 100%);
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.ctaContent {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.ctaTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--gold-main);
+  margin-bottom: 1rem;
+}
+
+.ctaText {
+  font-size: 1.125rem;
+  color: var(--ivory-white);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.ctaButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ctaPrimary,
+.ctaSecondary {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.ctaPrimary {
+  background-color: var(--gold-main);
+  color: var(--midnight-black);
+  border: 2px solid var(--gold-main);
+}
+
+.ctaPrimary:hover {
+  background-color: var(--gold-dark);
+  border-color: var(--gold-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+}
+
+.ctaSecondary {
+  background-color: transparent;
+  color: var(--ivory-white);
+  border: 2px solid var(--ivory-white);
+}
+
+.ctaSecondary:hover {
+  background-color: var(--ivory-white);
+  color: var(--midnight-black);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: 2rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1.125rem;
+  }
+
+  .topicsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .topicCard {
+    padding: 1.5rem;
+  }
+
+  .topicIcon {
+    font-size: 2.5rem;
+  }
+
+  .categorySection {
+    padding: 3rem 1.5rem;
+  }
+
+  .categoryTitle {
+    font-size: 1.75rem;
+  }
+
+  .categoryDescription {
+    font-size: 1rem;
+  }
+
+  .postsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .toolsGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.75rem;
+  }
+
+  .ctaTitle {
+    font-size: 1.75rem;
+  }
+
+  .ctaText {
+    font-size: 1rem;
+  }
+
+  .ctaButtons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .ctaPrimary,
+  .ctaSecondary {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 3rem 1.5rem;
+  }
+
+  .heroTitle {
+    font-size: 1.75rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1rem;
+  }
+
+  .quickLinks {
+    padding: 2rem 1.5rem;
+  }
+
+  .topicsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .categorySection {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .categoryTitle {
+    font-size: 1.5rem;
+  }
+
+  .toolsSection {
+    padding: 3rem 1.5rem;
+  }
+
+  .ctaSection {
+    padding: 3rem 1.5rem;
+  }
+
+  .ctaTitle {
+    font-size: 1.5rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+}

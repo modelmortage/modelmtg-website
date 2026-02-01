@@ -25,7 +25,7 @@ export default function Footer() {
                 {/* Links Grid */}
                 <div className={styles.linksGrid}>
                     <div className={styles.linkColumn}>
-                        <h4>About Us</h4>
+                        <h3>About Us</h3>
                         <Link href="/about">Our Story</Link>
                         <Link href="/team">Meet Our Team</Link>
                         <Link href="/reviews">Client Reviews</Link>
@@ -33,7 +33,7 @@ export default function Footer() {
                     </div>
 
                     <div className={styles.linkColumn}>
-                        <h4>Loan Options</h4>
+                        <h3>Loan Options</h3>
                         <Link href="/loan-options/conventional">Conventional Loans</Link>
                         <Link href="/loan-options/fha">FHA Loans</Link>
                         <Link href="/loan-options/va">VA Loans</Link>
@@ -42,7 +42,7 @@ export default function Footer() {
                     </div>
 
                     <div className={styles.linkColumn}>
-                        <h4>Resources</h4>
+                        <h3>Resources</h3>
                         <Link href="/learn">Learning Center</Link>
                         <Link href="/calculator">Mortgage Calculator</Link>
                         <Link href="/pre-qualify">Pre-Qualification</Link>
@@ -50,7 +50,7 @@ export default function Footer() {
                     </div>
 
                     <div className={styles.linkColumn}>
-                        <h4>Connect With Us</h4>
+                        <h3>Connect With Us</h3>
                         <a href="tel:832-727-4128">(832) 727-4128</a>
                         <a href="mailto:info@modelmortgage.com">Email Us Today</a>
                         <div className={styles.socialIcons}>
@@ -66,11 +66,11 @@ export default function Footer() {
                 {/* Bottom Section */}
                 <div className={styles.bottomSection}>
                     <div className={styles.legalLinks}>
-                        <Link href="/privacy">Privacy Policy</Link>
+                        <Link href="/privacy-policy">Privacy Policy</Link>
                         <span className={styles.separator}>|</span>
                         <Link href="/nmls">NMLS Consumer Access</Link>
                         <span className={styles.separator}>|</span>
-                        <Link href="/ada">ADA Accessibility</Link>
+                        <Link href="/ada-accessibility-statement">ADA Accessibility</Link>
                     </div>
 
                     <div className={styles.certifications}>

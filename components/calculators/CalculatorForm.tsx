@@ -32,17 +32,20 @@ export default function CalculatorForm({
       borderRadius: '4px',
       border: '1px solid rgba(200, 154, 91, 0.1)'
     }}>
-      <h3 style={{ marginBottom: '2rem', color: 'var(--ivory-white)' }}>{title}</h3>
+      <h2 style={{ marginBottom: '2rem', color: 'var(--ivory-white)' }}>{title}</h2>
       
       <form onSubmit={handleSubmit}>
         {inputs.map((input) => (
           <div key={input.name} style={{ marginBottom: '1.5rem' }}>
-            <label style={{
-              display: 'block',
-              marginBottom: '0.5rem',
-              color: 'var(--ivory-white)',
-              fontSize: '0.9375rem'
-            }}>
+            <label 
+              htmlFor={input.name}
+              style={{
+                display: 'block',
+                marginBottom: '0.5rem',
+                color: 'var(--ivory-white)',
+                fontSize: '0.9375rem'
+              }}
+            >
               {input.label}
               {input.required && <span style={{ color: 'var(--gold-main)' }}> *</span>}
             </label>
@@ -50,6 +53,7 @@ export default function CalculatorForm({
             {input.type === 'number' || input.type === 'currency' || input.type === 'percentage' ? (
               <input
                 type="number"
+                id={input.name}
                 name={input.name}
                 value={values[input.name] || ''}
                 onChange={(e) => onChange(input.name, e.target.value)}
@@ -58,6 +62,8 @@ export default function CalculatorForm({
                 max={input.max}
                 step={input.step || (input.type === 'percentage' ? '0.1' : '1')}
                 required={input.required}
+                aria-invalid={errors[input.name] ? 'true' : 'false'}
+                aria-describedby={errors[input.name] ? `${input.name}-error` : input.helpText ? `${input.name}-help` : undefined}
                 style={{
                   width: '100%',
                   padding: '0.875rem',
@@ -67,30 +73,50 @@ export default function CalculatorForm({
                     : '1px solid rgba(200, 154, 91, 0.2)',
                   borderRadius: '4px',
                   color: 'var(--ivory-white)',
-                  fontSize: '1rem'
+                  fontSize: '1rem',
+                  transition: 'border-color 0.2s, box-shadow 0.2s'
+                }}
+                onFocus={(e) => {
+                  if (!errors[input.name]) {
+                    e.target.style.borderColor = 'var(--gold-main)'
+                    e.target.style.boxShadow = '0 0 0 3px rgba(200, 154, 91, 0.2)'
+                  }
+                }}
+                onBlur={(e) => {
+                  if (!errors[input.name]) {
+                    e.target.style.borderColor = 'rgba(200, 154, 91, 0.2)'
+                    e.target.style.boxShadow = 'none'
+                  }
                 }}
               />
             ) : null}
             
             {errors[input.name] && (
-              <p style={{
-                color: '#e74c3c',
-                fontSize: '0.875rem',
-                marginTop: '0.25rem',
-                marginBottom: 0
-              }}>
+              <p 
+                id={`${input.name}-error`}
+                role="alert"
+                style={{
+                  color: '#e74c3c',
+                  fontSize: '0.875rem',
+                  marginTop: '0.25rem',
+                  marginBottom: 0
+                }}
+              >
                 {errors[input.name]}
               </p>
             )}
             
             {input.helpText && !errors[input.name] && (
-              <p style={{
-                color: 'var(--ivory-white)',
-                opacity: 0.6,
-                fontSize: '0.8125rem',
-                marginTop: '0.25rem',
-                marginBottom: 0
-              }}>
+              <p 
+                id={`${input.name}-help`}
+                style={{
+                  color: 'var(--ivory-white)',
+                  opacity: 0.6,
+                  fontSize: '0.8125rem',
+                  marginTop: '0.25rem',
+                  marginBottom: 0
+                }}
+              >
                 {input.helpText}
               </p>
             )}

@@ -60,6 +60,11 @@
     position: relative;
     transition: color var(--transition-fast);
     letter-spacing: 0.3px;
+    /* Ensure adequate touch target size (44x44px minimum) */
+    padding: 12px 8px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
 }
 
 .navLink::after {
@@ -83,10 +88,27 @@
     transform: scaleX(1);
 }
 
+/* Active navigation state */
+.navLink.active {
+    color: var(--gold-main);
+    font-weight: 600;
+}
+
+.navLink.active::after {
+    transform: scaleX(1);
+}
+
+/* Focus state for accessibility */
+.navLink:focus {
+    outline: 2px solid var(--gold-main);
+    outline-offset: 4px;
+    border-radius: 2px;
+}
+
 .ctaButton {
     background: linear-gradient(135deg, var(--gold-main), var(--gold-light));
     color: var(--midnight-black);
-    padding: 0.75rem 1.5rem;
+    padding: 12px 24px;
     border-radius: 2px;
     font-weight: 600;
     text-transform: uppercase;
@@ -94,6 +116,11 @@
     letter-spacing: 1px;
     transition: all var(--transition-smooth);
     box-shadow: 0 0 20px rgba(200, 154, 91, 0.3);
+    /* Ensure adequate touch target size */
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .ctaButton::after {
@@ -113,7 +140,19 @@
     background: transparent;
     border: none;
     cursor: pointer;
-    padding: 0.5rem;
+    padding: 12px;
+    z-index: 1001;
+    /* Ensure adequate touch target size */
+    min-width: 44px;
+    min-height: 44px;
+    justify-content: center;
+    align-items: center;
+}
+
+.mobileToggle:focus {
+    outline: 2px solid var(--gold-main);
+    outline-offset: 4px;
+    border-radius: 2px;
 }
 
 .mobileToggle span {
@@ -121,6 +160,21 @@
     height: 2px;
     background: var(--gold-main);
     transition: all var(--transition-fast);
+    transform-origin: center;
+}
+
+/* Hamburger animation when open */
+.mobileToggleOpen span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.mobileToggleOpen span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.mobileToggleOpen span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
 }
 
 @media (max-width: 1024px) {
@@ -147,6 +201,7 @@
         top: 70px;
         left: 0;
         right: 0;
+        bottom: 0;
         background: var(--deep-charcoal);
         flex-direction: column;
         gap: 0;
@@ -154,6 +209,8 @@
         border-top: 1px solid rgba(200, 154, 91, 0.1);
         transform: translateX(-100%);
         transition: transform var(--transition-smooth);
+        overflow-y: auto;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     }
 
     .navOpen {
@@ -164,10 +221,29 @@
         width: 100%;
         padding: 1rem;
         border-bottom: 1px solid rgba(200, 154, 91, 0.05);
+        text-align: left;
+    }
+
+    .navLink::after {
+        display: none;
+    }
+
+    .navLink:hover {
+        background: rgba(200, 154, 91, 0.05);
+    }
+
+    .navLink.active {
+        background: rgba(200, 154, 91, 0.1);
+        border-left: 3px solid var(--gold-main);
+        padding-left: calc(1rem - 3px);
     }
 
     .ctaButton {
         margin-top: 1rem;
         text-align: center;
+    }
+
+    .ctaButton:hover {
+        background: linear-gradient(135deg, var(--gold-main), var(--gold-light));
     }
 }

@@ -9,7 +9,6 @@ export const metadata: Metadata = {
     title: vaPurchaseConfig.metadata.title,
     description: vaPurchaseConfig.metadata.description,
     type: 'website',
-    locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',

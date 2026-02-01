@@ -1,0 +1,58 @@
+/* Introduction Section */
+.intro {
+  max-width: 800px;
+  margin: 0 auto 4rem;
+  text-align: center;
+}
+
+.introText {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--deep-charcoal);
+}
+
+/* Team Section */
+.teamSection {
+  margin-bottom: 4rem;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Company Info */
+.companyInfo {
+  text-align: center;
+  padding: 2rem 0;
+  border-top: 1px solid #e5e5e5;
+  margin-top: 3rem;
+}
+
+.companyNmls {
+  font-size: 0.875rem;
+  color: var(--deep-charcoal);
+  font-weight: 500;
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  .teamGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .introText {
+    font-size: 1.25rem;
+  }
+
+  .teamGrid {
+    gap: 3rem;
+  }
+}

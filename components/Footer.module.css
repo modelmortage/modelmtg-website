@@ -71,12 +71,24 @@
     margin-bottom: 0.75rem;
     opacity: 0.8;
     transition: all var(--transition-fast);
+    /* Ensure adequate touch target size */
+    padding: 8px 0;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
 }
 
 .linkColumn a:hover {
     color: var(--gold-main);
     opacity: 1;
     transform: translateX(4px);
+}
+
+.linkColumn a:focus {
+    outline: 2px solid var(--gold-main);
+    outline-offset: 2px;
+    color: var(--gold-main);
+    opacity: 1;
 }
 
 .socialIcons {
@@ -86,8 +98,8 @@
 }
 
 .socialIcon {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     border: 1px solid var(--gold-main);
     border-radius: 50%;
     display: flex;
@@ -105,6 +117,13 @@
     color: var(--midnight-black);
     transform: translateY(-4px);
     box-shadow: 0 8px 20px rgba(200, 154, 91, 0.3);
+}
+
+.socialIcon:focus {
+    outline: 2px solid var(--gold-main);
+    outline-offset: 4px;
+    background: var(--gold-main);
+    color: var(--midnight-black);
 }
 
 .bottomSection {
@@ -127,9 +146,21 @@
     text-decoration: none;
     opacity: 0.7;
     transition: all var(--transition-fast);
+    /* Ensure adequate touch target size */
+    padding: 8px 12px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
 }
 
 .legalLinks a:hover {
+    color: var(--gold-main);
+    opacity: 1;
+}
+
+.legalLinks a:focus {
+    outline: 2px solid var(--gold-main);
+    outline-offset: 2px;
     color: var(--gold-main);
     opacity: 1;
 }

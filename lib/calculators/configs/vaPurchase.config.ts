@@ -93,7 +93,7 @@ export const vaPurchaseConfig: CalculatorConfig = {
   },
   metadata: {
     title: 'VA Loan Purchase Calculator | No PMI Required | Model Mortgage',
-    description: 'Calculate your VA loan monthly payment with 0% down and no PMI. Free VA purchase calculator for veterans and service members. Includes funding fee and instant results.',
+    description: 'Calculate VA loan monthly payment with 0% down and no PMI. Free calculator for veterans and service members with instant results.',
     keywords: [
       'VA loan calculator',
       'VA purchase calculator',

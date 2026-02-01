@@ -18,14 +18,22 @@ const inter = Inter({
 
 export const metadata: Metadata = {
     title: 'Matthew Bramow | Houston Mortgage Strategist | Model Mortgage',
-    description: 'Strategic mortgage planning for buyers who refuse to lose. Expert mortgage broker in Houston, TX specializing in purchase loans, refinancing, and luxury home financing.',
+    description: 'Strategic mortgage planning for buyers who refuse to lose. Expert Houston mortgage broker specializing in purchase loans, refinancing, and luxury homes.',
     keywords: 'Houston mortgage broker, Texas home loans, mortgage strategist, Matthew Bramow, Model Mortgage, best mortgage lender Houston',
     authors: [{ name: 'Matthew Bramow' }],
     openGraph: {
         title: 'Matthew Bramow | Houston Mortgage Strategist',
-        description: 'Strategic mortgage planning for buyers who refuse to lose.',
+        description: 'Strategic mortgage planning for buyers who refuse to lose. Expert Houston mortgage broker specializing in purchase loans, refinancing, and luxury homes.',
         type: 'website',
         locale: 'en_US',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Matthew Bramow | Houston Mortgage Strategist',
+        description: 'Strategic mortgage planning for buyers who refuse to lose. Expert Houston mortgage broker.',
+    },
+    alternates: {
+        canonical: '/',
     },
 }
 
@@ -39,7 +47,12 @@ export default function RootLayout({
             <head>
                 <link rel="icon" href="/logo.png" />
             </head>
-            <body>{children}</body>
+            <body>
+                <a href="#main-content" className="skip-to-main">
+                    Skip to main content
+                </a>
+                {children}
+            </body>
         </html>
     )
 }

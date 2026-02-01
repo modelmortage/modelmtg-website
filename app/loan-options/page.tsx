@@ -7,6 +7,19 @@ export const metadata: Metadata = {
     title: 'Houston Home Loans & Mortgage Options | Model Mortgage',
     description: 'Explore mortgage loan options in Houston: Conventional, FHA, VA, Jumbo, Refinance, and Investment loans. Expert guidance from Matthew Bramow.',
     keywords: 'Houston home loans, mortgage options Texas, FHA loans Houston, VA loans Houston, jumbo mortgage Houston',
+    openGraph: {
+        title: 'Houston Home Loans & Mortgage Options',
+        description: 'Explore mortgage loan options in Houston: Conventional, FHA, VA, Jumbo, Refinance, and Investment loans. Expert guidance from Matthew Bramow.',
+        type: 'website',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Houston Home Loans & Mortgage Options',
+        description: 'Explore mortgage loan options in Houston: Conventional, FHA, VA, Jumbo, Refinance, and Investment loans.',
+    },
+    alternates: {
+        canonical: '/loan-options',
+    },
 }
 
 const loanTypes = [

@@ -5,8 +5,21 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
     title: 'Mortgage Calculators | Houston Home Loan Calculator | Model Mortgage',
-    description: 'Free mortgage calculators for Houston home buyers. Calculate affordability, monthly payments, refinance savings, and more. Expert mortgage tools by Matthew Bramow.',
+    description: 'Free mortgage calculators for Houston buyers. Calculate affordability, monthly payments, refinance savings, and more. Expert tools by Matthew Bramow.',
     keywords: 'mortgage calculator Houston, home loan calculator Texas, mortgage payment calculator, affford ability calculator, refinance calculator',
+    openGraph: {
+        title: 'Mortgage Calculators | Houston Home Loan Calculator',
+        description: 'Free mortgage calculators for Houston home buyers. Calculate affordability, monthly payments, refinance savings, and more.',
+        type: 'website',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Mortgage Calculators | Houston Home Loan Calculator',
+        description: 'Free mortgage calculators for Houston home buyers. Calculate affordability, monthly payments, refinance savings, and more.',
+    },
+    alternates: {
+        canonical: '/calculator',
+    },
 }
 
 const calculators = [

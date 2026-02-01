@@ -105,7 +105,7 @@ export const purchaseConfig: CalculatorConfig = {
   },
   metadata: {
     title: 'Mortgage Purchase Calculator | Monthly Payment Estimator | Model Mortgage',
-    description: 'Calculate your monthly mortgage payment including principal, interest, taxes, insurance, and HOA fees. Free purchase calculator with instant results. Get pre-approved today.',
+    description: 'Calculate monthly mortgage payment including principal, interest, taxes, insurance, and HOA fees. Free calculator with instant results.',
     keywords: [
       'mortgage calculator',
       'home purchase calculator',
