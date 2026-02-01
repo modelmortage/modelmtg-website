@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
+import { FaDollarSign, FaHome, FaSyncAlt, FaBalanceScale, FaFlag, FaMedal, FaChartBar } from 'react-icons/fa'
+import { IconType } from 'react-icons'
 
 export const metadata: Metadata = {
     title: 'Mortgage Calculators | Houston Home Loan Calculator | Model Mortgage',
@@ -27,43 +29,43 @@ const calculators = [
         title: 'How Much Can I Afford?',
         description: 'Calculate your maximum home purchase price based on income, debts, and down payment.',
         slug: 'affordability',
-        icon: '💰'
+        icon: FaDollarSign
     },
     {
         title: 'Purchase Calculator',
         description: 'Estimate monthly mortgage payments, taxes, insurance, and total costs.',
         slug: 'purchase',
-        icon: '🏠'
+        icon: FaHome
     },
     {
         title: 'Refinance Calculator',
         description: 'See how much you could save by refinancing your current mortgage.',
         slug: 'refinance',
-        icon: '🔄'
+        icon: FaSyncAlt
     },
     {
         title: 'Rent vs Buy',
         description: 'Compare the financial impact of renting versus buying over time.',
         slug: 'rent-vs-buy',
-        icon: '⚖️'
+        icon: FaBalanceScale
     },
     {
         title: 'VA Purchase Calculator',
         description: 'Specialized calculator for VA home loans with zero down payment.',
         slug: 'va-purchase',
-        icon: '🇺🇸'
+        icon: FaFlag
     },
     {
         title: 'VA Refinance Calculator',
         description: 'Calculate VA refinance options including cash-out and streamline.',
         slug: 'va-refinance',
-        icon: '🎖️'
+        icon: FaMedal
     },
     {
         title: 'DSCR Investment Calculator',
         description: 'Calculate debt service coverage ratio for investment properties.',
         slug: 'dscr',
-        icon: '📊'
+        icon: FaChartBar
     }
 ]
 
@@ -127,7 +129,9 @@ export default function CalculatorHub() {
                                     }}
                                     className="card"
                                 >
-                                    <div style={{ fontSize: '3rem' }}>{calc.icon}</div>
+                                    <div style={{ fontSize: '3rem', color: 'var(--gold-main)' }}>
+                                        <calc.icon />
+                                    </div>
                                     <h2 style={{
                                         fontSize: '1.5rem',
                                         color: 'var(--ivory-white)',
@@ -178,9 +182,9 @@ export default function CalculatorHub() {
                         }}>
                             Tools are helpful, but nothing beats personalized guidance from an expert.
                         </p>
-                        <Link href="/pre-qualify" className="btn btn-primary">
+                        <a href="https://2516810.my1003app.com/?time=1702581789975" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
                             Start Your Pre-Approval
-                        </Link>
+                        </a>
                     </div>
                 </section>
             </main>

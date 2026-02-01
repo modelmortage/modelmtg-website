@@ -2,13 +2,31 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { usePathname } from 'next/navigation'
+import { 
+    FaHome, 
+    FaGraduationCap, 
+    FaCalculator, 
+    FaFileAlt, 
+    FaUsers, 
+    FaBlog, 
+    FaPhone,
+    FaBars,
+    FaTimes,
+    FaChevronDown
+} from 'react-icons/fa'
+import { Button } from './design-system/Button/Button'
+import { Icon } from './design-system/Icon/Icon'
 import styles from './Header.module.css'
 
 export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+    const [isScrolled, setIsScrolled] = useState(false)
+    const [lastScrollY, setLastScrollY] = useState(0)
+    const [showHeader, setShowHeader] = useState(true)
     const pathname = usePathname()
+    const headerRef = useRef<HTMLElement>(null)
 
     // Helper function to check if a nav item is active
     const isActive = (path: string) => {
@@ -18,6 +36,30 @@ export default function Header() {
         }
         return pathname.startsWith(path)
     }
+
+    // Handle scroll behavior for show/hide header
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY
+            
+            // Set scrolled state for styling
+            setIsScrolled(currentScrollY > 10)
+            
+            // Show/hide header based on scroll direction
+            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                // Scrolling down
+                setShowHeader(false)
+            } else {
+                // Scrolling up
+                setShowHeader(true)
+            }
+            
+            setLastScrollY(currentScrollY)
+        }
+
+        window.addEventListener('scroll', handleScroll, { passive: true })
+        return () => window.removeEventListener('scroll', handleScroll)
+    }, [lastScrollY])
 
     // Close mobile menu when route changes
     useEffect(() => {
@@ -37,32 +79,33 @@ export default function Header() {
         }
     }, [mobileMenuOpen])
 
-    // Close menu when clicking outside
+    // Handle keyboard navigation
     useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            const target = event.target as HTMLElement
-            if (mobileMenuOpen && !target.closest(`.${styles.nav}`) && !target.closest(`.${styles.mobileToggle}`)) {
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === 'Escape' && mobileMenuOpen) {
                 setMobileMenuOpen(false)
             }
         }
 
-        if (mobileMenuOpen) {
-            document.addEventListener('click', handleClickOutside)
-        }
-
-        return () => {
-            document.removeEventListener('click', handleClickOutside)
-        }
+        document.addEventListener('keydown', handleKeyDown)
+        return () => document.removeEventListener('keydown', handleKeyDown)
     }, [mobileMenuOpen])
 
     const handleLinkClick = () => {
         setMobileMenuOpen(false)
     }
 
+    const toggleMobileMenu = () => {
+        setMobileMenuOpen(!mobileMenuOpen)
+    }
+
     return (
-        <header className={styles.header}>
+        <header 
+            ref={headerRef}
+            className={`${styles.header} ${isScrolled ? styles.headerScrolled : ''} ${showHeader ? styles.headerVisible : styles.headerHidden}`}
+        >
             <div className={styles.container}>
-                <Link href="/" className={styles.logo}>
+                <Link href="/" className={styles.logo} onClick={handleLinkClick}>
                     <Image
                         src="/logo-v3.png"
                         alt="Model Mortgage - Houston Mortgage Broker"
@@ -80,20 +123,22 @@ export default function Header() {
                     aria-label="Main navigation"
                 >
                     <Link 
+                        href="/" 
+                        className={`${styles.navLink} ${isActive('/') ? styles.active : ''}`}
+                        aria-current={isActive('/') ? 'page' : undefined}
+                        onClick={handleLinkClick}
+                    >
+                        <Icon icon={FaHome} size="sm" ariaLabel="" />
+                        <span>Home</span>
+                    </Link>
+                    <Link 
                         href="/learn" 
                         className={`${styles.navLink} ${isActive('/learn') ? styles.active : ''}`}
                         aria-current={isActive('/learn') ? 'page' : undefined}
                         onClick={handleLinkClick}
                     >
-                        Learn
-                    </Link>
-                    <Link 
-                        href="/pre-qualify" 
-                        className={`${styles.navLink} ${isActive('/pre-qualify') ? styles.active : ''}`}
-                        aria-current={isActive('/pre-qualify') ? 'page' : undefined}
-                        onClick={handleLinkClick}
-                    >
-                        Pre-Qualify
+                        <Icon icon={FaGraduationCap} size="sm" ariaLabel="" />
+                        <span>Learn</span>
                     </Link>
                     <Link 
                         href="/calculator" 
@@ -101,7 +146,8 @@ export default function Header() {
                         aria-current={isActive('/calculator') ? 'page' : undefined}
                         onClick={handleLinkClick}
                     >
-                        Calculator
+                        <Icon icon={FaCalculator} size="sm" ariaLabel="" />
+                        <span>Calculator</span>
                     </Link>
                     <Link 
                         href="/loan-options" 
@@ -109,7 +155,8 @@ export default function Header() {
                         aria-current={isActive('/loan-options') ? 'page' : undefined}
                         onClick={handleLinkClick}
                     >
-                        Loan Options
+                        <Icon icon={FaFileAlt} size="sm" ariaLabel="" />
+                        <span>Loan Options</span>
                     </Link>
                     <Link 
                         href="/about" 
@@ -117,7 +164,8 @@ export default function Header() {
                         aria-current={isActive('/about') ? 'page' : undefined}
                         onClick={handleLinkClick}
                     >
-                        About Us
+                        <Icon icon={FaUsers} size="sm" ariaLabel="" />
+                        <span>About Us</span>
                     </Link>
                     <Link 
                         href="/blog" 
@@ -125,7 +173,8 @@ export default function Header() {
                         aria-current={isActive('/blog') ? 'page' : undefined}
                         onClick={handleLinkClick}
                     >
-                        Blog
+                        <Icon icon={FaBlog} size="sm" ariaLabel="" />
+                        <span>Blog</span>
                     </Link>
                     <Link 
                         href="/contact" 
@@ -133,27 +182,48 @@ export default function Header() {
                         aria-current={isActive('/contact') ? 'page' : undefined}
                         onClick={handleLinkClick}
                     >
-                        Contact
+                        <Icon icon={FaPhone} size="sm" ariaLabel="" />
+                        <span>Contact</span>
                     </Link>
-                    <Link 
-                        href="/apply" 
-                        className={`${styles.navLink} ${styles.ctaButton}`}
-                        onClick={handleLinkClick}
-                    >
-                        Apply Online
-                    </Link>
+                    
+                    <div className={styles.ctaButtons}>
+                        <a 
+                            href="https://2516810.my1003app.com/?time=1702581789975" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className={styles.ctaLink}
+                            onClick={handleLinkClick}
+                        >
+                            <Button variant="outline" size="sm">
+                                Pre-Qualify
+                            </Button>
+                        </a>
+                        <a 
+                            href="https://2516810.my1003app.com/?time=1702581789975" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className={styles.ctaLink}
+                            onClick={handleLinkClick}
+                        >
+                            <Button variant="primary" size="sm">
+                                Apply Online
+                            </Button>
+                        </a>
+                    </div>
                 </nav>
 
                 <button
                     className={`${styles.mobileToggle} ${mobileMenuOpen ? styles.mobileToggleOpen : ''}`}
-                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                    onClick={toggleMobileMenu}
                     aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
                     aria-expanded={mobileMenuOpen}
                     aria-controls="main-navigation"
                 >
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    {mobileMenuOpen ? (
+                        <Icon icon={FaTimes} size="md" ariaLabel="" />
+                    ) : (
+                        <Icon icon={FaBars} size="md" ariaLabel="" />
+                    )}
                 </button>
             </div>
         </header>

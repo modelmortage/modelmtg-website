@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import { FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa'
 
 export const metadata: Metadata = {
     title: 'Contact Us | Houston Mortgage Broker | Model Mortgage',
@@ -73,7 +74,9 @@ export default function ContactPage() {
                                 border: '2px solid rgba(200, 154, 91, 0.2)',
                                 textAlign: 'center'
                             }}>
-                                <div style={{ fontSize: '3rem', marginBottom: '1.5rem' }}>📞</div>
+                                <div style={{ fontSize: '3rem', marginBottom: '1.5rem', color: 'var(--gold-main)' }}>
+                                    <FaPhone />
+                                </div>
                                 <h3 style={{
                                     fontSize: '1.5rem',
                                     marginBottom: '1rem',
@@ -106,7 +109,9 @@ export default function ContactPage() {
                                 border: '2px solid rgba(200, 154, 91, 0.2)',
                                 textAlign: 'center'
                             }}>
-                                <div style={{ fontSize: '3rem', marginBottom: '1.5rem' }}>📧</div>
+                                <div style={{ fontSize: '3rem', marginBottom: '1.5rem', color: 'var(--gold-main)' }}>
+                                    <FaEnvelope />
+                                </div>
                                 <h3 style={{
                                     fontSize: '1.5rem',
                                     marginBottom: '1rem',
@@ -137,7 +142,9 @@ export default function ContactPage() {
                                 border: '2px solid rgba(200, 154, 91, 0.2)',
                                 textAlign: 'center'
                             }}>
-                                <div style={{ fontSize: '3rem', marginBottom: '1.5rem' }}>📍</div>
+                                <div style={{ fontSize: '3rem', marginBottom: '1.5rem', color: 'var(--gold-main)' }}>
+                                    <FaMapMarkerAlt />
+                                </div>
                                 <h3 style={{
                                     fontSize: '1.5rem',
                                     marginBottom: '1rem',

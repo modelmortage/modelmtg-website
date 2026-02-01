@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import ContentPage from '@/components/shared/ContentPage'
 import { teamMembers } from '@/lib/content/teamMembers'
 import styles from './profile.module.css'
 import Link from 'next/link'
+import { FaEnvelope, FaPhone, FaCalendarAlt, FaCheckCircle, FaStar, FaArrowLeft } from 'react-icons/fa'
 
 const member = teamMembers.find(m => m.slug === 'matthew-bramow')!
 
@@ -43,9 +45,14 @@ export default function MatthewBramowPage() {
         <div className={styles.mainContent}>
           {/* Photo */}
           <div className={styles.photoContainer}>
-            <img
+            <Image
               src={member.photo}
               alt={`${member.name} - ${member.title}`}
+              width={400}
+              height={400}
+              loading="lazy"
+              placeholder="blur"
+              blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iI2Y3ZjdmNyIvPjwvc3ZnPg=="
               className={styles.photo}
             />
           </div>
@@ -62,7 +69,10 @@ export default function MatthewBramowPage() {
 
           {/* Back to Team Link */}
           <div className={styles.backLink}>
-            <Link href="/meet-our-team">← Back to Meet Our Team</Link>
+            <Link href="/meet-our-team">
+              <FaArrowLeft className={styles.backIcon} aria-hidden="true" />
+              Back to Meet Our Team
+            </Link>
           </div>
         </div>
 
@@ -74,19 +84,30 @@ export default function MatthewBramowPage() {
             <div className={styles.contactList}>
               {member.contact.email && (
                 <a href={`mailto:${member.contact.email}`} className={styles.contactItem}>
-                  <span className={styles.contactLabel}>Email:</span>
-                  <span className={styles.contactValue}>{member.contact.email}</span>
+                  <div className={styles.contactIcon}>
+                    <FaEnvelope />
+                  </div>
+                  <div className={styles.contactDetails}>
+                    <span className={styles.contactLabel}>Email</span>
+                    <span className={styles.contactValue}>{member.contact.email}</span>
+                  </div>
                 </a>
               )}
               {member.contact.phone && (
                 <a href={`tel:${member.contact.phone}`} className={styles.contactItem}>
-                  <span className={styles.contactLabel}>Phone:</span>
-                  <span className={styles.contactValue}>{member.contact.phone}</span>
+                  <div className={styles.contactIcon}>
+                    <FaPhone />
+                  </div>
+                  <div className={styles.contactDetails}>
+                    <span className={styles.contactLabel}>Phone</span>
+                    <span className={styles.contactValue}>{member.contact.phone}</span>
+                  </div>
                 </a>
               )}
             </div>
             {member.contact.calendly && (
-              <a href={member.contact.calendly} className="btn btn-primary" style={{ width: '100%', marginTop: '1rem' }}>
+              <a href={member.contact.calendly} className="btn btn-primary" style={{ width: '100%', marginTop: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
+                <FaCalendarAlt />
                 Schedule a Call
               </a>
             )}
@@ -98,7 +119,8 @@ export default function MatthewBramowPage() {
             <ul className={styles.list}>
               {member.credentials.map((credential, index) => (
                 <li key={index} className={styles.listItem}>
-                  {credential}
+                  <FaCheckCircle className={styles.listIcon} aria-hidden="true" />
+                  <span>{credential}</span>
                 </li>
               ))}
             </ul>
@@ -110,7 +132,8 @@ export default function MatthewBramowPage() {
             <ul className={styles.list}>
               {member.specialties.map((specialty, index) => (
                 <li key={index} className={styles.listItem}>
-                  {specialty}
+                  <FaStar className={styles.listIcon} aria-hidden="true" />
+                  <span>{specialty}</span>
                 </li>
               ))}
             </ul>

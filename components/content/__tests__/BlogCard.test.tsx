@@ -59,8 +59,10 @@ describe('BlogCard', () => {
   })
 
   it('renders arrow indicator', () => {
-    render(<BlogCard blogPost={mockBlogPost} />)
-    expect(screen.getByText('→')).toBeInTheDocument()
+    const { container } = render(<BlogCard blogPost={mockBlogPost} />)
+    // Arrow is now an SVG icon (FaArrowRight) instead of text
+    const arrow = container.querySelector('svg')
+    expect(arrow).toBeInTheDocument()
   })
 
   it('has proper accessibility attributes', () => {

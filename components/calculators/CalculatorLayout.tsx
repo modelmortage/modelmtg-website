@@ -72,9 +72,9 @@ export default function CalculatorLayout({ config, children }: CalculatorLayoutP
             <p style={{ fontSize: '1.125rem', opacity: 0.8, marginBottom: '2rem' }}>
               Get a personalized quote based on your unique financial situation.
             </p>
-            <Link href="/pre-qualify" className="btn btn-primary">
+            <a href="https://2516810.my1003app.com/?time=1702581789975" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
               Start Your Pre-Approval
-            </Link>
+            </a>
           </div>
         </section>
       </main>

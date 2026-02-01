@@ -23,7 +23,7 @@ export interface ReviewsPageContent {
   }
   reviews: Review[]
   trustBadges: Array<{
-    icon: string
+    iconName: string
     name: string
     description: string
   }>
@@ -165,22 +165,22 @@ export const reviewsContent: ReviewsPageContent = {
   ],
   trustBadges: [
     {
-      icon: '✓',
+      iconName: 'FaCheckCircle',
       name: 'NMLS Certified',
       description: '#2516810'
     },
     {
-      icon: '⚖️',
+      iconName: 'FaBalanceScale',
       name: 'Equal Housing Opportunity',
       description: 'Accredited'
     },
     {
-      icon: '🏦',
+      iconName: 'FaUniversity',
       name: 'Approved Lender',
       description: 'All Major Banks'
     },
     {
-      icon: '🔒',
+      iconName: 'FaLock',
       name: 'SSL Certified',
       description: 'Secure Platform'
     }

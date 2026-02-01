@@ -2,11 +2,16 @@
 
 import { useState } from 'react'
 import CalculatorLayout from '@/components/calculators/CalculatorLayout'
-import CalculatorForm from '@/components/calculators/CalculatorForm'
-import CalculatorResults from '@/components/calculators/CalculatorResults'
+import { Card } from '@/components/design-system/Card'
+import { Input } from '@/components/design-system/Input'
+import { Button } from '@/components/design-system/Button'
+import { ResultDisplay } from '@/components/design-system/ResultDisplay'
+import { Icon } from '@/components/design-system/Icon'
+import { FaDollarSign, FaCreditCard, FaHome, FaPercent, FaCalculator, FaChartPie } from 'react-icons/fa'
 import { affordabilityConfig } from '@/lib/calculators/configs/affordability.config'
 import { validateAffordabilityInputs } from '@/lib/calculators/affordability'
 import type { CalculatorResult } from '@/lib/types/calculator'
+import type { ChartData } from '@/components/design-system/Chart'
 
 export default function AffordabilityCalculator() {
   const [values, setValues] = useState<Record<string, string>>({
@@ -64,6 +69,33 @@ export default function AffordabilityCalculator() {
     }
   }
 
+  // Prepare chart data from results
+  const getChartData = (): ChartData[] => {
+    if (!results) return []
+    
+    const maxHomePrice = results.find(r => r.label === 'Maximum Home Price')?.value as number || 0
+    const downPayment = parseFloat(values.downPayment) || 0
+    const loanAmount = maxHomePrice - downPayment
+    
+    return [
+      { category: 'Down Payment', amount: downPayment },
+      { category: 'Loan Amount', amount: loanAmount }
+    ]
+  }
+
+  // Get key metrics for display
+  const getDisplayResults = () => {
+    if (!results) return []
+    
+    return results.slice(0, 4).map(result => ({
+      ...result,
+      icon: result.label.includes('Home Price') ? <Icon icon={FaHome} size="lg" color="#8B6F14" /> :
+            result.label.includes('Payment') ? <Icon icon={FaDollarSign} size="lg" color="#8B6F14" /> :
+            result.label.includes('Income') ? <Icon icon={FaCreditCard} size="lg" color="#8B6F14" /> :
+            <Icon icon={FaChartPie} size="lg" color="#8B6F14" />
+    }))
+  }
+
   return (
     <CalculatorLayout config={affordabilityConfig}>
       <div style={{
@@ -71,17 +103,100 @@ export default function AffordabilityCalculator() {
         gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
         gap: '3rem'
       }}>
-        <CalculatorForm
-          inputs={affordabilityConfig.inputs}
-          values={values}
-          errors={errors}
-          onChange={handleChange}
-          onCalculate={handleCalculate}
-        />
-        <CalculatorResults
-          results={results}
-          loading={loading}
-        />
+        {/* Input Form */}
+        <Card variant="elevated" padding="lg">
+          <h2 style={{ marginBottom: '2rem', color: '#36454F' }}>Your Information</h2>
+          
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            <Input
+              label="Annual Gross Income"
+              type="number"
+              value={values.annualIncome}
+              onChange={(value) => handleChange('annualIncome', value)}
+              placeholder="80000"
+              icon={<Icon icon={FaDollarSign} size="sm" color="#8B6F14" />}
+              error={errors.annualIncome}
+              helperText="Your total annual income before taxes"
+              required
+              fullWidth
+            />
+            
+            <Input
+              label="Monthly Debts"
+              type="number"
+              value={values.monthlyDebts}
+              onChange={(value) => handleChange('monthlyDebts', value)}
+              placeholder="500"
+              icon={<Icon icon={FaCreditCard} size="sm" color="#8B6F14" />}
+              error={errors.monthlyDebts}
+              helperText="Car payments, credit cards, student loans, etc."
+              required
+              fullWidth
+            />
+            
+            <Input
+              label="Down Payment"
+              type="number"
+              value={values.downPayment}
+              onChange={(value) => handleChange('downPayment', value)}
+              placeholder="20000"
+              icon={<Icon icon={FaHome} size="sm" color="#8B6F14" />}
+              error={errors.downPayment}
+              helperText="Amount you plan to put down on the home"
+              required
+              fullWidth
+            />
+            
+            <Input
+              label="Interest Rate (%)"
+              type="number"
+              value={values.interestRate}
+              onChange={(value) => handleChange('interestRate', value)}
+              placeholder="7.0"
+              icon={<Icon icon={FaPercent} size="sm" color="#8B6F14" />}
+              error={errors.interestRate}
+              helperText="Current mortgage interest rate"
+              required
+              fullWidth
+            />
+            
+            <Button
+              variant="primary"
+              size="lg"
+              fullWidth
+              onClick={handleCalculate}
+              icon={<Icon icon={FaCalculator} size="md" color="#FFFFFF" />}
+              iconPosition="left"
+              disabled={loading}
+              loading={loading}
+            >
+              Calculate Affordability
+            </Button>
+          </div>
+        </Card>
+
+        {/* Results Display */}
+        {results && results.length > 0 ? (
+          <ResultDisplay
+            title="Your Results"
+            results={getDisplayResults()}
+            chartType="pie"
+            chartData={getChartData()}
+            chartConfig={{
+              xAxisKey: 'category',
+              yAxisKey: 'amount',
+              showLegend: true,
+              title: 'Home Price Breakdown'
+            }}
+          />
+        ) : (
+          <Card variant="elevated" padding="lg">
+            <h2 style={{ marginBottom: '2rem', color: '#36454F' }}>Your Results</h2>
+            <p style={{ opacity: 0.6, textAlign: 'center', padding: '3rem 0' }}>
+              Enter your information and click Calculate to see how much home you can afford
+            </p>
+          </Card>
+        )}
       </div>
     </CalculatorLayout>
   )

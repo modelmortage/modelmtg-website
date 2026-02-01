@@ -7,7 +7,7 @@ export const purchaseConfig: CalculatorConfig = {
   id: 'purchase',
   title: 'Purchase Calculator',
   description: 'Estimate your monthly mortgage payment including principal, interest, taxes, insurance, and HOA fees.',
-  icon: '🏠',
+  icon: 'home',
   inputs: [
     {
       label: 'Home Price',

@@ -43,20 +43,16 @@
   color: var(--midnight-black);
 }
 
-.checkmark {
+.checkIcon {
   color: var(--gold-main);
-  font-size: 1.5rem;
-  font-weight: 700;
   flex-shrink: 0;
-  line-height: 1;
+  margin-top: 0.125rem;
 }
 
-.bullet {
+.bulletIcon {
   color: var(--gold-main);
-  font-size: 1.5rem;
-  font-weight: 700;
   flex-shrink: 0;
-  line-height: 1;
+  margin-top: 0.375rem;
 }
 
 .calculatorGrid {
@@ -70,23 +66,11 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 1.5rem;
-  background: white;
-  border: 2px solid rgba(200, 154, 91, 0.2);
-  border-radius: 4px;
-  text-decoration: none;
-  color: var(--midnight-black);
-  transition: all 0.3s ease;
-}
-
-.calculatorCard:hover {
-  border-color: var(--gold-main);
-  box-shadow: 0 4px 12px rgba(200, 154, 91, 0.2);
-  transform: translateY(-2px);
+  cursor: pointer;
 }
 
 .calculatorIcon {
-  font-size: 2rem;
+  color: var(--gold-main);
   flex-shrink: 0;
 }
 
@@ -94,12 +78,11 @@
   flex: 1;
   font-size: 1.0625rem;
   font-weight: 600;
+  color: var(--midnight-black);
 }
 
 .calculatorArrow {
   color: var(--gold-main);
-  font-size: 1.5rem;
-  font-weight: 700;
   flex-shrink: 0;
   transition: transform 0.3s ease;
 }
@@ -108,20 +91,17 @@
   transform: translateX(4px);
 }
 
-.nextSteps {
+.nextStepsCard {
   background: var(--deep-charcoal);
   color: var(--ivory-white);
-  padding: 3rem;
-  border-radius: 4px;
-  margin-top: 2rem;
 }
 
-.nextSteps .sectionTitle {
+.nextStepsCard .sectionTitle {
   color: var(--ivory-white);
   border-bottom-color: var(--gold-main);
 }
 
-.nextSteps .paragraph {
+.nextStepsCard .paragraph {
   color: var(--ivory-white);
   opacity: 0.9;
 }
@@ -187,10 +167,6 @@
     grid-template-columns: 1fr;
   }
 
-  .nextSteps {
-    padding: 2rem;
-  }
-
   .orderedListItem {
     padding-left: 3rem;
   }
@@ -203,10 +179,5 @@
 
   .ctaButtons {
     flex-direction: column;
-  }
-
-  .ctaButtons .btn {
-    width: 100%;
-    text-align: center;
   }
 }

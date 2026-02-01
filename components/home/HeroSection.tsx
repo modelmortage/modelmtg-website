@@ -3,10 +3,14 @@
 import { useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { Button } from '@/components/design-system'
+import { useIntersectionAnimation } from '@/app/utils/animations'
 import styles from './HeroSection.module.css'
 
 export default function HeroSection() {
     const heroRef = useRef<HTMLDivElement>(null)
+    const { ref: contentRef, isVisible: contentVisible } = useIntersectionAnimation({ threshold: 0.2 })
+    const { ref: portraitRef, isVisible: portraitVisible } = useIntersectionAnimation({ threshold: 0.2 })
 
     useEffect(() => {
         // Particle animation
@@ -42,7 +46,10 @@ export default function HeroSection() {
 
             {/* Content */}
             <div className={styles.content}>
-                <div className={styles.textContent}>
+                <div 
+                    ref={contentRef as React.RefObject<HTMLDivElement>}
+                    className={`${styles.textContent} ${contentVisible ? styles.visible : ''}`}
+                >
                     <h1 className={styles.headline}>
                         <span className={styles.goldAccent}>Strategic</span> Mortgage Planning
                         <br />
@@ -63,17 +70,31 @@ export default function HeroSection() {
                     </p>
 
                     <div className={styles.ctaGroup}>
-                        <Link href="/pre-qualify" className={styles.btnPrimary}>
-                            Get Pre-Approved
-                        </Link>
-                        <Link href="/calculator" className={styles.btnSecondary}>
-                            Calculate Payment
+                        <a 
+                            href="https://2516810.my1003app.com/?time=1702581789975" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            style={{ textDecoration: 'none' }}
+                        >
+                            <Button variant="primary" size="lg">
+                                Get Pre-Approved
+                            </Button>
+                        </a>
+                        <Link href="/calculator" passHref legacyBehavior>
+                            <a style={{ textDecoration: 'none' }}>
+                                <Button variant="secondary" size="lg">
+                                    Calculate Payment
+                                </Button>
+                            </a>
                         </Link>
                     </div>
                 </div>
 
                 {/* Professional Portrait */}
-                <div className={styles.portraitContainer}>
+                <div 
+                    ref={portraitRef as React.RefObject<HTMLDivElement>}
+                    className={`${styles.portraitContainer} ${portraitVisible ? styles.visible : ''}`}
+                >
                     <div className={styles.portraitPlaceholder}>
                         <div className={styles.portraitGlow}></div>
                         <div className={styles.portraitImage}>

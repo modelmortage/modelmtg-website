@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation'
 import ContentPage from '@/components/shared/ContentPage'
 import { loanOptions } from '@/lib/content/loanOptions'
 import Link from 'next/link'
+import { Card, Icon, Button } from '@/components/design-system'
+import { FaCheckCircle, FaCircle, FaCalculator, FaArrowRight } from 'react-icons/fa'
 import styles from './LoanOptionPage.module.css'
 
 interface LoanOptionPageProps {
@@ -103,7 +105,11 @@ export default function LoanOptionPage({ params }: LoanOptionPageProps) {
         <ul className={styles.list}>
           {loanOption.benefits.map((benefit, index) => (
             <li key={index} className={styles.listItem}>
-              <span className={styles.checkmark}>✓</span>
+              <Icon 
+                icon={FaCheckCircle} 
+                size="md" 
+                className={styles.checkIcon}
+              />
               <span>{benefit}</span>
             </li>
           ))}
@@ -116,7 +122,11 @@ export default function LoanOptionPage({ params }: LoanOptionPageProps) {
         <ul className={styles.list}>
           {loanOption.requirements.map((requirement, index) => (
             <li key={index} className={styles.listItem}>
-              <span className={styles.bullet}>•</span>
+              <Icon 
+                icon={FaCircle} 
+                size="sm" 
+                className={styles.bulletIcon}
+              />
               <span>{requirement}</span>
             </li>
           ))}
@@ -129,7 +139,11 @@ export default function LoanOptionPage({ params }: LoanOptionPageProps) {
         <ul className={styles.list}>
           {loanOption.idealFor.map((item, index) => (
             <li key={index} className={styles.listItem}>
-              <span className={styles.bullet}>•</span>
+              <Icon 
+                icon={FaCircle} 
+                size="sm" 
+                className={styles.bulletIcon}
+              />
               <span>{item}</span>
             </li>
           ))}
@@ -148,15 +162,26 @@ export default function LoanOptionPage({ params }: LoanOptionPageProps) {
               const calculator = calculatorMap[calcSlug]
               if (!calculator) return null
               return (
-                <Link
+                <Card
                   key={calcSlug}
-                  href={calculator.path}
+                  variant="outlined"
+                  padding="md"
+                  hoverable
+                  onClick={() => window.location.href = calculator.path}
                   className={styles.calculatorCard}
                 >
-                  <span className={styles.calculatorIcon}>🧮</span>
+                  <Icon 
+                    icon={FaCalculator} 
+                    size="lg" 
+                    className={styles.calculatorIcon}
+                  />
                   <span className={styles.calculatorName}>{calculator.name}</span>
-                  <span className={styles.calculatorArrow}>→</span>
-                </Link>
+                  <Icon 
+                    icon={FaArrowRight} 
+                    size="md" 
+                    className={styles.calculatorArrow}
+                  />
+                </Card>
               )
             })}
           </div>
@@ -165,7 +190,7 @@ export default function LoanOptionPage({ params }: LoanOptionPageProps) {
 
       {/* Next Steps Section */}
       <section className={styles.section}>
-        <div className={styles.nextSteps}>
+        <Card variant="flat" padding="lg" className={styles.nextStepsCard}>
           <h2 className={styles.sectionTitle}>Next Steps</h2>
           <p className={styles.paragraph}>
             Ready to move forward with a {loanOption.title}? Here's how to get started:
@@ -185,14 +210,18 @@ export default function LoanOptionPage({ params }: LoanOptionPageProps) {
             </li>
           </ol>
           <div className={styles.ctaButtons}>
-            <Link href="/schedule-a-call" className="btn btn-primary">
-              Schedule a Call
+            <Link href="/schedule-a-call" style={{ textDecoration: 'none' }}>
+              <Button variant="primary" size="lg" fullWidth>
+                Schedule a Call
+              </Button>
             </Link>
-            <Link href="/loan-options" className="btn btn-secondary">
-              View All Loan Options
+            <Link href="/loan-options" style={{ textDecoration: 'none' }}>
+              <Button variant="secondary" size="lg" fullWidth>
+                View All Loan Options
+              </Button>
             </Link>
           </div>
-        </div>
+        </Card>
       </section>
     </ContentPage>
 

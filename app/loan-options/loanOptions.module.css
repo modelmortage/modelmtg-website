@@ -1,0 +1,253 @@
+/* Loan Options Hub Page Styles */
+
+.main {
+  margin-top: 80px;
+}
+
+/* Hero Section */
+.heroSection {
+  background: linear-gradient(135deg, var(--midnight-black), var(--deep-charcoal));
+  padding: 6rem 2rem 4rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(200, 154, 91, 0.2);
+}
+
+.heroContainer {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.heroTitle {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 1.5rem;
+  color: var(--ivory-white);
+  font-weight: 700;
+}
+
+.heroTitleAccent {
+  color: var(--gold-main);
+}
+
+.heroSubtitle {
+  font-size: 1.125rem;
+  color: var(--ivory-white);
+  opacity: 0.8;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* Loan Types Section */
+.loanTypesSection {
+  background: var(--ivory-white);
+  padding: 5rem 2rem;
+  color: var(--midnight-black);
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.loanTypesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
+}
+
+.loanCard {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.loanCardHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.iconWrapper {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--gold-main), var(--gold-light));
+  border-radius: 50%;
+  margin-bottom: 1.5rem;
+  color: var(--midnight-black);
+}
+
+.loanTitle {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--midnight-black);
+  margin: 0;
+}
+
+.loanDescription {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--midnight-black);
+  opacity: 0.8;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.idealForBox {
+  background: var(--deep-charcoal);
+  color: var(--ivory-white);
+  padding: 1.5rem;
+  border-radius: 4px;
+  margin-bottom: 2rem;
+}
+
+.idealForLabel {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.7;
+  margin-bottom: 0.75rem;
+  color: var(--gold-light);
+}
+
+.idealForText {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ivory-white);
+  margin: 0;
+}
+
+.featuresSection {
+  margin-bottom: 2rem;
+  flex: 1;
+}
+
+.featuresTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--midnight-black);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--gold-main);
+}
+
+.featuresList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.featureItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--midnight-black);
+}
+
+.checkIcon {
+  color: var(--gold-main);
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+}
+
+.cardActions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: auto;
+}
+
+/* CTA Section */
+.ctaSection {
+  background: var(--deep-charcoal);
+  padding: 5rem 2rem;
+  text-align: center;
+  color: var(--ivory-white);
+}
+
+.ctaContainer {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.ctaTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--ivory-white);
+}
+
+.ctaText {
+  font-size: 1.125rem;
+  margin-bottom: 2.5rem;
+  opacity: 0.8;
+  line-height: 1.7;
+}
+
+.ctaButtons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .heroSection {
+    padding: 4rem 1.5rem 3rem;
+  }
+
+  .heroTitle {
+    font-size: 2rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1rem;
+  }
+
+  .loanTypesSection {
+    padding: 3rem 1.5rem;
+  }
+
+  .loanTypesGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .iconWrapper {
+    width: 64px;
+    height: 64px;
+  }
+
+  .loanTitle {
+    font-size: 1.5rem;
+  }
+
+  .ctaSection {
+    padding: 3rem 1.5rem;
+  }
+
+  .ctaTitle {
+    font-size: 1.75rem;
+  }
+
+  .ctaButtons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .loanTypesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

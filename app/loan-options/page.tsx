@@ -2,6 +2,18 @@ import type { Metadata } from 'next'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
+import { Card, Icon, Button } from '@/components/design-system'
+import { 
+    FaUniversity, 
+    FaHome, 
+    FaFlag, 
+    FaGem, 
+    FaSync, 
+    FaChartLine,
+    FaCheckCircle,
+    FaArrowRight
+} from 'react-icons/fa'
+import styles from './loanOptions.module.css'
 
 export const metadata: Metadata = {
     title: 'Houston Home Loans & Mortgage Options | Model Mortgage',
@@ -26,7 +38,7 @@ const loanTypes = [
     {
         title: 'Conventional Loans',
         slug: 'conventional',
-        icon: '🏛️',
+        icon: FaUniversity,
         description: 'The gold standard for borrowers with strong credit and stable income.',
         features: [
             'Down payment as low as 3%',
@@ -40,7 +52,7 @@ const loanTypes = [
     {
         title: 'FHA Loans',
         slug: 'fha',
-        icon: '🏠',
+        icon: FaHome,
         description: 'Government-backed loans designed for first-time buyers and those with lower credit scores.',
         features: [
             'Down payment as low as 3.5%',
@@ -54,7 +66,7 @@ const loanTypes = [
     {
         title: 'VA Loans',
         slug: 'va',
-        icon: '🇺🇸',
+        icon: FaFlag,
         description: 'Zero down payment loans for military service members, veterans, and eligible spouses.',
         features: [
             '0% down payment required',
@@ -68,7 +80,7 @@ const loanTypes = [
     {
         title: 'Jumbo Loans',
         slug: 'jumbo',
-        icon: '💎',
+        icon: FaGem,
         description: 'High-balance financing for luxury properties exceeding conforming loan limits.',
         features: [
             'Loan amounts $766,551+',
@@ -82,7 +94,7 @@ const loanTypes = [
     {
         title: 'Refinance',
         slug: 'refinance',
-        icon: '🔄',
+        icon: FaSync,
         description: 'Lower your rate, tap equity, or change your loan structure strategically.',
         features: [
             'Rate & term refinance',
@@ -96,7 +108,7 @@ const loanTypes = [
     {
         title: 'Investment Property Loans',
         slug: 'investment',
-        icon: '📊',
+        icon: FaChartLine,
         description: 'Build wealth through real estate with specialized investor financing.',
         features: [
             'DSCR (Debt Service Coverage Ratio) loans',
@@ -113,29 +125,14 @@ export default function LoanOptionsPage() {
     return (
         <>
             <Header />
-            <main style={{ marginTop: '80px' }}>
+            <main className={styles.main}>
                 {/* Hero */}
-                <section style={{
-                    background: 'linear-gradient(135deg, var(--midnight-black), var(--deep-charcoal))',
-                    padding: '6rem 2rem 4rem',
-                    textAlign: 'center',
-                    borderBottom: '1px solid rgba(200, 154, 91, 0.2)'
-                }}>
-                    <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-                        <h1 style={{
-                            fontSize: 'clamp(2.5rem, 5vw, 4rem)',
-                            marginBottom: '1.5rem',
-                            color: 'var(--ivory-white)'
-                        }}>
-                            Houston <span style={{ color: 'var(--gold-main)' }}>Mortgage Options</span>
+                <section className={styles.heroSection}>
+                    <div className={styles.heroContainer}>
+                        <h1 className={styles.heroTitle}>
+                            Houston <span className={styles.heroTitleAccent}>Mortgage Options</span>
                         </h1>
-                        <p style={{
-                            fontSize: '1.125rem',
-                            color: 'var(--ivory-white)',
-                            opacity: 0.8,
-                            maxWidth: '700px',
-                            margin: '0 auto'
-                        }}>
+                        <p className={styles.heroSubtitle}>
                             Every financial situation is unique. We'll match you with the perfect loan program
                             to achieve your real estate goals.
                         </p>
@@ -143,155 +140,100 @@ export default function LoanOptionsPage() {
                 </section>
 
                 {/* Loan Types Grid */}
-                <section style={{
-                    background: 'var(--ivory-white)',
-                    padding: '5rem 2rem',
-                    color: 'var(--midnight-black)'
-                }}>
-                    <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
-                        <div style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: '4rem'
-                        }}>
-                            {loanTypes.map((loan, index) => (
-                                <div
+                <section className={styles.loanTypesSection}>
+                    <div className={styles.container}>
+                        <div className={styles.loanTypesGrid}>
+                            {loanTypes.map((loan) => (
+                                <Card
                                     key={loan.slug}
-                                    style={{
-                                        background: 'white',
-                                        border: '2px solid rgba(200, 154, 91, 0.2)',
-                                        borderRadius: '4px',
-                                        padding: '3rem',
-                                        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.05)',
-                                        display: 'grid',
-                                        gridTemplateColumns: '1fr 2fr',
-                                        gap: '3rem',
-                                        alignItems: 'start'
-                                    }}
+                                    variant="outlined"
+                                    padding="lg"
+                                    hoverable
+                                    className={styles.loanCard}
                                 >
-                                    <div>
-                                        <div style={{ fontSize: '4rem', marginBottom: '1.5rem' }}>{loan.icon}</div>
-                                        <h2 style={{
-                                            fontSize: '2rem',
-                                            marginBottom: '1rem',
-                                            color: 'var(--midnight-black)'
-                                        }}>
-                                            {loan.title}
-                                        </h2>
-                                        <p style={{
-                                            fontSize: '1.0625rem',
-                                            lineHeight: 1.7,
-                                            marginBottom: '2rem',
-                                            opacity: 0.8
-                                        }}>
-                                            {loan.description}
-                                        </p>
-                                        <div style={{
-                                            background: 'var(--deep-charcoal)',
-                                            color: 'var(--ivory-white)',
-                                            padding: '1.5rem',
-                                            borderRadius: '4px',
-                                            marginBottom: '2rem'
-                                        }}>
-                                            <p style={{
-                                                fontSize: '0.875rem',
-                                                textTransform: 'uppercase',
-                                                letterSpacing: '1px',
-                                                opacity: 0.7,
-                                                marginBottom: '0.75rem',
-                                                color: 'var(--gold-light)'
-                                            }}>
-                                                Ideal For
-                                            </p>
-                                            <p style={{
-                                                fontSize: '1rem',
-                                                fontWeight: 600,
-                                                color: 'var(--ivory-white)'
-                                            }}>
-                                                {loan.idealFor}
-                                            </p>
+                                    <div className={styles.loanCardHeader}>
+                                        <div className={styles.iconWrapper}>
+                                            <Icon icon={loan.icon} size="xl" ariaLabel={loan.title} />
                                         </div>
-                                        <Link href="/pre-qualify" className="btn btn-primary" style={{ textDecoration: 'none', display: 'inline-block' }}>
-                                            Get Pre-Approved
-                                        </Link>
+                                        <h2 className={styles.loanTitle}>{loan.title}</h2>
+                                    </div>
+                                    
+                                    <p className={styles.loanDescription}>{loan.description}</p>
+                                    
+                                    <div className={styles.idealForBox}>
+                                        <p className={styles.idealForLabel}>Ideal For</p>
+                                        <p className={styles.idealForText}>{loan.idealFor}</p>
                                     </div>
 
-                                    <div>
-                                        <h3 style={{
-                                            fontSize: '1.25rem',
-                                            marginBottom: '1.5rem',
-                                            color: 'var(--midnight-black)',
-                                            paddingBottom: '0.75rem',
-                                            borderBottom: '2px solid var(--gold-main)'
-                                        }}>
-                                            Key Features
-                                        </h3>
-                                        <ul style={{
-                                            listStyle: 'none',
-                                            padding: 0,
-                                            display: 'flex',
-                                            flexDirection: 'column',
-                                            gap: '1rem'
-                                        }}>
+                                    <div className={styles.featuresSection}>
+                                        <h3 className={styles.featuresTitle}>Key Features</h3>
+                                        <ul className={styles.featuresList}>
                                             {loan.features.map((feature, i) => (
-                                                <li key={i} style={{
-                                                    display: 'flex',
-                                                    alignItems: 'flex-start',
-                                                    gap: '1rem',
-                                                    fontSize: '1.0625rem',
-                                                    lineHeight: 1.6
-                                                }}>
-                                                    <span style={{
-                                                        color: 'var(--gold-main)',
-                                                        fontSize: '1.25rem',
-                                                        fontWeight: 700,
-                                                        flexShrink: 0
-                                                    }}>
-                                                        ✓
-                                                    </span>
+                                                <li key={i} className={styles.featureItem}>
+                                                    <Icon 
+                                                        icon={FaCheckCircle} 
+                                                        size="sm" 
+                                                        className={styles.checkIcon}
+                                                    />
                                                     <span>{feature}</span>
                                                 </li>
                                             ))}
                                         </ul>
                                     </div>
-                                </div>
+
+                                    <div className={styles.cardActions}>
+                                        <Link href={`/loan-options/${loan.slug}`} style={{ textDecoration: 'none' }}>
+                                            <Button 
+                                                variant="primary" 
+                                                size="md"
+                                                icon={<FaArrowRight />}
+                                                iconPosition="right"
+                                                fullWidth
+                                            >
+                                                Learn More
+                                            </Button>
+                                        </Link>
+                                        <a 
+                                            href="https://2516810.my1003app.com/?time=1702581789975" 
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            style={{ textDecoration: 'none' }}
+                                        >
+                                            <Button variant="outline" size="md" fullWidth>
+                                                Get Pre-Approved
+                                            </Button>
+                                        </a>
+                                    </div>
+                                </Card>
                             ))}
                         </div>
                     </div>
                 </section>
 
                 {/* CTA */}
-                <section style={{
-                    background: 'var(--deep-charcoal)',
-                    padding: '5rem 2rem',
-                    textAlign: 'center',
-                    color: 'var(--ivory-white)'
-                }}>
-                    <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-                        <h2 style={{
-                            fontSize: '2.5rem',
-                            marginBottom: '1.5rem'
-                        }}>
+                <section className={styles.ctaSection}>
+                    <div className={styles.ctaContainer}>
+                        <h2 className={styles.ctaTitle}>
                             Not Sure Which Loan Is Right for You?
                         </h2>
-                        <p style={{
-                            fontSize: '1.125rem',
-                            marginBottom: '2.5rem',
-                            opacity: 0.8
-                        }}>
+                        <p className={styles.ctaText}>
                             Let's discuss your situation and find the perfect financing strategy.
                         </p>
-                        <div style={{
-                            display: 'flex',
-                            gap: '1.5rem',
-                            justifyContent: 'center',
-                            flexWrap: 'wrap'
-                        }}>
-                            <Link href="/pre-qualify" className="btn btn-primary" style={{ textDecoration: 'none' }}>
-                                Get Pre-Approved
-                            </Link>
-                            <Link href="/contact" className="btn btn-secondary" style={{ textDecoration: 'none' }}>
-                                Talk to Matthew
+                        <div className={styles.ctaButtons}>
+                            <a 
+                                href="https://2516810.my1003app.com/?time=1702581789975" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                style={{ textDecoration: 'none' }}
+                            >
+                                <Button variant="primary" size="lg">
+                                    Get Pre-Approved
+                                </Button>
+                            </a>
+                            <Link href="/contact" style={{ textDecoration: 'none' }}>
+                                <Button variant="secondary" size="lg">
+                                    Talk to Matthew
+                                </Button>
                             </Link>
                         </div>
                     </div>

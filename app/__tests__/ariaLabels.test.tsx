@@ -83,14 +83,14 @@ describe('ARIA Labels - Requirements 7.5, 8.3', () => {
     it('should have aria-label on social icon links', () => {
       render(<Footer />)
       
-      const facebookLink = screen.getByRole('link', { name: /facebook/i })
-      expect(facebookLink).toHaveAttribute('aria-label', 'Facebook')
+      const facebookLink = screen.getByRole('link', { name: /follow us on facebook/i })
+      expect(facebookLink).toHaveAttribute('aria-label', 'Follow us on Facebook')
       
-      const instagramLink = screen.getByRole('link', { name: /instagram/i })
-      expect(instagramLink).toHaveAttribute('aria-label', 'Instagram')
+      const instagramLink = screen.getByRole('link', { name: /follow us on instagram/i })
+      expect(instagramLink).toHaveAttribute('aria-label', 'Follow us on Instagram')
       
-      const linkedinLink = screen.getByRole('link', { name: /linkedin/i })
-      expect(linkedinLink).toHaveAttribute('aria-label', 'LinkedIn')
+      const linkedinLink = screen.getByRole('link', { name: /follow us on linkedin/i })
+      expect(linkedinLink).toHaveAttribute('aria-label', 'Follow us on LinkedIn')
     })
 
     it('should have descriptive text for all footer links', () => {
@@ -175,9 +175,9 @@ describe('ARIA Labels - Requirements 7.5, 8.3', () => {
     it('should have aria-hidden on decorative arrow', () => {
       const { container } = render(<BlogCard blogPost={mockBlogPost} />)
       
+      // Arrow is now an SVG icon, check for aria-hidden on the arrow container
       const arrow = container.querySelector('[aria-hidden="true"]')
       expect(arrow).toBeInTheDocument()
-      expect(arrow?.textContent).toBe('→')
     })
   })
 
@@ -210,9 +210,9 @@ describe('ARIA Labels - Requirements 7.5, 8.3', () => {
     it('should have aria-hidden on decorative arrow', () => {
       const { container } = render(<LoanOptionCard loanOption={mockLoanOption} />)
       
+      // Arrow is now an SVG icon, check for aria-hidden on the arrow container
       const arrow = container.querySelector('[aria-hidden="true"]')
       expect(arrow).toBeInTheDocument()
-      expect(arrow?.textContent).toBe('→')
     })
   })
 
@@ -220,8 +220,8 @@ describe('ARIA Labels - Requirements 7.5, 8.3', () => {
     it('should have descriptive aria-label on all icon-only buttons', () => {
       render(<Header />)
       
-      // Mobile menu toggle is an icon-only button
-      const toggleButton = screen.getByRole('button')
+      // Mobile menu toggle is an icon-only button - use specific selector
+      const toggleButton = screen.getByRole('button', { name: /open menu|close menu/i })
       expect(toggleButton).toHaveAttribute('aria-label')
       
       const ariaLabel = toggleButton.getAttribute('aria-label')

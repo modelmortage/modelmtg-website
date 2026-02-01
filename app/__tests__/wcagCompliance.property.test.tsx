@@ -175,8 +175,10 @@ describe('Property 19: WCAG Compliance - Requirements 7.3', () => {
       excerpt: fc.string({ minLength: 20, maxLength: 200 }),
       content: fc.string({ minLength: 50, maxLength: 500 }),
       author: fc.string({ minLength: 5, maxLength: 50 }),
-      publishDate: fc.date({ min: new Date('2020-01-01'), max: new Date('2024-12-31') })
-        .map(d => d.toISOString().split('T')[0]),
+      publishDate: fc.integer({ min: 2020, max: 2024 })
+        .chain(year => fc.integer({ min: 1, max: 12 })
+          .chain(month => fc.integer({ min: 1, max: 28 }) // Use 28 to avoid invalid dates
+            .map(day => `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`))),
       category: fc.constantFrom('Home Buying', 'Refinancing', 'Investment'),
       tags: fc.array(fc.string({ minLength: 3, maxLength: 15 }), { minLength: 1, maxLength: 5 }),
       featuredImage: fc.constant('/test-image.jpg'),

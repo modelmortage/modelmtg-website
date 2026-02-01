@@ -100,10 +100,10 @@ describe('Property 11: Blog Post Metadata Completeness', () => {
             
             const { container, unmount } = render(<BlogCard blogPost={post} />)
             
-            // Property: Title should be in an h3 element
-            const h3Element = container.querySelector('h3')
-            expect(h3Element).toBeInTheDocument()
-            expect(h3Element?.textContent).toBe(post.title)
+            // Property: Title should be in an h2 element (BlogCard uses h2)
+            const h2Element = container.querySelector('h2')
+            expect(h2Element).toBeInTheDocument()
+            expect(h2Element?.textContent).toBe(post.title)
             
             unmount()
           }

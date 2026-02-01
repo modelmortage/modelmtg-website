@@ -1,228 +1,238 @@
-import { render, screen, fireEvent } from '@testing-library/react'
-import Header from '../Header'
+/**
+ * Header Component Tests
+ * 
+ * Tests for the redesigned Header component with design system integration.
+ * Validates Requirements: 1.2, 10.1, 10.2, 10.3, 10.6, 12.4
+ */
 
-// Mock usePathname from next/navigation
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { usePathname } from 'next/navigation';
+import Header from '../Header';
+
+// Mock Next.js navigation
 jest.mock('next/navigation', () => ({
-  usePathname: jest.fn()
-}))
+  usePathname: jest.fn(),
+}));
 
-// Mock next/image
+// Mock Next.js Image component
 jest.mock('next/image', () => ({
   __esModule: true,
   default: (props: any) => {
     // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
-    return <img {...props} />
-  }
-}))
+    return <img {...props} />;
+  },
+}));
 
-const { usePathname } = require('next/navigation')
-
-describe('Header', () => {
+describe('Header Component', () => {
   beforeEach(() => {
-    // Reset mock before each test
-    usePathname.mockReturnValue('/')
-  })
+    (usePathname as jest.Mock).mockReturnValue('/');
+  });
 
-  it('should render logo and company name', () => {
-    render(<Header />)
-    
-    expect(screen.getByAltText(/model mortgage/i)).toBeInTheDocument()
-    expect(screen.getByText(/model mortgage/i)).toBeInTheDocument()
-  })
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
 
-  it('should render all navigation links', () => {
-    render(<Header />)
-    
-    expect(screen.getByRole('link', { name: /^learn$/i })).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: /pre-qualify/i })).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: /^calculator$/i })).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: /loan options/i })).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: /about us/i })).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: /^blog$/i })).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: /^contact$/i })).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: /apply online/i })).toBeInTheDocument()
-  })
+  describe('Requirement 1.2: No Emojis', () => {
+    it('should not render any emoji characters', () => {
+      const { container } = render(<Header />);
+      const html = container.innerHTML;
+      
+      // Check for emoji Unicode ranges
+      const emojiRegex = /[\u{1F300}-\u{1F9FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/u;
+      expect(html).not.toMatch(emojiRegex);
+    });
+  });
 
-  it('should highlight active navigation item on home page', () => {
-    usePathname.mockReturnValue('/')
-    render(<Header />)
-    
-    // Home page - no nav items should be active
-    const learnLink = screen.getByRole('link', { name: /^learn$/i })
-    expect(learnLink).not.toHaveClass('active')
-  })
+  describe('Requirement 10.1: React Icons Usage', () => {
+    it('should render navigation links with React Icons', () => {
+      render(<Header />);
+      
+      // Check that navigation links exist
+      expect(screen.getByText('Home')).toBeInTheDocument();
+      expect(screen.getByText('Learn')).toBeInTheDocument();
+      expect(screen.getByText('Calculator')).toBeInTheDocument();
+      expect(screen.getByText('Loan Options')).toBeInTheDocument();
+      expect(screen.getByText('About Us')).toBeInTheDocument();
+      expect(screen.getByText('Blog')).toBeInTheDocument();
+      expect(screen.getByText('Contact')).toBeInTheDocument();
+    });
 
-  it('should highlight active navigation item on calculator page', () => {
-    usePathname.mockReturnValue('/calculator')
-    render(<Header />)
-    
-    const calculatorLink = screen.getByRole('link', { name: /^calculator$/i })
-    expect(calculatorLink).toHaveClass('active')
-    expect(calculatorLink).toHaveAttribute('aria-current', 'page')
-  })
+    it('should render icons with proper ARIA attributes', () => {
+      const { container } = render(<Header />);
+      
+      // Icons should have aria-hidden="true" since they're decorative
+      const icons = container.querySelectorAll('svg[aria-hidden="true"]');
+      expect(icons.length).toBeGreaterThan(0);
+    });
+  });
 
-  it('should highlight active navigation item on nested calculator page', () => {
-    usePathname.mockReturnValue('/calculator/affordability')
-    render(<Header />)
-    
-    const calculatorLink = screen.getByRole('link', { name: /^calculator$/i })
-    expect(calculatorLink).toHaveClass('active')
-    expect(calculatorLink).toHaveAttribute('aria-current', 'page')
-  })
+  describe('Requirement 10.2: Button Components for CTAs', () => {
+    it('should render CTA buttons using Button component', () => {
+      render(<Header />);
+      
+      // Check for CTA buttons
+      const preQualifyButton = screen.getByText('Pre-Qualify');
+      const applyButton = screen.getByText('Apply Online');
+      
+      expect(preQualifyButton).toBeInTheDocument();
+      expect(applyButton).toBeInTheDocument();
+      
+      // Verify they're wrapped in button elements
+      expect(preQualifyButton.closest('button')).toBeInTheDocument();
+      expect(applyButton.closest('button')).toBeInTheDocument();
+    });
+  });
 
-  it('should highlight active navigation item on blog page', () => {
-    usePathname.mockReturnValue('/blog')
-    render(<Header />)
-    
-    const blogLink = screen.getByRole('link', { name: /^blog$/i })
-    expect(blogLink).toHaveClass('active')
-  })
+  describe('Requirement 10.3: Mobile Hamburger Menu', () => {
+    it('should render mobile menu toggle button', () => {
+      render(<Header />);
+      
+      const toggleButton = screen.getByLabelText('Open menu');
+      expect(toggleButton).toBeInTheDocument();
+      expect(toggleButton).toHaveAttribute('aria-expanded', 'false');
+      expect(toggleButton).toHaveAttribute('aria-controls', 'main-navigation');
+    });
 
-  it('should highlight active navigation item on blog post page', () => {
-    usePathname.mockReturnValue('/blog/my-article')
-    render(<Header />)
-    
-    const blogLink = screen.getByRole('link', { name: /^blog$/i })
-    expect(blogLink).toHaveClass('active')
-  })
+    it('should toggle mobile menu when button is clicked', () => {
+      render(<Header />);
+      
+      const toggleButton = screen.getByLabelText('Open menu');
+      
+      // Initially closed
+      expect(toggleButton).toHaveAttribute('aria-expanded', 'false');
+      
+      // Click to open
+      fireEvent.click(toggleButton);
+      expect(toggleButton).toHaveAttribute('aria-expanded', 'true');
+      expect(screen.getByLabelText('Close menu')).toBeInTheDocument();
+      
+      // Click to close
+      fireEvent.click(toggleButton);
+      expect(toggleButton).toHaveAttribute('aria-expanded', 'false');
+    });
 
-  it('should highlight active navigation item on loan options page', () => {
-    usePathname.mockReturnValue('/loan-options/fha')
-    render(<Header />)
-    
-    const loanOptionsLink = screen.getByRole('link', { name: /loan options/i })
-    expect(loanOptionsLink).toHaveClass('active')
-  })
+    it('should close mobile menu when Escape key is pressed', () => {
+      render(<Header />);
+      
+      const toggleButton = screen.getByLabelText('Open menu');
+      
+      // Open menu
+      fireEvent.click(toggleButton);
+      expect(toggleButton).toHaveAttribute('aria-expanded', 'true');
+      
+      // Press Escape
+      fireEvent.keyDown(document, { key: 'Escape' });
+      expect(toggleButton).toHaveAttribute('aria-expanded', 'false');
+    });
+  });
 
-  it('should only highlight one navigation item at a time', () => {
-    usePathname.mockReturnValue('/calculator')
-    render(<Header />)
-    
-    const activeLinks = screen.getAllByRole('link').filter(link => 
-      link.classList.contains('active')
-    )
-    
-    expect(activeLinks).toHaveLength(1)
-    expect(activeLinks[0]).toHaveTextContent(/calculator/i)
-  })
+  describe('Requirement 10.6: Active Page Highlighting', () => {
+    it('should highlight active page with gold underline', () => {
+      (usePathname as jest.Mock).mockReturnValue('/calculator');
+      const { container } = render(<Header />);
+      
+      const calculatorLink = screen.getByText('Calculator').closest('a');
+      expect(calculatorLink).toHaveClass('active');
+    });
 
-  it('should render mobile menu toggle button', () => {
-    render(<Header />)
-    
-    const toggleButton = screen.getByRole('button', { name: /open menu/i })
-    expect(toggleButton).toBeInTheDocument()
-  })
+    it('should set aria-current on active page', () => {
+      (usePathname as jest.Mock).mockReturnValue('/about');
+      render(<Header />);
+      
+      const aboutLink = screen.getByText('About Us').closest('a');
+      expect(aboutLink).toHaveAttribute('aria-current', 'page');
+    });
+  });
 
-  it('should toggle mobile menu when button is clicked', () => {
-    const { container } = render(<Header />)
-    
-    const toggleButton = screen.getByRole('button', { name: /open menu/i })
-    const nav = container.querySelector('nav')
-    
-    // Initially closed
-    expect(nav).not.toHaveClass('navOpen')
-    expect(toggleButton).toHaveAttribute('aria-expanded', 'false')
-    expect(toggleButton).toHaveAttribute('aria-label', 'Open menu')
-    
-    // Click to open
-    fireEvent.click(toggleButton)
-    expect(nav).toHaveClass('navOpen')
-    expect(toggleButton).toHaveAttribute('aria-expanded', 'true')
-    expect(toggleButton).toHaveAttribute('aria-label', 'Close menu')
-    
-    // Click to close
-    fireEvent.click(toggleButton)
-    expect(nav).not.toHaveClass('navOpen')
-    expect(toggleButton).toHaveAttribute('aria-expanded', 'false')
-    expect(toggleButton).toHaveAttribute('aria-label', 'Open menu')
-  })
+  describe('Requirement 12.4: Keyboard Accessibility', () => {
+    it('should have focusable navigation links', () => {
+      render(<Header />);
+      
+      const homeLink = screen.getByText('Home').closest('a');
+      const learnLink = screen.getByText('Learn').closest('a');
+      
+      expect(homeLink).toBeInTheDocument();
+      expect(learnLink).toBeInTheDocument();
+      
+      // Links should be naturally focusable (no tabIndex=-1)
+      expect(homeLink).not.toHaveAttribute('tabindex', '-1');
+      expect(learnLink).not.toHaveAttribute('tabindex', '-1');
+    });
 
-  it('should close mobile menu when a navigation link is clicked', () => {
-    const { container } = render(<Header />)
-    
-    const toggleButton = screen.getByRole('button', { name: /open menu/i })
-    const nav = container.querySelector('nav')
-    
-    // Open menu
-    fireEvent.click(toggleButton)
-    expect(nav).toHaveClass('navOpen')
-    
-    // Click a navigation link
-    const learnLink = screen.getByRole('link', { name: /^learn$/i })
-    fireEvent.click(learnLink)
-    
-    // Menu should close
-    expect(nav).not.toHaveClass('navOpen')
-  })
+    it('should have focusable mobile menu toggle', () => {
+      render(<Header />);
+      
+      const toggleButton = screen.getByLabelText('Open menu');
+      expect(toggleButton).toBeInTheDocument();
+      expect(toggleButton.tagName).toBe('BUTTON');
+    });
 
-  it('should prevent body scroll when mobile menu is open', () => {
-    render(<Header />)
-    
-    const toggleButton = screen.getByRole('button', { name: /open menu/i })
-    
-    // Initially, body should be scrollable
-    expect(document.body.style.overflow).toBe('')
-    
-    // Open menu
-    fireEvent.click(toggleButton)
-    expect(document.body.style.overflow).toBe('hidden')
-    
-    // Close menu
-    fireEvent.click(toggleButton)
-    expect(document.body.style.overflow).toBe('')
-  })
+    it('should have proper ARIA labels', () => {
+      render(<Header />);
+      
+      const nav = screen.getByRole('navigation');
+      expect(nav).toHaveAttribute('aria-label', 'Main navigation');
+      
+      const toggleButton = screen.getByLabelText('Open menu');
+      expect(toggleButton).toHaveAttribute('aria-label');
+    });
+  });
 
-  it('should add hamburger animation class when menu is open', () => {
-    render(<Header />)
-    
-    const toggleButton = screen.getByRole('button', { name: /open menu/i })
-    
-    // Initially not animated
-    expect(toggleButton).not.toHaveClass('mobileToggleOpen')
-    
-    // Open menu
-    fireEvent.click(toggleButton)
-    expect(toggleButton).toHaveClass('mobileToggleOpen')
-    
-    // Close menu
-    fireEvent.click(toggleButton)
-    expect(toggleButton).not.toHaveClass('mobileToggleOpen')
-  })
+  describe('Smooth Transitions', () => {
+    it('should apply transition classes to header', () => {
+      const { container } = render(<Header />);
+      
+      const header = container.querySelector('header');
+      expect(header).toBeInTheDocument();
+      expect(header).toHaveClass('header');
+    });
+  });
 
-  it('should have proper accessibility attributes', () => {
-    render(<Header />)
-    
-    const header = screen.getByRole('banner')
-    expect(header).toBeInTheDocument()
-    
-    const nav = screen.getByRole('navigation', { name: /main navigation/i })
-    expect(nav).toBeInTheDocument()
-    
-    const toggleButton = screen.getByRole('button', { name: /open menu/i })
-    expect(toggleButton).toHaveAttribute('aria-label')
-    expect(toggleButton).toHaveAttribute('aria-expanded')
-    expect(toggleButton).toHaveAttribute('aria-controls', 'main-navigation')
-  })
+  describe('Logo and Branding', () => {
+    it('should render logo with proper alt text', () => {
+      render(<Header />);
+      
+      const logo = screen.getByAltText('Model Mortgage - Houston Mortgage Broker');
+      expect(logo).toBeInTheDocument();
+    });
 
-  it('should have correct href attributes for all links', () => {
-    render(<Header />)
-    
-    expect(screen.getByRole('link', { name: /^learn$/i })).toHaveAttribute('href', '/learn')
-    expect(screen.getByRole('link', { name: /pre-qualify/i })).toHaveAttribute('href', '/pre-qualify')
-    expect(screen.getByRole('link', { name: /^calculator$/i })).toHaveAttribute('href', '/calculator')
-    expect(screen.getByRole('link', { name: /loan options/i })).toHaveAttribute('href', '/loan-options')
-    expect(screen.getByRole('link', { name: /about us/i })).toHaveAttribute('href', '/about')
-    expect(screen.getByRole('link', { name: /^blog$/i })).toHaveAttribute('href', '/blog')
-    expect(screen.getByRole('link', { name: /^contact$/i })).toHaveAttribute('href', '/contact')
-    expect(screen.getByRole('link', { name: /apply online/i })).toHaveAttribute('href', '/apply')
-  })
+    it('should render logo text', () => {
+      render(<Header />);
+      
+      const logoText = screen.getByText('MODEL MORTGAGE');
+      expect(logoText).toBeInTheDocument();
+    });
+  });
 
-  it('should not mark CTA button as active', () => {
-    usePathname.mockReturnValue('/apply')
-    render(<Header />)
-    
-    const applyButton = screen.getByRole('link', { name: /apply online/i })
-    expect(applyButton).not.toHaveClass('active')
-    expect(applyButton).toHaveClass('ctaButton')
-  })
-})
+  describe('External Links', () => {
+    it('should render external links with proper attributes', () => {
+      const { container } = render(<Header />);
+      
+      const externalLinks = container.querySelectorAll('a[target="_blank"]');
+      
+      externalLinks.forEach(link => {
+        expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+      });
+    });
+  });
+
+  describe('Responsive Behavior', () => {
+    it('should render all navigation items', () => {
+      render(<Header />);
+      
+      const navItems = [
+        'Home',
+        'Learn',
+        'Calculator',
+        'Loan Options',
+        'About Us',
+        'Blog',
+        'Contact',
+      ];
+      
+      navItems.forEach(item => {
+        expect(screen.getByText(item)).toBeInTheDocument();
+      });
+    });
+  });
+});

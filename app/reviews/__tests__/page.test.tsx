@@ -186,13 +186,14 @@ describe('ReviewsPage', () => {
   })
 
   it('displays 5-star ratings for all reviews', () => {
-    render(<ReviewsPage />)
+    const { container } = render(<ReviewsPage />)
     
-    // Each review should have 5 stars
+    // Each review should have 5 stars (now SVG icons instead of text)
     // We have 12 reviews, plus 5 stars in the overall rating section
     // Total: (12 reviews × 5 stars) + 5 overall stars = 65 stars
-    const stars = screen.getAllByText('★')
-    expect(stars.length).toBeGreaterThanOrEqual(60) // At least 60 stars (12 reviews × 5)
+    const starIcons = container.querySelectorAll('svg')
+    // Should have many star icons (at least 60 for the reviews)
+    expect(starIcons.length).toBeGreaterThanOrEqual(60)
   })
 
   it('renders quotes around review text', () => {

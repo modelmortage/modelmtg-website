@@ -7,7 +7,7 @@ export const vaPurchaseConfig: CalculatorConfig = {
   id: 'va-purchase',
   title: 'VA Purchase Calculator',
   description: 'Calculate your monthly VA loan payment with no PMI required. Includes VA funding fee, property taxes, and insurance. Perfect for eligible veterans and service members.',
-  icon: '🎖️',
+  icon: 'medal',
   inputs: [
     {
       label: 'Home Price',

@@ -44,11 +44,7 @@
   display: flex;
   gap: 0.25rem;
   margin-bottom: 0.5rem;
-}
-
-.star {
   color: var(--midnight-black);
-  font-size: 1.5rem;
 }
 
 .ratingText {
@@ -78,20 +74,9 @@
 }
 
 .reviewCard {
-  background: var(--ivory-white);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
-  padding: 1.75rem;
-  transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-}
-
-.reviewCard:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-  border-color: var(--gold-main);
 }
 
 .reviewHeader {
@@ -104,11 +89,7 @@
 .reviewStars {
   display: flex;
   gap: 0.125rem;
-}
-
-.reviewStar {
   color: var(--gold-main);
-  font-size: 1.125rem;
 }
 
 .loanType {
@@ -214,8 +195,11 @@
 }
 
 .badgeIcon {
-  font-size: 2rem;
+  color: var(--gold-main);
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .badgeInfo {

@@ -14,7 +14,7 @@ export default function CalculatorCTA({
   title = 'Ready to Get Pre-Approved?',
   description = 'Get a personalized quote based on your unique financial situation.',
   buttonText = 'Start Your Pre-Approval',
-  buttonHref = '/pre-qualify'
+  buttonHref = 'https://2516810.my1003app.com/?time=1702581789975'
 }: CalculatorCTAProps) {
   return (
     <section style={{

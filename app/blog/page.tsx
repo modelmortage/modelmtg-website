@@ -1,5 +1,7 @@
 import { Metadata } from 'next'
+import { FaCalendarAlt, FaPhone } from 'react-icons/fa'
 import BlogCard from '@/components/content/BlogCard'
+import { Button } from '@/components/design-system/Button/Button'
 import { blogPosts } from '@/lib/content/blogPosts'
 import styles from './blog.module.css'
 
@@ -65,11 +67,15 @@ export default function BlogPage() {
             Get personalized mortgage advice and competitive rates from our experienced team.
           </p>
           <div className={styles.ctaButtons}>
-            <a href="/schedule-a-call" className={styles.ctaPrimary}>
-              Schedule a Call
+            <a href="/schedule-a-call" className={styles.buttonLink}>
+              <Button variant="primary" size="lg" icon={<FaPhone />} iconPosition="left">
+                Schedule a Call
+              </Button>
             </a>
-            <a href="/calculator/affordability" className={styles.ctaSecondary}>
-              Calculate Affordability
+            <a href="/calculator/affordability" className={styles.buttonLink}>
+              <Button variant="secondary" size="lg" icon={<FaCalendarAlt />} iconPosition="left">
+                Calculate Affordability
+              </Button>
             </a>
           </div>
         </div>

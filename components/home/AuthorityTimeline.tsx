@@ -1,6 +1,7 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useIntersectionAnimation } from '@/app/utils/animations'
 import styles from './AuthorityTimeline.module.css'
 
 interface Milestone {
@@ -45,7 +46,7 @@ const milestones: Milestone[] = [
 export default function AuthorityTimeline() {
     const [visibleMilestones, setVisibleMilestones] = useState<number[]>([])
     const [totalFunded, setTotalFunded] = useState(0)
-    const timelineRef = useRef<HTMLDivElement>(null)
+    const { ref: headerRef, isVisible: headerVisible } = useIntersectionAnimation({ threshold: 0.3 })
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -91,7 +92,10 @@ export default function AuthorityTimeline() {
     return (
         <section className={styles.section}>
             <div className={styles.container}>
-                <div className={styles.header}>
+                <div 
+                    ref={headerRef as React.RefObject<HTMLDivElement>}
+                    className={`${styles.header} ${headerVisible ? styles.visible : ''}`}
+                >
                     <h2>Track Record of Excellence</h2>
                     <div className={styles.totalFunded}>
                         <span className={styles.fundedAmount}>${totalFunded}M+</span>
@@ -99,7 +103,7 @@ export default function AuthorityTimeline() {
                     </div>
                 </div>
 
-                <div className={styles.timeline} ref={timelineRef}>
+                <div className={styles.timeline}>
                     <div className={styles.timelineLine}></div>
 
                     {milestones.map((milestone, index) => (

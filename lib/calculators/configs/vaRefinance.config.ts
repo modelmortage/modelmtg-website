@@ -7,7 +7,7 @@ export const vaRefinanceConfig: CalculatorConfig = {
   id: 'va-refinance',
   title: 'VA Refinance Calculator',
   description: 'Calculate your VA refinance savings with IRRRL or cash-out refinance options. Compare your current loan to a new VA loan with lower rates. Includes VA funding fee and cash-out analysis.',
-  icon: '🏠',
+  icon: 'home',
   inputs: [
     {
       label: 'Current Loan Balance',

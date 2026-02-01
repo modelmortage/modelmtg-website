@@ -7,7 +7,7 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import AffordabilityCalculator from '../page'
 
-// Mock the shared components
+// Mock the CalculatorLayout component
 jest.mock('@/components/calculators/CalculatorLayout', () => {
   return function MockCalculatorLayout({ config, children }: any) {
     return (
@@ -15,46 +15,6 @@ jest.mock('@/components/calculators/CalculatorLayout', () => {
         <h1>{config.title}</h1>
         <p>{config.description}</p>
         {children}
-      </div>
-    )
-  }
-})
-
-jest.mock('@/components/calculators/CalculatorForm', () => {
-  return function MockCalculatorForm({ inputs, values, errors, onChange, onCalculate }: any) {
-    return (
-      <div data-testid="calculator-form">
-        {inputs.map((input: any) => (
-          <div key={input.name}>
-            <label htmlFor={input.name}>{input.label}</label>
-            <input
-              id={input.name}
-              name={input.name}
-              type="number"
-              value={values[input.name] || ''}
-              onChange={(e) => onChange(input.name, e.target.value)}
-            />
-            {errors[input.name] && <span role="alert">{errors[input.name]}</span>}
-          </div>
-        ))}
-        <button onClick={onCalculate}>Calculate</button>
-      </div>
-    )
-  }
-})
-
-jest.mock('@/components/calculators/CalculatorResults', () => {
-  return function MockCalculatorResults({ results, loading }: any) {
-    if (loading) return <div data-testid="calculator-results">Loading...</div>
-    if (!results) return <div data-testid="calculator-results">No results</div>
-    return (
-      <div data-testid="calculator-results">
-        {results.map((result: any, index: number) => (
-          <div key={index}>
-            <span>{result.label}</span>
-            <span>{result.value}</span>
-          </div>
-        ))}
       </div>
     )
   }
@@ -96,13 +56,13 @@ describe('AffordabilityCalculator Page', () => {
     fireEvent.change(screen.getByLabelText(/Interest Rate/i), { target: { value: '7.0' } })
     
     // Click calculate
-    const calculateButton = screen.getByText('Calculate')
+    const calculateButton = screen.getByText('Calculate Affordability')
     fireEvent.click(calculateButton)
     
-    // Wait for results to appear
+    // Wait for results to appear - check for "Your Results" heading
     await waitFor(() => {
-      const results = screen.getByTestId('calculator-results')
-      expect(results).not.toHaveTextContent('No results')
+      const resultsHeading = screen.getAllByText('Your Results')
+      expect(resultsHeading.length).toBeGreaterThan(0)
     })
   })
 
@@ -116,7 +76,7 @@ describe('AffordabilityCalculator Page', () => {
     fireEvent.change(screen.getByLabelText(/Interest Rate/i), { target: { value: '7.0' } })
     
     // Click calculate
-    const calculateButton = screen.getByText('Calculate')
+    const calculateButton = screen.getByText('Calculate Affordability')
     fireEvent.click(calculateButton)
     
     // Should show validation error
@@ -130,7 +90,7 @@ describe('AffordabilityCalculator Page', () => {
     
     // Create an error by submitting invalid data
     fireEvent.change(screen.getByLabelText(/Annual Gross Income/i), { target: { value: '-1000' } })
-    fireEvent.click(screen.getByText('Calculate'))
+    fireEvent.click(screen.getByText('Calculate Affordability'))
     
     await waitFor(() => {
       expect(screen.getByRole('alert')).toBeInTheDocument()

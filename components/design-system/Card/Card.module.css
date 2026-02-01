@@ -1,0 +1,98 @@
+/**
+ * Card Component Styles
+ * 
+ * Provides consistent card styling with variants, padding, and states.
+ */
+
+.card {
+  border-radius: 0.5rem; /* 8px */
+  transition: all 250ms ease-out;
+  position: relative;
+}
+
+/* Variant: Elevated */
+.card-elevated {
+  background-color: #FFFFFF;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border: 1px solid transparent;
+}
+
+/* Variant: Outlined */
+.card-outlined {
+  background-color: #FFFFFF;
+  border: 1px solid #E5E5E5;
+  box-shadow: none;
+}
+
+/* Variant: Flat */
+.card-flat {
+  background-color: #F7F7F7;
+  border: 1px solid transparent;
+  box-shadow: none;
+}
+
+/* Padding sizes */
+.card-padding-sm {
+  padding: 0.75rem; /* 12px */
+}
+
+.card-padding-md {
+  padding: 1.5rem; /* 24px */
+}
+
+.card-padding-lg {
+  padding: 2rem; /* 32px */
+}
+
+/* Hoverable state */
+.card-hoverable:hover {
+  transform: translateY(-4px);
+}
+
+.card-elevated.card-hoverable:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.card-outlined.card-hoverable:hover {
+  border-color: #D1D1D1;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.card-flat.card-hoverable:hover {
+  background-color: #E5E5E5;
+}
+
+/* Clickable state */
+.card-clickable {
+  cursor: pointer;
+  user-select: none;
+}
+
+.card-clickable:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(139, 111, 20, 0.3);
+}
+
+.card-clickable:focus-visible {
+  outline: 2px solid #8B6F14;
+  outline-offset: 2px;
+}
+
+.card-clickable:active {
+  transform: translateY(-2px);
+}
+
+.card-elevated.card-clickable:active {
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .card-padding-md {
+    padding: 1rem; /* 16px on mobile */
+  }
+  
+  .card-padding-lg {
+    padding: 1.5rem; /* 24px on mobile */
+  }
+}

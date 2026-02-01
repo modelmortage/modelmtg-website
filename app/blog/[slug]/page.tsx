@@ -2,7 +2,9 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
+import { FaFacebook, FaTwitter, FaLinkedin, FaEnvelope, FaCalendar, FaClock, FaUser } from 'react-icons/fa'
 import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import { Button } from '@/components/design-system/Button/Button'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { blogPosts } from '@/lib/content/blogPosts'
@@ -72,6 +74,15 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
     month: 'long',
     day: 'numeric'
   })
+
+  // Social sharing URLs
+  const pageUrl = `https://modelmtg.com/blog/${post.slug}`
+  const shareUrls = {
+    facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl)}`,
+    twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(post.title)}`,
+    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(pageUrl)}`,
+    email: `mailto:?subject=${encodeURIComponent(post.title)}&body=${encodeURIComponent(`Check out this article: ${pageUrl}`)}`
+  }
 
   // Process content to convert markdown-style headings to HTML
   const processContent = (content: string) => {
@@ -226,13 +237,22 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               <span className={styles.category}>{post.category}</span>
               <h1 className={styles.title}>{post.title}</h1>
               <div className={styles.metadata}>
-                <span className={styles.author}>By {post.author}</span>
+                <span className={styles.metadataItem}>
+                  <FaUser className={styles.icon} aria-hidden="true" />
+                  <span className={styles.author}>By {post.author}</span>
+                </span>
                 <span className={styles.separator}>•</span>
-                <time dateTime={post.publishDate} className={styles.date}>
-                  {formattedDate}
-                </time>
+                <span className={styles.metadataItem}>
+                  <FaCalendar className={styles.icon} aria-hidden="true" />
+                  <time dateTime={post.publishDate} className={styles.date}>
+                    {formattedDate}
+                  </time>
+                </span>
                 <span className={styles.separator}>•</span>
-                <span className={styles.readTime}>{post.readTime} min read</span>
+                <span className={styles.metadataItem}>
+                  <FaClock className={styles.icon} aria-hidden="true" />
+                  <span className={styles.readTime}>{post.readTime} min read</span>
+                </span>
               </div>
               {post.tags.length > 0 && (
                 <div className={styles.tags}>
@@ -258,6 +278,47 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
             />
           </div>
 
+          {/* Social Sharing Buttons */}
+          <div className={styles.socialShare}>
+            <span className={styles.shareLabel}>Share this article:</span>
+            <div className={styles.shareButtons}>
+              <a
+                href={shareUrls.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.shareButton}
+                aria-label="Share on Facebook"
+              >
+                <FaFacebook />
+              </a>
+              <a
+                href={shareUrls.twitter}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.shareButton}
+                aria-label="Share on Twitter"
+              >
+                <FaTwitter />
+              </a>
+              <a
+                href={shareUrls.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.shareButton}
+                aria-label="Share on LinkedIn"
+              >
+                <FaLinkedin />
+              </a>
+              <a
+                href={shareUrls.email}
+                className={styles.shareButton}
+                aria-label="Share via Email"
+              >
+                <FaEnvelope />
+              </a>
+            </div>
+          </div>
+
           {/* Article Content */}
           <div className={styles.content}>
             {contentElements}
@@ -269,8 +330,10 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               <p className={styles.footerText}>
                 Have questions about this article? Contact our team for personalized guidance.
               </p>
-              <Link href="/schedule-a-call" className={styles.footerButton}>
-                Schedule a Call
+              <Link href="/schedule-a-call" className={styles.buttonLink}>
+                <Button variant="primary" size="lg">
+                  Schedule a Call
+                </Button>
               </Link>
             </div>
           </footer>
@@ -305,6 +368,9 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                           alt={relatedPost.title}
                           fill
                           sizes="(max-width: 768px) 100vw, 33vw"
+                          loading="lazy"
+                          placeholder="blur"
+                          blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2Y3ZjdmNyIvPjwvc3ZnPg=="
                           className={styles.relatedImage}
                         />
                       </div>

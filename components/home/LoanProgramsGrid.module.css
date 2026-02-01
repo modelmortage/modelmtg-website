@@ -139,3 +139,58 @@
         grid-template-columns: 1fr;
     }
 }
+
+/* Animation for scroll-triggered visibility */
+.header,
+.grid {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.header.visible,
+.grid.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.grid.visible .card {
+    animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.grid.visible .card:nth-child(1) { animation-delay: 0.1s; }
+.grid.visible .card:nth-child(2) { animation-delay: 0.2s; }
+.grid.visible .card:nth-child(3) { animation-delay: 0.3s; }
+.grid.visible .card:nth-child(4) { animation-delay: 0.4s; }
+.grid.visible .card:nth-child(5) { animation-delay: 0.5s; }
+.grid.visible .card:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.iconWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .header,
+    .grid {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+    
+    .grid.visible .card {
+        animation: none;
+    }
+}

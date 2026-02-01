@@ -1,16 +1,26 @@
+'use client'
+
+import { Icon } from '@/components/design-system'
+import { FaStar } from 'react-icons/fa'
+import { useIntersectionAnimation } from '@/app/utils/animations'
 import styles from './TrustBar.module.css'
 
 export default function TrustBar() {
+    const { ref, isVisible } = useIntersectionAnimation({ threshold: 0.3 })
+
     return (
-        <section className={styles.trustBar}>
+        <section 
+            ref={ref as React.RefObject<HTMLElement>}
+            className={`${styles.trustBar} ${isVisible ? styles.visible : ''}`}
+        >
             <div className={styles.container}>
                 <div className={styles.trustItem}>
                     <div className={styles.stars}>
-                        <span className={styles.star}>★</span>
-                        <span className={styles.star}>★</span>
-                        <span className={styles.star}>★</span>
-                        <span className={styles.star}>★</span>
-                        <span className={styles.star}>★</span>
+                        <Icon icon={FaStar} size="sm" color="#D4AF37" ariaLabel="5 star rating" />
+                        <Icon icon={FaStar} size="sm" color="#D4AF37" />
+                        <Icon icon={FaStar} size="sm" color="#D4AF37" />
+                        <Icon icon={FaStar} size="sm" color="#D4AF37" />
+                        <Icon icon={FaStar} size="sm" color="#D4AF37" />
                     </div>
                     <p className={styles.trustText}>5.0 Google Rating</p>
                 </div>

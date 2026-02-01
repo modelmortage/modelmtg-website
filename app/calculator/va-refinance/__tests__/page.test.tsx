@@ -98,13 +98,15 @@ describe('VARefinanceCalculator Page', () => {
     fireEvent.change(screen.getByLabelText(/VA Funding Fee/i), { target: { value: '2.15' } })
     
     // Click calculate
-    const calculateButton = screen.getByText('Calculate')
+    const calculateButton = screen.getByText('Calculate VA Refinance')
     fireEvent.click(calculateButton)
     
     // Wait for results to appear
     await waitFor(() => {
-      const results = screen.getByTestId('calculator-results')
-      expect(results).not.toHaveTextContent('No results')
+      // Results should be displayed
+      // Check for Refinance Analysis heading
+      const headings = screen.getAllByText(/Refinance Analysis/i)
+      expect(headings.length).toBeGreaterThan(0)
     })
   })
 
@@ -119,7 +121,7 @@ describe('VARefinanceCalculator Page', () => {
     fireEvent.change(screen.getByLabelText(/VA Funding Fee/i), { target: { value: '2.15' } })
     
     // Click calculate
-    const calculateButton = screen.getByText('Calculate')
+    const calculateButton = screen.getByText('Calculate VA Refinance')
     fireEvent.click(calculateButton)
     
     // Should show validation error
@@ -133,7 +135,7 @@ describe('VARefinanceCalculator Page', () => {
     
     // Create an error by submitting invalid data
     fireEvent.change(screen.getByLabelText(/Current Loan Balance/i), { target: { value: '500' } })
-    fireEvent.click(screen.getByText('Calculate'))
+    fireEvent.click(screen.getByText('Calculate VA Refinance'))
     
     await waitFor(() => {
       expect(screen.getByRole('alert')).toBeInTheDocument()
@@ -169,13 +171,15 @@ describe('VARefinanceCalculator Page', () => {
     fireEvent.change(screen.getByLabelText(/VA Funding Fee/i), { target: { value: '2.15' } })
     
     // Click calculate
-    const calculateButton = screen.getByText('Calculate')
+    const calculateButton = screen.getByText('Calculate VA Refinance')
     fireEvent.click(calculateButton)
     
     // Wait for results to appear
     await waitFor(() => {
-      const results = screen.getByTestId('calculator-results')
-      expect(results).not.toHaveTextContent('No results')
+      // Results should be displayed
+      // Check for Refinance Analysis heading
+      const headings = screen.getAllByText(/Refinance Analysis/i)
+      expect(headings.length).toBeGreaterThan(0)
       expect(results).not.toHaveTextContent('Loading...')
     })
   })
@@ -191,13 +195,15 @@ describe('VARefinanceCalculator Page', () => {
     fireEvent.change(screen.getByLabelText(/VA Funding Fee/i), { target: { value: '2.3' } })
     
     // Click calculate
-    const calculateButton = screen.getByText('Calculate')
+    const calculateButton = screen.getByText('Calculate VA Refinance')
     fireEvent.click(calculateButton)
     
     // Wait for results to appear
     await waitFor(() => {
-      const results = screen.getByTestId('calculator-results')
-      expect(results).not.toHaveTextContent('No results')
+      // Results should be displayed
+      // Check for Refinance Analysis heading
+      const headings = screen.getAllByText(/Refinance Analysis/i)
+      expect(headings.length).toBeGreaterThan(0)
       expect(results).not.toHaveTextContent('Loading...')
     })
   })
@@ -213,7 +219,7 @@ describe('VARefinanceCalculator Page', () => {
     fireEvent.change(screen.getByLabelText(/VA Funding Fee/i), { target: { value: '2.15' } })
     
     // Click calculate
-    const calculateButton = screen.getByText('Calculate')
+    const calculateButton = screen.getByText('Calculate VA Refinance')
     fireEvent.click(calculateButton)
     
     // Should show validation error
@@ -233,13 +239,15 @@ describe('VARefinanceCalculator Page', () => {
     fireEvent.change(screen.getByLabelText(/VA Funding Fee/i), { target: { value: '2.3' } })
     
     // Click calculate
-    const calculateButton = screen.getByText('Calculate')
+    const calculateButton = screen.getByText('Calculate VA Refinance')
     fireEvent.click(calculateButton)
     
     // Wait for results to appear (should still calculate, just show negative savings)
     await waitFor(() => {
-      const results = screen.getByTestId('calculator-results')
-      expect(results).not.toHaveTextContent('No results')
+      // Results should be displayed
+      // Check for Refinance Analysis heading
+      const headings = screen.getAllByText(/Refinance Analysis/i)
+      expect(headings.length).toBeGreaterThan(0)
       expect(results).not.toHaveTextContent('Loading...')
     })
   })
@@ -255,7 +263,7 @@ describe('VARefinanceCalculator Page', () => {
     fireEvent.change(screen.getByLabelText(/VA Funding Fee/i), { target: { value: '2.15' } })
     
     // Click calculate
-    const calculateButton = screen.getByText('Calculate')
+    const calculateButton = screen.getByText('Calculate VA Refinance')
     fireEvent.click(calculateButton)
     
     // Should show validation error
@@ -264,3 +272,6 @@ describe('VARefinanceCalculator Page', () => {
     })
   })
 })
+
+
+

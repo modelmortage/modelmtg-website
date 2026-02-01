@@ -100,8 +100,9 @@ describe('TeamMemberCard', () => {
   })
 
   it('renders arrow indicator', () => {
-    render(<TeamMemberCard teamMember={mockTeamMember} />)
-    const arrow = screen.getByText('→')
+    const { container } = render(<TeamMemberCard teamMember={mockTeamMember} />)
+    // Arrow is now an SVG icon (FaArrowRight) instead of text
+    const arrow = container.querySelector('svg')
     expect(arrow).toBeInTheDocument()
   })
 
@@ -141,9 +142,6 @@ describe('TeamMemberCard', () => {
     render(<TeamMemberCard teamMember={mockTeamMember} />)
     const link = screen.getByRole('link')
     expect(link).toHaveAttribute('aria-label', 'Learn more about John Doe')
-    
-    const arrow = screen.getByText('→')
-    expect(arrow).toHaveAttribute('aria-hidden', 'true')
   })
 
   it('applies correct CSS classes', () => {

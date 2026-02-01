@@ -1,11 +1,21 @@
+'use client'
+
+import { Icon } from '@/components/design-system'
+import { FaCheckCircle } from 'react-icons/fa'
+import { useIntersectionAnimation } from '@/app/utils/animations'
 import styles from './PersonalBrandSection.module.css'
 
 export default function PersonalBrandSection() {
+    const { ref, isVisible } = useIntersectionAnimation({ threshold: 0.2 })
+
     return (
         <section className={styles.section}>
             <div className={styles.spotlight}></div>
 
-            <div className={styles.container}>
+            <div 
+                ref={ref as React.RefObject<HTMLDivElement>}
+                className={`${styles.container} ${isVisible ? styles.visible : ''}`}
+            >
                 <div className={styles.content}>
                     <div className={styles.signatureContainer}>
                         <span className={styles.signature}>Matthew Bramow</span>
@@ -37,19 +47,19 @@ export default function PersonalBrandSection() {
 
                     <div className={styles.credentials}>
                         <div className={styles.credential}>
-                            <span className={styles.credIcon}>✓</span>
+                            <Icon icon={FaCheckCircle} size="md" color="#D4AF37" />
                             <span>Licensed Mortgage Broker</span>
                         </div>
                         <div className={styles.credential}>
-                            <span className={styles.credIcon}>✓</span>
+                            <Icon icon={FaCheckCircle} size="md" color="#D4AF37" />
                             <span>NMLS Certified</span>
                         </div>
                         <div className={styles.credential}>
-                            <span className={styles.credIcon}>✓</span>
+                            <Icon icon={FaCheckCircle} size="md" color="#D4AF37" />
                             <span>$500M+ Funded</span>
                         </div>
                         <div className={styles.credential}>
-                            <span className={styles.credIcon}>✓</span>
+                            <Icon icon={FaCheckCircle} size="md" color="#D4AF37" />
                             <span>5,000+ Clients Served</span>
                         </div>
                     </div>

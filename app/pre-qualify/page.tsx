@@ -3,6 +3,7 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
+import { FaBolt, FaHandFist, FaRocket, FaLock } from 'react-icons/fa6'
 
 export default function PreQualifyPage() {
     return (
@@ -41,9 +42,9 @@ export default function PreQualifyPage() {
                             alignItems: 'center',
                             flexWrap: 'wrap'
                         }}>
-                            <span style={{ color: 'var(--gold-main)', fontSize: '0.9375rem' }}>✓ No Hard Credit Pull</span>
-                            <span style={{ color: 'var(--gold-main)', fontSize: '0.9375rem' }}>✓ 5-Minute Process</span>
-                            <span style={{ color: 'var(--gold-main)', fontSize: '0.9375rem' }}>✓ Expert Review</span>
+                            <span style={{ color: 'var(--gold-main)', fontSize: '0.9375rem' }}>• No Hard Credit Pull</span>
+                            <span style={{ color: 'var(--gold-main)', fontSize: '0.9375rem' }}>• 5-Minute Process</span>
+                            <span style={{ color: 'var(--gold-main)', fontSize: '0.9375rem' }}>• Expert Review</span>
                         </div>
                     </div>
                 </section>
@@ -211,22 +212,22 @@ export default function PreQualifyPage() {
                         }}>
                             {[
                                 {
-                                    icon: '⚡',
+                                    icon: FaBolt,
                                     title: 'Shop with Confidence',
                                     description: 'Know exactly what you can afford before house hunting'
                                 },
                                 {
-                                    icon: '💪',
+                                    icon: FaHandFist,
                                     title: 'Stronger Offers',
                                     description: 'Sellers take pre-approved buyers seriously'
                                 },
                                 {
-                                    icon: '🚀',
+                                    icon: FaRocket,
                                     title: 'Faster Closing',
                                     description: 'Pre-approval speeds up the entire process'
                                 },
                                 {
-                                    icon: '🔒',
+                                    icon: FaLock,
                                     title: 'Rate Lock Protection',
                                     description: 'Lock in rates before they rise'
                                 }
@@ -238,7 +239,9 @@ export default function PreQualifyPage() {
                                     border: '1px solid rgba(200, 154, 91, 0.1)',
                                     textAlign: 'center'
                                 }}>
-                                    <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>{benefit.icon}</div>
+                                    <div style={{ fontSize: '3rem', marginBottom: '1rem', color: 'var(--gold-main)', display: 'flex', justifyContent: 'center' }}>
+                                        <benefit.icon />
+                                    </div>
                                     <h3 style={{
                                         fontSize: '1.25rem',
                                         color: 'var(--gold-main)',

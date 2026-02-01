@@ -7,7 +7,7 @@ export const refinanceConfig: CalculatorConfig = {
   id: 'refinance',
   title: 'Refinance Calculator',
   description: 'Calculate your potential savings from refinancing your mortgage. Compare your current loan to a new loan and see your break-even point.',
-  icon: '🔄',
+  icon: 'refresh',
   inputs: [
     {
       label: 'Current Loan Balance',

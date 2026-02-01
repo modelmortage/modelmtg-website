@@ -7,7 +7,7 @@ export const affordabilityConfig: CalculatorConfig = {
   id: 'affordability',
   title: 'How Much Can I Afford?',
   description: 'Calculate your maximum home purchase price based on your income, debts, and down payment.',
-  icon: '💰',
+  icon: 'dollar',
   inputs: [
     {
       label: 'Annual Gross Income',

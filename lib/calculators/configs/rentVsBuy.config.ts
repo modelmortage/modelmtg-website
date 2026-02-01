@@ -7,7 +7,7 @@ export const rentVsBuyConfig: CalculatorConfig = {
   id: 'rent-vs-buy',
   title: 'Rent vs Buy Calculator',
   description: 'Compare the total costs of renting versus buying a home over time. See which option makes more financial sense for your situation.',
-  icon: '🏠',
+  icon: 'home',
   inputs: [
     {
       label: 'Home Price',

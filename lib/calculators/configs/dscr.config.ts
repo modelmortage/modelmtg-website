@@ -7,7 +7,7 @@ export const dscrConfig: CalculatorConfig = {
   id: 'dscr',
   title: 'DSCR Investment Calculator',
   description: 'Calculate Debt Service Coverage Ratio (DSCR) for investment property loans. Determine if your rental income covers mortgage payments and analyze cash flow and ROI.',
-  icon: '🏢',
+  icon: 'building',
   inputs: [
     {
       label: 'Property Price',

@@ -119,7 +119,7 @@ describe('Schedule a Call Page Metadata', () => {
       scheduleCallContent.schedulingOptions.forEach(option => {
         expect(option.title).toBeDefined()
         expect(option.description).toBeDefined()
-        expect(option.icon).toBeDefined()
+        expect(option.iconName).toBeDefined()
         expect(option.action.text).toBeDefined()
         expect(option.action.href).toBeDefined()
       })

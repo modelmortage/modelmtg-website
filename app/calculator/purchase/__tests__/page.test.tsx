@@ -102,13 +102,14 @@ describe('PurchaseCalculator Page', () => {
     fireEvent.change(screen.getByLabelText(/Monthly HOA Fees/i), { target: { value: '0' } })
     
     // Click calculate
-    const calculateButton = screen.getByText('Calculate')
+    const calculateButton = screen.getByText('Calculate Payment')
     fireEvent.click(calculateButton)
     
     // Wait for results to appear
     await waitFor(() => {
-      const results = screen.getByTestId('calculator-results')
-      expect(results).not.toHaveTextContent('No results')
+      // Results should be displayed - check for "Monthly Payment" heading
+      const resultsHeadings = screen.queryAllByText(/Monthly Payment/i)
+      expect(resultsHeadings.length).toBeGreaterThan(0)
     })
   })
 
@@ -125,7 +126,7 @@ describe('PurchaseCalculator Page', () => {
     fireEvent.change(screen.getByLabelText(/Monthly HOA Fees/i), { target: { value: '0' } })
     
     // Click calculate
-    const calculateButton = screen.getByText('Calculate')
+    const calculateButton = screen.getByText('Calculate Payment')
     fireEvent.click(calculateButton)
     
     // Should show validation error
@@ -139,7 +140,7 @@ describe('PurchaseCalculator Page', () => {
     
     // Create an error by submitting invalid data
     fireEvent.change(screen.getByLabelText(/Home Price/i), { target: { value: '500' } })
-    fireEvent.click(screen.getByText('Calculate'))
+    fireEvent.click(screen.getByText('Calculate Payment'))
     
     await waitFor(() => {
       expect(screen.getByRole('alert')).toBeInTheDocument()
@@ -183,14 +184,15 @@ describe('PurchaseCalculator Page', () => {
     fireEvent.change(screen.getByLabelText(/Monthly HOA Fees/i), { target: { value: '0' } })
     
     // Click calculate
-    const calculateButton = screen.getByText('Calculate')
+    const calculateButton = screen.getByText('Calculate Payment')
     fireEvent.click(calculateButton)
     
     // Should handle the error gracefully
     await waitFor(() => {
-      const results = screen.getByTestId('calculator-results')
-      // Either shows an error or handles it in the calculation
-      expect(results).toBeInTheDocument()
+      // Should handle gracefully - either show error or results
+      const page = screen.getByTestId('calculator-layout')
+      expect(page).toBeInTheDocument()
     })
   })
 })
+

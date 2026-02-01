@@ -4,9 +4,24 @@
     left: 0;
     right: 0;
     background: var(--deep-charcoal);
-    border-bottom: 1px solid rgba(200, 154, 91, 0.1);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
     z-index: 999;
     backdrop-filter: blur(10px);
+    transition: transform 400ms ease-out, background-color 250ms ease-out, box-shadow 250ms ease-out;
+    transform: translateY(0);
+}
+
+.headerScrolled {
+    background: rgba(54, 69, 79, 0.95);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.headerHidden {
+    transform: translateY(-100%);
+}
+
+.headerVisible {
+    transform: translateY(0);
 }
 
 .container {
@@ -58,26 +73,27 @@
     color: var(--ivory-white);
     text-decoration: none;
     position: relative;
-    transition: color var(--transition-fast);
+    transition: color 150ms ease-out;
     letter-spacing: 0.3px;
     /* Ensure adequate touch target size (44x44px minimum) */
     padding: 12px 8px;
     min-height: 44px;
     display: inline-flex;
     align-items: center;
+    gap: 8px;
 }
 
 .navLink::after {
     content: '';
     position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 100%;
+    bottom: 8px;
+    left: 8px;
+    right: 8px;
     height: 2px;
     background: var(--gold-main);
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform var(--transition-smooth);
+    transition: transform 250ms ease-out;
 }
 
 .navLink:hover {
@@ -105,6 +121,22 @@
     border-radius: 2px;
 }
 
+.navLink:focus-visible {
+    outline: 2px solid var(--gold-main);
+    outline-offset: 4px;
+    border-radius: 2px;
+}
+
+.ctaButtons {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.ctaLink {
+    text-decoration: none;
+}
+
 .ctaButton {
     background: linear-gradient(135deg, var(--gold-main), var(--gold-light));
     color: var(--midnight-black);
@@ -114,8 +146,8 @@
     text-transform: uppercase;
     font-size: 0.8125rem;
     letter-spacing: 1px;
-    transition: all var(--transition-smooth);
-    box-shadow: 0 0 20px rgba(200, 154, 91, 0.3);
+    transition: all 250ms ease-out;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
     /* Ensure adequate touch target size */
     min-height: 44px;
     display: inline-flex;
@@ -128,7 +160,7 @@
 }
 
 .ctaButton:hover {
-    box-shadow: 0 0 40px rgba(200, 154, 91, 0.6);
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.6);
     transform: translateY(-2px);
     color: var(--midnight-black);
 }
@@ -147,9 +179,21 @@
     min-height: 44px;
     justify-content: center;
     align-items: center;
+    color: var(--gold-main);
+    transition: color 150ms ease-out;
+}
+
+.mobileToggle:hover {
+    color: var(--gold-light);
 }
 
 .mobileToggle:focus {
+    outline: 2px solid var(--gold-main);
+    outline-offset: 4px;
+    border-radius: 2px;
+}
+
+.mobileToggle:focus-visible {
     outline: 2px solid var(--gold-main);
     outline-offset: 4px;
     border-radius: 2px;
@@ -159,7 +203,7 @@
     width: 25px;
     height: 2px;
     background: var(--gold-main);
-    transition: all var(--transition-fast);
+    transition: all 150ms ease-out;
     transform-origin: center;
 }
 
@@ -206,9 +250,9 @@
         flex-direction: column;
         gap: 0;
         padding: 2rem 1rem;
-        border-top: 1px solid rgba(200, 154, 91, 0.1);
+        border-top: 1px solid rgba(212, 175, 55, 0.1);
         transform: translateX(-100%);
-        transition: transform var(--transition-smooth);
+        transition: transform 400ms ease-out;
         overflow-y: auto;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     }
@@ -220,8 +264,9 @@
     .navLink {
         width: 100%;
         padding: 1rem;
-        border-bottom: 1px solid rgba(200, 154, 91, 0.05);
+        border-bottom: 1px solid rgba(212, 175, 55, 0.05);
         text-align: left;
+        justify-content: flex-start;
     }
 
     .navLink::after {
@@ -229,17 +274,30 @@
     }
 
     .navLink:hover {
-        background: rgba(200, 154, 91, 0.05);
+        background: rgba(212, 175, 55, 0.05);
     }
 
     .navLink.active {
-        background: rgba(200, 154, 91, 0.1);
+        background: rgba(212, 175, 55, 0.1);
         border-left: 3px solid var(--gold-main);
         padding-left: calc(1rem - 3px);
     }
 
-    .ctaButton {
+    .ctaButtons {
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
         margin-top: 1rem;
+        padding: 1rem 0;
+        border-top: 1px solid rgba(212, 175, 55, 0.1);
+    }
+
+    .ctaLink {
+        width: 100%;
+    }
+
+    .ctaButton {
+        width: 100%;
         text-align: center;
     }
 

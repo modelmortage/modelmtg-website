@@ -55,7 +55,8 @@ describe('RolstonNichollsPage', () => {
     
     const img = screen.getByAltText(`${member.name} - ${member.title}`)
     expect(img).toBeInTheDocument()
-    expect(img).toHaveAttribute('src', member.photo)
+    // Next.js Image optimizes URLs, so check that src contains the expected path
+    expect(img.getAttribute('src')).toContain(member.photo.replace('/images/', ''))
   })
 
   it('renders the complete bio', () => {
@@ -102,7 +103,7 @@ describe('RolstonNichollsPage', () => {
   it('renders back to team link', () => {
     render(<RolstonNichollsPage />)
     
-    const backLink = screen.getByText('← Back to Meet Our Team')
+    const backLink = screen.getByText('Back to Meet Our Team')
     expect(backLink).toBeInTheDocument()
     expect(backLink.closest('a')).toHaveAttribute('href', '/meet-our-team')
   })

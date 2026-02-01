@@ -226,3 +226,52 @@
         font-size: 2rem;
     }
 }
+
+/* Animation for scroll-triggered visibility */
+.header,
+.testimonialsGrid,
+.badgesSection {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.header.visible,
+.testimonialsGrid.visible,
+.badgesSection.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.testimonialsGrid.visible .testimonialCard {
+    animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.testimonialsGrid.visible .testimonialCard:nth-child(1) { animation-delay: 0.1s; }
+.testimonialsGrid.visible .testimonialCard:nth-child(2) { animation-delay: 0.2s; }
+.testimonialsGrid.visible .testimonialCard:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .header,
+    .testimonialsGrid,
+    .badgesSection {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+    
+    .testimonialsGrid.visible .testimonialCard {
+        animation: none;
+    }
+}

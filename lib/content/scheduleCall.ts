@@ -1,4 +1,5 @@
 import { PageMetadata } from '@/lib/types/content'
+import { IconType } from 'react-icons'
 
 export interface ScheduleCallContent {
   metadata: PageMetadata
@@ -10,7 +11,7 @@ export interface ScheduleCallContent {
   schedulingOptions: Array<{
     title: string
     description: string
-    icon: string
+    iconName: string
     action: {
       text: string
       href: string
@@ -19,6 +20,7 @@ export interface ScheduleCallContent {
   benefits: Array<{
     title: string
     description: string
+    iconName: string
   }>
   calendlyUrl?: string
 }
@@ -47,7 +49,7 @@ export const scheduleCallContent: ScheduleCallContent = {
     {
       title: 'Matthew Bramow',
       description: 'Owner & Senior Mortgage Advisor. Specializing in purchase loans, refinancing, and financial education.',
-      icon: '👤',
+      iconName: 'FaUser',
       action: {
         text: 'Schedule with Matthew',
         href: 'https://calendly.com/matthew-bramow'
@@ -56,7 +58,7 @@ export const scheduleCallContent: ScheduleCallContent = {
     {
       title: 'Rolston Nicholls',
       description: 'Mortgage Advisor. Expert in VA loans, first-time homebuyers, and investment properties.',
-      icon: '👤',
+      iconName: 'FaUser',
       action: {
         text: 'Schedule with Rolston',
         href: 'https://calendly.com/rolston-nicholls'
@@ -65,7 +67,7 @@ export const scheduleCallContent: ScheduleCallContent = {
     {
       title: 'Call Us Directly',
       description: 'Prefer to speak with someone right away? Give us a call during business hours.',
-      icon: '📞',
+      iconName: 'FaPhone',
       action: {
         text: 'Call (832) 727-4128',
         href: 'tel:832-727-4128'
@@ -74,7 +76,7 @@ export const scheduleCallContent: ScheduleCallContent = {
     {
       title: 'Send a Message',
       description: 'Not ready for a call? Send us a message and we\'ll respond within 2 hours.',
-      icon: '📧',
+      iconName: 'FaEnvelope',
       action: {
         text: 'Contact Us',
         href: '/contact'
@@ -84,19 +86,23 @@ export const scheduleCallContent: ScheduleCallContent = {
   benefits: [
     {
       title: 'Free Consultation',
-      description: 'No obligation, no pressure. Just honest advice and guidance tailored to your situation.'
+      description: 'No obligation, no pressure. Just honest advice and guidance tailored to your situation.',
+      iconName: 'FaGift'
     },
     {
       title: 'Expert Guidance',
-      description: 'Work with experienced mortgage professionals who understand the Houston market and your unique needs.'
+      description: 'Work with experienced mortgage professionals who understand the Houston market and your unique needs.',
+      iconName: 'FaUserTie'
     },
     {
       title: 'Flexible Scheduling',
-      description: 'Choose a time that works for you. We offer early morning, evening, and weekend appointments.'
+      description: 'Choose a time that works for you. We offer early morning, evening, and weekend appointments.',
+      iconName: 'FaClock'
     },
     {
       title: 'Fast Response',
-      description: 'We typically respond within 2 hours and can often schedule same-day or next-day consultations.'
+      description: 'We typically respond within 2 hours and can often schedule same-day or next-day consultations.',
+      iconName: 'FaBolt'
     }
   ],
   calendlyUrl: 'https://calendly.com/matthew-bramow'

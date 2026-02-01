@@ -1,5 +1,8 @@
 import { Metadata } from 'next'
+import { FaHome, FaFileAlt, FaDollarSign, FaSync, FaCalculator, FaPhone, FaInfoCircle } from 'react-icons/fa'
 import BlogCard from '@/components/content/BlogCard'
+import { Card } from '@/components/design-system/Card/Card'
+import { Button } from '@/components/design-system/Button/Button'
 import { blogPosts } from '@/lib/content/blogPosts'
 import styles from './learning-center.module.css'
 
@@ -36,30 +39,35 @@ export default function LearningCenterPage() {
       id: 'getting-started',
       title: 'Getting Started',
       description: 'Essential guides for first-time home buyers and those new to the mortgage process.',
+      icon: <FaHome />,
       keywords: ['home buying', 'first-time buyer', 'home shopping', 'affordability']
     },
     {
       id: 'loan-types',
       title: 'Understanding Loan Types',
       description: 'Learn about different mortgage options and find the right loan for your situation.',
+      icon: <FaFileAlt />,
       keywords: ['FHA', 'VA', 'conventional', 'loan comparison', 'mortgage types']
     },
     {
       id: 'rates-and-costs',
       title: 'Rates & Costs',
       description: 'Understand mortgage rates, closing costs, and how to get the best deal.',
+      icon: <FaDollarSign />,
       keywords: ['mortgage rates', 'interest rates', 'closing costs', 'fees']
     },
     {
       id: 'refinancing',
       title: 'Refinancing',
       description: 'Explore refinancing options to lower your rate or access your home equity.',
+      icon: <FaSync />,
       keywords: ['refinance', 'cash-out', 'rate reduction', 'IRRRL']
     },
     {
       id: 'all-articles',
       title: 'All Articles',
       description: 'Browse our complete collection of mortgage and home buying resources.',
+      icon: <FaInfoCircle />,
       keywords: []
     }
   ]
@@ -94,26 +102,17 @@ export default function LearningCenterPage() {
         <div className={styles.container}>
           <h2 className={styles.sectionTitle}>Popular Topics</h2>
           <div className={styles.topicsGrid}>
-            <a href="#getting-started" className={styles.topicCard}>
-              <div className={styles.topicIcon}>🏠</div>
-              <h3 className={styles.topicTitle}>Getting Started</h3>
-              <p className={styles.topicDescription}>First-time buyer guides</p>
-            </a>
-            <a href="#loan-types" className={styles.topicCard}>
-              <div className={styles.topicIcon}>📋</div>
-              <h3 className={styles.topicTitle}>Loan Types</h3>
-              <p className={styles.topicDescription}>Compare mortgage options</p>
-            </a>
-            <a href="#rates-and-costs" className={styles.topicCard}>
-              <div className={styles.topicIcon}>💰</div>
-              <h3 className={styles.topicTitle}>Rates & Costs</h3>
-              <p className={styles.topicDescription}>Understand pricing</p>
-            </a>
-            <a href="#refinancing" className={styles.topicCard}>
-              <div className={styles.topicIcon}>🔄</div>
-              <h3 className={styles.topicTitle}>Refinancing</h3>
-              <p className={styles.topicDescription}>Lower your rate</p>
-            </a>
+            {categories.slice(0, 4).map((category) => (
+              <a key={category.id} href={`#${category.id}`} className={styles.topicLink}>
+                <Card variant="outlined" padding="lg" hoverable className={styles.topicCard}>
+                  <div className={styles.topicIcon} aria-hidden="true">
+                    {category.icon}
+                  </div>
+                  <h3 className={styles.topicTitle}>{category.title}</h3>
+                  <p className={styles.topicDescription}>{category.description.split('.')[0]}</p>
+                </Card>
+              </a>
+            ))}
           </div>
         </div>
       </section>
@@ -131,7 +130,12 @@ export default function LearningCenterPage() {
           <section key={category.id} id={category.id} className={styles.categorySection}>
             <div className={styles.container}>
               <div className={styles.categoryHeader}>
-                <h2 className={styles.categoryTitle}>{category.title}</h2>
+                <div className={styles.categoryTitleWrapper}>
+                  <span className={styles.categoryIcon} aria-hidden="true">
+                    {category.icon}
+                  </span>
+                  <h2 className={styles.categoryTitle}>{category.title}</h2>
+                </div>
                 <p className={styles.categoryDescription}>{category.description}</p>
               </div>
               <div className={styles.postsGrid}>
@@ -152,25 +156,41 @@ export default function LearningCenterPage() {
             Use our free calculators to estimate payments, affordability, and compare loan options.
           </p>
           <div className={styles.toolsGrid}>
-            <a href="/calculator/affordability" className={styles.toolCard}>
-              <h3 className={styles.toolTitle}>Affordability Calculator</h3>
-              <p className={styles.toolDescription}>Find out how much home you can afford</p>
-              <span className={styles.toolArrow}>→</span>
+            <a href="/calculator/affordability" className={styles.toolLink}>
+              <Card variant="elevated" padding="lg" hoverable className={styles.toolCard}>
+                <div className={styles.toolIconWrapper} aria-hidden="true">
+                  <FaCalculator />
+                </div>
+                <h3 className={styles.toolTitle}>Affordability Calculator</h3>
+                <p className={styles.toolDescription}>Find out how much home you can afford</p>
+              </Card>
             </a>
-            <a href="/calculator/purchase" className={styles.toolCard}>
-              <h3 className={styles.toolTitle}>Purchase Calculator</h3>
-              <p className={styles.toolDescription}>Calculate your monthly mortgage payment</p>
-              <span className={styles.toolArrow}>→</span>
+            <a href="/calculator/purchase" className={styles.toolLink}>
+              <Card variant="elevated" padding="lg" hoverable className={styles.toolCard}>
+                <div className={styles.toolIconWrapper} aria-hidden="true">
+                  <FaCalculator />
+                </div>
+                <h3 className={styles.toolTitle}>Purchase Calculator</h3>
+                <p className={styles.toolDescription}>Calculate your monthly mortgage payment</p>
+              </Card>
             </a>
-            <a href="/calculator/refinance" className={styles.toolCard}>
-              <h3 className={styles.toolTitle}>Refinance Calculator</h3>
-              <p className={styles.toolDescription}>See if refinancing makes sense</p>
-              <span className={styles.toolArrow}>→</span>
+            <a href="/calculator/refinance" className={styles.toolLink}>
+              <Card variant="elevated" padding="lg" hoverable className={styles.toolCard}>
+                <div className={styles.toolIconWrapper} aria-hidden="true">
+                  <FaSync />
+                </div>
+                <h3 className={styles.toolTitle}>Refinance Calculator</h3>
+                <p className={styles.toolDescription}>See if refinancing makes sense</p>
+              </Card>
             </a>
-            <a href="/calculator/va-purchase" className={styles.toolCard}>
-              <h3 className={styles.toolTitle}>VA Loan Calculator</h3>
-              <p className={styles.toolDescription}>Calculate VA loan payments and benefits</p>
-              <span className={styles.toolArrow}>→</span>
+            <a href="/calculator/va-purchase" className={styles.toolLink}>
+              <Card variant="elevated" padding="lg" hoverable className={styles.toolCard}>
+                <div className={styles.toolIconWrapper} aria-hidden="true">
+                  <FaCalculator />
+                </div>
+                <h3 className={styles.toolTitle}>VA Loan Calculator</h3>
+                <p className={styles.toolDescription}>Calculate VA loan payments and benefits</p>
+              </Card>
             </a>
           </div>
         </div>
@@ -184,11 +204,15 @@ export default function LearningCenterPage() {
             Our experienced mortgage professionals are here to answer your questions and guide you through the process.
           </p>
           <div className={styles.ctaButtons}>
-            <a href="/schedule-a-call" className={styles.ctaPrimary}>
-              Schedule a Consultation
+            <a href="/schedule-a-call" className={styles.buttonLink}>
+              <Button variant="primary" size="lg" icon={<FaPhone />} iconPosition="left">
+                Schedule a Consultation
+              </Button>
             </a>
-            <a href="/about" className={styles.ctaSecondary}>
-              Learn About Us
+            <a href="/about" className={styles.buttonLink}>
+              <Button variant="secondary" size="lg" icon={<FaInfoCircle />} iconPosition="left">
+                Learn About Us
+              </Button>
             </a>
           </div>
         </div>

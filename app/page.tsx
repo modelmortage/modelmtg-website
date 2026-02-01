@@ -7,6 +7,8 @@ import AuthorityTimeline from '@/components/home/AuthorityTimeline'
 import LoanProgramsGrid from '@/components/home/LoanProgramsGrid'
 import PersonalBrandSection from '@/components/home/PersonalBrandSection'
 import TrustStackWall from '@/components/home/TrustStackWall'
+import Link from 'next/link'
+import { Button } from '@/components/design-system'
 
 export default function Home() {
     return (
@@ -24,19 +26,25 @@ export default function Home() {
             <Footer />
 
             {/* Sticky CTA */}
-            <a
-                href="/pre-qualify"
-                className="sticky-cta btn btn-primary"
+            <div
                 style={{
                     position: 'fixed',
                     bottom: '2rem',
                     right: '2rem',
                     zIndex: 1000,
-                    textDecoration: 'none'
                 }}
             >
-                Get Pre-Approved
-            </a>
+                <a 
+                    href="https://2516810.my1003app.com/?time=1702581789975" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    style={{ textDecoration: 'none' }}
+                >
+                    <Button variant="primary" size="lg">
+                        Get Pre-Approved
+                    </Button>
+                </a>
+            </div>
 
             {/* Structured Data - Organization Schema */}
             <script
@@ -93,7 +101,7 @@ export default function Home() {
                             "longitude": -95.3698
                         },
                         "telephone": "(832) 727-4128",
-                        "priceRange": "$$",
+                        "priceRange": "$",
                         "aggregateRating": {
                             "@type": "AggregateRating",
                             "ratingValue": "5.0",

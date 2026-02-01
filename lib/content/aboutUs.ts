@@ -13,10 +13,12 @@ export interface AboutUsContent {
   stats: Array<{
     number: string
     label: string
+    showStars?: boolean
   }>
   values: Array<{
     title: string
     description: string
+    iconName: string
   }>
 }
 
@@ -61,24 +63,28 @@ export const aboutUsContent: AboutUsContent = {
     { number: '5,000+', label: 'Happy Clients' },
     { number: '15+ Years', label: 'Industry Experience' },
     { number: '18 Days', label: 'Average Close Time' },
-    { number: '5.0 ★★★★★', label: 'Google Rating' }
+    { number: '5.0', label: 'Google Rating', showStars: true }
   ],
   values: [
     {
       title: 'Financial Education',
-      description: 'We believe informed clients are empowered clients. Matthew actively incorporates financial education into every client experience, providing valuable insights to help you make confident decisions.'
+      description: 'We believe informed clients are empowered clients. Matthew actively incorporates financial education into every client experience, providing valuable insights to help you make confident decisions.',
+      iconName: 'FaGraduationCap'
     },
     {
       title: 'Personalized Service',
-      description: 'Every client has unique needs and aspirations. We offer tailored mortgage solutions that align with your specific financial goals and circumstances.'
+      description: 'Every client has unique needs and aspirations. We offer tailored mortgage solutions that align with your specific financial goals and circumstances.',
+      iconName: 'FaUserCheck'
     },
     {
       title: 'Expert Guidance',
-      description: 'With deep industry knowledge and years of experience, our team provides exceptional support throughout your entire mortgage journey.'
+      description: 'With deep industry knowledge and years of experience, our team provides exceptional support throughout your entire mortgage journey.',
+      iconName: 'FaLightbulb'
     },
     {
       title: 'Long-Term Partnership',
-      description: 'We\'re not just here for one transaction. We\'re committed to your long-term financial well-being and success, serving as your trusted mortgage partner.'
+      description: 'We\'re not just here for one transaction. We\'re committed to your long-term financial well-being and success, serving as your trusted mortgage partner.',
+      iconName: 'FaHandshake'
     }
   ]
 }

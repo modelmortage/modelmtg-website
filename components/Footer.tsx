@@ -1,5 +1,20 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { 
+    FaPhone, 
+    FaEnvelope, 
+    FaFacebook, 
+    FaInstagram, 
+    FaLinkedin,
+    FaHome,
+    FaFileAlt,
+    FaGraduationCap,
+    FaCalculator,
+    FaShieldAlt,
+    FaCertificate,
+    FaLock
+} from 'react-icons/fa'
+import { Icon } from './design-system/Icon/Icon'
 import styles from './Footer.module.css'
 
 export default function Footer() {
@@ -15,6 +30,7 @@ export default function Footer() {
                         alt="Model Mortgage - Houston Mortgage Broker"
                         width={200}
                         height={67}
+                        loading="lazy"
                         className={styles.footerLogo}
                     />
                     <p className={styles.tagline}>Strategic Mortgage Planning</p>
@@ -22,7 +38,7 @@ export default function Footer() {
 
                 <div className={styles.divider}></div>
 
-                {/* Links Grid */}
+                {/* Links Grid - Four Column Layout */}
                 <div className={styles.linksGrid}>
                     <div className={styles.linkColumn}>
                         <h3>About Us</h3>
@@ -43,20 +59,59 @@ export default function Footer() {
 
                     <div className={styles.linkColumn}>
                         <h3>Resources</h3>
-                        <Link href="/learn">Learning Center</Link>
-                        <Link href="/calculator">Mortgage Calculator</Link>
-                        <Link href="/pre-qualify">Pre-Qualification</Link>
+                        <Link href="/learn">
+                            <Icon icon={FaGraduationCap} size="sm" ariaLabel="" />
+                            <span>Learning Center</span>
+                        </Link>
+                        <Link href="/calculator">
+                            <Icon icon={FaCalculator} size="sm" ariaLabel="" />
+                            <span>Mortgage Calculator</span>
+                        </Link>
+                        <a href="https://2516810.my1003app.com/?time=1702581789975" target="_blank" rel="noopener noreferrer">
+                            <Icon icon={FaFileAlt} size="sm" ariaLabel="" />
+                            <span>Pre-Qualification</span>
+                        </a>
                         <Link href="/blog">Blog</Link>
                     </div>
 
                     <div className={styles.linkColumn}>
                         <h3>Connect With Us</h3>
-                        <a href="tel:832-727-4128">(832) 727-4128</a>
-                        <a href="mailto:info@modelmortgage.com">Email Us Today</a>
+                        <a href="tel:832-727-4128" className={styles.contactLink}>
+                            <Icon icon={FaPhone} size="sm" ariaLabel="Phone" />
+                            <span>(832) 727-4128</span>
+                        </a>
+                        <a href="mailto:info@modelmortgage.com" className={styles.contactLink}>
+                            <Icon icon={FaEnvelope} size="sm" ariaLabel="Email" />
+                            <span>info@modelmortgage.com</span>
+                        </a>
                         <div className={styles.socialIcons}>
-                            <a href="#" aria-label="Facebook" className={styles.socialIcon}>f</a>
-                            <a href="#" aria-label="Instagram" className={styles.socialIcon}>i</a>
-                            <a href="#" aria-label="LinkedIn" className={styles.socialIcon}>in</a>
+                            <a 
+                                href="https://www.facebook.com/modelmortgage" 
+                                aria-label="Follow us on Facebook"
+                                className={styles.socialIcon}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <Icon icon={FaFacebook} size="md" ariaLabel="" />
+                            </a>
+                            <a 
+                                href="https://www.instagram.com/modelmortgage" 
+                                aria-label="Follow us on Instagram"
+                                className={styles.socialIcon}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <Icon icon={FaInstagram} size="md" ariaLabel="" />
+                            </a>
+                            <a 
+                                href="https://www.linkedin.com/company/modelmortgage" 
+                                aria-label="Connect with us on LinkedIn"
+                                className={styles.socialIcon}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <Icon icon={FaLinkedin} size="md" ariaLabel="" />
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -75,12 +130,15 @@ export default function Footer() {
 
                     <div className={styles.certifications}>
                         <div className={styles.cert}>
+                            <Icon icon={FaHome} size="sm" ariaLabel="" />
                             <p>Equal Housing Opportunity</p>
                         </div>
                         <div className={styles.cert}>
+                            <Icon icon={FaCertificate} size="sm" ariaLabel="" />
                             <p>NMLS #2518610</p>
                         </div>
                         <div className={styles.cert}>
+                            <Icon icon={FaLock} size="sm" ariaLabel="" />
                             <p>SSL Certified</p>
                         </div>
                     </div>

@@ -160,3 +160,23 @@
         text-align: center;
     }
 }
+
+/* Animation for scroll-triggered visibility */
+.container {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.container.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .container {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}

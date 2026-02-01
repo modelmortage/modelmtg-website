@@ -81,41 +81,8 @@
   flex-wrap: wrap;
 }
 
-.ctaPrimary,
-.ctaSecondary {
-  padding: 1rem 2rem;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: 8px;
+.buttonLink {
   text-decoration: none;
-  transition: all 0.3s ease;
-  display: inline-block;
-}
-
-.ctaPrimary {
-  background-color: var(--midnight-black);
-  color: var(--ivory-white);
-  border: 2px solid var(--midnight-black);
-}
-
-.ctaPrimary:hover {
-  background-color: var(--deep-charcoal);
-  border-color: var(--deep-charcoal);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.ctaSecondary {
-  background-color: transparent;
-  color: var(--midnight-black);
-  border: 2px solid var(--midnight-black);
-}
-
-.ctaSecondary:hover {
-  background-color: var(--midnight-black);
-  color: var(--ivory-white);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* Responsive Design */
@@ -144,11 +111,6 @@
   .ctaButtons {
     flex-direction: column;
     align-items: stretch;
-  }
-
-  .ctaPrimary,
-  .ctaSecondary {
-    width: 100%;
   }
 }
 

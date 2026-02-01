@@ -3,6 +3,7 @@
 import React from 'react'
 import { CalculatorResult } from '@/lib/types/calculator'
 import { formatCurrency, formatPercentage, formatNumber } from '@/lib/utils/formatters'
+import { FaInfoCircle } from 'react-icons/fa'
 
 interface CalculatorResultsProps {
   results: CalculatorResult[] | null
@@ -138,14 +139,20 @@ export default function CalculatorResults({
             padding: '1.5rem',
             background: 'rgba(200, 154, 91, 0.1)',
             borderRadius: '4px',
-            borderLeft: '3px solid var(--gold-main)'
+            borderLeft: '3px solid var(--gold-main)',
+            display: 'flex',
+            gap: '1rem',
+            alignItems: 'flex-start'
           }}>
+            <div style={{ color: 'var(--gold-main)', fontSize: '1.25rem', flexShrink: 0, marginTop: '0.125rem' }}>
+              <FaInfoCircle />
+            </div>
             <p style={{
               fontSize: '0.9375rem',
               margin: 0,
               color: 'var(--ivory-white)'
             }}>
-              💡 These estimates are for informational purposes only. Actual loan terms may vary based on 
+              These estimates are for informational purposes only. Actual loan terms may vary based on 
               credit score, property details, and lender requirements.
             </p>
           </div>

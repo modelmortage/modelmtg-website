@@ -131,7 +131,7 @@ describe('Reviews Page Metadata', () => {
   describe('Trust Badges Validation', () => {
     it('all trust badges have required fields', () => {
       reviewsContent.trustBadges.forEach(badge => {
-        expect(badge.icon).toBeDefined()
+        expect(badge.iconName).toBeDefined()
         expect(badge.name).toBeDefined()
         expect(badge.description).toBeDefined()
       })

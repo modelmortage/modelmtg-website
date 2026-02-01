@@ -1,6 +1,10 @@
 import type { Metadata } from 'next'
 import ContentPage from '@/components/shared/ContentPage'
 import { aboutUsContent } from '@/lib/content/aboutUs'
+import { Card } from '@/components/design-system/Card'
+import { Icon } from '@/components/design-system/Icon'
+import { getIcon } from '@/lib/utils/iconMap'
+import { FaStar } from 'react-icons/fa'
 import styles from './about.module.css'
 
 export const metadata: Metadata = {
@@ -43,17 +47,26 @@ export default function AboutPage() {
 
                 {/* Stats Sidebar */}
                 <aside className={styles.sidebar}>
-                    <div className={styles.statsCard}>
+                    <Card variant="elevated" padding="lg">
                         <h3 className={styles.statsHeading}>By The Numbers</h3>
                         <div className={styles.statsList}>
                             {aboutUsContent.stats.map((stat, index) => (
                                 <div key={index} className={styles.statItem}>
-                                    <div className={styles.statNumber}>{stat.number}</div>
+                                    <div className={styles.statNumber}>
+                                        {stat.number}
+                                        {stat.showStars && (
+                                            <span className={styles.stars}>
+                                                {[...Array(5)].map((_, i) => (
+                                                    <Icon key={i} icon={FaStar} size="sm" />
+                                                ))}
+                                            </span>
+                                        )}
+                                    </div>
                                     <div className={styles.statLabel}>{stat.label}</div>
                                 </div>
                             ))}
                         </div>
-                    </div>
+                    </Card>
                 </aside>
             </div>
 
@@ -61,12 +74,22 @@ export default function AboutPage() {
             <section className={styles.valuesSection}>
                 <h2 className={styles.valuesSectionHeading}>What Sets Us Apart</h2>
                 <div className={styles.valuesGrid}>
-                    {aboutUsContent.values.map((value, index) => (
-                        <div key={index} className={styles.valueCard}>
-                            <h3 className={styles.valueTitle}>{value.title}</h3>
-                            <p className={styles.valueDescription}>{value.description}</p>
-                        </div>
-                    ))}
+                    {aboutUsContent.values.map((value, index) => {
+                        const IconComponent = getIcon(value.iconName);
+                        return (
+                            <Card key={index} variant="outlined" padding="lg" hoverable>
+                                <div className={styles.valueCard}>
+                                    {IconComponent && (
+                                        <div className={styles.valueIcon}>
+                                            <Icon icon={IconComponent} size="xl" />
+                                        </div>
+                                    )}
+                                    <h3 className={styles.valueTitle}>{value.title}</h3>
+                                    <p className={styles.valueDescription}>{value.description}</p>
+                                </div>
+                            </Card>
+                        );
+                    })}
                 </div>
             </section>
         </ContentPage>
