@@ -53,8 +53,9 @@ export async function generateMetadata({ params }: LoanOptionPageProps): Promise
   }
 }
 
-export default function LoanOptionPage({ params }: LoanOptionPageProps) {
-  const loanOption = loanOptions.find((option) => option.slug === params.slug)
+export default async function LoanOptionPage({ params }: LoanOptionPageProps) {
+  const { slug } = await params
+  const loanOption = loanOptions.find((option) => option.slug === slug)
 
   if (!loanOption) {
     notFound()
