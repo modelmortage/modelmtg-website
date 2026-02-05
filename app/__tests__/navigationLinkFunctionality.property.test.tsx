@@ -59,7 +59,7 @@ describe('Property 25: Navigation Link Functionality', () => {
           '/blog',
           '/blog/article',
           '/loan-options',
-          '/loan-options/fha',
+          '/loan-options/fha-home-loan',
           '/about',
           '/contact',
           '/learn',
@@ -452,7 +452,7 @@ describe('Property 25: Navigation Link Functionality', () => {
           '/blog',
           '/blog/article-slug',
           '/loan-options',
-          '/loan-options/fha',
+          '/loan-options/fha-home-loan',
           '/loan-options/va/details'
         ),
         (path) => {

@@ -10,6 +10,14 @@ import TrustStackWall from '@/components/home/TrustStackWall'
 import Link from 'next/link'
 import { Button } from '@/components/design-system'
 
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+    alternates: {
+        canonical: '/',
+    },
+}
+
 export default function Home() {
     return (
         <>
@@ -34,9 +42,9 @@ export default function Home() {
                     zIndex: 1000,
                 }}
             >
-                <a 
-                    href="https://2516810.my1003app.com/?time=1702581789975" 
-                    target="_blank" 
+                <a
+                    href="https://2516810.my1003app.com/?time=1702581789975"
+                    target="_blank"
                     rel="noopener noreferrer"
                     style={{ textDecoration: 'none' }}
                 >

@@ -51,7 +51,7 @@ export default function Footer() {
                     <div className={styles.linkColumn}>
                         <h3>Loan Options</h3>
                         <Link href="/loan-options/conventional">Conventional Loans</Link>
-                        <Link href="/loan-options/fha">FHA Loans</Link>
+                        <Link href="/loan-options/fha-home-loan">FHA Loans</Link>
                         <Link href="/loan-options/va">VA Loans</Link>
                         <Link href="/loan-options/jumbo">Jumbo Loans</Link>
                         <Link href="/loan-options/refinance">Refinance</Link>

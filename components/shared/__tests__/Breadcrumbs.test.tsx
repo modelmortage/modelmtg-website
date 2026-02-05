@@ -14,7 +14,7 @@ describe('Breadcrumbs', () => {
   it('should render breadcrumb items with links', () => {
     const items: BreadcrumbItem[] = [
       { label: 'Loan Options', href: '/loan-options' },
-      { label: 'FHA Loans', href: '/loan-options/fha' }
+      { label: 'FHA Loans', href: '/loan-options/fha-home-loan' }
     ]
     render(<Breadcrumbs items={items} />)
     

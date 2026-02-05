@@ -86,7 +86,7 @@ describe('Navigation Flows - Unit Tests', () => {
 
       const loanOptionLinks = [
         { name: /conventional loans/i, href: '/loan-options/conventional' },
-        { name: /fha loans/i, href: '/loan-options/fha' },
+        { name: /fha loans/i, href: '/loan-options/fha-home-loan' },
         { name: /va loans/i, href: '/loan-options/va' },
         { name: /jumbo loans/i, href: '/loan-options/jumbo' },
         { name: /refinance/i, href: '/loan-options/refinance' }
@@ -143,7 +143,7 @@ describe('Navigation Flows - Unit Tests', () => {
     it('should render breadcrumbs with home link on nested pages', () => {
       const breadcrumbItems = [
         { label: 'Loan Options', href: '/loan-options' },
-        { label: 'FHA Loans', href: '/loan-options/fha' }
+        { label: 'FHA Loans', href: '/loan-options/fha-home-loan' }
       ]
 
       render(<Breadcrumbs items={breadcrumbItems} />)
@@ -157,7 +157,7 @@ describe('Navigation Flows - Unit Tests', () => {
     it('should render all breadcrumb items in correct order', () => {
       const breadcrumbItems = [
         { label: 'Loan Options', href: '/loan-options' },
-        { label: 'FHA Loans', href: '/loan-options/fha' }
+        { label: 'FHA Loans', href: '/loan-options/fha-home-loan' }
       ]
 
       render(<Breadcrumbs items={breadcrumbItems} />)
@@ -199,7 +199,7 @@ describe('Navigation Flows - Unit Tests', () => {
     it('should render breadcrumbs in ContentPage component', () => {
       const breadcrumbItems = [
         { label: 'Loan Options', href: '/loan-options' },
-        { label: 'FHA Loans', href: '/loan-options/fha' }
+        { label: 'FHA Loans', href: '/loan-options/fha-home-loan' }
       ]
 
       render(
@@ -245,7 +245,7 @@ describe('Navigation Flows - Unit Tests', () => {
     it('should have separators between breadcrumb items', () => {
       const breadcrumbItems = [
         { label: 'Loan Options', href: '/loan-options' },
-        { label: 'FHA Loans', href: '/loan-options/fha' }
+        { label: 'FHA Loans', href: '/loan-options/fha-home-loan' }
       ]
 
       const { container } = render(<Breadcrumbs items={breadcrumbItems} />)
@@ -310,7 +310,7 @@ describe('Navigation Flows - Unit Tests', () => {
     it('should mark loan options link as active on loan options pages', () => {
       const loanOptionPages = [
         '/loan-options',
-        '/loan-options/fha',
+        '/loan-options/fha-home-loan',
         '/loan-options/va',
         '/loan-options/conventional',
         '/loan-options/jumbo'
@@ -434,14 +434,14 @@ describe('Navigation Flows - Unit Tests', () => {
     })
 
     it('should render complete navigation flow for nested page', () => {
-      usePathname.mockReturnValue('/loan-options/fha')
+      usePathname.mockReturnValue('/loan-options/fha-home-loan')
 
       render(
         <ContentPage
           title="FHA Loans"
           breadcrumbs={[
             { label: 'Loan Options', href: '/loan-options' },
-            { label: 'FHA Loans', href: '/loan-options/fha' }
+            { label: 'FHA Loans', href: '/loan-options/fha-home-loan' }
           ]}
         >
           <p>Content</p>

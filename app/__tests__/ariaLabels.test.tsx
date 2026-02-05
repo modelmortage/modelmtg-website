@@ -112,7 +112,7 @@ describe('ARIA Labels - Requirements 7.5, 8.3', () => {
     it('should have aria-label on breadcrumb navigation', () => {
       const items = [
         { label: 'Loan Options', href: '/loan-options' },
-        { label: 'FHA Loan', href: '/loan-options/fha' }
+        { label: 'FHA Loan', href: '/loan-options/fha-home-loan' }
       ]
       
       render(<Breadcrumbs items={items} />)
@@ -124,7 +124,7 @@ describe('ARIA Labels - Requirements 7.5, 8.3', () => {
     it('should have aria-current="page" on current breadcrumb item', () => {
       const items = [
         { label: 'Loan Options', href: '/loan-options' },
-        { label: 'FHA Loan', href: '/loan-options/fha' }
+        { label: 'FHA Loan', href: '/loan-options/fha-home-loan' }
       ]
       
       render(<Breadcrumbs items={items} />)
@@ -136,7 +136,7 @@ describe('ARIA Labels - Requirements 7.5, 8.3', () => {
     it('should have aria-hidden on breadcrumb separators', () => {
       const items = [
         { label: 'Loan Options', href: '/loan-options' },
-        { label: 'FHA Loan', href: '/loan-options/fha' }
+        { label: 'FHA Loan', href: '/loan-options/fha-home-loan' }
       ]
       
       const { container } = render(<Breadcrumbs items={items} />)
@@ -282,7 +282,7 @@ describe('ARIA Labels - Requirements 7.5, 8.3', () => {
     })
 
     it('should highlight loan options navigation when on loan options page', () => {
-      usePathname.mockReturnValue('/loan-options/fha')
+      usePathname.mockReturnValue('/loan-options/fha-home-loan')
       render(<Header />)
       
       const loanOptionsLink = screen.getByRole('link', { name: /loan options/i })

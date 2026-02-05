@@ -98,7 +98,7 @@ describe('Property 7: Navigation Consistency', () => {
           '/blog',
           '/blog/article',
           '/loan-options',
-          '/loan-options/fha',
+          '/loan-options/fha-home-loan',
           '/about',
           '/contact'
         ),

@@ -163,26 +163,30 @@ export default async function LoanOptionPage({ params }: LoanOptionPageProps) {
               const calculator = calculatorMap[calcSlug]
               if (!calculator) return null
               return (
-                <Card
+                <Link
                   key={calcSlug}
-                  variant="outlined"
-                  padding="md"
-                  hoverable
-                  onClick={() => window.location.href = calculator.path}
-                  className={styles.calculatorCard}
+                  href={calculator.path}
+                  style={{ textDecoration: 'none' }}
                 >
-                  <Icon 
-                    icon={FaCalculator} 
-                    size="lg" 
-                    className={styles.calculatorIcon}
-                  />
-                  <span className={styles.calculatorName}>{calculator.name}</span>
-                  <Icon 
-                    icon={FaArrowRight} 
-                    size="md" 
-                    className={styles.calculatorArrow}
-                  />
-                </Card>
+                  <Card
+                    variant="outlined"
+                    padding="md"
+                    hoverable
+                    className={styles.calculatorCard}
+                  >
+                    <Icon 
+                      icon={FaCalculator} 
+                      size="lg" 
+                      className={styles.calculatorIcon}
+                    />
+                    <span className={styles.calculatorName}>{calculator.name}</span>
+                    <Icon 
+                      icon={FaArrowRight} 
+                      size="md" 
+                      className={styles.calculatorArrow}
+                    />
+                  </Card>
+                </Link>
               )
             })}
           </div>

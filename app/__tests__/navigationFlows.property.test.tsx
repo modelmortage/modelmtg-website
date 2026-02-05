@@ -55,7 +55,7 @@ describe('Property 23: Active Navigation State', () => {
       { section: 'learn', paths: ['/learn', '/learn/article'] },
       { section: 'pre-qualify', paths: ['/pre-qualify'] },
       { section: 'calculator', paths: ['/calculator', '/calculator/affordability', '/calculator/purchase', '/calculator/refinance'] },
-      { section: 'loan-options', paths: ['/loan-options', '/loan-options/fha', '/loan-options/va', '/loan-options/conventional'] },
+      { section: 'loan-options', paths: ['/loan-options', '/loan-options/fha-home-loan', '/loan-options/va', '/loan-options/conventional'] },
       { section: 'about', paths: ['/about', '/about-us'] },
       { section: 'blog', paths: ['/blog', '/blog/article-1', '/blog/article-2'] },
       { section: 'contact', paths: ['/contact'] }
@@ -454,7 +454,7 @@ describe('Property 25: Navigation Link Functionality', () => {
           '/',
           '/calculator/affordability',
           '/blog/article',
-          '/loan-options/fha',
+          '/loan-options/fha-home-loan',
           '/about',
           '/contact',
           '/pre-qualify'
@@ -570,7 +570,7 @@ describe('Integration: Complete Navigation Flow Properties', () => {
           '/',
           '/calculator/affordability',
           '/blog/article',
-          '/loan-options/fha'
+          '/loan-options/fha-home-loan'
         ),
         fc.string({ minLength: 1, maxLength: 100 }),
         fc.option(

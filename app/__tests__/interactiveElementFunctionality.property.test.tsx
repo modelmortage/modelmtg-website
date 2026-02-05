@@ -292,7 +292,7 @@ describe('Property 9: Interactive Element Functionality', () => {
           '/blog',
           '/blog/article',
           '/loan-options',
-          '/loan-options/fha',
+          '/loan-options/fha-home-loan',
           '/about',
           '/contact'
         ),

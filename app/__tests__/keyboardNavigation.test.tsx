@@ -49,7 +49,7 @@ describe('Keyboard Navigation - Unit Tests', () => {
     it('should have focus styles on breadcrumb links', () => {
       const breadcrumbItems = [
         { label: 'Loan Options', href: '/loan-options' },
-        { label: 'FHA Loans', href: '/loan-options/fha' }
+        { label: 'FHA Loans', href: '/loan-options/fha-home-loan' }
       ]
       
       const { container } = render(<Breadcrumbs items={breadcrumbItems} />)

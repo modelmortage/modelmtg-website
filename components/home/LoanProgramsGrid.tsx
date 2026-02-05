@@ -17,7 +17,7 @@ const loanPrograms = [
         title: 'FHA Loans',
         description: 'Lower down payments for first-time buyers. Government-backed security.',
         icon: FaHome,
-        link: '/loan-options/fha'
+        link: '/loan-options/fha-home-loan'
     },
     {
         title: 'VA Loans',

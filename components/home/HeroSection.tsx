@@ -80,12 +80,10 @@ export default function HeroSection() {
                                 Get Pre-Approved
                             </Button>
                         </a>
-                        <Link href="/calculator" passHref legacyBehavior>
-                            <a style={{ textDecoration: 'none' }}>
-                                <Button variant="secondary" size="lg">
-                                    Calculate Payment
-                                </Button>
-                            </a>
+                        <Link href="/calculator" style={{ textDecoration: 'none' }}>
+                            <Button variant="secondary" size="lg">
+                                Calculate Payment
+                            </Button>
                         </Link>
                     </div>
                 </div>

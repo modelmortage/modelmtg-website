@@ -80,7 +80,7 @@ describe('Property 23: Active Navigation State', () => {
         basePath: '/loan-options',
         nestedPaths: [
           '/loan-options',
-          '/loan-options/fha',
+          '/loan-options/fha-home-loan',
           '/loan-options/va',
           '/loan-options/conventional',
           '/loan-options/jumbo',
@@ -326,7 +326,7 @@ describe('Property 23: Active Navigation State', () => {
       '/calculator',
       '/calculator/affordability',
       '/loan-options',
-      '/loan-options/fha',
+      '/loan-options/fha-home-loan',
       '/about',
       '/blog',
       '/blog/article',
@@ -450,7 +450,7 @@ describe('Property 23: Active Navigation State', () => {
   it('should mark loan options as active for all loan options sub-pages', () => {
     const loanOptionPaths = [
       '/loan-options',
-      '/loan-options/fha',
+      '/loan-options/fha-home-loan',
       '/loan-options/va',
       '/loan-options/conventional',
       '/loan-options/jumbo',

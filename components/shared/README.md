@@ -56,7 +56,7 @@ export default function MyComponent() {
     <Breadcrumbs
       items={[
         { label: 'Loan Options', href: '/loan-options' },
-        { label: 'FHA Loans', href: '/loan-options/fha' }
+        { label: 'FHA Loans', href: '/loan-options/fha-home-loan' }
       ]}
     />
   )
