@@ -47,6 +47,7 @@ export interface ResultDisplayProps {
     showLegend?: boolean;
     showGrid?: boolean;
     title?: string;
+    valueFormatter?: (value: number) => string;
   };
   /** Summary data (optional) */
   summary?: ResultSummary;
@@ -93,7 +94,7 @@ function useCountUp(end: number, duration: number = 1000): number {
     const animate = (currentTime: number) => {
       if (!startTime) startTime = currentTime;
       const progress = Math.min((currentTime - startTime) / duration, 1);
-      
+
       setCount(Math.floor(progress * end));
 
       if (progress < 1) {
@@ -148,7 +149,7 @@ export const ResultDisplay: React.FC<ResultDisplayProps> = ({
         {results.map((result, index) => {
           const numericValue = typeof result.value === 'number' ? result.value : parseFloat(result.value);
           const animatedValue = useCountUp(numericValue, 800);
-          
+
           let displayValue: string;
           if (result.format === 'currency') {
             displayValue = formatCurrency(animatedValue);
@@ -187,6 +188,7 @@ export const ResultDisplay: React.FC<ResultDisplayProps> = ({
             showLegend={chartConfig.showLegend}
             showGrid={chartConfig.showGrid}
             title={chartConfig.title}
+            valueFormatter={chartConfig.valueFormatter}
             height={400}
           />
         </Card>

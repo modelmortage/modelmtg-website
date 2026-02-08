@@ -36,7 +36,7 @@ export default function CalculatorLayout({ config, children }: CalculatorLayoutP
               marginBottom: '1rem',
               color: 'var(--ivory-white)'
             }}>
-              {config.icon} <span style={{ color: 'var(--gold-main)' }}>{config.title}</span>
+              <span style={{ color: 'var(--gold-main)' }}>{config.title}</span>
             </h1>
             <p style={{
               fontSize: '1.125rem',

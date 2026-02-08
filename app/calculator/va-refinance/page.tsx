@@ -38,7 +38,7 @@ export default function VARefinanceCalculator() {
 
   const handleCalculate = () => {
     setLoading(true)
-    
+
     const numericInputs = {
       currentBalance: parseFloat(values.currentBalance) || 0,
       currentRate: parseFloat(values.currentRate) || 0,
@@ -48,7 +48,7 @@ export default function VARefinanceCalculator() {
     }
 
     const validation = validateVARefinanceInputs(numericInputs)
-    
+
     if (!validation.success) {
       setErrors(validation.errors || {})
       setLoading(false)
@@ -69,10 +69,10 @@ export default function VARefinanceCalculator() {
 
   const getChartData = (): ChartData[] => {
     if (!results) return []
-    
+
     const currentPayment = results.find(r => r.label === 'Current Monthly Payment')?.value as number || 0
     const newPayment = results.find(r => r.label === 'New Monthly Payment')?.value as number || 0
-    
+
     return [
       { category: 'Current Payment', amount: currentPayment },
       { category: 'New Payment', amount: newPayment }
@@ -81,12 +81,12 @@ export default function VARefinanceCalculator() {
 
   const getDisplayResults = () => {
     if (!results) return []
-    
+
     return results.slice(0, 4).map(result => ({
       ...result,
       icon: result.label.includes('Savings') ? <Icon icon={FaChartLine} size="lg" color="#0D9668" /> :
-            result.label.includes('New') ? <Icon icon={FaSync} size="lg" color="#8B6F14" /> :
-            result.label.includes('VA') ? <Icon icon={FaFlag} size="lg" color="#8B6F14" /> :
+        result.label.includes('New') ? <Icon icon={FaSync} size="lg" color="#8B6F14" /> :
+          result.label.includes('VA') ? <Icon icon={FaFlag} size="lg" color="#8B6F14" /> :
             <Icon icon={FaDollarSign} size="lg" color="#8B6F14" />
     }))
   }
@@ -100,7 +100,7 @@ export default function VARefinanceCalculator() {
       }}>
         <Card variant="elevated" padding="lg">
           <h2 style={{ marginBottom: '2rem', color: '#36454F' }}>VA Refinance Details</h2>
-          
+
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             <Input
               label="Current Loan Balance"
@@ -114,7 +114,7 @@ export default function VARefinanceCalculator() {
               required
               fullWidth
             />
-            
+
             <Input
               label="Current Interest Rate (%)"
               type="number"
@@ -127,7 +127,7 @@ export default function VARefinanceCalculator() {
               required
               fullWidth
             />
-            
+
             <Input
               label="New Interest Rate (%)"
               type="number"
@@ -140,7 +140,7 @@ export default function VARefinanceCalculator() {
               required
               fullWidth
             />
-            
+
             <Input
               label="Cash Out Amount"
               type="number"
@@ -153,7 +153,7 @@ export default function VARefinanceCalculator() {
               required
               fullWidth
             />
-            
+
             <Input
               label="VA Funding Fee (%)"
               type="number"
@@ -166,7 +166,7 @@ export default function VARefinanceCalculator() {
               required
               fullWidth
             />
-            
+
             <Button
               variant="primary"
               size="lg"
@@ -192,7 +192,13 @@ export default function VARefinanceCalculator() {
               xAxisKey: 'category',
               yAxisKey: 'amount',
               showLegend: false,
-              title: 'Payment Comparison'
+              title: 'Payment Comparison',
+              valueFormatter: (value: number) => new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+              }).format(value)
             }}
           />
         ) : (

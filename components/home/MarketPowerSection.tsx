@@ -1,8 +1,9 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 import { Card, Icon } from '@/components/design-system'
-import { FaChartLine, FaFire, FaArrowUp, FaCheckCircle, FaClock } from 'react-icons/fa'
+import { FaChartLine, FaFire, FaArrowUp, FaCheckCircle, FaClock, FaDownload, FaCalendarAlt, FaArrowRight } from 'react-icons/fa'
 import { useIntersectionAnimation } from '@/app/utils/animations'
 import styles from './MarketPowerSection.module.css'
 
@@ -27,107 +28,85 @@ export default function MarketPowerSection() {
     return (
         <section className={styles.section}>
             <div className={styles.container}>
-                <div 
+                <div
                     ref={headerRef as React.RefObject<HTMLDivElement>}
                     className={`${styles.header} ${headerVisible ? styles.visible : ''}`}
                 >
+                    <div className={styles.labelBadge}>UPDATED WEEKLY</div>
                     <h2>Market Intelligence</h2>
                     <p className={styles.subtitle}>
                         Real-time data. Strategic insights. Your competitive advantage.
                     </p>
                 </div>
 
-                <div 
+                <div
                     ref={gridRef as React.RefObject<HTMLDivElement>}
                     className={`${styles.dashboardGrid} ${gridVisible ? styles.visible : ''}`}
                 >
                     {/* Live Rate Ticker */}
-                    <Card variant="elevated" padding="lg" className={`${styles.card} ${styles.rateTicker}`}>
+                    <div className={styles.card}>
                         <div className={styles.cardHeader}>
-                            <h3>Current Rates</h3>
+                            <h3>30-Year Fixed</h3>
                             <span className={styles.liveDot}>● LIVE</span>
                         </div>
                         <div className={styles.rateDisplay}>
                             <span className={styles.rateNumber}>{rate.toFixed(3)}%</span>
-                            <span className={styles.rateLabel}>30-Year Fixed</span>
+                            <span className={styles.rateLabel}>Trending Flat</span>
                         </div>
-                        <div className={styles.rateChange}>
-                            <span className={styles.changePositive}>
-                                <Icon icon={FaChartLine} size="sm" /> +0.125%
-                            </span>
-                            <span className={styles.changeTime}>Updated 2 min ago</span>
+                        <div className={styles.cardFooter}>
+                            Updated 2 min ago
                         </div>
-                    </Card>
+                    </div>
 
                     {/* Houston Heatmap */}
-                    <Card variant="elevated" padding="lg" className={`${styles.card} ${styles.heatmap}`}>
+                    <div className={styles.card}>
                         <div className={styles.cardHeader}>
-                            <h3>Houston Market Heat</h3>
+                            <h3>Houston Heatmap</h3>
                         </div>
                         <div className={styles.heatmapGrid}>
-                            <div className={`${styles.zone} ${styles.zoneHot}`}>
+                            <div className={styles.zoneRow}>
                                 <span className={styles.zoneName}>Heights</span>
-                                <span className={styles.zoneTemp}>
-                                    <Icon icon={FaFire} size="sm" /> Hot
-                                </span>
+                                <span className={styles.zoneHot}><FaFire /> Hot</span>
                             </div>
-                            <div className={`${styles.zone} ${styles.zoneWarm}`}>
+                            <div className={styles.zoneRow}>
                                 <span className={styles.zoneName}>Katy</span>
-                                <span className={styles.zoneTemp}>
-                                    <Icon icon={FaArrowUp} size="sm" /> Warm
-                                </span>
+                                <span className={styles.zoneWarm}><FaArrowUp /> Warm</span>
                             </div>
-                            <div className={`${styles.zone} ${styles.zoneCool}`}>
+                            <div className={styles.zoneRow}>
                                 <span className={styles.zoneName}>Sugar Land</span>
-                                <span className={styles.zoneTemp}>
-                                    <Icon icon={FaCheckCircle} size="sm" /> Stable
-                                </span>
-                            </div>
-                            <div className={`${styles.zone} ${styles.zoneWarm}`}>
-                                <span className={styles.zoneName}>Pearland</span>
-                                <span className={styles.zoneTemp}>
-                                    <Icon icon={FaArrowUp} size="sm" /> Warm
-                                </span>
+                                <span className={styles.zoneStable}><FaCheckCircle /> Stable</span>
                             </div>
                         </div>
-                    </Card>
-
-                    {/* Equity Growth Chart */}
-                    <Card variant="elevated" padding="lg" className={`${styles.card} ${styles.equityChart}`}>
-                        <div className={styles.cardHeader}>
-                            <h3>Avg Equity Growth</h3>
-                        </div>
-                        <div className={styles.chartContainer}>
-                            <div className={styles.chartBars}>
-                                <div className={styles.bar} style={{ height: '40%' }}><span>Year 1</span></div>
-                                <div className={styles.bar} style={{ height: '55%' }}><span>Year 3</span></div>
-                                <div className={styles.bar} style={{ height: '70%' }}><span>Year 5</span></div>
-                                <div className={styles.bar} style={{ height: '90%' }}><span>Year 10</span></div>
-                            </div>
-                            <div className={styles.chartValue}>
-                                <span className={styles.valueNumber}>+$127K</span>
-                                <span className={styles.valueLabel}>Houston Avg (10yr)</span>
-                            </div>
-                        </div>
-                    </Card>
+                    </div>
 
                     {/* Closing Timer */}
-                    <Card variant="elevated" padding="lg" className={`${styles.card} ${styles.closingTimer}`}>
+                    <div className={styles.card}>
                         <div className={styles.cardHeader}>
                             <h3>Avg Close Time</h3>
                         </div>
                         <div className={styles.timerDisplay}>
-                            <Icon icon={FaClock} size="xl" color="#D4AF37" />
                             <div className={styles.timerNumber}>{closingDays}</div>
                             <div className={styles.timerLabel}>Days</div>
                         </div>
                         <div className={styles.timerComparison}>
-                            <span className={styles.comparisonText}>vs Industry: 45 days</span>
-                            <span className={styles.comparisonStat}>60% Faster</span>
+                            vs Industry: 45 days
                         </div>
-                    </Card>
+                    </div>
+                </div>
+
+                {/* NEW CTAs */}
+                <div className={styles.ctaRow}>
+                    <button className="btn btn-secondary">
+                        <FaDownload /> Download Weekly Brief (PDF)
+                    </button>
+                    <Link href="/strategy" passHref legacyBehavior>
+                        <a className="btn-link-gold">
+                            Schedule Strategy Call <FaArrowRight />
+                        </a>
+                    </Link>
                 </div>
             </div>
         </section>
     )
 }
+

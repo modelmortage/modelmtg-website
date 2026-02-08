@@ -13,33 +13,34 @@ interface Milestone {
 
 const milestones: Milestone[] = [
     {
-        year: '2008',
-        title: 'Started Career in Mortgage Finance',
-        description: 'Began journey in mortgage industry during market transformation'
-    },
-    {
         year: '2012',
-        title: 'Founded Model Mortgage',
-        description: 'Established boutique mortgage brokerage in Houston',
+        title: 'Model Mortgage Founded',
+        description: 'Established as a boutique brokerage for complex financial profiles.',
         amount: '$50M'
     },
     {
         year: '2016',
-        title: 'Expanded to Luxury Market',
-        description: 'Specialized in high-value residential financing',
+        title: 'Luxury & Investor Division',
+        description: 'Expanded specialized lending for high-net-worth real estate portfolios.',
         amount: '$150M'
     },
     {
         year: '2020',
-        title: 'Digital Transformation',
-        description: 'Pioneered tech-forward mortgage experience',
+        title: 'Dedicated Processing Team',
+        description: 'Built in-house operations to ensure 18-day closing averages.',
         amount: '$325M'
     },
     {
-        year: '2024',
-        title: 'Market Leader',
-        description: 'Recognized as top Houston mortgage strategist',
+        year: '2023',
+        title: '$500M+ Funded Milestone',
+        description: 'Reached half a billion in funded residential and investment loans.',
         amount: '$500M+'
+    },
+    {
+        year: '2025',
+        title: '5,000+ Clients Served',
+        description: 'Continuing to set the standard for strategic mortgage planning in Texas.',
+        amount: '5000+'
     }
 ]
 
@@ -92,11 +93,11 @@ export default function AuthorityTimeline() {
     return (
         <section className={styles.section}>
             <div className={styles.container}>
-                <div 
+                <div
                     ref={headerRef as React.RefObject<HTMLDivElement>}
                     className={`${styles.header} ${headerVisible ? styles.visible : ''}`}
                 >
-                    <h2>Track Record of Excellence</h2>
+                    <h2>Company Growth & Milestones</h2>
                     <div className={styles.totalFunded}>
                         <span className={styles.fundedAmount}>${totalFunded}M+</span>
                         <span className={styles.fundedLabel}>Total Funded</span>

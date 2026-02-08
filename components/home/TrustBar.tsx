@@ -9,48 +9,37 @@ export default function TrustBar() {
     const { ref, isVisible } = useIntersectionAnimation({ threshold: 0.3 })
 
     return (
-        <section 
+        <section
             ref={ref as React.RefObject<HTMLElement>}
             className={`${styles.trustBar} ${isVisible ? styles.visible : ''}`}
         >
             <div className={styles.container}>
                 <div className={styles.trustItem}>
-                    <div className={styles.stars}>
-                        <Icon icon={FaStar} size="sm" color="#D4AF37" ariaLabel="5 star rating" />
-                        <Icon icon={FaStar} size="sm" color="#D4AF37" />
-                        <Icon icon={FaStar} size="sm" color="#D4AF37" />
-                        <Icon icon={FaStar} size="sm" color="#D4AF37" />
-                        <Icon icon={FaStar} size="sm" color="#D4AF37" />
-                    </div>
-                    <p className={styles.trustText}>5.0 Google Rating</p>
+                    <p className={styles.trustText}>Licensed & Insured</p>
                 </div>
 
                 <div className={styles.divider}></div>
 
                 <div className={styles.trustItem}>
-                    <p className={styles.trustNumber}>$500M+</p>
-                    <p className={styles.trustText}>Loans Funded</p>
+                    <p className={styles.trustText}>NMLS Certified</p>
                 </div>
 
                 <div className={styles.divider}></div>
 
                 <div className={styles.trustItem}>
-                    <p className={styles.trustNumber}>5,000+</p>
-                    <p className={styles.trustText}>Happy Clients</p>
+                    <p className={styles.trustText}>5,000+ Clients Served</p>
                 </div>
 
                 <div className={styles.divider}></div>
 
                 <div className={styles.trustItem}>
-                    <p className={styles.trustNumber}>18 Days</p>
-                    <p className={styles.trustText}>Avg Close Time</p>
+                    <p className={styles.trustText}>$500M+ Funded</p>
                 </div>
 
                 <div className={styles.divider}></div>
 
                 <div className={styles.trustItem}>
-                    <p className={styles.trustNumber}>15+ Years</p>
-                    <p className={styles.trustText}>Experience</p>
+                    <p className={styles.trustText}>Houston-Based Team</p>
                 </div>
             </div>
         </section>

@@ -1,10 +1,10 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { 
-    FaPhone, 
-    FaEnvelope, 
-    FaFacebook, 
-    FaInstagram, 
+import {
+    FaPhone,
+    FaEnvelope,
+    FaFacebook,
+    FaInstagram,
     FaLinkedin,
     FaHome,
     FaFileAlt,
@@ -85,8 +85,8 @@ export default function Footer() {
                             <span>info@modelmortgage.com</span>
                         </a>
                         <div className={styles.socialIcons}>
-                            <a 
-                                href="https://www.facebook.com/modelmortgage" 
+                            <a
+                                href="https://www.facebook.com/modelmortgage"
                                 aria-label="Follow us on Facebook"
                                 className={styles.socialIcon}
                                 target="_blank"
@@ -94,8 +94,8 @@ export default function Footer() {
                             >
                                 <Icon icon={FaFacebook} size="md" ariaLabel="" />
                             </a>
-                            <a 
-                                href="https://www.instagram.com/modelmortgage" 
+                            <a
+                                href="https://www.instagram.com/modelmortgage"
                                 aria-label="Follow us on Instagram"
                                 className={styles.socialIcon}
                                 target="_blank"
@@ -103,8 +103,8 @@ export default function Footer() {
                             >
                                 <Icon icon={FaInstagram} size="md" ariaLabel="" />
                             </a>
-                            <a 
-                                href="https://www.linkedin.com/company/modelmortgage" 
+                            <a
+                                href="https://www.linkedin.com/company/modelmortgage"
                                 aria-label="Connect with us on LinkedIn"
                                 className={styles.socialIcon}
                                 target="_blank"
@@ -120,6 +120,12 @@ export default function Footer() {
 
                 {/* Bottom Section */}
                 <div className={styles.bottomSection}>
+
+                    {/* BRAND STAMP */}
+                    <div className={styles.brandStamp}>
+                        MODEL MORTGAGE — STRATEGIC MORTGAGE PLANNING
+                    </div>
+
                     <div className={styles.legalLinks}>
                         <Link href="/privacy-policy">Privacy Policy</Link>
                         <span className={styles.separator}>|</span>
@@ -128,23 +134,24 @@ export default function Footer() {
                         <Link href="/ada-accessibility-statement">ADA Accessibility</Link>
                     </div>
 
-                    <div className={styles.certifications}>
-                        <div className={styles.cert}>
+                    <div className={styles.complianceStrip}>
+                        <div className={styles.complianceItem}>
                             <Icon icon={FaHome} size="sm" ariaLabel="" />
-                            <p>Equal Housing Opportunity</p>
+                            <span>Equal Housing Opportunity</span>
                         </div>
-                        <div className={styles.cert}>
+                        <span className={styles.complianceDivider}>/</span>
+                        <div className={styles.complianceItem}>
                             <Icon icon={FaCertificate} size="sm" ariaLabel="" />
-                            <p>NMLS #2518610</p>
+                            <span>NMLS #2518610</span>
                         </div>
-                        <div className={styles.cert}>
-                            <Icon icon={FaLock} size="sm" ariaLabel="" />
-                            <p>SSL Certified</p>
+                        <span className={styles.complianceDivider}>/</span>
+                        <div className={styles.complianceItem}>
+                            <span>1177 West Loop South, Suite 1700, Houston, TX 77027</span>
                         </div>
                     </div>
 
                     <p className={styles.copyright}>
-                        © {currentYear} Model Mortgage. All rights reserved.
+                        © {currentYear} Model Mortgage. All rights reserved. Rates subject to change.
                     </p>
                 </div>
             </div>

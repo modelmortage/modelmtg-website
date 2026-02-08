@@ -9,109 +9,94 @@ import styles from './HeroSection.module.css'
 
 export default function HeroSection() {
     const heroRef = useRef<HTMLDivElement>(null)
-    const { ref: contentRef, isVisible: contentVisible } = useIntersectionAnimation({ threshold: 0.2 })
-    const { ref: portraitRef, isVisible: portraitVisible } = useIntersectionAnimation({ threshold: 0.2 })
-
-    useEffect(() => {
-        // Particle animation
-        const createParticle = () => {
-            if (!heroRef.current) return
-
-            const particle = document.createElement('div')
-            particle.className = styles.particle
-            particle.style.left = Math.random() * 100 + '%'
-            particle.style.animationDelay = Math.random() * 3 + 's'
-            particle.style.animationDuration = (Math.random() * 3 + 2) + 's'
-
-            heroRef.current.appendChild(particle)
-
-            setTimeout(() => {
-                particle.remove()
-            }, 5000)
-        }
-
-        const particleInterval = setInterval(createParticle, 300)
-
-        return () => {
-            clearInterval(particleInterval)
-        }
-    }, [])
+    const { ref: contentRef, isVisible: contentVisible } = useIntersectionAnimation({ threshold: 0.1 })
 
     return (
         <section ref={heroRef} className={styles.hero}>
-            {/* Animated Gold Light Rays */}
-            <div className={styles.lightRay1}></div>
-            <div className={styles.lightRay2}></div>
-            <div className={styles.lightRay3}></div>
+            {/* Background Layers */}
+            <div className={styles.bgImage}></div>
+            <div className={styles.bgOverlay}></div>
+            <div className="motif-security-paper"></div>
 
-            {/* Content */}
-            <div className={styles.content}>
-                <div 
-                    ref={contentRef as React.RefObject<HTMLDivElement>}
-                    className={`${styles.textContent} ${contentVisible ? styles.visible : ''}`}
-                >
+            <div className={`${styles.container} ${contentVisible ? styles.visible : ''}`} ref={contentRef as React.RefObject<HTMLDivElement>}>
+
+                {/* LEFT: STRATEGIC COPY */}
+                <div className={styles.leftContent}>
                     <h1 className={styles.headline}>
-                        <span className={styles.goldAccent}>Strategic</span> Mortgage Planning
-                        <br />
-                        for Buyers Who Refuse to Lose
+                        Strategic Mortgage Planning for <span className={styles.goldText}>Houston Buyers & Investors</span>
                     </h1>
 
-                    <h2 className={styles.seoSubHeadline}>
-                        Houston's Premier Mortgage Broker for Home Buyers, Investors & Luxury Properties
+                    <h2 className={styles.subheadline}>
+                        A boutique lending team built for speed, leverage, and certainty — from pre-approval to closing table.
                     </h2>
 
-                    <p className={styles.powerQuote}>
-                        This is not a rate quote. This is a financial strategy.
-                    </p>
-
-                    <p className={styles.subheadline}>
-                        Elite mortgage brokerage in Houston, TX. Institutional expertise,
-                        boutique service, unmatched results.
-                    </p>
-
                     <div className={styles.ctaGroup}>
-                        <a 
-                            href="https://2516810.my1003app.com/?time=1702581789975" 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            style={{ textDecoration: 'none' }}
-                        >
-                            <Button variant="primary" size="lg">
-                                Get Pre-Approved
-                            </Button>
-                        </a>
-                        <Link href="/calculator" style={{ textDecoration: 'none' }}>
-                            <Button variant="secondary" size="lg">
-                                Calculate Payment
-                            </Button>
+                        <Link href="/apply" passHref legacyBehavior>
+                            <a className="btn btn-primary" style={{ minWidth: '200px' }}>
+                                Apply Online
+                            </a>
                         </Link>
+                        <Link href="/pre-qualify" passHref legacyBehavior>
+                            <a className="btn btn-secondary" style={{ minWidth: '200px' }}>
+                                Pre-Qualify
+                            </a>
+                        </Link>
+                    </div>
+
+                    {/* MICRO TRUST STRIP */}
+                    <div className={styles.trustStrip}>
+                        <div className={styles.trustItem}>
+                            <span className={styles.trustValue}>$500M+</span>
+                            <span className={styles.trustLabel}>Funded</span>
+                        </div>
+                        <div className={styles.trustDivider}></div>
+                        <div className={styles.trustItem}>
+                            <span className={styles.trustValue}>18 Days</span>
+                            <span className={styles.trustLabel}>Avg Close</span>
+                        </div>
+                        <div className={styles.trustDivider}></div>
+                        <div className={styles.trustItem}>
+                            <span className={styles.trustValue}>5.0</span>
+                            <span className={styles.trustLabel}>★★★★★</span>
+                        </div>
                     </div>
                 </div>
 
-                {/* Professional Portrait */}
-                <div 
-                    ref={portraitRef as React.RefObject<HTMLDivElement>}
-                    className={`${styles.portraitContainer} ${portraitVisible ? styles.visible : ''}`}
-                >
-                    <div className={styles.portraitPlaceholder}>
-                        <div className={styles.portraitGlow}></div>
-                        <div className={styles.portraitImage}>
-                            <Image
-                                src="/matthew-bramow.png"
-                                alt="Matthew Bramow - Houston Mortgage Strategist"
-                                width={500}
-                                height={667}
-                                priority
-                                className={styles.portrait}
-                            />
+                {/* RIGHT: VISUAL + DEAL DESK */}
+                <div className={styles.rightVisual}>
+                    <div className={styles.visualContainer}>
+                        {/* Placeholder for Cinematic Video/Image - Darkened for Luxury Feel */}
+                        <div className={styles.placeholderBg}></div>
+
+                        {/* DEAL DESK OVERLAY */}
+                        <div className={styles.dealDeskCard}>
+                            <div className={styles.cardHeader}>
+                                <span className={styles.liveDot}></span>
+                                MARKET SNAPSHOT
+                            </div>
+                            <div className={styles.cardRow}>
+                                <span>30-Year Fixed</span>
+                                <span className={styles.cardValue}>Trending Flat</span>
+                            </div>
+                            <div className={styles.cardSeparator}></div>
+                            <div className={styles.cardRow}>
+                                <span>Avg Close Time</span>
+                                <span className={styles.cardValue}>18 Days</span>
+                            </div>
+                            <div className={styles.cardSeparator}></div>
+                            <div className={styles.cardRow}>
+                                <span>Investor Activity</span>
+                                <span className={styles.cardValue}>High Demand</span>
+                            </div>
+
+                            <div className={styles.approvalBadge}>
+                                HOUSTON LUXURY CERTIFIED
+                            </div>
                         </div>
-                    </div>
-                    <div className={styles.portraitCaption}>
-                        <div className={styles.portraitName}>MATTHEW BRAMOW</div>
-                        <div className={styles.portraitTitle}>CEO | Mortgage Broker</div>
                     </div>
                 </div>
             </div>
         </section>
     )
 }
+

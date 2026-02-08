@@ -38,7 +38,7 @@ export default function AffordabilityCalculator() {
 
   const handleCalculate = () => {
     setLoading(true)
-    
+
     // Convert string values to numbers
     const numericInputs = {
       annualIncome: parseFloat(values.annualIncome) || 0,
@@ -49,7 +49,7 @@ export default function AffordabilityCalculator() {
 
     // Validate inputs
     const validation = validateAffordabilityInputs(numericInputs)
-    
+
     if (!validation.success) {
       setErrors(validation.errors || {})
       setLoading(false)
@@ -72,11 +72,11 @@ export default function AffordabilityCalculator() {
   // Prepare chart data from results
   const getChartData = (): ChartData[] => {
     if (!results) return []
-    
+
     const maxHomePrice = results.find(r => r.label === 'Maximum Home Price')?.value as number || 0
     const downPayment = parseFloat(values.downPayment) || 0
     const loanAmount = maxHomePrice - downPayment
-    
+
     return [
       { category: 'Down Payment', amount: downPayment },
       { category: 'Loan Amount', amount: loanAmount }
@@ -86,12 +86,12 @@ export default function AffordabilityCalculator() {
   // Get key metrics for display
   const getDisplayResults = () => {
     if (!results) return []
-    
+
     return results.slice(0, 4).map(result => ({
       ...result,
       icon: result.label.includes('Home Price') ? <Icon icon={FaHome} size="lg" color="#8B6F14" /> :
-            result.label.includes('Payment') ? <Icon icon={FaDollarSign} size="lg" color="#8B6F14" /> :
-            result.label.includes('Income') ? <Icon icon={FaCreditCard} size="lg" color="#8B6F14" /> :
+        result.label.includes('Payment') ? <Icon icon={FaDollarSign} size="lg" color="#8B6F14" /> :
+          result.label.includes('Income') ? <Icon icon={FaCreditCard} size="lg" color="#8B6F14" /> :
             <Icon icon={FaChartPie} size="lg" color="#8B6F14" />
     }))
   }
@@ -106,7 +106,7 @@ export default function AffordabilityCalculator() {
         {/* Input Form */}
         <Card variant="elevated" padding="lg">
           <h2 style={{ marginBottom: '2rem', color: '#36454F' }}>Your Information</h2>
-          
+
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             <Input
               label="Annual Gross Income"
@@ -120,7 +120,7 @@ export default function AffordabilityCalculator() {
               required
               fullWidth
             />
-            
+
             <Input
               label="Monthly Debts"
               type="number"
@@ -133,7 +133,7 @@ export default function AffordabilityCalculator() {
               required
               fullWidth
             />
-            
+
             <Input
               label="Down Payment"
               type="number"
@@ -146,7 +146,7 @@ export default function AffordabilityCalculator() {
               required
               fullWidth
             />
-            
+
             <Input
               label="Interest Rate (%)"
               type="number"
@@ -159,7 +159,7 @@ export default function AffordabilityCalculator() {
               required
               fullWidth
             />
-            
+
             <Button
               variant="primary"
               size="lg"
@@ -186,7 +186,13 @@ export default function AffordabilityCalculator() {
               xAxisKey: 'category',
               yAxisKey: 'amount',
               showLegend: true,
-              title: 'Home Price Breakdown'
+              title: 'Home Price Breakdown',
+              valueFormatter: (value: number) => new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+              }).format(value)
             }}
           />
         ) : (

@@ -1,12 +1,14 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import HeroSection from '@/components/home/HeroSection'
-import TrustBar from '@/components/home/TrustBar'
+import PerformanceMetrics from '@/components/home/PerformanceMetrics'
+import ClientProfiles from '@/components/home/ClientProfiles'
+import AdvantageSection from '@/components/home/AdvantageSection'
+import HowWeWinSection from '@/components/home/HowWeWinSection'
 import MarketPowerSection from '@/components/home/MarketPowerSection'
-import AuthorityTimeline from '@/components/home/AuthorityTimeline'
-import LoanProgramsGrid from '@/components/home/LoanProgramsGrid'
-import PersonalBrandSection from '@/components/home/PersonalBrandSection'
+import TeamPreviewSection from '@/components/home/TeamPreviewSection'
 import TrustStackWall from '@/components/home/TrustStackWall'
+import CinematicCTA from '@/components/home/CinematicCTA'
 import Link from 'next/link'
 import { Button } from '@/components/design-system'
 
@@ -24,12 +26,14 @@ export default function Home() {
             <Header />
             <main id="main-content">
                 <HeroSection />
-                <TrustBar />
-                <LoanProgramsGrid />
+                <PerformanceMetrics />
+                <ClientProfiles />
+                <AdvantageSection />
+                <HowWeWinSection />
                 <MarketPowerSection />
-                <AuthorityTimeline />
+                <TeamPreviewSection />
                 <TrustStackWall />
-                <PersonalBrandSection />
+                <CinematicCTA />
             </main>
             <Footer />
 
@@ -41,17 +45,14 @@ export default function Home() {
                     right: '2rem',
                     zIndex: 1000,
                 }}
+                className="sticky-cta-container"
             >
-                <a
-                    href="https://2516810.my1003app.com/?time=1702581789975"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ textDecoration: 'none' }}
-                >
-                    <Button variant="primary" size="lg">
-                        Get Pre-Approved
-                    </Button>
-                </a>
+                <Link href="/contact" passHref legacyBehavior>
+                    <a className="btn-glass-pill" style={{ textDecoration: 'none' }}>
+                        <span style={{ width: '8px', height: '8px', background: '#1FB6A6', borderRadius: '50%', display: 'inline-block' }}></span>
+                        Schedule Call
+                    </a>
+                </Link>
             </div>
 
             {/* Structured Data - Organization Schema */}

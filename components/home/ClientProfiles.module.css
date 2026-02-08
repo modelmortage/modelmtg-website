@@ -1,0 +1,251 @@
+/* === EDITORIAL LAYOUT === */
+.section {
+    padding: 8rem 2rem;
+    background: var(--midnight-black);
+    position: relative;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 6rem;
+    position: relative;
+    z-index: 10;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-out;
+}
+
+.container.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* LEFT CONTENT */
+.leftContent {
+    position: sticky;
+    top: 100px;
+    align-self: start;
+}
+
+.headline {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    line-height: 1.1;
+    color: var(--ivory-white);
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+.goldText {
+    color: var(--gold-main);
+    background: linear-gradient(135deg, #e4c27a, #c79c4c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-style: italic;
+}
+
+.subtext {
+    font-family: var(--font-sans);
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 3rem;
+    max-width: 450px;
+}
+
+.ctaWrapper {
+    display: flex;
+}
+
+.linkButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--gold-main);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 4px;
+    font-size: 0.9375rem;
+}
+
+.linkButton:hover {
+    gap: 1.25rem;
+    color: #fff;
+    border-color: var(--gold-main);
+}
+
+.arrowIcon {
+    font-size: 0.875rem;
+    transition: transform 0.3s ease;
+}
+
+.linkButton:hover .arrowIcon {
+    transform: translateX(5px);
+}
+
+/* RIGHT LIST (ROSTER STYLE) */
+.rightList {
+    display: flex;
+    flex-direction: column;
+}
+
+.listItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.listItem:first-child {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.listItem:hover {
+    border-color: var(--gold-main);
+    padding-left: 2rem;
+    background: linear-gradient(90deg, rgba(200, 154, 91, 0.05), transparent);
+}
+
+.itemHeader {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.icon {
+    font-size: 1.75rem;
+    opacity: 0.7;
+    transition: transform 0.3s ease;
+    filter: grayscale(100%);
+}
+
+.listItem:hover .icon {
+    transform: scale(1.1);
+    opacity: 1;
+    filter: none;
+}
+
+.itemTitle {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--ivory-white);
+    letter-spacing: -0.01em;
+}
+
+.itemMeta {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.itemDesc {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.5);
+    max-width: 350px;
+    text-align: right;
+    transition: color 0.3s ease;
+    line-height: 1.5;
+}
+
+.listItem:hover .itemDesc {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.itemArrow {
+    color: var(--gold-main);
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+    font-size: 1.25rem;
+}
+
+.listItem:hover .itemArrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .container {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    .leftContent {
+        position: relative;
+        top: 0;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+
+    .subtext {
+        text-align: center;
+        margin: 0 auto 2rem;
+    }
+
+    .itemMeta {
+        display: none;
+        /* Hide desc on tablet to save space */
+    }
+
+    .listItem:hover {
+        padding-left: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: 5rem 1.5rem;
+    }
+
+    .headline {
+        font-size: 2.5rem;
+    }
+
+    .listItem {
+        padding: 1.5rem 0;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .itemMeta {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+
+    .itemDesc {
+        text-align: left;
+        font-size: 0.875rem;
+        max-width: 100%;
+    }
+
+    .itemArrow {
+        display: none;
+    }
+
+    .listItem:hover {
+        padding-left: 0;
+        background: none;
+        border-color: var(--gold-main);
+    }
+}

@@ -41,7 +41,7 @@ export default function PurchaseCalculator() {
 
   const handleCalculate = () => {
     setLoading(true)
-    
+
     // Convert string values to numbers
     const numericInputs = {
       homePrice: parseFloat(values.homePrice) || 0,
@@ -55,7 +55,7 @@ export default function PurchaseCalculator() {
 
     // Validate inputs
     const validation = validatePurchaseInputs(numericInputs)
-    
+
     if (!validation.success) {
       setErrors(validation.errors || {})
       setLoading(false)
@@ -78,12 +78,12 @@ export default function PurchaseCalculator() {
   // Prepare chart data for monthly payment breakdown
   const getChartData = (): ChartData[] => {
     if (!results) return []
-    
+
     const principalInterest = results.find(r => r.label === 'Principal & Interest')?.value as number || 0
     const propertyTax = results.find(r => r.label === 'Property Taxes')?.value as number || 0
     const insurance = results.find(r => r.label === 'Homeowners Insurance')?.value as number || 0
     const hoa = results.find(r => r.label === 'HOA Fees')?.value as number || 0
-    
+
     return [
       { category: 'Principal & Interest', amount: principalInterest },
       { category: 'Property Taxes', amount: propertyTax },
@@ -95,14 +95,14 @@ export default function PurchaseCalculator() {
   // Get key metrics for display
   const getDisplayResults = () => {
     if (!results) return []
-    
+
     return results.slice(0, 5).map(result => ({
       ...result,
       icon: result.label.includes('Total Monthly') ? <Icon icon={FaDollarSign} size="lg" color="#8B6F14" /> :
-            result.label.includes('Principal') ? <Icon icon={FaHome} size="lg" color="#8B6F14" /> :
-            result.label.includes('Tax') ? <Icon icon={FaFileInvoiceDollar} size="lg" color="#8B6F14" /> :
+        result.label.includes('Principal') ? <Icon icon={FaHome} size="lg" color="#8B6F14" /> :
+          result.label.includes('Tax') ? <Icon icon={FaFileInvoiceDollar} size="lg" color="#8B6F14" /> :
             result.label.includes('Insurance') ? <Icon icon={FaShieldAlt} size="lg" color="#8B6F14" /> :
-            <Icon icon={FaBuilding} size="lg" color="#8B6F14" />
+              <Icon icon={FaBuilding} size="lg" color="#8B6F14" />
     }))
   }
 
@@ -116,7 +116,7 @@ export default function PurchaseCalculator() {
         {/* Input Form */}
         <Card variant="elevated" padding="lg">
           <h2 style={{ marginBottom: '2rem', color: '#36454F' }}>Loan Details</h2>
-          
+
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             <Input
               label="Home Price"
@@ -130,7 +130,7 @@ export default function PurchaseCalculator() {
               required
               fullWidth
             />
-            
+
             <Input
               label="Down Payment"
               type="number"
@@ -143,7 +143,7 @@ export default function PurchaseCalculator() {
               required
               fullWidth
             />
-            
+
             <Input
               label="Interest Rate (%)"
               type="number"
@@ -156,7 +156,7 @@ export default function PurchaseCalculator() {
               required
               fullWidth
             />
-            
+
             <Input
               label="Loan Term (years)"
               type="number"
@@ -169,7 +169,7 @@ export default function PurchaseCalculator() {
               required
               fullWidth
             />
-            
+
             <Input
               label="Property Tax Rate (%)"
               type="number"
@@ -182,7 +182,7 @@ export default function PurchaseCalculator() {
               required
               fullWidth
             />
-            
+
             <Input
               label="Annual Insurance"
               type="number"
@@ -195,7 +195,7 @@ export default function PurchaseCalculator() {
               required
               fullWidth
             />
-            
+
             <Input
               label="Monthly HOA Fees"
               type="number"
@@ -208,7 +208,7 @@ export default function PurchaseCalculator() {
               required
               fullWidth
             />
-            
+
             <Button
               variant="primary"
               size="lg"
@@ -235,7 +235,13 @@ export default function PurchaseCalculator() {
               xAxisKey: 'category',
               yAxisKey: 'amount',
               showLegend: true,
-              title: 'Monthly Payment Breakdown'
+              title: 'Monthly Payment Breakdown',
+              valueFormatter: (value: number) => new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+              }).format(value)
             }}
           />
         ) : (

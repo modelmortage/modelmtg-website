@@ -135,6 +135,20 @@
 
 .bottomSection {
     text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 3rem;
+    margin-top: 3rem;
+}
+
+.brandStamp {
+    font-family: var(--font-serif);
+    font-size: 0.875rem;
+    letter-spacing: 2px;
+    color: var(--gold-main);
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    opacity: 0.9;
 }
 
 .legalLinks {
@@ -143,21 +157,17 @@
     justify-content: center;
     gap: 1rem;
     flex-wrap: wrap;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .legalLinks a {
     font-family: var(--font-sans);
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
     color: var(--ivory-white);
     text-decoration: none;
-    opacity: 0.7;
+    opacity: 0.6;
     transition: all var(--transition-fast);
-    /* Ensure adequate touch target size */
-    padding: 8px 12px;
-    min-height: 44px;
-    display: inline-flex;
-    align-items: center;
+    padding: 4px 8px;
 }
 
 .legalLinks a:hover {
@@ -165,47 +175,35 @@
     opacity: 1;
 }
 
-.legalLinks a:focus {
-    outline: 2px solid var(--gold-main);
-    outline-offset: 2px;
-    color: var(--gold-main);
-    opacity: 1;
+.complianceStrip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.4);
 }
 
-.separator {
+.complianceItem {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.complianceDivider {
     color: var(--gold-main);
     opacity: 0.3;
 }
 
-.certifications {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-    margin-bottom: 2rem;
-}
-
-.cert {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.cert p {
-    font-family: var(--font-sans);
-    font-size: 0.8125rem;
-    color: var(--gold-light);
-    margin: 0;
-    opacity: 0.9;
-}
-
 .copyright {
     font-family: var(--font-sans);
-    font-size: 0.8125rem;
+    font-size: 0.75rem;
     color: var(--ivory-white);
-    opacity: 0.5;
-    margin-top: 2rem;
+    opacity: 0.3;
+    margin-top: 1rem;
 }
 
 /* Tablet layout - Two columns */

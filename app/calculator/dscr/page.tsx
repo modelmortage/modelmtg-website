@@ -38,7 +38,7 @@ export default function DSCRCalculator() {
 
   const handleCalculate = () => {
     setLoading(true)
-    
+
     const numericInputs = {
       propertyPrice: parseFloat(values.propertyPrice) || 0,
       downPayment: parseFloat(values.downPayment) || 0,
@@ -48,7 +48,7 @@ export default function DSCRCalculator() {
     }
 
     const validation = validateDSCRInputs(numericInputs)
-    
+
     if (!validation.success) {
       setErrors(validation.errors || {})
       setLoading(false)
@@ -69,11 +69,11 @@ export default function DSCRCalculator() {
 
   const getChartData = (): ChartData[] => {
     if (!results) return []
-    
+
     const monthlyRent = parseFloat(values.monthlyRent) || 0
     const monthlyExpenses = parseFloat(values.monthlyExpenses) || 0
     const monthlyPayment = results.find(r => r.label === 'Monthly Payment')?.value as number || 0
-    
+
     return [
       { category: 'Rental Income', amount: monthlyRent },
       { category: 'Expenses', amount: monthlyExpenses },
@@ -83,12 +83,12 @@ export default function DSCRCalculator() {
 
   const getDisplayResults = () => {
     if (!results) return []
-    
+
     return results.slice(0, 4).map(result => ({
       ...result,
       icon: result.label.includes('DSCR') ? <Icon icon={FaChartPie} size="lg" color="#8B6F14" /> :
-            result.label.includes('Income') ? <Icon icon={FaKey} size="lg" color="#0D9668" /> :
-            result.label.includes('Payment') ? <Icon icon={FaDollarSign} size="lg" color="#8B6F14" /> :
+        result.label.includes('Income') ? <Icon icon={FaKey} size="lg" color="#0D9668" /> :
+          result.label.includes('Payment') ? <Icon icon={FaDollarSign} size="lg" color="#8B6F14" /> :
             <Icon icon={FaBuilding} size="lg" color="#8B6F14" />
     }))
   }
@@ -102,7 +102,7 @@ export default function DSCRCalculator() {
       }}>
         <Card variant="elevated" padding="lg">
           <h2 style={{ marginBottom: '2rem', color: '#36454F' }}>Investment Property Details</h2>
-          
+
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             <Input
               label="Property Price"
@@ -116,7 +116,7 @@ export default function DSCRCalculator() {
               required
               fullWidth
             />
-            
+
             <Input
               label="Down Payment"
               type="number"
@@ -129,7 +129,7 @@ export default function DSCRCalculator() {
               required
               fullWidth
             />
-            
+
             <Input
               label="Interest Rate (%)"
               type="number"
@@ -142,7 +142,7 @@ export default function DSCRCalculator() {
               required
               fullWidth
             />
-            
+
             <Input
               label="Monthly Rent"
               type="number"
@@ -155,7 +155,7 @@ export default function DSCRCalculator() {
               required
               fullWidth
             />
-            
+
             <Input
               label="Monthly Expenses"
               type="number"
@@ -168,7 +168,7 @@ export default function DSCRCalculator() {
               required
               fullWidth
             />
-            
+
             <Button
               variant="primary"
               size="lg"
@@ -194,7 +194,13 @@ export default function DSCRCalculator() {
               xAxisKey: 'category',
               yAxisKey: 'amount',
               showLegend: false,
-              title: 'Monthly Cash Flow Breakdown'
+              title: 'Monthly Cash Flow Breakdown',
+              valueFormatter: (value: number) => new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+              }).format(value)
             }}
           />
         ) : (

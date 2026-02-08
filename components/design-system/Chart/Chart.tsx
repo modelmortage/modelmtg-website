@@ -62,6 +62,8 @@ export interface ChartProps {
   title?: string;
   /** Additional CSS class */
   className?: string;
+  /** Function to format values in tooltips and labels */
+  valueFormatter?: (value: number) => string;
 }
 
 /**
@@ -108,6 +110,7 @@ export const Chart: React.FC<ChartProps> = ({
   responsive = true,
   title,
   className = '',
+  valueFormatter = (value: number) => value.toLocaleString(),
 }) => {
   const [error, setError] = React.useState<Error | null>(null);
 
@@ -130,14 +133,14 @@ export const Chart: React.FC<ChartProps> = ({
   }
 
   try {
-    const yAxisKeys = Array.isArray(yAxisKey) 
+    const yAxisKeys = Array.isArray(yAxisKey)
       ? yAxisKey.filter((key): key is string => key !== undefined)
       : yAxisKey ? [yAxisKey] : [];
-    
+
     if (yAxisKeys.length === 0 && type !== 'pie') {
       throw new Error('yAxisKey is required for this chart type');
     }
-    
+
     const chartContent = (() => {
       switch (type) {
         case 'line':
@@ -145,13 +148,14 @@ export const Chart: React.FC<ChartProps> = ({
             <LineChart data={data}>
               {showGrid && <CartesianGrid strokeDasharray="3 3" stroke="#E5E5E5" />}
               {xAxisKey && <XAxis dataKey={xAxisKey} stroke="#757575" />}
-              <YAxis stroke="#757575" />
+              <YAxis stroke="#757575" tickFormatter={(val) => valueFormatter(Number(val))} />
               <Tooltip
                 contentStyle={{
                   backgroundColor: '#FFFFFF',
                   border: '1px solid #E5E5E5',
                   borderRadius: '4px',
                 }}
+                formatter={(val: any) => [valueFormatter(Number(val))]}
               />
               {showLegend && <Legend />}
               {yAxisKeys.map((key, index) => (
@@ -172,13 +176,14 @@ export const Chart: React.FC<ChartProps> = ({
             <BarChart data={data}>
               {showGrid && <CartesianGrid strokeDasharray="3 3" stroke="#E5E5E5" />}
               {xAxisKey && <XAxis dataKey={xAxisKey} stroke="#757575" />}
-              <YAxis stroke="#757575" />
+              <YAxis stroke="#757575" tickFormatter={(val) => valueFormatter(Number(val))} />
               <Tooltip
                 contentStyle={{
                   backgroundColor: '#FFFFFF',
                   border: '1px solid #E5E5E5',
                   borderRadius: '4px',
                 }}
+                formatter={(val: any) => [valueFormatter(Number(val))]}
               />
               {showLegend && <Legend />}
               {yAxisKeys.map((key, index) => (
@@ -202,7 +207,7 @@ export const Chart: React.FC<ChartProps> = ({
                 cx="50%"
                 cy="50%"
                 outerRadius={100}
-                label
+                label={({ name, value }) => `${name}: ${valueFormatter(Number(value))}`}
               >
                 {data.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
@@ -214,6 +219,7 @@ export const Chart: React.FC<ChartProps> = ({
                   border: '1px solid #E5E5E5',
                   borderRadius: '4px',
                 }}
+                formatter={(val: any) => [valueFormatter(Number(val))]}
               />
               {showLegend && <Legend />}
             </PieChart>
@@ -224,13 +230,14 @@ export const Chart: React.FC<ChartProps> = ({
             <AreaChart data={data}>
               {showGrid && <CartesianGrid strokeDasharray="3 3" stroke="#E5E5E5" />}
               {xAxisKey && <XAxis dataKey={xAxisKey} stroke="#757575" />}
-              <YAxis stroke="#757575" />
+              <YAxis stroke="#757575" tickFormatter={(val) => valueFormatter(Number(val))} />
               <Tooltip
                 contentStyle={{
                   backgroundColor: '#FFFFFF',
                   border: '1px solid #E5E5E5',
                   borderRadius: '4px',
                 }}
+                formatter={(val: any) => [valueFormatter(Number(val))]}
               />
               {showLegend && <Legend />}
               {yAxisKeys.map((key, index) => (
@@ -264,7 +271,7 @@ export const Chart: React.FC<ChartProps> = ({
             {chartContent}
           </div>
         )}
-        
+
         {/* Hidden data table for accessibility */}
         {title && (
           <table className={styles['sr-only']} aria-label={`${title} data table`}>
@@ -282,7 +289,7 @@ export const Chart: React.FC<ChartProps> = ({
                 <tr key={index}>
                   {xAxisKey && <td>{row[xAxisKey]}</td>}
                   {yAxisKeys.map(key => (
-                    <td key={key}>{row[key || '']}</td>
+                    <td key={key}>{valueFormatter(Number(row[key || '']))}</td>
                   ))}
                 </tr>
               ))}

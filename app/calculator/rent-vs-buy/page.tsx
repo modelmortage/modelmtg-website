@@ -39,7 +39,7 @@ export default function RentVsBuyCalculator() {
 
   const handleCalculate = () => {
     setLoading(true)
-    
+
     const numericInputs = {
       homePrice: parseFloat(values.homePrice) || 0,
       downPayment: parseFloat(values.downPayment) || 0,
@@ -50,7 +50,7 @@ export default function RentVsBuyCalculator() {
     }
 
     const validation = validateRentVsBuyInputs(numericInputs)
-    
+
     if (!validation.success) {
       setErrors(validation.errors || {})
       setLoading(false)
@@ -71,10 +71,10 @@ export default function RentVsBuyCalculator() {
 
   const getChartData = (): ChartData[] => {
     if (!results) return []
-    
+
     const totalRentCost = results.find(r => r.label === 'Total Rent Cost')?.value as number || 0
     const totalBuyCost = results.find(r => r.label === 'Total Buy Cost')?.value as number || 0
-    
+
     return [
       { category: 'Renting', amount: totalRentCost },
       { category: 'Buying', amount: totalBuyCost }
@@ -83,12 +83,12 @@ export default function RentVsBuyCalculator() {
 
   const getDisplayResults = () => {
     if (!results) return []
-    
+
     return results.slice(0, 4).map(result => ({
       ...result,
       icon: result.label.includes('Rent') ? <Icon icon={FaKey} size="lg" color="#8B6F14" /> :
-            result.label.includes('Buy') ? <Icon icon={FaHome} size="lg" color="#8B6F14" /> :
-            result.label.includes('Savings') || result.label.includes('Better') ? <Icon icon={FaChartLine} size="lg" color="#0D9668" /> :
+        result.label.includes('Buy') ? <Icon icon={FaHome} size="lg" color="#8B6F14" /> :
+          result.label.includes('Savings') || result.label.includes('Better') ? <Icon icon={FaChartLine} size="lg" color="#0D9668" /> :
             <Icon icon={FaDollarSign} size="lg" color="#8B6F14" />
     }))
   }
@@ -102,7 +102,7 @@ export default function RentVsBuyCalculator() {
       }}>
         <Card variant="elevated" padding="lg">
           <h2 style={{ marginBottom: '2rem', color: '#36454F' }}>Comparison Details</h2>
-          
+
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             <Input
               label="Home Price"
@@ -116,7 +116,7 @@ export default function RentVsBuyCalculator() {
               required
               fullWidth
             />
-            
+
             <Input
               label="Down Payment"
               type="number"
@@ -129,7 +129,7 @@ export default function RentVsBuyCalculator() {
               required
               fullWidth
             />
-            
+
             <Input
               label="Interest Rate (%)"
               type="number"
@@ -142,7 +142,7 @@ export default function RentVsBuyCalculator() {
               required
               fullWidth
             />
-            
+
             <Input
               label="Monthly Rent"
               type="number"
@@ -155,7 +155,7 @@ export default function RentVsBuyCalculator() {
               required
               fullWidth
             />
-            
+
             <Input
               label="Years to Stay"
               type="number"
@@ -168,7 +168,7 @@ export default function RentVsBuyCalculator() {
               required
               fullWidth
             />
-            
+
             <Input
               label="Home Appreciation Rate (%)"
               type="number"
@@ -181,7 +181,7 @@ export default function RentVsBuyCalculator() {
               required
               fullWidth
             />
-            
+
             <Button
               variant="primary"
               size="lg"
@@ -207,7 +207,13 @@ export default function RentVsBuyCalculator() {
               xAxisKey: 'category',
               yAxisKey: 'amount',
               showLegend: false,
-              title: 'Total Cost Comparison'
+              title: 'Total Cost Comparison',
+              valueFormatter: (value: number) => new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+              }).format(value)
             }}
           />
         ) : (

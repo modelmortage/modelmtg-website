@@ -1,0 +1,37 @@
+/* === DESIGN TOKENS === */
+:root {
+    /* --- Colors: Gold Standard --- */
+    --gold-light: #D8B07A;
+    --gold-main: #C89A5B;
+    --gold-deep: #A9793A;
+    --gold-darker: #8B6328;
+
+    /* --- Colors: Backgrounds --- */
+    --midnight-black: #0A0A0C;
+    --deep-charcoal: #141417;
+    --glass-dark: rgba(20, 20, 23, 0.7);
+    --glass-border: rgba(200, 154, 91, 0.15);
+
+    /* --- Spacing Scale --- */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 2rem;
+    --space-lg: 4rem;
+    --space-xl: 8rem;
+    /* Dramatically larger for luxury whitespace */
+
+    /* --- Shadows: Ambient & Deep --- */
+    --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.5);
+    --shadow-glow: 0 0 40px rgba(200, 154, 91, 0.15);
+
+    /* --- Borders --- */
+    --border-hairline: 1px solid rgba(255, 255, 255, 0.08);
+    --border-gold: 1px solid rgba(200, 154, 91, 0.3);
+
+    /* --- Radii --- */
+    --radius-xs: 2px;
+    --radius-sm: 4px;
+    --radius-md: 12px;
+    /* Smooth luxury corners */
+}

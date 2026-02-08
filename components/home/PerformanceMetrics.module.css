@@ -1,0 +1,142 @@
+.section {
+    padding: 6rem 2rem;
+    background: var(--midnight-black);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-out;
+}
+
+.container.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.header {
+    text-align: left;
+    margin-bottom: 4rem;
+    border-bottom: 1px solid rgba(200, 154, 91, 0.2);
+    padding-bottom: 1.5rem;
+}
+
+.title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--ivory-white);
+    font-weight: 600;
+}
+
+.goldText {
+    color: var(--gold-main);
+    font-style: italic;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.card {
+    position: relative;
+    padding-right: 2rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card:last-child {
+    border-right: none;
+    padding-right: 0;
+}
+
+.value {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 700;
+    color: var(--gold-light);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+}
+
+.label {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ivory-white);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+.sub {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.5;
+}
+
+.sourceLine {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.3);
+    text-align: right;
+    font-style: italic;
+    margin-top: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 4rem 2rem;
+    }
+
+    .card {
+        border-right: none;
+        position: relative;
+    }
+
+    /* Add borders to odd items only? No, cleaner without on tablet */
+}
+
+@media (max-width: 640px) {
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .value {
+        font-size: 3rem;
+    }
+
+    .section {
+        padding: 4rem 1.5rem;
+    }
+
+    .header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .card {
+        text-align: center;
+        padding-right: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 2rem;
+    }
+
+    .card:last-child {
+        border-bottom: none;
+    }
+
+    .sourceLine {
+        text-align: center;
+    }
+}
