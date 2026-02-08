@@ -3,12 +3,12 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
 import { Card, Icon, Button } from '@/components/design-system'
-import { 
-    FaUniversity, 
-    FaHome, 
-    FaFlag, 
-    FaGem, 
-    FaSync, 
+import {
+    FaUniversity,
+    FaHome,
+    FaFlag,
+    FaGem,
+    FaSync,
     FaChartLine,
     FaCheckCircle,
     FaArrowRight
@@ -157,9 +157,9 @@ export default function LoanOptionsPage() {
                                         </div>
                                         <h2 className={styles.loanTitle}>{loan.title}</h2>
                                     </div>
-                                    
+
                                     <p className={styles.loanDescription}>{loan.description}</p>
-                                    
+
                                     <div className={styles.idealForBox}>
                                         <p className={styles.idealForLabel}>Ideal For</p>
                                         <p className={styles.idealForText}>{loan.idealFor}</p>
@@ -170,9 +170,9 @@ export default function LoanOptionsPage() {
                                         <ul className={styles.featuresList}>
                                             {loan.features.map((feature, i) => (
                                                 <li key={i} className={styles.featureItem}>
-                                                    <Icon 
-                                                        icon={FaCheckCircle} 
-                                                        size="sm" 
+                                                    <Icon
+                                                        icon={FaCheckCircle}
+                                                        size="sm"
                                                         className={styles.checkIcon}
                                                     />
                                                     <span>{feature}</span>
@@ -183,8 +183,8 @@ export default function LoanOptionsPage() {
 
                                     <div className={styles.cardActions}>
                                         <Link href={`/loan-options/${loan.slug}`} style={{ textDecoration: 'none' }}>
-                                            <Button 
-                                                variant="primary" 
+                                            <Button
+                                                variant="ghost"
                                                 size="md"
                                                 icon={<FaArrowRight />}
                                                 iconPosition="right"
@@ -193,16 +193,6 @@ export default function LoanOptionsPage() {
                                                 Learn More
                                             </Button>
                                         </Link>
-                                        <a 
-                                            href="https://2516810.my1003app.com/?time=1702581789975" 
-                                            target="_blank" 
-                                            rel="noopener noreferrer"
-                                            style={{ textDecoration: 'none' }}
-                                        >
-                                            <Button variant="outline" size="md" fullWidth>
-                                                Get Pre-Approved
-                                            </Button>
-                                        </a>
                                     </div>
                                 </Card>
                             ))}
@@ -220,9 +210,9 @@ export default function LoanOptionsPage() {
                             Let's discuss your situation and find the perfect financing strategy.
                         </p>
                         <div className={styles.ctaButtons}>
-                            <a 
-                                href="https://2516810.my1003app.com/?time=1702581789975" 
-                                target="_blank" 
+                            <a
+                                href="https://2516810.my1003app.com/?time=1702581789975"
+                                target="_blank"
                                 rel="noopener noreferrer"
                                 style={{ textDecoration: 'none' }}
                             >
