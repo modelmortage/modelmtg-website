@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import CalculatorLayout from '@/components/calculators/CalculatorLayout'
 import { Card } from '@/components/design-system/Card'
 import { Input } from '@/components/design-system/Input'
@@ -43,30 +43,70 @@ export default function AffordabilityCalculator() {
     propertyTaxYearly: '1200',
     propertyTaxPercent: '0.6',
     homeownersInsurance: '1200',
-    pmi: '250',
+    pmi: '0',
     hoaDues: '0'
   })
 
   const [results, setResults] = useState({
-    monthlyPayment: 1523.64,
-    loanAmount: 200000,
-    debtToIncome: 30.47,
+    monthlyPayment: 0,
+    loanAmount: 0,
+    debtToIncome: 0,
     allowableDebtToIncome: 50,
-    purchasePrice: 200000,
+    purchasePrice: 0,
     downPayment: 0,
-    principalInterest: 1073.64,
-    taxes: 100,
-    insurance: 100,
+    principalInterest: 0,
+    taxes: 0,
+    insurance: 0,
     hoaDues: 0,
-    pmi: 250
+    pmi: 0
   })
 
   const handleChange = (name: string, value: string) => {
     setValues(prev => ({ ...prev, [name]: value }))
   }
 
-  const handleCalculate = () => {
-    // Calculate monthly payment based on inputs
+  // Auto-calculate loan amount when home price or down payment changes
+  useEffect(() => {
+    const homePrice = parseFloat(values.homePrice) || 0
+    const downPayment = downPaymentMode === 'dollar'
+      ? parseFloat(values.downPaymentDollar) || 0
+      : (homePrice * (parseFloat(values.downPaymentPercent) || 0)) / 100
+
+    const calculatedLoanAmount = homePrice - downPayment
+    setValues(prev => ({ ...prev, loanAmount: calculatedLoanAmount.toFixed(2) }))
+  }, [values.homePrice, values.downPaymentDollar, values.downPaymentPercent, downPaymentMode])
+
+  // Auto-calculate when down payment mode changes
+  useEffect(() => {
+    const homePrice = parseFloat(values.homePrice) || 0
+    if (downPaymentMode === 'percent') {
+      const downPaymentDollar = parseFloat(values.downPaymentDollar) || 0
+      const percent = homePrice > 0 ? (downPaymentDollar / homePrice) * 100 : 0
+      setValues(prev => ({ ...prev, downPaymentPercent: percent.toFixed(2) }))
+    } else {
+      const percent = parseFloat(values.downPaymentPercent) || 0
+      const dollar = (homePrice * percent) / 100
+      setValues(prev => ({ ...prev, downPaymentDollar: dollar.toFixed(2) }))
+    }
+  }, [downPaymentMode])
+
+  // Auto-calculate when loan term mode changes
+  useEffect(() => {
+    if (loanTermMode === 'year') {
+      const months = parseFloat(values.loanTermMonth) || 360
+      setValues(prev => ({ ...prev, loanTermYear: (months / 12).toFixed(0) }))
+    } else {
+      const years = parseFloat(values.loanTermYear) || 30
+      setValues(prev => ({ ...prev, loanTermMonth: (years * 12).toFixed(0) }))
+    }
+  }, [loanTermMode])
+
+  // Auto-calculate results whenever values change
+  useEffect(() => {
+    calculateResults()
+  }, [values, activeLoanType, downPaymentMode, propertyTaxMode, loanTermMode])
+
+  const calculateResults = () => {
     const homePrice = parseFloat(values.homePrice) || 0
     const downPayment = downPaymentMode === 'dollar'
       ? parseFloat(values.downPaymentDollar) || 0
@@ -78,17 +118,54 @@ export default function AffordabilityCalculator() {
       ? (parseFloat(values.loanTermYear) || 30) * 12
       : parseFloat(values.loanTermMonth) || 360
 
+    // Calculate monthly P&I
     const monthlyPI = rate === 0
       ? loanAmount / term
       : loanAmount * (rate * Math.pow(1 + rate, term)) / (Math.pow(1 + rate, term) - 1)
 
+    // Calculate monthly property tax
     const monthlyTax = propertyTaxMode === 'percent'
       ? (homePrice * (parseFloat(values.propertyTaxPercent) || 0) / 100) / 12
       : (parseFloat(values.propertyTaxYearly) || 0) / 12
 
+    // Calculate monthly insurance
     const monthlyInsurance = (parseFloat(values.homeownersInsurance) || 0) / 12
-    const monthlyPMI = (parseFloat(values.pmi) || 0) / 12
+
+    // Calculate monthly HOA
     const monthlyHOA = parseFloat(values.hoaDues) || 0
+
+    // Calculate PMI/MIP based on loan type
+    let monthlyPMI = 0
+    const downPaymentPercent = homePrice > 0 ? (downPayment / homePrice) * 100 : 0
+
+    if (activeLoanType === 'conventional') {
+      // Conventional: PMI if down payment < 20%
+      if (downPaymentPercent < 20) {
+        monthlyPMI = (parseFloat(values.pmi) || 0) / 12
+        if (monthlyPMI === 0) {
+          // Default PMI calculation: ~0.5-1% of loan amount annually
+          monthlyPMI = (loanAmount * 0.005) / 12
+        }
+      }
+    } else if (activeLoanType === 'fha') {
+      // FHA: Mortgage Insurance Premium (MIP) - 0.85% annual for most loans
+      if (downPaymentPercent < 10) {
+        monthlyPMI = (loanAmount * 0.0085) / 12
+      } else {
+        monthlyPMI = (loanAmount * 0.008) / 12
+      }
+    } else if (activeLoanType === 'va') {
+      // VA: No monthly PMI, but has funding fee (paid upfront, not monthly)
+      monthlyPMI = 0
+    } else if (activeLoanType === 'usda') {
+      // USDA: Annual guarantee fee of 0.35%
+      monthlyPMI = (loanAmount * 0.0035) / 12
+    } else if (activeLoanType === 'jumbo') {
+      // Jumbo: Usually no PMI if 20% down, but higher if less
+      if (downPaymentPercent < 20) {
+        monthlyPMI = (loanAmount * 0.01) / 12
+      }
+    }
 
     const totalMonthlyPayment = monthlyPI + monthlyTax + monthlyInsurance + monthlyPMI + monthlyHOA
 
@@ -96,11 +173,19 @@ export default function AffordabilityCalculator() {
     const monthlyDebts = parseFloat(values.monthlyDebts) || 0
     const dti = grossIncome > 0 ? ((totalMonthlyPayment + monthlyDebts) / grossIncome) * 100 : 0
 
+    // Set allowable DTI based on loan type
+    let allowableDTI = 50
+    if (activeLoanType === 'conventional') allowableDTI = 50
+    if (activeLoanType === 'fha') allowableDTI = 50
+    if (activeLoanType === 'va') allowableDTI = 55
+    if (activeLoanType === 'usda') allowableDTI = 50
+    if (activeLoanType === 'jumbo') allowableDTI = 43
+
     setResults({
       monthlyPayment: totalMonthlyPayment,
       loanAmount,
       debtToIncome: dti,
-      allowableDebtToIncome: activeLoanType === 'fha' ? 50 : 50,
+      allowableDebtToIncome: allowableDTI,
       purchasePrice: homePrice,
       downPayment,
       principalInterest: monthlyPI,
@@ -187,6 +272,7 @@ export default function AffordabilityCalculator() {
                 </div>
                 {downPaymentMode === 'dollar' ? (
                   <Input
+                    label=""
                     type="number"
                     value={values.downPaymentDollar}
                     onChange={(value) => handleChange('downPaymentDollar', value)}
@@ -195,6 +281,7 @@ export default function AffordabilityCalculator() {
                   />
                 ) : (
                   <Input
+                    label=""
                     type="number"
                     value={values.downPaymentPercent}
                     onChange={(value) => handleChange('downPaymentPercent', value)}
@@ -230,6 +317,7 @@ export default function AffordabilityCalculator() {
                 </div>
                 {loanTermMode === 'year' ? (
                   <Input
+                    label=""
                     type="number"
                     value={values.loanTermYear}
                     onChange={(value) => handleChange('loanTermYear', value)}
@@ -238,6 +326,7 @@ export default function AffordabilityCalculator() {
                   />
                 ) : (
                   <Input
+                    label=""
                     type="number"
                     value={values.loanTermMonth}
                     onChange={(value) => handleChange('loanTermMonth', value)}
@@ -294,6 +383,7 @@ export default function AffordabilityCalculator() {
                 </div>
                 {propertyTaxMode === 'dollar' ? (
                   <Input
+                    label=""
                     type="number"
                     value={values.propertyTaxYearly}
                     onChange={(value) => handleChange('propertyTaxYearly', value)}
@@ -302,11 +392,11 @@ export default function AffordabilityCalculator() {
                   />
                 ) : (
                   <Input
+                    label=""
                     type="number"
                     value={values.propertyTaxPercent}
                     onChange={(value) => handleChange('propertyTaxPercent', value)}
                     placeholder="0.6"
-                    step="0.1"
                     fullWidth
                   />
                 )}
@@ -451,10 +541,20 @@ export default function AffordabilityCalculator() {
             <p className={styles.summaryText}>
               Based on what you input into today your Total Payment would be{' '}
               <strong>${results.monthlyPayment.toFixed(2)}</strong> on a{' '}
-              <strong style={{ color: '#5B9BD5' }}>Conventional Loan</strong> with a{' '}
-              <strong>0.00% Down Payment</strong>. Your{' '}
+              <strong style={{ color: '#5B9BD5' }}>
+                {activeLoanType === 'conventional' && 'Conventional Loan'}
+                {activeLoanType === 'fha' && 'FHA Loan'}
+                {activeLoanType === 'va' && 'VA Loan'}
+                {activeLoanType === 'usda' && 'USDA Loan'}
+                {activeLoanType === 'jumbo' && 'Jumbo Loan'}
+              </strong> with a{' '}
+              <strong>
+                {results.purchasePrice > 0
+                  ? ((results.downPayment / results.purchasePrice) * 100).toFixed(2)
+                  : '0.00'}% Down Payment
+              </strong>. Your{' '}
               <strong>Debt-to-Income Ratio is {results.debtToIncome.toFixed(2)}%</strong> and{' '}
-              the maximum allowable on this program type is <strong>50%/50%</strong>.
+              the maximum allowable on this program type is <strong>{results.allowableDebtToIncome}%/{results.allowableDebtToIncome}%</strong>.
             </p>
           </Card>
         </div>

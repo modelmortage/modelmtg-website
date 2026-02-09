@@ -9,6 +9,7 @@ import MarketPowerSection from '@/components/home/MarketPowerSection'
 import TeamPreviewSection from '@/components/home/TeamPreviewSection'
 import TrustStackWall from '@/components/home/TrustStackWall'
 import CinematicCTA from '@/components/home/CinematicCTA'
+import GoogleReviews from '@/components/home/GoogleReviews'
 import Link from 'next/link'
 import { Button } from '@/components/design-system'
 
@@ -27,6 +28,7 @@ export default function Home() {
             <main id="main-content">
                 <HeroSection />
                 <PerformanceMetrics />
+                <GoogleReviews />
                 <ClientProfiles />
                 <AdvantageSection />
                 <HowWeWinSection />
