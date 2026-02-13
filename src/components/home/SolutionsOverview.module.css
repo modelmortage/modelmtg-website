@@ -179,6 +179,12 @@
     gap: 20px;
   }
 
+  .loanRow:hover {
+    background: transparent;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
   .inquireBtn {
     align-self: flex-end;
   }
