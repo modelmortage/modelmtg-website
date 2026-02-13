@@ -36,6 +36,8 @@ export function Hero() {
           fill
           className={styles.skylineImage}
           priority
+          quality={100}
+          placeholder="empty"
         />
       </div>
 

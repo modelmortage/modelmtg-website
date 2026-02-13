@@ -14,11 +14,9 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(
-        circle at 35% 40%,
-        rgba(212, 175, 55, 0.12),
-        transparent 60%
-    );
+    background: radial-gradient(circle at 35% 40%,
+            rgba(212, 175, 55, 0.12),
+            transparent 60%);
     pointer-events: none;
     z-index: 1;
 }
@@ -50,21 +48,17 @@
 
 .skylineImage {
     object-fit: cover;
-    opacity: 0.5;
-    mix-blend-mode: multiply;
-    filter: grayscale(100%) brightness(1.12) contrast(1.12);
-    transform: scale(1.02);
+    opacity: 0.4;
+    /* Removed multiply/grayscale for clarity */
 }
 
 /* Background radial gradient overlay */
 .bgGradient {
     position: absolute;
     inset: 0;
-    background: radial-gradient(
-        circle at 70% 30%,
-        rgba(201, 164, 76, 0.08) 0%,
-        rgba(11, 18, 32, 0) 60%
-    );
+    background: radial-gradient(circle at 70% 30%,
+            rgba(201, 164, 76, 0.08) 0%,
+            rgba(11, 18, 32, 0) 60%);
     pointer-events: none;
     z-index: 1;
 }
@@ -152,12 +146,10 @@
 .dividerLine {
     width: 1px;
     min-height: 500px;
-    background: linear-gradient(
-        to bottom,
-        transparent 0%,
-        var(--mm-gold) 50%,
-        transparent 100%
-    );
+    background: linear-gradient(to bottom,
+            transparent 0%,
+            var(--mm-gold) 50%,
+            transparent 100%);
     opacity: 0.3;
 }
 
