@@ -124,7 +124,7 @@ export function SolutionsOverview() {
           variants={containerVariants}
         >
           <motion.h1 className={styles.title} variants={itemVariants}>
-            Loan Programs
+            Loan Options
           </motion.h1>
           <motion.p className={styles.description} variants={itemVariants}>
             Strategic mortgage solutions tailored for Houston homebuyers and property owners.

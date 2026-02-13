@@ -137,7 +137,7 @@ export default function Header() {
                         aria-current={isActive('/loan-options') ? 'page' : undefined}
                         onClick={handleLinkClick}
                     >
-                        Loan Programs
+                        Loan Options
                     </Link>
                     <Link
                         href="/calculator"
