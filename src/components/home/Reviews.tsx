@@ -146,6 +146,13 @@ export function Reviews({ reviews: initialReviews = [] }: ReviewsProps) {
                         <p className={styles.reviewDate}>{displayReviews[0].date || 'Recent'}</p>
                       </div>
                     </div>
+                    <div className={styles.reviewStars}>
+                      <span>★</span>
+                      <span>★</span>
+                      <span>★</span>
+                      <span>★</span>
+                      <span>★</span>
+                    </div>
                     <a
                       href="https://maps.app.goo.gl/35L6crTX7ygjNAJ4A"
                       target="_blank"
@@ -177,6 +184,13 @@ export function Reviews({ reviews: initialReviews = [] }: ReviewsProps) {
                         <h4 className={styles.authorName}>{displayReviews[1].author || 'Anonymous'}</h4>
                         <p className={styles.reviewDate}>{displayReviews[1].date || 'Recent'}</p>
                       </div>
+                    </div>
+                    <div className={styles.reviewStars}>
+                      <span>★</span>
+                      <span>★</span>
+                      <span>★</span>
+                      <span>★</span>
+                      <span>★</span>
                     </div>
                   </div>
                 </div>

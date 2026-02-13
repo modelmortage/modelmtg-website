@@ -103,7 +103,7 @@ export default function Header() {
     return (
         <header
             ref={headerRef}
-            className={`${styles.header} ${isScrolled ? styles.headerScrolled : ''} ${showHeader ? styles.headerVisible : styles.headerHidden}`}
+            className={`${styles.header} ${isScrolled ? styles.headerScrolled : ''} ${showHeader ? styles.headerVisible : styles.headerHidden} ${mobileMenuOpen ? styles.headerMobileOpen : ''}`}
         >
             <div className={styles.container}>
                 <Link href="/" className={styles.logo} onClick={handleLinkClick}>

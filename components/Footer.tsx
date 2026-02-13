@@ -33,7 +33,7 @@ export default function Footer() {
                         loading="lazy"
                         className={styles.footerLogo}
                     />
-                    <p className={styles.tagline}>Strategic Mortgage Planning</p>
+                    <p className={styles.tagline}>Model Mortgage</p>
                 </div>
 
                 <div className={styles.divider}></div>
@@ -132,10 +132,7 @@ export default function Footer() {
                         />
                     </div>
 
-                    {/* BRAND STAMP */}
-                    <div className={styles.brandStamp}>
-                        MODEL MORTGAGE — STRATEGIC MORTGAGE PLANNING
-                    </div>
+
 
                     <div className={styles.legalLinks}>
                         <Link href="/privacy-policy">Privacy Policy</Link>
