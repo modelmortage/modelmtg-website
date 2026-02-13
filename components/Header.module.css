@@ -3,8 +3,8 @@
     top: 0;
     left: 0;
     right: 0;
-    background: var(--deep-charcoal);
-    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+    background: #141318;
+    border-bottom: 1px solid rgba(201, 164, 76, 0.15);
     z-index: 999;
     backdrop-filter: blur(10px);
     transition: transform 400ms ease-out, background-color 250ms ease-out, box-shadow 250ms ease-out;
@@ -12,8 +12,8 @@
 }
 
 .headerScrolled {
-    background: rgba(54, 69, 79, 0.95);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    background: #141318;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
 }
 
 .headerHidden {
@@ -36,9 +36,10 @@
 .logo {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 1rem;
     text-decoration: none;
     transition: opacity var(--transition-fast);
+    margin-right: 2rem;
 }
 
 .logo:hover {
@@ -46,7 +47,7 @@
 }
 
 .logoImage {
-    width: 50px;
+    width: 38px;
     height: auto;
     object-fit: contain;
 }
@@ -70,7 +71,7 @@
     font-family: var(--font-sans);
     font-size: 0.9375rem;
     font-weight: 500;
-    color: var(--ivory-white);
+    color: #E2E8F0;
     text-decoration: none;
     position: relative;
     transition: color 150ms ease-out;
@@ -97,7 +98,7 @@
 }
 
 .navLink:hover {
-    color: var(--gold-light);
+    color: var(--mm-gold);
 }
 
 .navLink:hover::after {
@@ -246,11 +247,11 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: var(--deep-charcoal);
+        background: #141318;
         flex-direction: column;
         gap: 0;
         padding: 2rem 1rem;
-        border-top: 1px solid rgba(212, 175, 55, 0.1);
+        border-top: 1px solid rgba(201, 164, 76, 0.15);
         transform: translateX(-100%);
         transition: transform 400ms ease-out;
         overflow-y: auto;

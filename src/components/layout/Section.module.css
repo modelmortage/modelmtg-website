@@ -1,0 +1,199 @@
+/* === SECTION COMPONENT - VARIANT STYLES === */
+
+/* Base section styles */
+.section {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* === INK VARIANT: Standard dark section === */
+.sectionInk {
+  background-color: var(--mm-ink);
+  padding: var(--spacing-major) var(--spacing-md);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* === INK-SOFT VARIANT: Alternate light dark section === */
+.sectionInkSoft {
+  background-color: var(--mm-ink-soft);
+  padding: var(--spacing-major) var(--spacing-md);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* === DATA-STRIP VARIANT: Compact horizontal data layout === */
+.sectionDataStrip {
+  background-color: var(--mm-ink);
+  padding: var(--spacing-data) var(--spacing-md);
+  width: 100%;
+  box-sizing: border-box;
+  border-top: 1px solid var(--mm-border);
+  border-bottom: 1px solid var(--mm-border);
+}
+
+.sectionDataStrip > * {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* === SPLIT-BLEED VARIANT: Full-bleed image on left === */
+.sectionSplitBleed {
+  background-color: var(--mm-ink);
+  /* No padding - children control layout */
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: stretch;
+}
+
+/* Right content gets standard padding */
+.sectionSplitBleed > :last-child {
+  padding: var(--spacing-major) var(--spacing-md);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* === NARROW VARIANT: Narrow editorial container === */
+.sectionNarrow {
+  background-color: var(--mm-ink);
+  padding: var(--spacing-narrow) var(--spacing-md);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.sectionNarrow > * {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* === EDITORIAL-LEFT VARIANT: 2-col with left ~40%, right ~60% === */
+.sectionEditorialLeft {
+  background-color: var(--mm-ink);
+  padding: var(--spacing-major) var(--spacing-md);
+  width: 100%;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  gap: var(--spacing-lg);
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.sectionEditorialLeft > * {
+  max-width: 100%;
+}
+
+/* Desktop: 2-column layout */
+@media (min-width: 1024px) {
+  .sectionEditorialLeft {
+    grid-template-columns: 5fr 7fr;
+    gap: var(--spacing-xl);
+  }
+}
+
+/* Column positioning for editorial layout */
+.colLeft {
+  grid-column: 1;
+}
+
+.colRight {
+  grid-column: 1;
+}
+
+@media (min-width: 1024px) {
+  .colLeft {
+    grid-column: 1;
+  }
+
+  .colRight {
+    grid-column: 2;
+  }
+}
+
+/* === EDITORIAL-RIGHT VARIANT: 2-col with left ~60%, right ~40% (inverse) === */
+.sectionEditorialRight {
+  background-color: var(--mm-ink);
+  padding: var(--spacing-major) var(--spacing-md);
+  width: 100%;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  gap: var(--spacing-lg);
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.sectionEditorialRight > * {
+  max-width: 100%;
+}
+
+/* Desktop: 2-column layout (reversed proportions) */
+@media (min-width: 1024px) {
+  .sectionEditorialRight {
+    grid-template-columns: 7fr 5fr;
+    gap: var(--spacing-xl);
+  }
+}
+
+/* === TOP RULE MODIFIER === */
+.withTopRule {
+  border-top: 2px solid var(--mm-gold);
+}
+
+/* === RESPONSIVE ADJUSTMENTS === */
+@media (max-width: 768px) {
+  .sectionInk,
+  .sectionInkSoft,
+  .sectionDataStrip,
+  .sectionNarrow,
+  .sectionEditorialLeft,
+  .sectionEditorialRight {
+    padding-top: var(--spacing-lg);
+    padding-bottom: var(--spacing-lg);
+    padding-left: var(--spacing-sm);
+    padding-right: var(--spacing-sm);
+  }
+
+  .sectionSplitBleed {
+    flex-direction: column;
+  }
+
+  .sectionSplitBleed > :last-child {
+    padding: var(--spacing-lg) var(--spacing-sm);
+  }
+
+  .sectionEditorialLeft,
+  .sectionEditorialRight {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  .colLeft,
+  .colRight {
+    grid-column: 1;
+  }
+}
+
+/* === TABLET ADJUSTMENTS === */
+@media (max-width: 1024px) {
+  .sectionInk,
+  .sectionInkSoft,
+  .sectionDataStrip,
+  .sectionNarrow,
+  .sectionEditorialLeft,
+  .sectionEditorialRight {
+    padding-top: var(--spacing-lg);
+    padding-bottom: var(--spacing-lg);
+  }
+
+  .sectionEditorialLeft,
+  .sectionEditorialRight {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+}

@@ -28,8 +28,8 @@ export default function Footer() {
                     <Image
                         src="/logo-v3.png"
                         alt="Model Mortgage - Houston Mortgage Broker"
-                        width={140}
-                        height={47}
+                        width={50}
+                        height={17}
                         loading="lazy"
                         className={styles.footerLogo}
                     />
@@ -42,7 +42,7 @@ export default function Footer() {
                 <div className={styles.linksGrid}>
                     <div className={styles.linkColumn}>
                         <h3>About Us</h3>
-                        <Link href="/about">Our Story</Link>
+                        <Link href="/about-us">Our Story</Link>
                         <Link href="/team">Meet Our Team</Link>
                         <Link href="/reviews">Client Reviews</Link>
                         <Link href="/contact">Contact Us</Link>
@@ -120,6 +120,17 @@ export default function Footer() {
 
                 {/* Bottom Section */}
                 <div className={styles.bottomSection}>
+                    {/* American-Owned Business Badge - Bottom Left */}
+                    <div className={styles.badgeContainer}>
+                        <Image
+                            src="/american-owned-business.png"
+                            alt="American-owned business"
+                            width={150}
+                            height={150}
+                            loading="lazy"
+                            className={styles.businessBadge}
+                        />
+                    </div>
 
                     {/* BRAND STAMP */}
                     <div className={styles.brandStamp}>

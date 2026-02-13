@@ -35,7 +35,7 @@ export const aboutUsContent: AboutUsContent = {
       'personalized mortgage service'
     ],
     ogImage: '/images/about-us-og.jpg',
-    canonical: '/about'
+    canonical: '/about-us'
   },
   hero: {
     title: 'About Model Mortgage',

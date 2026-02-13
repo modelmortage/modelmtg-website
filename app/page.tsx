@@ -1,15 +1,14 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Hero } from '@/src/components/home/Hero'
-import { Pillars } from '@/src/components/home/Pillars'
-import { Programs } from '@/src/components/home/Programs'
-import { Rates } from '@/src/components/home/Rates'
+import { SolutionsOverview } from '@/src/components/home/SolutionsOverview'
 import { Process } from '@/src/components/home/Process'
 import { Team } from '@/src/components/home/Team'
 import { Reviews } from '@/src/components/home/Reviews'
-import { Transactions } from '@/src/components/home/Transactions'
 import { Resources } from '@/src/components/home/Resources'
 import { LocalAreas } from '@/src/components/home/LocalAreas'
+import { HoustonNuances } from '@/src/components/home/HoustonNuances'
+import { LocationMap } from '@/src/components/home/LocationMap'
 import { FinalCta } from '@/src/components/home/FinalCta'
 import type { Review } from '@/src/lib/proof'
 
@@ -37,7 +36,8 @@ async function getGoogleReviews(): Promise<Review[]> {
             rating: review.rating || 5,
             author: review.authorName || 'Anonymous',
             text: review.text || '',
-            date: review.relativeTime || review.time || 'Recent'
+            date: review.relativeTime || review.time || 'Recent',
+            profile_photo_url: review.authorPhoto || null
         }))
     } catch (error) {
         console.error('Error fetching reviews:', error)
@@ -53,15 +53,14 @@ export default async function Home() {
             <Header />
             <main id="main-content">
                 <Hero />
-                <Pillars />
-                <Programs />
-                <Rates />
+                <SolutionsOverview />
                 <Process />
                 <Team />
+                <HoustonNuances />
                 <Reviews reviews={reviews} />
-                <Transactions />
-                <Resources />
                 <LocalAreas />
+                <Resources />
+                <LocationMap />
                 <FinalCta />
             </main>
             <Footer />

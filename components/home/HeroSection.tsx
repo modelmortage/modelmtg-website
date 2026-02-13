@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { Button } from '@/components/design-system'
 import { useIntersectionAnimation } from '@/app/utils/animations'
 import styles from './HeroSection.module.css'
+import { siteData } from '@/src/lib/siteData'
 
 export default function HeroSection() {
     const heroRef = useRef<HTMLDivElement>(null)
@@ -13,11 +14,6 @@ export default function HeroSection() {
 
     return (
         <section ref={heroRef} className={styles.hero}>
-            {/* Background Layers */}
-            <div className={styles.bgImage}></div>
-            <div className={styles.bgOverlay}></div>
-            <div className="motif-security-paper"></div>
-
             <div className={`${styles.container} ${contentVisible ? styles.visible : ''}`} ref={contentRef as React.RefObject<HTMLDivElement>}>
 
                 {/* LEFT: STRATEGIC COPY */}
@@ -31,19 +27,23 @@ export default function HeroSection() {
                     </h2>
 
                     <div className={styles.ctaGroup}>
-                        <Link href="/apply" passHref legacyBehavior>
-                            <a className="btn btn-primary" style={{ minWidth: '200px' }}>
-                                Apply Online
-                            </a>
-                        </Link>
+                        <a
+                            href={siteData.cta.applyOnline.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn btn-primary"
+                            style={{ minWidth: '200px' }}
+                        >
+                            Apply Online
+                        </a>
                         <Link href="/pre-qualify" passHref legacyBehavior>
-                            <a className="btn btn-secondary" style={{ minWidth: '200px' }}>
-                                Pre-Qualify
+                            <a className={styles.goldGradientBtn}>
+                                Get Pre-Qualified
                             </a>
                         </Link>
                     </div>
 
-                    {/* MICRO TRUST STRIP */}
+                    {/* TRUST STRIP */}
                     <div className={styles.trustStrip}>
                         <div className={styles.trustItem}>
                             <span className={styles.trustValue}>$500M+</span>
@@ -62,36 +62,35 @@ export default function HeroSection() {
                     </div>
                 </div>
 
-                {/* RIGHT: VISUAL + DEAL DESK */}
+                {/* RIGHT: TRUST PANEL */}
                 <div className={styles.rightVisual}>
-                    <div className={styles.visualContainer}>
-                        {/* Placeholder for Cinematic Video/Image - Darkened for Luxury Feel */}
-                        <div className={styles.placeholderBg}></div>
-
-                        {/* DEAL DESK OVERLAY */}
-                        <div className={styles.dealDeskCard}>
-                            <div className={styles.cardHeader}>
-                                <span className={styles.liveDot}></span>
-                                MARKET SNAPSHOT
+                    <div className={styles.trustPanel}>
+                        <h3 className={styles.panelTitle}>Why Houston Chooses Model Mortgage</h3>
+                        <div className={styles.panelList}>
+                            <div className={styles.panelItem}>
+                                <div className={styles.panelIcon}>✓</div>
+                                <div className={styles.panelText}>
+                                    <strong>Fast Pre-Approvals</strong>
+                                    <span>Same-day qualification for competitive offers</span>
+                                </div>
                             </div>
-                            <div className={styles.cardRow}>
-                                <span>30-Year Fixed</span>
-                                <span className={styles.cardValue}>Trending Flat</span>
+                            <div className={styles.panelItem}>
+                                <div className={styles.panelIcon}>✓</div>
+                                <div className={styles.panelText}>
+                                    <strong>Local Expertise</strong>
+                                    <span>Deep Houston market knowledge since 2015</span>
+                                </div>
                             </div>
-                            <div className={styles.cardSeparator}></div>
-                            <div className={styles.cardRow}>
-                                <span>Avg Close Time</span>
-                                <span className={styles.cardValue}>18 Days</span>
+                            <div className={styles.panelItem}>
+                                <div className={styles.panelIcon}>✓</div>
+                                <div className={styles.panelText}>
+                                    <strong>Investor-Friendly</strong>
+                                    <span>DSCR, portfolio loans, strategic financing</span>
+                                </div>
                             </div>
-                            <div className={styles.cardSeparator}></div>
-                            <div className={styles.cardRow}>
-                                <span>Investor Activity</span>
-                                <span className={styles.cardValue}>High Demand</span>
-                            </div>
-
-                            <div className={styles.approvalBadge}>
-                                HOUSTON LUXURY CERTIFIED
-                            </div>
+                        </div>
+                        <div className={styles.panelBadge}>
+                            NMLS #2518610 • Licensed in Texas
                         </div>
                     </div>
                 </div>

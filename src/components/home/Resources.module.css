@@ -1,0 +1,119 @@
+.section {
+    background: var(--mm-ink);
+    padding: var(--spacing-major) 2rem;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.header {
+    margin-bottom: 3rem;
+}
+
+.header h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    color: var(--mm-text);
+    margin: 0 0 0.5rem;
+}
+
+.header p {
+    font-size: 1.125rem;
+    color: var(--mm-text-subtle);
+    margin: 0;
+}
+
+/* Non-uniform card grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.resourceLink {
+    text-decoration: none;
+    display: block;
+    transition: transform 0.2s ease;
+}
+
+.resourceLink:hover {
+    transform: translateY(-2px);
+}
+
+.resourceCard {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--mm-line);
+    padding: 1.5rem;
+    background: transparent;
+    border-radius: 4px;
+    transition: border-color 0.2s ease;
+}
+
+.resourceLink:hover .resourceCard {
+    border-color: var(--mm-gold);
+}
+
+.resourceCard h3 {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--mm-text);
+    margin: 0 0 0.75rem;
+    line-height: 1.3;
+}
+
+.resourceCard p {
+    font-size: 0.9375rem;
+    color: var(--mm-text-subtle);
+    line-height: 1.6;
+    margin: 0 0 1rem;
+    flex-grow: 1;
+}
+
+.readMore {
+    font-size: 0.875rem;
+    color: var(--mm-gold);
+    font-weight: 500;
+}
+
+.ctaContainer {
+    text-align: right;
+    margin-top: 2rem;
+}
+
+.viewAllBtn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: transparent;
+    color: var(--mm-text);
+    border: 1px solid var(--mm-line);
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.viewAllBtn:hover {
+    border-color: var(--mm-gold);
+    color: var(--mm-gold);
+}
+
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: var(--spacing-lg) 1.5rem;
+    }
+}

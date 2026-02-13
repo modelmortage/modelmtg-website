@@ -105,7 +105,11 @@ export default function RootLayout({
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
                 />
             </head>
-            <body>
+            <body className="bg-mm-bg text-mm-text">
+                {/* Skip to content link for accessibility */}
+                <a href="#main-content" className="sr-only focus:not-sr-only">
+                    Skip to main content
+                </a>
                 {children}
             </body>
         </html>

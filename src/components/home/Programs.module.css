@@ -1,0 +1,131 @@
+.section {
+    background: var(--mm-ink);
+    padding: var(--spacing-major) 2rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header {
+    text-align: left;
+    margin-bottom: 4rem;
+    max-width: 700px;
+}
+
+.header h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    color: var(--mm-text);
+    margin: 0 0 1rem;
+}
+
+.intro {
+    font-size: 1.125rem;
+    color: var(--mm-text-subtle);
+    max-width: 700px;
+    margin: 0;
+}
+
+/* === STAGGERED 2-COLUMN GRID === */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap-row: 4rem;
+    gap-column: 5rem;
+    margin-bottom: 3rem;
+}
+
+/* Stagger second column down */
+.grid > :nth-child(even) {
+    margin-top: 4rem;
+}
+
+.programCard {
+    text-decoration: none;
+    display: block;
+    transition: all 0.2s ease;
+    /* Remove lift - only border shift on hover */
+}
+
+.programCard:hover {
+    transform: none;
+}
+
+.programCard h3 {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--mm-text);
+    margin: 0 0 0.5rem;
+}
+
+.programCard p {
+    font-size: 0.9375rem;
+    color: var(--mm-text-subtle);
+    line-height: 1.6;
+    margin: 0 0 1rem;
+}
+
+.arrow {
+    font-size: 0.875rem;
+    color: var(--mm-gold);
+    font-weight: 500;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+.programCard:hover .arrow {
+    opacity: 1;
+}
+
+.ctaContainer {
+    text-align: right;
+    margin-top: 3rem;
+}
+
+.viewAllBtn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: transparent;
+    color: var(--mm-text);
+    border: 1px solid var(--mm-line);
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.viewAllBtn:hover {
+    border-color: var(--mm-gold);
+    color: var(--mm-gold);
+}
+
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: 1fr;
+        gap-row: 2rem;
+    }
+
+    .grid > :nth-child(even) {
+        margin-top: 0;
+    }
+
+    .ctaContainer {
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: var(--spacing-lg) 1.5rem;
+    }
+
+    .header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+}

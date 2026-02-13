@@ -1,214 +1,317 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import CalculatorLayout from '@/components/calculators/CalculatorLayout'
 import { Card } from '@/components/design-system/Card'
 import { Input } from '@/components/design-system/Input'
-import { Button } from '@/components/design-system/Button'
-import { ResultDisplay } from '@/components/design-system/ResultDisplay'
 import { Icon } from '@/components/design-system/Icon'
-import { FaDollarSign, FaPercent, FaFlag, FaSync, FaCalculator, FaChartLine } from 'react-icons/fa'
+import {
+  FaDollarSign,
+  FaPercent,
+  FaCalendar
+} from 'react-icons/fa'
 import { vaRefinanceConfig } from '@/lib/calculators/configs/vaRefinance.config'
-import { validateVARefinanceInputs } from '@/lib/calculators/vaRefinance'
-import type { CalculatorResult } from '@/lib/types/calculator'
-import type { ChartData } from '@/components/design-system/Chart'
+import styles from './va-refinance.module.css'
+
+type TermMode = 'year' | 'month'
 
 export default function VARefinanceCalculator() {
-  const [values, setValues] = useState<Record<string, string>>({
-    currentBalance: '',
-    currentRate: '',
-    newRate: '',
-    cashOutAmount: '0',
-    vaFundingFee: '2.15'
+  const [loanTermMode, setLoanTermMode] = useState<TermMode>('year')
+  const [values, setValues] = useState({
+    currentBalance: '300000',
+    currentRate: '5',
+    currentTermYears: '30',
+    currentTermMonths: '360',
+    newRate: '5',
+    cashOut: '0'
   })
-  const [errors, setErrors] = useState<Record<string, string>>({})
-  const [results, setResults] = useState<CalculatorResult[] | null>(null)
-  const [loading, setLoading] = useState(false)
+
+  const [results, setResults] = useState({
+    currentPayment: 0,
+    newPayment: 0,
+    monthlyIncrease: 0,
+    totalInterestDiff: 0
+  })
 
   const handleChange = (name: string, value: string) => {
     setValues(prev => ({ ...prev, [name]: value }))
-    if (errors[name]) {
-      setErrors(prev => {
-        const newErrors = { ...prev }
-        delete newErrors[name]
-        return newErrors
-      })
-    }
   }
 
-  const handleCalculate = () => {
-    setLoading(true)
-
-    const numericInputs = {
-      currentBalance: parseFloat(values.currentBalance) || 0,
-      currentRate: parseFloat(values.currentRate) || 0,
-      newRate: parseFloat(values.newRate) || 0,
-      cashOutAmount: parseFloat(values.cashOutAmount) || 0,
-      vaFundingFee: parseFloat(values.vaFundingFee) || 0
+  // Auto-sync loan term
+  useEffect(() => {
+    if (loanTermMode === 'year') {
+      const months = parseFloat(values.currentTermMonths) || 0
+      setValues(prev => ({ ...prev, currentTermYears: (months / 12).toFixed(0) }))
+    } else {
+      const years = parseFloat(values.currentTermYears) || 0
+      setValues(prev => ({ ...prev, currentTermMonths: (years * 12).toFixed(0) }))
     }
+  }, [loanTermMode])
 
-    const validation = validateVARefinanceInputs(numericInputs)
+  // Auto-calculate
+  useEffect(() => {
+    calculateResults()
+  }, [values, loanTermMode])
 
-    if (!validation.success) {
-      setErrors(validation.errors || {})
-      setLoading(false)
-      return
-    }
+  const calculateResults = () => {
+    const currentBalance = parseFloat(values.currentBalance) || 0
+    const currentRate = (parseFloat(values.currentRate) || 0) / 100 / 12
+    const newRate = (parseFloat(values.newRate) || 0) / 100 / 12
+    const term = loanTermMode === 'year'
+      ? (parseFloat(values.currentTermYears) || 30) * 12
+      : parseFloat(values.currentTermMonths) || 360
 
-    try {
-      const calculatedResults = vaRefinanceConfig.calculate(numericInputs)
-      setResults(calculatedResults)
-      setErrors({})
-    } catch (error) {
-      console.error('Calculation error:', error)
-      setErrors({ general: 'An error occurred during calculation. Please check your inputs.' })
-    } finally {
-      setLoading(false)
-    }
+    const currentPayment = currentRate === 0
+      ? currentBalance / term
+      : currentBalance * (currentRate * Math.pow(1 + currentRate, term)) / (Math.pow(1 + currentRate, term) - 1)
+
+    const newPayment = newRate === 0
+      ? currentBalance / term
+      : currentBalance * (newRate * Math.pow(1 + newRate, term)) / (Math.pow(1 + newRate, term) - 1)
+
+    const monthlyIncrease = newPayment - currentPayment
+    const totalInterestDiff = (newPayment * term - currentBalance) - (currentPayment * term - currentBalance)
+
+    setResults({
+      currentPayment,
+      newPayment,
+      monthlyIncrease,
+      totalInterestDiff
+    })
   }
 
-  const getChartData = (): ChartData[] => {
-    if (!results) return []
-
-    const currentPayment = results.find(r => r.label === 'Current Monthly Payment')?.value as number || 0
-    const newPayment = results.find(r => r.label === 'New Monthly Payment')?.value as number || 0
-
-    return [
-      { category: 'Current Payment', amount: currentPayment },
-      { category: 'New Payment', amount: newPayment }
-    ]
-  }
-
-  const getDisplayResults = () => {
-    if (!results) return []
-
-    return results.slice(0, 4).map(result => ({
-      ...result,
-      icon: result.label.includes('Savings') ? <Icon icon={FaChartLine} size="lg" color="#0D9668" /> :
-        result.label.includes('New') ? <Icon icon={FaSync} size="lg" color="#8B6F14" /> :
-          result.label.includes('VA') ? <Icon icon={FaFlag} size="lg" color="#8B6F14" /> :
-            <Icon icon={FaDollarSign} size="lg" color="#8B6F14" />
-    }))
-  }
+  const maxPayment = Math.max(results.currentPayment, results.newPayment)
 
   return (
     <CalculatorLayout config={vaRefinanceConfig}>
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-        gap: '3rem'
-      }}>
-        <Card variant="elevated" padding="lg">
-          <h2 style={{ marginBottom: '2rem', color: '#36454F' }}>VA Refinance Details</h2>
+      <div className={styles.calculatorWrapper}>
+        {/* Left Panel - Inputs */}
+        <div className={styles.inputPanel}>
+          <Card variant="elevated" padding="lg" className={styles.inputCard}>
+            <h2 className={styles.cardTitle}>VA Refinance Calculator</h2>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            <Input
-              label="Current Loan Balance"
-              type="number"
-              value={values.currentBalance}
-              onChange={(value) => handleChange('currentBalance', value)}
-              placeholder="250000"
-              icon={<Icon icon={FaDollarSign} size="sm" color="#8B6F14" />}
-              error={errors.currentBalance}
-              helperText="Your current VA loan balance"
-              required
-              fullWidth
-            />
+            <div className={styles.inputFields}>
+              <h3 style={{ fontSize: '0.875rem', fontWeight: '600', color: '#e5e7eb', marginBottom: '-0.5rem' }}>
+                What is most important to you?
+              </h3>
+              <div className={styles.selectField}>
+                <select className={styles.select}>
+                  <option>Low Monthly Payment</option>
+                  <option>Lower Interest Paid</option>
+                </select>
+              </div>
 
-            <Input
-              label="Current Interest Rate (%)"
-              type="number"
-              value={values.currentRate}
-              onChange={(value) => handleChange('currentRate', value)}
-              placeholder="7.0"
-              icon={<Icon icon={FaPercent} size="sm" color="#8B6F14" />}
-              error={errors.currentRate}
-              helperText="Your current VA loan rate"
-              required
-              fullWidth
-            />
+              <h3 style={{ fontSize: '0.875rem', fontWeight: '600', color: '#e5e7eb', marginTop: '0.5rem', marginBottom: '-0.5rem' }}>
+                Current Loan
+              </h3>
 
-            <Input
-              label="New Interest Rate (%)"
-              type="number"
-              value={values.newRate}
-              onChange={(value) => handleChange('newRate', value)}
-              placeholder="6.0"
-              icon={<Icon icon={FaPercent} size="sm" color="#8B6F14" />}
-              error={errors.newRate}
-              helperText="The new VA refinance rate"
-              required
-              fullWidth
-            />
+              <Input
+                label="Original Loan Amount"
+                type="number"
+                value={values.currentBalance}
+                onChange={(value) => handleChange('currentBalance', value)}
+                icon={<Icon icon={FaDollarSign} size="sm" />}
+                fullWidth
+              />
 
-            <Input
-              label="Cash Out Amount"
-              type="number"
-              value={values.cashOutAmount}
-              onChange={(value) => handleChange('cashOutAmount', value)}
-              placeholder="0"
-              icon={<Icon icon={FaDollarSign} size="sm" color="#8B6F14" />}
-              error={errors.cashOutAmount}
-              helperText="Amount to cash out (0 for rate/term refinance)"
-              required
-              fullWidth
-            />
+              <Input
+                label="Original Rate"
+                type="number"
+                value={values.currentRate}
+                onChange={(value) => handleChange('currentRate', value)}
+                icon={<Icon icon={FaPercent} size="sm" />}
+                fullWidth
+              />
 
-            <Input
-              label="VA Funding Fee (%)"
-              type="number"
-              value={values.vaFundingFee}
-              onChange={(value) => handleChange('vaFundingFee', value)}
-              placeholder="2.15"
-              icon={<Icon icon={FaFlag} size="sm" color="#8B6F14" />}
-              error={errors.vaFundingFee}
-              helperText="VA funding fee percentage (varies by use)"
-              required
-              fullWidth
-            />
+              <div className={styles.selectField}>
+                <label className={styles.fieldLabel}>Original Loan Term</label>
+                <div style={{ display: 'flex', gap: '0.5rem' }}>
+                  <button
+                    style={{
+                      flex: 1,
+                      padding: '0.5rem',
+                      background: loanTermMode === 'year' ? '#8B6F14' : '#374151',
+                      color: loanTermMode === 'year' ? 'white' : '#9ca3af',
+                      border: 'none',
+                      borderRadius: '4px',
+                      cursor: 'pointer'
+                    }}
+                    onClick={() => setLoanTermMode('year')}
+                  >
+                    Year
+                  </button>
+                  <button
+                    style={{
+                      flex: 1,
+                      padding: '0.5rem',
+                      background: loanTermMode === 'month' ? '#8B6F14' : '#374151',
+                      color: loanTermMode === 'month' ? 'white' : '#9ca3af',
+                      border: 'none',
+                      borderRadius: '4px',
+                      cursor: 'pointer'
+                    }}
+                    onClick={() => setLoanTermMode('month')}
+                  >
+                    Month
+                  </button>
+                </div>
+                {loanTermMode === 'year' ? (
+                  <Input
+                    label=""
+                    type="number"
+                    value={values.currentTermYears}
+                    onChange={(value) => handleChange('currentTermYears', value)}
+                    placeholder="30"
+                    fullWidth
+                  />
+                ) : (
+                  <Input
+                    label=""
+                    type="number"
+                    value={values.currentTermMonths}
+                    onChange={(value) => handleChange('currentTermMonths', value)}
+                    placeholder="360"
+                    fullWidth
+                  />
+                )}
+              </div>
 
-            <Button
-              variant="primary"
-              size="lg"
-              fullWidth
-              onClick={handleCalculate}
-              icon={<Icon icon={FaCalculator} size="md" color="#FFFFFF" />}
-              iconPosition="left"
-              disabled={loading}
-              loading={loading}
-            >
-              Calculate VA Refinance
-            </Button>
+              <div className={styles.selectField}>
+                <label className={styles.fieldLabel}>Loan Start Date</label>
+                <select className={styles.select}>
+                  <option>March 2022</option>
+                </select>
+              </div>
+
+              <h3 style={{ fontSize: '0.875rem', fontWeight: '600', color: '#e5e7eb', marginTop: '0.5rem', marginBottom: '-0.5rem' }}>
+                New Loan
+              </h3>
+
+              <Input
+                label="New Interest Rate"
+                type="number"
+                value={values.newRate}
+                onChange={(value) => handleChange('newRate', value)}
+                icon={<Icon icon={FaPercent} size="sm" />}
+                fullWidth
+              />
+
+              <div className={styles.selectField}>
+                <label className={styles.fieldLabel}>Estimated Closing Costs</label>
+                <Input
+                  label=""
+                  type="number"
+                  value={values.cashOut}
+                  onChange={(value) => handleChange('cashOut', value)}
+                  placeholder="0"
+                  fullWidth
+                />
+              </div>
+            </div>
+          </Card>
+        </div>
+
+        {/* Center Panel - Payment Comparison */}
+        <div className={styles.centerPanel}>
+          <Card variant="elevated" padding="lg" className={styles.breakdownCard}>
+            <h3 className={styles.cardTitle}>Monthly Payment Comparison</h3>
+
+            <div className={styles.comparisonBars}>
+              <div className={styles.barRow}>
+                <div className={styles.barLabel}>
+                  <span>Current Loan</span>
+                  <span className={styles.barAmount}>${results.currentPayment.toFixed(2)}</span>
+                </div>
+                <div className={styles.barContainer}>
+                  <div
+                    className={`${styles.barFill} ${styles.currentBar}`}
+                    style={{ width: maxPayment > 0 ? `${(results.currentPayment / maxPayment) * 100}%` : '0%' }}
+                  >
+                    ${results.currentPayment.toFixed(2)}
+                  </div>
+                </div>
+              </div>
+
+              <div className={styles.barRow}>
+                <div className={styles.barLabel}>
+                  <span>New Loan</span>
+                  <span className={styles.barAmount}>${results.newPayment.toFixed(2)}</span>
+                </div>
+                <div className={styles.barContainer}>
+                  <div
+                    className={`${styles.barFill} ${styles.newBar}`}
+                    style={{ width: maxPayment > 0 ? `${(results.newPayment / maxPayment) * 100}%` : '0%' }}
+                  >
+                    ${results.newPayment.toFixed(2)}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.breakdownSection}>
+              <h4 className={styles.breakdownTitle}>Total Interest Comparison</h4>
+              <div className={styles.breakdownLegend}>
+                <div className={styles.legendItem}>
+                  <span className={styles.legendDot} style={{ backgroundColor: '#ef4444' }}></span>
+                  <span className={styles.legendLabel}>Current Loan Remaining Interest</span>
+                  <span className={styles.legendValue}>${((results.currentPayment * 360) - parseFloat(values.currentBalance) || 0).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</span>
+                </div>
+                <div className={styles.legendItem}>
+                  <span className={styles.legendDot} style={{ backgroundColor: '#10b981' }}></span>
+                  <span className={styles.legendLabel}>New Loan Interest</span>
+                  <span className={styles.legendValue}>${((results.newPayment * 360) - parseFloat(values.currentBalance) || 0).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</span>
+                </div>
+                <div className={styles.legendItem}>
+                  <span className={styles.legendDot} style={{ backgroundColor: '#3b82f6' }}></span>
+                  <span className={styles.legendLabel}>Monthly Payment Difference</span>
+                  <span className={styles.legendValue}>${Math.abs(results.monthlyIncrease).toFixed(2)}</span>
+                </div>
+                <div className={styles.legendItem}>
+                  <span className={styles.legendDot} style={{ backgroundColor: '#8b5cf6' }}></span>
+                  <span className={styles.legendLabel}>Total Interest Difference</span>
+                  <span className={styles.legendValue}>${Math.abs(results.totalInterestDiff).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</span>
+                </div>
+              </div>
+            </div>
+          </Card>
+        </div>
+
+        {/* Right Panel - Results */}
+        <div className={styles.resultsPanel}>
+          <div className={styles.resultCards}>
+            <Card variant="elevated" padding="md" className={`${styles.resultCard} ${styles.singleResultCard}`}>
+              <div className={styles.resultLabel}>Monthly Payment Increase</div>
+              <div className={styles.resultValue}>
+                {results.monthlyIncrease >= 0 ? '+' : ''}$ {results.monthlyIncrease.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+              </div>
+            </Card>
+
+            <Card variant="elevated" padding="md" className={`${styles.resultCard} ${styles.singleResultCard}`}>
+              <div className={styles.resultLabel}>Total Interest Difference</div>
+              <div className={styles.resultValue}>
+                {results.totalInterestDiff >= 0 ? '+' : '-'}$ {Math.abs(results.totalInterestDiff).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
+              </div>
+            </Card>
+
+            <Card variant="elevated" padding="md" className={`${styles.resultCard} ${styles.singleResultCard}`}>
+              <div className={styles.resultLabel}>Refinance Costs</div>
+              <div className={styles.resultValue}>$ {parseFloat(values.cashOut || '0').toLocaleString()}</div>
+            </Card>
+
+            <Card variant="elevated" padding="md" className={`${styles.resultCard} ${styles.singleResultCard}`}>
+              <div className={styles.resultLabel}>Time to Recoup Fees</div>
+              <div className={styles.resultValue}>--</div>
+            </Card>
           </div>
-        </Card>
 
-        {results && results.length > 0 ? (
-          <ResultDisplay
-            title="Refinance Analysis"
-            results={getDisplayResults()}
-            chartType="bar"
-            chartData={getChartData()}
-            chartConfig={{
-              xAxisKey: 'category',
-              yAxisKey: 'amount',
-              showLegend: false,
-              title: 'Payment Comparison',
-              valueFormatter: (value: number) => new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: 'USD',
-                minimumFractionDigits: 0,
-                maximumFractionDigits: 0
-              }).format(value)
-            }}
-          />
-        ) : (
-          <Card variant="elevated" padding="lg">
-            <h2 style={{ marginBottom: '2rem', color: '#36454F' }}>Refinance Analysis</h2>
-            <p style={{ opacity: 0.6, textAlign: 'center', padding: '3rem 0' }}>
-              Enter your information and click Calculate to see if VA refinancing makes sense
+          <Card variant="elevated" padding="md" className={styles.summaryCard}>
+            <div className={styles.summaryTitle}>Summary:</div>
+            <p className={styles.summaryText}>
+              Your monthly payment will {results.monthlyIncrease >= 0 ? 'increase' : 'decrease'} by <strong>${Math.abs(results.monthlyIncrease).toFixed(2)}</strong> per month.
+              Overall expenses (incurred and interest) are significantly <strong>{results.totalInterestDiff >= 0 ? 'higher' : 'lower'}</strong>. providing you intend to reside in the house for more than <strong>8 years</strong>.
             </p>
           </Card>
-        )}
+        </div>
       </div>
     </CalculatorLayout>
   )

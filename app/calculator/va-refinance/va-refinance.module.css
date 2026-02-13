@@ -1,0 +1,273 @@
+.calculatorWrapper {
+    display: grid;
+    grid-template-columns: 320px 1fr 400px;
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Fix icon sizing to prevent overlap */
+.inputFields svg,
+.inputFields span[role="img"] {
+    width: 16px !important;
+    height: 16px !important;
+    flex-shrink: 0;
+}
+
+.inputFields [class*="icon"] {
+    font-size: 16px !important;
+}
+
+/* Fix input field spacing */
+.inputFields input[type="number"] {
+    font-size: 0.875rem !important;
+    padding: 0.625rem !important;
+    min-height: 42px;
+    color: #1f2937 !important;
+}
+
+.inputFields input[type="text"] {
+    color: #1f2937 !important;
+}
+
+.inputFields input[type="number"]::-webkit-inner-spin-button,
+.inputFields input[type="number"]::-webkit-outer-spin-button {
+    opacity: 1;
+}
+
+.inputPanel {}
+
+.inputCard {
+    background: #1f2937;
+    color: white;
+}
+
+.cardTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+.inputFields {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Fix input overflow */
+.inputFields input[type="number"] {
+    font-size: 0.875rem !important;
+    padding: 0.625rem !important;
+    min-height: 42px;
+}
+
+.inputFields input[type="number"]::-webkit-inner-spin-button,
+.inputFields input[type="number"]::-webkit-outer-spin-button {
+    opacity: 1;
+}
+
+.toggleField {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.fieldLabel {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #e5e7eb;
+}
+
+.toggleButtons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.toggleBtn {
+    flex: 1;
+    padding: 0.5rem;
+    background: #374151;
+    border: none;
+    border-radius: 4px;
+    color: #9ca3af;
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: all 0.2s;
+}
+
+.toggleBtn:hover {
+    background: #4b5563;
+    color: white;
+}
+
+.toggleBtn.active {
+    background: #8B6F14;
+    color: white;
+}
+
+.centerPanel {}
+
+.breakdownCard {
+    background: white;
+    height: fit-content;
+}
+
+.comparisonBars {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem 0;
+}
+
+.barRow {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.barLabel {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    color: #374151;
+}
+
+.barAmount {
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.barContainer {
+    height: 40px;
+    background: #f3f4f6;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.barFill {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 0.75rem;
+    color: white;
+    font-weight: 600;
+    font-size: 0.875rem;
+    transition: width 0.3s ease;
+}
+
+.currentBar {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+}
+
+.newBar {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.breakdownLegend {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem 0;
+    border-top: 1px solid #e5e7eb;
+}
+
+.legendItem {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.875rem;
+}
+
+.legendDot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.legendLabel {
+    flex: 1;
+    color: #374151;
+}
+
+.legendValue {
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.resultsPanel {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.resultCards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.resultCard {
+    background: #3b82f6;
+    color: white;
+    text-align: center;
+}
+
+.singleResultCard {
+    grid-column: 1 / -1;
+}
+
+.resultLabel {
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.9;
+}
+
+.resultValue {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.summaryCard {
+    background: white;
+}
+
+.summaryTitle {
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: #1f2937;
+}
+
+.summaryText {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: #374151;
+}
+
+.summaryText strong {
+    color: #1f2937;
+}
+
+@media (max-width: 1200px) {
+    .calculatorWrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .resultCards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .calculatorWrapper {
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .resultCards {
+        grid-template-columns: 1fr;
+    }
+}

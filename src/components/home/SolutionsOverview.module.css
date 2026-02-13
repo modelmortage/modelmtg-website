@@ -1,0 +1,133 @@
+.sectionWrapper {
+  position: relative;
+  width: 100%;
+  padding: 100px 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #0a0a0a;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 90%;
+  max-width: 1300px;
+  position: relative;
+  z-index: 10;
+}
+
+.headerContent {
+  margin-bottom: 60px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 30px;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-style: italic;
+  font-weight: 400;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.description {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  color: #a1a1a1;
+  max-width: 650px;
+  line-height: 1.6;
+}
+
+.loanList {
+  width: 100%;
+}
+
+.loanRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.loanRow:hover {
+  background: rgba(255, 255, 255, 0.02);
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.loanInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.loanTitle {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 400;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.loanDescription {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin-bottom: 12px;
+  max-width: 700px;
+}
+
+.loanMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.dealLabel {
+  color: #c5a059;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: var(--font-sans);
+}
+
+.dealSpecs {
+  color: #a1a1a1;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-family: var(--font-sans);
+}
+
+.inquireBtn {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-family: var(--font-sans);
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .loanRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .inquireBtn {
+    align-self: flex-end;
+  }
+}

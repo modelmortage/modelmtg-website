@@ -1,0 +1,376 @@
+/* === HERO WRAPPER === */
+.hero {
+    position: relative;
+    padding: 6rem 2rem 4rem;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Subtle warm gold glow behind headline area */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at 35% 40%,
+        rgba(212, 175, 55, 0.12),
+        transparent 60%
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Text readability scrim - full width solid overlay */
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Solid background layer */
+.bgLayer {
+    position: absolute;
+    inset: 0;
+    background: #141318;
+    z-index: 0;
+}
+
+/* Skyline background image container */
+.skylineContainer {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.skylineImage {
+    object-fit: cover;
+    opacity: 0.5;
+    mix-blend-mode: multiply;
+    filter: grayscale(100%) brightness(1.12) contrast(1.12);
+    transform: scale(1.02);
+}
+
+/* Background radial gradient overlay */
+.bgGradient {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at 70% 30%,
+        rgba(201, 164, 76, 0.08) 0%,
+        rgba(11, 18, 32, 0) 60%
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* === CONTAINER: Main 2-Column Layout === */
+.container {
+    max-width: 1400px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    padding: 0 2rem;
+}
+
+/* LEFT COLUMN - 60% Content */
+.leftContent {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 540px;
+}
+
+/* Eyebrow with decorative line */
+.eyebrowGroup {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.eyebrowLine {
+    width: 12px;
+    height: 1px;
+    background: var(--mm-gold);
+    flex-shrink: 0;
+}
+
+.eyebrow {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--mm-gold);
+    font-weight: 500;
+    margin: 0;
+}
+
+/* Headline with italic accent */
+.headline {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--mm-text);
+    margin: 0;
+    letter-spacing: -0.02em;
+    text-shadow: 0 8px 30px rgba(0, 0, 0, 0.65);
+}
+
+.headlineAccent {
+    font-style: italic;
+    color: var(--mm-gold);
+    font-weight: 600;
+}
+
+/* Subheading */
+.subhead {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--mm-text-subtle);
+    margin: 0;
+    font-weight: 300;
+}
+
+/* CTA Buttons */
+.ctaGroup {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Asymmetric Vertical Divider */
+.dividerLine {
+    width: 1px;
+    min-height: 500px;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        var(--mm-gold) 50%,
+        transparent 100%
+    );
+    opacity: 0.3;
+}
+
+/* RIGHT COLUMN - Institutional Memo Card (40%) */
+.rightContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 520px;
+}
+
+.trustPanel {
+    background: rgba(26, 26, 26, 0.5);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(201, 164, 76, 0.15);
+    border-radius: 4px;
+    padding: 2rem;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Memo Header */
+.memoHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(201, 164, 76, 0.2);
+}
+
+.memoLabel {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--mm-gold);
+    font-weight: 600;
+}
+
+.memoRef {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--mm-text-subtle);
+    text-transform: uppercase;
+}
+
+/* Memo Content - Trust Points */
+.memoContent {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.memoItem {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.memoIcon {
+    font-size: 2rem;
+    flex-shrink: 0;
+    min-width: 40px;
+    text-align: center;
+    line-height: 1;
+    color: var(--mm-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.memoIcon svg {
+    width: 1.5em;
+    height: 1.5em;
+    fill: currentColor;
+}
+
+.memoText {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.memoText h3 {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--mm-text);
+    margin: 0;
+}
+
+.memoText p {
+    font-size: 0.9375rem;
+    color: var(--mm-text-subtle);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Memo Footer */
+.memoFooter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(201, 164, 76, 0.2);
+}
+
+.memoFooterText {
+    text-align: right;
+}
+
+.memoFooterText p {
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--mm-text-subtle);
+    margin: 0;
+}
+
+.memoAvailability {
+    color: var(--mm-text) !important;
+}
+
+/* Decorative corner element */
+.cornerElement {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    width: 120px;
+    height: 120px;
+    border-right: 1px solid var(--mm-gold);
+    border-bottom: 1px solid var(--mm-gold);
+    opacity: 0.2;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 1024px) {
+    .container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .dividerLine {
+        display: none;
+    }
+
+    .rightContent {
+        margin-top: 2rem;
+    }
+
+    .cornerElement {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 4rem 1.5rem 3rem;
+        min-height: auto;
+    }
+
+    .container {
+        padding: 0 1rem;
+        gap: 2rem;
+    }
+
+    .leftContent {
+        gap: 1.25rem;
+    }
+
+    .headline {
+        font-size: clamp(1.75rem, 3vw, 2.5rem);
+    }
+
+    .subhead {
+        font-size: 1rem;
+    }
+
+    .ctaGroup {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .trustPanel {
+        padding: 1.5rem;
+    }
+
+    .memoContent {
+        gap: 1.5rem;
+    }
+
+    .memoItem {
+        gap: 0.75rem;
+    }
+
+    .memoIcon {
+        font-size: 1.75rem;
+    }
+
+    .memoIcon svg {
+        width: 1.3em;
+        height: 1.3em;
+    }
+
+    .memoText h3 {
+        font-size: 0.875rem;
+    }
+
+    .memoText p {
+        font-size: 0.8125rem;
+    }
+}

@@ -1,20 +1,14 @@
+/* === CONSERVATIVE GOOGLE REVIEWS === */
 .section {
-    padding: 8rem 0;
-    background: linear-gradient(180deg, 
-        rgba(10, 10, 10, 0) 0%,
-        rgba(10, 10, 10, 0.3) 50%,
-        rgba(10, 10, 10, 0) 100%
-    );
-    position: relative;
+    padding: 96px 2rem;
+    background: #FFFFFF;
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1280px;
     margin: 0 auto;
-    padding: 0 2rem;
 }
 
-/* Header */
 .header {
     text-align: center;
     margin-bottom: 4rem;
@@ -23,13 +17,9 @@
 .title {
     font-family: var(--font-serif);
     font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 400;
-    letter-spacing: -0.02em;
+    font-weight: 600;
+    color: #0F172A;
     margin-bottom: 1.5rem;
-    background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.7) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
 }
 
 .aggregateRating {
@@ -42,11 +32,9 @@
 
 .ratingText {
     font-size: 1.125rem;
-    color: rgba(255, 255, 255, 0.7);
-    font-variant-numeric: tabular-nums;
+    color: #64748B;
 }
 
-/* Stars */
 .stars {
     display: flex;
     gap: 0.25rem;
@@ -54,81 +42,38 @@
 }
 
 .starFilled {
-    color: #D4AF37;
-    text-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+    color: #C9A44C;
 }
 
 .starEmpty {
-    color: rgba(255, 255, 255, 0.2);
+    color: #CBD5E1;
 }
 
-/* Slideshow */
-.slideshow {
-    position: relative;
-    min-height: 400px;
+/* Two column layout */
+.reviewsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
 }
 
-.slidesContainer {
-    position: relative;
-    width: 100%;
-    height: 100%;
+.reviewsColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
-.slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    opacity: 0;
-    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    pointer-events: none;
-}
-
-.slide.active {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-/* Card - Glass Morphism */
 .card {
-    background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.08) 0%,
-        rgba(255, 255, 255, 0.04) 100%
-    );
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    padding: 3rem;
-    box-shadow: 
-        0 8px 32px 0 rgba(0, 0, 0, 0.37),
-        inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
-    position: relative;
-    overflow: hidden;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    padding: 2rem;
 }
 
-.card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(212, 175, 55, 0.3) 50%,
-        transparent 100%
-    );
-}
-
-/* Review Header */
 .reviewHeader {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     gap: 1rem;
 }
 
@@ -138,26 +83,22 @@
     gap: 1rem;
 }
 
-.authorPhoto {
-    width: 56px;
-    height: 56px;
+.authorPhoto,
+.authorPhotoPlaceholder {
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid rgba(212, 175, 55, 0.3);
+    border: 1px solid #E2E8F0;
 }
 
 .authorPhotoPlaceholder {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.1));
-    border: 2px solid rgba(212, 175, 55, 0.3);
+    background: #F8FAFC;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 1.125rem;
     font-weight: 600;
-    color: #D4AF37;
+    color: #64748B;
 }
 
 .authorDetails {
@@ -168,112 +109,47 @@
 
 .authorName {
     font-weight: 600;
-    font-size: 1.125rem;
-    color: rgba(255, 255, 255, 0.95);
+    font-size: 1rem;
+    color: #0F172A;
 }
 
 .reviewTime {
     font-size: 0.875rem;
-    color: rgba(255, 255, 255, 0.5);
+    color: #94A3B8;
 }
 
-/* Review Text */
 .reviewText {
-    font-size: 1.125rem;
-    line-height: 1.8;
-    color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 2rem;
-    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #334155;
+    margin-bottom: 1.5rem;
 }
 
-/* Google Badge */
 .googleBadge {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    opacity: 0.6;
+    color: #94A3B8;
+    font-size: 0.875rem;
 }
 
 .googleIcon {
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
 }
 
-.googleBadge span {
-    font-size: 0.875rem;
-    color: rgba(255, 255, 255, 0.6);
+@media (max-width: 1024px) {
+    .reviewsGrid {
+        grid-template-columns: 1fr;
+    }
 }
 
-/* Navigation */
-.navigation {
-    display: flex;
-    justify-content: center;
-    gap: 0.75rem;
-    margin-top: 3rem;
-}
-
-.dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    padding: 0;
-}
-
-.dot:hover {
-    background: rgba(255, 255, 255, 0.4);
-    transform: scale(1.2);
-}
-
-.activeDot {
-    background: linear-gradient(135deg, #D4AF37, #F4D03F);
-    box-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
-    transform: scale(1.2);
-}
-
-/* Loading State */
-.loadingState {
-    text-align: center;
-    padding: 4rem 2rem;
-    color: rgba(255, 255, 255, 0.6);
-}
-
-.spinner {
-    width: 48px;
-    height: 48px;
-    border: 3px solid rgba(255, 255, 255, 0.1);
-    border-top-color: #D4AF37;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin: 0 auto 1rem;
-}
-
-@keyframes spin {
-    to { transform: rotate(360deg); }
-}
-
-/* Responsive */
 @media (max-width: 768px) {
     .section {
-        padding: 4rem 0;
+        padding: 64px 1.5rem;
     }
 
     .card {
-        padding: 2rem 1.5rem;
-    }
-
-    .reviewHeader {
-        flex-direction: column;
-    }
-
-    .reviewText {
-        font-size: 1rem;
-    }
-
-    .title {
-        font-size: 2rem;
+        padding: 1.5rem;
     }
 }

@@ -7,6 +7,35 @@
     padding: 2rem;
 }
 
+/* Fix icon sizing to prevent overlap */
+.inputFields svg,
+.inputFields span[role="img"] {
+    width: 16px !important;
+    height: 16px !important;
+    flex-shrink: 0;
+}
+
+.inputFields [class*="icon"] {
+    font-size: 16px !important;
+}
+
+/* Fix input field spacing */
+.inputFields input[type="number"] {
+    font-size: 0.875rem !important;
+    padding: 0.625rem !important;
+    min-height: 42px;
+    color: #1f2937 !important;
+}
+
+.inputFields input[type="text"] {
+    color: #1f2937 !important;
+}
+
+.inputFields input[type="number"]::-webkit-inner-spin-button,
+.inputFields input[type="number"]::-webkit-outer-spin-button {
+    opacity: 1;
+}
+
 /* Left Panel - Input Card */
 .inputPanel {}
 

@@ -1,0 +1,138 @@
+/* === SECTION HEADER COMPONENT === */
+
+.header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--spacing-lg);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.headerCenter {
+  align-items: center;
+  text-align: center;
+}
+
+.headerLeft {
+  align-items: flex-start;
+  text-align: left;
+}
+
+/* Eyebrow (kicker label) styling */
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mm-gold);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* Title wrapper for title + aside alignment */
+.titleWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+  width: 100%;
+}
+
+.headerCenter .titleWrapper {
+  justify-content: center;
+}
+
+.headerLeft .titleWrapper {
+  justify-content: flex-start;
+}
+
+/* Mobile: stack title and aside */
+@media (max-width: 768px) {
+  .titleWrapper {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+  }
+}
+
+/* Title (H2) */
+.title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--mm-text);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+/* Subtitle paragraph */
+.subtitle {
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  line-height: 1.7;
+  color: var(--mm-text-subtle);
+  margin: 0;
+  max-width: 700px;
+}
+
+.headerCenter .subtitle {
+  margin: 0 auto;
+}
+
+/* Aside (small text, right-aligned on desktop) */
+.aside {
+  font-size: 0.875rem;
+  color: var(--mm-text-subtle);
+  margin: 0;
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.headerLeft .aside {
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .aside {
+    text-align: left;
+  }
+}
+
+/* Divider line */
+.divider {
+  width: 60px;
+  height: 1px;
+  background-color: var(--mm-gold);
+  margin: var(--spacing-md) 0 0 0;
+}
+
+.headerCenter .divider {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.headerLeft .divider {
+  margin-left: 0;
+}
+
+/* With-rule modifier */
+.withRule .divider {
+  display: block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .header {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .eyebrow {
+    margin-bottom: 0.5rem;
+  }
+
+  .title {
+    margin-bottom: 0.5rem;
+  }
+}
+

@@ -1,23 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import './theme.css';
 
 /* === PRIVATE CLIENT DESIGN SYSTEM - DARK MODE === */
 :root {
-  /* Surfaces - Dark Private Bank Aesthetic */
-  --mm-page: #0B1220;
-  /* Primary dark background */
-  --mm-surface: #111827;
-  /* Cards and section backgrounds - dark */
-  --mm-muted: #0F172A;
-  /* Alternate section background - slightly lighter dark */
+  /* === SURFACES - Dark Institutional Palette (PURE BLACK - No Blue Undertones) === */
+  --mm-ink: #000000;
+  /* Primary background - pure black */
+  --mm-ink-soft: #0a0a0a;
+  /* Alternate section background - charcoal */
+  --mm-surface: #1a1a1a;
+  /* Raised surfaces (cards, panels) */
+  --mm-surface-alt: #252525;
+  /* Subtle highlight surface */
 
-  /* Text - Light Text Hierarchy (inverted) */
-  --mm-ink: #FFFFFF;
-  /* Primary text (white) */
-  --mm-slate: #E5E7EB;
-  /* Secondary text (light gray) */
-  --mm-subtle: #94A3B8;
-  /* Tertiary text (muted gray) */
+  /* === TEXT - Refined Light Hierarchy === */
+  --mm-text: rgba(255, 255, 255, 0.78);
+  /* Primary text */
+  --mm-text-subtle: rgba(255, 255, 255, 0.55);
+  /* Secondary text */
 
   /* Borders & Dividers */
   --mm-line: rgba(255, 255, 255, 0.08);
@@ -25,35 +29,45 @@
   --mm-border: rgba(255, 255, 255, 0.10);
   /* Card borders - subtle */
 
-  /* Accent - Gold (Unchanged) */
+  /* === ACCENT - Gold === */
   --mm-gold: #C9A44C;
   /* Primary CTA and micro accents */
   --mm-gold-dark: #B89139;
   /* Hover state */
 
-  /* Footer - Even darker */
-  --mm-footer-bg: #090F1A;
-  /* Deepest navy for footer */
+  /* Footer - Even darker (pure black) */
+  --mm-footer-bg: #000000;
+  /* Pure black for footer */
 
   /* Legacy aliases for backward compatibility */
   --background-primary: var(--mm-surface);
-  --text-primary: var(--mm-ink);
-  --text-secondary: var(--mm-slate);
+  --text-primary: var(--mm-text);
+  --text-secondary: var(--mm-text-subtle);
   --gold-accent: var(--mm-gold);
   --border-light: var(--mm-line);
   --border-lighter: rgba(255, 255, 255, 0.12);
-  --background-light-gray: var(--mm-muted);
+  --background-light-gray: var(--mm-ink-soft);
+  --mm-page: var(--mm-ink);
+  --mm-muted: var(--mm-ink-soft);
 
   /* Typography */
   --font-serif: 'Playfair Display', serif;
   --font-sans: 'Inter', sans-serif;
 
-  /* Spacing - Conservative Institutional Grid */
+  /* === Spacing Scale - Editorial Rhythm === */
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
   --spacing-md: 2rem;
   --spacing-lg: 4rem;
   --spacing-xl: 6rem;
+
+  /* Section-specific rhythm */
+  --spacing-hero-pt: 9rem;      /* pt-36 */
+  --spacing-hero-pb: 8rem;      /* pb-32 */
+  --spacing-major: 7rem;        /* py-28: major editorial sections */
+  --spacing-narrow: 6rem;       /* py-24: narrow editorial sections */
+  --spacing-data: 5rem;         /* py-20: data strips */
+  --spacing-final: 8rem;        /* py-32: final CTA */
 
   /* Transitions - Subtle, Professional */
   --transition-fast: 0.2s ease;
@@ -73,12 +87,27 @@ html {
 
 body {
   font-family: var(--font-sans);
-  color: var(--text-secondary);
-  background-color: var(--mm-page);
+  color: var(--mm-text);
+  background: linear-gradient(135deg, #070A0F 0%, #0B1220 100%);
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Subtle noise overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' result='noise' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.025'/%3E%3C/svg%3E");
+  z-index: -1;
 }
 
 /* === TYPOGRAPHY === */
@@ -91,7 +120,7 @@ h6 {
   font-family: var(--font-serif);
   font-weight: 600;
   line-height: 1.2;
-  color: var(--text-primary);
+  color: var(--mm-text);
 }
 
 h1 {
@@ -117,12 +146,12 @@ p {
   font-family: var(--font-sans);
   font-size: clamp(1rem, 1.5vw, 1.125rem);
   line-height: 1.7;
-  color: var(--text-secondary);
+  color: var(--mm-text-subtle);
 }
 
 /* === LINKS === */
 a {
-  color: var(--mm-ink);
+  color: var(--mm-text);
   text-decoration: none;
   transition: color 0.2s ease;
 }
@@ -177,7 +206,7 @@ a:focus-visible {
 
 .btn-secondary {
   background: transparent;
-  color: var(--text-primary);
+  color: var(--mm-text);
   border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
@@ -285,4 +314,120 @@ a:focus-visible {
 /* === TEXT UTILITIES === */
 .text-center {
   text-align: center;
+}
+
+/* === PRIVATE CLIENT DESIGN SYSTEM UTILITIES === */
+
+/* Screen reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.focus\:not-sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: inherit;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* Ledger grid background (subtle background grid) */
+.mm-grid {
+  position: relative;
+  background-image:
+    linear-gradient(0deg, rgba(201, 164, 76, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201, 164, 76, 0.04) 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-attachment: fixed;
+}
+
+/* Gold rule divider line */
+.mm-rule {
+  display: block;
+  width: 60px;
+  height: 2px;
+  background-color: var(--mm-gold);
+  margin: var(--spacing-md) 0;
+}
+
+.mm-rule-full {
+  width: 100%;
+  height: 1px;
+  background-color: var(--mm-border);
+  margin: var(--spacing-md) 0;
+}
+
+/* Eyebrow/kicker label style */
+.mm-kicker {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mm-gold);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* Focus styles - premium feel */
+:focus-visible {
+  outline: 2px solid var(--mm-gold);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Selection highlight */
+::selection {
+  background-color: rgba(201, 164, 76, 0.3);
+  color: var(--mm-text);
+}
+
+/* Premium button focus */
+.btn:focus-visible {
+  outline: 2px solid var(--mm-gold);
+  outline-offset: 3px;
+}
+
+/* Subtle surface hover effect */
+.surface-hover {
+  transition: background-color var(--transition-smooth), border-color var(--transition-smooth);
+}
+
+.surface-hover:hover {
+  background-color: var(--mm-surface-alt);
+  border-color: var(--mm-border);
+}
+
+/* Private memo card style */
+.mm-memo {
+  border-top: 1px solid var(--mm-gold);
+  padding-top: var(--spacing-sm);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--mm-text-subtle);
+}
+
+/* Editorial heading with top rule */
+.mm-heading-rule {
+  position: relative;
+  padding-top: var(--spacing-md);
+}
+
+.mm-heading-rule::before {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 1px;
+  background-color: var(--mm-gold);
+  margin-bottom: var(--spacing-sm);
 }

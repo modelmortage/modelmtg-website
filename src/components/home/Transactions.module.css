@@ -1,0 +1,118 @@
+.section {
+    background: var(--mm-ink-soft);
+    padding: var(--spacing-data) 2rem;
+    text-align: center;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.header h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    color: var(--mm-text);
+    margin: 0 0 0.5rem;
+}
+
+.header p {
+    font-size: 1rem;
+    color: var(--mm-text-subtle);
+    margin: 0;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid var(--mm-line);
+}
+
+.tableHeader {
+    display: contents;
+}
+
+.tableHeaderRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background: transparent;
+    border-bottom: 1px solid var(--mm-line);
+}
+
+.tableHeaderCell {
+    padding: 1rem 1.5rem;
+    font-weight: 600;
+    color: var(--mm-text);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: left;
+}
+
+.tableRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--mm-line);
+    color: var(--mm-text-subtle);
+    font-size: 0.9375rem;
+    transition: background 0.2s ease;
+}
+
+.tableRow:last-child {
+    border-bottom: none;
+}
+
+.tableCell {
+    text-align: left;
+    padding: 0;
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: var(--spacing-lg) 1.5rem;
+    }
+
+    .tableHeaderRow,
+    .tableRow {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+        padding: 1rem;
+        border: none;
+        border-bottom: 1px solid var(--mm-line);
+    }
+
+    .tableHeaderRow {
+        display: none;
+    }
+
+    .tableRow::before {
+        content: 'Area';
+        font-weight: 600;
+        color: var(--mm-text);
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+
+    .tableCell:nth-child(2)::before {
+        content: 'Type';
+        font-weight: 600;
+        color: var(--mm-text);
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+
+    .tableCell:nth-child(3)::before {
+        content: 'Program';
+        font-weight: 600;
+        color: var(--mm-text);
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+}

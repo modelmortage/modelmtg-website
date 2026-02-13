@@ -209,7 +209,7 @@ export default function LearningCenterPage() {
                 Schedule a Consultation
               </Button>
             </a>
-            <a href="/about" className={styles.buttonLink}>
+            <a href="/about-us" className={styles.buttonLink}>
               <Button variant="secondary" size="lg" icon={<FaInfoCircle />} iconPosition="left">
                 Learn About Us
               </Button>

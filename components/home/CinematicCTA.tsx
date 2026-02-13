@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { FaArrowRight, FaCalendarAlt } from 'react-icons/fa'
 import { useIntersectionAnimation } from '@/app/utils/animations'
 import styles from './CinematicCTA.module.css'
+import { siteData } from '@/src/lib/siteData'
 
 export default function CinematicCTA() {
     const { ref: sectionRef, isVisible } = useIntersectionAnimation({ threshold: 0.3 })
@@ -31,9 +32,9 @@ export default function CinematicCTA() {
                         <Link href="/strategy" className={styles.primaryButton}>
                             Start Conversation <FaArrowRight />
                         </Link>
-                        <Link href="/apply" className={styles.secondaryButton}>
+                        <a href={siteData.cta.applyOnline.href} target="_blank" rel="noopener noreferrer" className={styles.secondaryButton}>
                             <FaCalendarAlt /> Apply Now
-                        </Link>
+                        </a>
                     </div>
 
                     <div className={styles.trustStrip}>

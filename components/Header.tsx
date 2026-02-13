@@ -4,13 +4,13 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useEffect, useRef } from 'react'
 import { usePathname } from 'next/navigation'
-import { 
-    FaHome, 
-    FaGraduationCap, 
-    FaCalculator, 
-    FaFileAlt, 
-    FaUsers, 
-    FaBlog, 
+import {
+    FaHome,
+    FaGraduationCap,
+    FaCalculator,
+    FaFileAlt,
+    FaUsers,
+    FaBlog,
     FaPhone,
     FaBars,
     FaTimes,
@@ -19,6 +19,7 @@ import {
 import { Button } from './design-system/Button/Button'
 import { Icon } from './design-system/Icon/Icon'
 import styles from './Header.module.css'
+import { siteData } from '@/src/lib/siteData'
 
 export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -41,10 +42,10 @@ export default function Header() {
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY
-            
+
             // Set scrolled state for styling
             setIsScrolled(currentScrollY > 10)
-            
+
             // Show/hide header based on scroll direction
             if (currentScrollY > lastScrollY && currentScrollY > 100) {
                 // Scrolling down
@@ -53,7 +54,7 @@ export default function Header() {
                 // Scrolling up
                 setShowHeader(true)
             }
-            
+
             setLastScrollY(currentScrollY)
         }
 
@@ -73,7 +74,7 @@ export default function Header() {
         } else {
             document.body.style.overflow = ''
         }
-        
+
         return () => {
             document.body.style.overflow = ''
         }
@@ -100,7 +101,7 @@ export default function Header() {
     }
 
     return (
-        <header 
+        <header
             ref={headerRef}
             className={`${styles.header} ${isScrolled ? styles.headerScrolled : ''} ${showHeader ? styles.headerVisible : styles.headerHidden}`}
         >
@@ -117,79 +118,64 @@ export default function Header() {
                     <span className={styles.logoText}>MODEL MORTGAGE</span>
                 </Link>
 
-                <nav 
+                <nav
                     id="main-navigation"
                     className={`${styles.nav} ${mobileMenuOpen ? styles.navOpen : ''}`}
                     aria-label="Main navigation"
                 >
-                    <Link 
-                        href="/" 
+                    <Link
+                        href="/"
                         className={`${styles.navLink} ${isActive('/') ? styles.active : ''}`}
                         aria-current={isActive('/') ? 'page' : undefined}
                         onClick={handleLinkClick}
                     >
-                        <Icon icon={FaHome} size="sm" ariaLabel="" />
-                        <span>Home</span>
+                        Home
                     </Link>
-                    <Link 
-                        href="/learn" 
-                        className={`${styles.navLink} ${isActive('/learn') ? styles.active : ''}`}
-                        aria-current={isActive('/learn') ? 'page' : undefined}
-                        onClick={handleLinkClick}
-                    >
-                        <Icon icon={FaGraduationCap} size="sm" ariaLabel="" />
-                        <span>Learn</span>
-                    </Link>
-                    <Link 
-                        href="/calculator" 
-                        className={`${styles.navLink} ${isActive('/calculator') ? styles.active : ''}`}
-                        aria-current={isActive('/calculator') ? 'page' : undefined}
-                        onClick={handleLinkClick}
-                    >
-                        <Icon icon={FaCalculator} size="sm" ariaLabel="" />
-                        <span>Calculator</span>
-                    </Link>
-                    <Link 
-                        href="/loan-options" 
+                    <Link
+                        href="/loan-options"
                         className={`${styles.navLink} ${isActive('/loan-options') ? styles.active : ''}`}
                         aria-current={isActive('/loan-options') ? 'page' : undefined}
                         onClick={handleLinkClick}
                     >
-                        <Icon icon={FaFileAlt} size="sm" ariaLabel="" />
-                        <span>Loan Options</span>
+                        Loan Programs
                     </Link>
-                    <Link 
-                        href="/about" 
-                        className={`${styles.navLink} ${isActive('/about') ? styles.active : ''}`}
-                        aria-current={isActive('/about') ? 'page' : undefined}
+                    <Link
+                        href="/calculator"
+                        className={`${styles.navLink} ${isActive('/calculator') ? styles.active : ''}`}
+                        aria-current={isActive('/calculator') ? 'page' : undefined}
                         onClick={handleLinkClick}
                     >
-                        <Icon icon={FaUsers} size="sm" ariaLabel="" />
-                        <span>About Us</span>
+                        Calculator
                     </Link>
-                    <Link 
-                        href="/blog" 
+                    <Link
+                        href="/blog"
                         className={`${styles.navLink} ${isActive('/blog') ? styles.active : ''}`}
                         aria-current={isActive('/blog') ? 'page' : undefined}
                         onClick={handleLinkClick}
                     >
-                        <Icon icon={FaBlog} size="sm" ariaLabel="" />
-                        <span>Blog</span>
+                        Resources
                     </Link>
-                    <Link 
-                        href="/contact" 
+                    <Link
+                        href="/about-us"
+                        className={`${styles.navLink} ${isActive('/about-us') ? styles.active : ''}`}
+                        aria-current={isActive('/about-us') ? 'page' : undefined}
+                        onClick={handleLinkClick}
+                    >
+                        About
+                    </Link>
+                    <Link
+                        href="/contact"
                         className={`${styles.navLink} ${isActive('/contact') ? styles.active : ''}`}
                         aria-current={isActive('/contact') ? 'page' : undefined}
                         onClick={handleLinkClick}
                     >
-                        <Icon icon={FaPhone} size="sm" ariaLabel="" />
-                        <span>Contact</span>
+                        Contact
                     </Link>
-                    
+
                     <div className={styles.ctaButtons}>
-                        <a 
-                            href="https://2516810.my1003app.com/?time=1702581789975" 
-                            target="_blank" 
+                        <a
+                            href={siteData.cta.preQualify.href}
+                            target="_blank"
                             rel="noopener noreferrer"
                             className={styles.ctaLink}
                             onClick={handleLinkClick}
@@ -198,9 +184,9 @@ export default function Header() {
                                 Pre-Qualify
                             </Button>
                         </a>
-                        <a 
-                            href="https://2516810.my1003app.com/?time=1702581789975" 
-                            target="_blank" 
+                        <a
+                            href={siteData.cta.applyOnline.href}
+                            target="_blank"
                             rel="noopener noreferrer"
                             className={styles.ctaLink}
                             onClick={handleLinkClick}
