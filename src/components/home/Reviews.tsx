@@ -50,22 +50,19 @@ export function Reviews({ reviews = [] }: ReviewsProps) {
       rating: 5,
       author: 'Michael R.',
       text: 'The level of sophistication Model Mortgage brought to our multi-property acquisition was unparalleled. They navigate complex financial structures with surgical precision.',
-      date: 'Recent',
-      profile_photo_url: null
+      date: 'Recent'
     },
     {
       rating: 5,
       author: 'Sarah K.',
       text: 'In the Houston luxury market, speed is currency. Model Mortgage secured our financing in record time without compromising on the terms.',
-      date: 'Recent',
-      profile_photo_url: null
+      date: 'Recent'
     },
     {
       rating: 5,
       author: 'David L.',
       text: 'Finally, a mortgage lender that understands the needs of business owners. A truly institutional experience from start to finish.',
-      date: 'Recent',
-      profile_photo_url: null
+      date: 'Recent'
     }
   ]
 
