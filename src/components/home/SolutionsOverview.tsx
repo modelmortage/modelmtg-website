@@ -151,8 +151,6 @@ export function SolutionsOverview() {
               <motion.div
                 key={index}
                 variants={cardVariants}
-                whileHover={{ scale: 1.01, x: 5 }}
-                transition={{ duration: 0.2 }}
               >
                 <Link 
                   href={program.href} 
@@ -193,8 +191,6 @@ export function SolutionsOverview() {
               <motion.div
                 key={index}
                 variants={cardVariants}
-                whileHover={{ scale: 1.01, x: 5 }}
-                transition={{ duration: 0.2 }}
               >
                 <Link 
                   href={program.href} 

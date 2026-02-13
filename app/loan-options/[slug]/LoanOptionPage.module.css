@@ -93,16 +93,16 @@
 
 .nextStepsCard {
   background: var(--deep-charcoal);
-  color: var(--ivory-white);
+  color: #FFFFFF;
 }
 
 .nextStepsCard .sectionTitle {
-  color: var(--ivory-white);
+  color: #FFFFFF;
   border-bottom-color: var(--gold-main);
 }
 
 .nextStepsCard .paragraph {
-  color: var(--ivory-white);
+  color: #FFFFFF;
   opacity: 0.9;
 }
 
@@ -122,7 +122,7 @@
   padding-left: 3.5rem;
   font-size: 1.0625rem;
   line-height: 1.6;
-  color: var(--ivory-white);
+  color: #FFFFFF;
 }
 
 .orderedListItem::before {
