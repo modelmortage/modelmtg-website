@@ -61,7 +61,7 @@ export function SolutionsOverview() {
                 <h2 className={styles.loanTitle}>{program.title}</h2>
                 <p className={styles.loanDescription}>{program.description}</p>
                 <div className={styles.loanMeta}>
-                  <span className={styles.dealLabel}>Typical Profile</span>
+                  <span className={styles.dealLabel}>Core Parameters</span>
                   <span className={styles.dealSpecs}>{program.profile}</span>
                 </div>
               </div>
