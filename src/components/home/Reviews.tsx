@@ -44,30 +44,8 @@ function ReviewAvatar({ url, author, className }: ReviewAvatarProps) {
 export function Reviews({ reviews = [] }: ReviewsProps) {
   const proof = getGoogleProof(reviews)
 
-  // Fallback reviews if API fails
-  const fallbackReviews: Review[] = [
-    {
-      rating: 5,
-      author: 'Michael R.',
-      text: 'The level of sophistication Model Mortgage brought to our multi-property acquisition was unparalleled. They navigate complex financial structures with surgical precision.',
-      date: 'Recent'
-    },
-    {
-      rating: 5,
-      author: 'Sarah K.',
-      text: 'In the Houston luxury market, speed is currency. Model Mortgage secured our financing in record time without compromising on the terms.',
-      date: 'Recent'
-    },
-    {
-      rating: 5,
-      author: 'David L.',
-      text: 'Finally, a mortgage lender that understands the needs of business owners. A truly institutional experience from start to finish.',
-      date: 'Recent'
-    }
-  ]
-
-  // Use actual reviews if available, otherwise use fallback
-  const displayReviews = reviews.length > 0 ? reviews.slice(0, 3) : fallbackReviews
+  // Take first 3 reviews for display
+  const displayReviews = reviews.slice(0, 3)
 
   return (
     <section className={styles.section}>
@@ -117,85 +95,93 @@ export function Reviews({ reviews = [] }: ReviewsProps) {
 
         {/* RIGHT: Asymmetric Editorial Cards */}
         <div className={styles.cardsContainer}>
-          {/* Card 1: Wide / Top Left */}
-          {displayReviews[0] && (
-            <div className={`${styles.reviewCard} ${styles.card1}`}>
-              <span className={styles.quoteIcon}>"</span>
-              <p className={styles.reviewText}>
-                {displayReviews[0].text}
-              </p>
-              <div className={styles.cardFooter}>
-                <div className={styles.authorInfo}>
-                  <ReviewAvatar
-                    url={displayReviews[0].profile_photo_url}
-                    author={displayReviews[0].author}
-                    className={styles.authorImage}
-                  />
-                  <div>
-                    <h4 className={styles.authorName}>{displayReviews[0].author}</h4>
-                    <p className={styles.reviewDate}>{displayReviews[0].date}</p>
+          {displayReviews.length > 0 ? (
+            <>
+              {/* Card 1: Wide / Top Left */}
+              {displayReviews[0] && (
+                <div className={`${styles.reviewCard} ${styles.card1}`}>
+                  <span className={styles.quoteIcon}>"</span>
+                  <p className={styles.reviewText}>
+                    {displayReviews[0].text}
+                  </p>
+                  <div className={styles.cardFooter}>
+                    <div className={styles.authorInfo}>
+                      <ReviewAvatar
+                        url={displayReviews[0].profile_photo_url}
+                        author={displayReviews[0].author || 'Anonymous'}
+                        className={styles.authorImage}
+                      />
+                      <div>
+                        <h4 className={styles.authorName}>{displayReviews[0].author || 'Anonymous'}</h4>
+                        <p className={styles.reviewDate}>{displayReviews[0].date || 'Recent'}</p>
+                      </div>
+                    </div>
+                    <a
+                      href="https://maps.app.goo.gl/35L6crTX7ygjNAJ4A"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.verifyLink}
+                    >
+                      <span>View More</span>
+                      <span className={styles.externalIcon}>↗</span>
+                    </a>
                   </div>
                 </div>
-                <a
-                  href="https://maps.app.goo.gl/35L6crTX7ygjNAJ4A"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.verifyLink}
-                >
-                  <span>View More</span>
-                  <span className={styles.externalIcon}>↗</span>
-                </a>
-              </div>
-            </div>
-          )}
+              )}
 
-          {/* Card 2: Narrow/Tall / Mid Right */}
-          {displayReviews[1] && (
-            <div className={`${styles.reviewCard} ${styles.card2}`}>
-              <span className={styles.quoteIcon}>"</span>
-              <p className={styles.reviewText}>
-                {displayReviews[1].text}
-              </p>
-              <div className={styles.cardFooter}>
-                <div className={styles.authorInfo}>
-                  <ReviewAvatar
-                    url={displayReviews[1].profile_photo_url}
-                    author={displayReviews[1].author}
-                    className={styles.authorImage}
-                  />
-                  <div>
-                    <h4 className={styles.authorName}>{displayReviews[1].author}</h4>
-                    <p className={styles.reviewDate}>{displayReviews[1].date}</p>
+              {/* Card 2: Narrow/Tall / Mid Right */}
+              {displayReviews[1] && (
+                <div className={`${styles.reviewCard} ${styles.card2}`}>
+                  <span className={styles.quoteIcon}>"</span>
+                  <p className={styles.reviewText}>
+                    {displayReviews[1].text}
+                  </p>
+                  <div className={styles.cardFooter}>
+                    <div className={styles.authorInfo}>
+                      <ReviewAvatar
+                        url={displayReviews[1].profile_photo_url}
+                        author={displayReviews[1].author || 'Anonymous'}
+                        className={styles.authorImage}
+                      />
+                      <div>
+                        <h4 className={styles.authorName}>{displayReviews[1].author || 'Anonymous'}</h4>
+                        <p className={styles.reviewDate}>{displayReviews[1].date || 'Recent'}</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          )}
+              )}
 
-          {/* Card 3: Medium / Bottom Left */}
-          {displayReviews[2] && (
-            <div className={`${styles.reviewCard} ${styles.card3}`}>
-              <span className={styles.quoteIcon}>"</span>
-              <p className={styles.reviewText}>
-                {displayReviews[2].text}
-              </p>
-              <div className={styles.cardFooter}>
-                <div className={styles.authorInfo}>
-                  <ReviewAvatar
-                    url={displayReviews[2].profile_photo_url}
-                    author={displayReviews[2].author}
-                    className={styles.authorImage}
-                  />
-                  <h4 className={styles.authorName}>{displayReviews[2].author}</h4>
+              {/* Card 3: Medium / Bottom Left */}
+              {displayReviews[2] && (
+                <div className={`${styles.reviewCard} ${styles.card3}`}>
+                  <span className={styles.quoteIcon}>"</span>
+                  <p className={styles.reviewText}>
+                    {displayReviews[2].text}
+                  </p>
+                  <div className={styles.cardFooter}>
+                    <div className={styles.authorInfo}>
+                      <ReviewAvatar
+                        url={displayReviews[2].profile_photo_url}
+                        author={displayReviews[2].author || 'Anonymous'}
+                        className={styles.authorImage}
+                      />
+                      <h4 className={styles.authorName}>{displayReviews[2].author || 'Anonymous'}</h4>
+                    </div>
+                    <div className={styles.reviewStars}>
+                      <span>★</span>
+                      <span>★</span>
+                      <span>★</span>
+                      <span>★</span>
+                      <span>★</span>
+                    </div>
+                  </div>
                 </div>
-                <div className={styles.reviewStars}>
-                  <span>★</span>
-                  <span>★</span>
-                  <span>★</span>
-                  <span>★</span>
-                  <span>★</span>
-                </div>
-              </div>
+              )}
+            </>
+          ) : (
+            <div className={styles.noReviews}>
+              <p>Loading reviews from Google...</p>
             </div>
           )}
         </div>
