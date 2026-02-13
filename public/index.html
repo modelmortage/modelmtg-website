@@ -1,74 +1,64 @@
-import type { Metadata } from 'next'
-import { Playfair_Display, Inter } from 'next/font/google'
-import './globals.css'
-
-const playfair = Playfair_Display({
-    subsets: ['latin'],
-    weight: ['400', '500', '600', '700'],
-    variable: '--font-serif',
-    display: 'swap',
-})
-
-const inter = Inter({
-    subsets: ['latin'],
-    weight: ['300', '400', '500', '600', '700'],
-    variable: '--font-sans',
-    display: 'swap',
-})
-
-export const metadata: Metadata = {
-    title: 'Model Mortgage | Houston Mortgage Broker | Expert Home Loan Solutions',
-    description: 'Houston-based mortgage broker specializing in home loans, refinancing, FHA, VA, conventional, and jumbo mortgages. Expert guidance from Matthew Bramow. Licensed in Texas. Call (832) 727-4128.',
-    keywords: 'Houston mortgage broker, Texas home loans, mortgage lender Houston, FHA loans, VA loans, conventional loans, jumbo mortgages, refinancing, Matthew Bramow, Model Mortgage, Spring TX mortgage broker',
-    authors: [{ name: 'Matthew Bramow' }],
-    metadataBase: new URL('https://modelmtg.com'),
-    icons: {
-        icon: '/model-mortage-logo.png',
-        apple: '/model-mortage-logo.png',
-    },
-    openGraph: {
-        title: 'Model Mortgage | Houston Mortgage Broker',
-        description: 'Expert mortgage solutions in Houston, TX. Specializing in home loans, refinancing, FHA, VA, conventional, and jumbo mortgages. Call (832) 727-4128.',
-        type: 'website',
-        locale: 'en_US',
-        url: 'https://modelmtg.com',
-        siteName: 'Model Mortgage',
-        images: [
-            {
-                url: '/model-mortage-logo.png',
-                width: 1200,
-                height: 630,
-                alt: 'Model Mortgage - Houston Mortgage Broker',
-            }
-        ],
-    },
-    twitter: {
-        card: 'summary_large_image',
-        title: 'Model Mortgage | Houston Mortgage Broker',
-        description: 'Expert mortgage solutions in Houston, TX. Call (832) 727-4128 for home loans, refinancing, and more.',
-    },
-    robots: {
-        index: true,
-        follow: true,
-        googleBot: {
-            index: true,
-            follow: true,
-            'max-video-preview': -1,
-            'max-image-preview': 'large',
-            'max-snippet': -1,
-        },
-    },
-    verification: {
-        google: 'your-google-verification-code', // Replace with actual verification code
-    },
-}
-
-export default function RootLayout({
-    children,
-}: {
-    children: React.ReactNode
-}) {
-    const structuredData = {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Essential Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Primary Meta Tags -->
+    <title>Model Mortgage | Houston Mortgage Broker | Expert Home Loan Solutions</title>
+    <meta name="title" content="Model Mortgage | Houston Mortgage Broker | Expert Home Loan Solutions">
+    <meta name="description" content="Houston-based mortgage broker specializing in home loans, refinancing, FHA, VA, conventional, and jumbo mortgages. Expert guidance from Matthew Bramow. Licensed in Texas. Call (832) 727-4128.">
+    <meta name="keywords" content="Houston mortgage broker, Texas home loans, mortgage lender Houston, FHA loans, VA loans, conventional loans, jumbo mortgages, refinancing, Matthew Bramow, Model Mortgage, Spring TX mortgage broker">
+    <meta name="author" content="Matthew Bramow">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow">
+    <meta name="bingbot" content="index, follow">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://modelmtg.com">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://modelmtg.com">
+    <meta property="og:site_name" content="Model Mortgage">
+    <meta property="og:title" content="Model Mortgage | Houston Mortgage Broker">
+    <meta property="og:description" content="Expert mortgage solutions in Houston, TX. Specializing in home loans, refinancing, FHA, VA, conventional, and jumbo mortgages. Call (832) 727-4128.">
+    <meta property="og:image" content="https://modelmtg.com/model-mortage-logo.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Model Mortgage - Houston Mortgage Broker">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://modelmtg.com">
+    <meta name="twitter:title" content="Model Mortgage | Houston Mortgage Broker">
+    <meta name="twitter:description" content="Expert mortgage solutions in Houston, TX. Call (832) 727-4128 for home loans, refinancing, and more.">
+    <meta name="twitter:image" content="https://modelmtg.com/model-mortage-logo.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/model-mortage-logo.png">
+    <link rel="apple-touch-icon" href="/model-mortage-logo.png">
+    <link rel="shortcut icon" href="/model-mortage-logo.png">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#0A0A0C">
+    <meta name="msapplication-TileColor" content="#0A0A0C">
+    
+    <!-- Performance Optimization -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    
+    <!-- Fonts - Optimized Loading -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data - Schema.org -->
+    <script type="application/ld+json">
+    {
         "@context": "https://schema.org",
         "@graph": [
             {
@@ -263,22 +253,45 @@ export default function RootLayout({
             }
         ]
     }
-
-    return (
-        <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
-            <head>
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-                />
-            </head>
-            <body className="bg-mm-bg text-mm-text">
-                {/* Skip to content link for accessibility */}
-                <a href="#main-content" className="sr-only focus:not-sr-only">
-                    Skip to main content
-                </a>
-                {children}
-            </body>
-        </html>
-    )
-}
+    </script>
+    
+    <!-- Google Analytics (Replace with your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    
+    <!-- Performance Hints -->
+    <link rel="preload" as="style" href="/styles/main.css">
+    <link rel="preload" as="script" href="/scripts/main.js">
+    
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="sr-only">Skip to main content</a>
+    
+    <!-- Main Content -->
+    <div id="root"></div>
+    <main id="main-content">
+        <!-- Your Next.js app will render here -->
+    </main>
+    
+    <!-- No JavaScript Fallback -->
+    <noscript>
+        <div style="padding: 2rem; text-align: center; background: #f8f9fa;">
+            <h1>Model Mortgage</h1>
+            <p>Houston Mortgage Broker</p>
+            <p>For the best experience, please enable JavaScript in your browser.</p>
+            <p>Call us at <a href="tel:+18327274128">(832) 727-4128</a></p>
+            <p>Email: <a href="mailto:matthew@modelmtg.com">matthew@modelmtg.com</a></p>
+        </div>
+    </noscript>
+    
+</body>
+</html>
