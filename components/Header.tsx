@@ -153,16 +153,37 @@ export default function Header() {
                         aria-current={isActive('/blog') ? 'page' : undefined}
                         onClick={handleLinkClick}
                     >
-                        Resources
+                        Blog
                     </Link>
-                    <Link
-                        href="/about-us"
-                        className={`${styles.navLink} ${isActive('/about-us') ? styles.active : ''}`}
-                        aria-current={isActive('/about-us') ? 'page' : undefined}
-                        onClick={handleLinkClick}
-                    >
-                        About
-                    </Link>
+                    
+                    {/* About Dropdown */}
+                    <div className={styles.navDropdown}>
+                        <Link
+                            href="/about-us"
+                            className={`${styles.navLink} ${isActive('/about-us') || isActive('/meet-our-team') ? styles.active : ''}`}
+                            aria-current={isActive('/about-us') ? 'page' : undefined}
+                            onClick={handleLinkClick}
+                        >
+                            About Us
+                        </Link>
+                        <div className={styles.dropdownMenu}>
+                            <Link
+                                href="/about-us"
+                                className={styles.dropdownItem}
+                                onClick={handleLinkClick}
+                            >
+                                About Us
+                            </Link>
+                            <Link
+                                href="/meet-our-team"
+                                className={styles.dropdownItem}
+                                onClick={handleLinkClick}
+                            >
+                                Meet the Team
+                            </Link>
+                        </div>
+                    </div>
+                    
                     <Link
                         href="/contact"
                         className={`${styles.navLink} ${isActive('/contact') ? styles.active : ''}`}

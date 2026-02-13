@@ -14,15 +14,15 @@ export const teamMembers: TeamMember[] = [
   {
     slug: 'matthew-bramow',
     name: 'Matthew Bramow',
-    title: 'Owner & Senior Mortgage Broker',
+    title: 'CEO | Mortgage Broker',
     bio: `Meet Matthew, a seasoned mortgage broker with nearly a decade of experience in the industry. Matthew has established himself as a trusted professional in the field, dedicated to helping individuals and families secure their dream homes.
 
 With a loving wife and two beautiful children, Matthew understands the importance of finding the perfect place to create lifelong memories. He values the significance of homeownership and is passionate about guiding his clients through the mortgage process with care and expertise.
 
 Known for his exceptional service and commitment to client satisfaction, Matthew has garnered high online reviews from countless satisfied customers who praise his ability to simplify complex financial matters and provide tailored solutions. With Matthew & his team by your side, you can rest assured that your mortgage needs will be handled with the utmost professionalism and personalized attention.`,
-    photo: '/images/team/matthew-bramow.jpg',
+    photo: '/matthew-bramow.png',
     credentials: [
-      'NMLS #1234567',
+      'NMLS #1373388',
       'Nearly 10 years of mortgage industry experience',
       'Exceptional online reviews and client satisfaction ratings'
     ],
@@ -34,20 +34,21 @@ Known for his exceptional service and commitment to client satisfaction, Matthew
     ],
     contact: {
       email: 'matthew@modelmtg.com',
-      phone: '(713) 123-4567',
+      phone: '(832) 727-4128',
       calendly: 'https://calendly.com/matthew-bramow'
     },
     metadata: {
-      title: 'Matthew Bramow | Senior Mortgage Broker - Model Mortgage',
-      description: 'Meet Matthew Bramow, owner of Model Mortgage with nearly a decade of experience helping families secure their dream homes in Houston.',
+      title: 'Matthew Bramow | CEO & Mortgage Broker - Model Mortgage',
+      description: 'Meet Matthew Bramow, CEO of Model Mortgage with nearly a decade of experience helping families secure their dream homes in Houston. NMLS #1373388.',
       keywords: [
         'Matthew Bramow',
         'mortgage broker Houston',
-        'Model Mortgage owner',
+        'Model Mortgage CEO',
         'experienced mortgage professional',
-        'home loan expert'
+        'home loan expert',
+        'NMLS 1373388'
       ],
-      ogImage: '/images/team/matthew-bramow-og.jpg',
+      ogImage: '/matthew-bramow.png',
       canonical: '/matthew-bramow'
     }
   },
