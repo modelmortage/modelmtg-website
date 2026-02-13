@@ -319,8 +319,8 @@
 
 @media (max-width: 768px) {
     .hero {
-        padding: 4rem 1.5rem 3rem;
-        min-height: auto;
+        padding: 8rem 1.5rem 3rem;
+        min-height: 100vh;
     }
 
     .container {
@@ -333,7 +333,8 @@
     }
 
     .headline {
-        font-size: clamp(1.75rem, 3vw, 2.5rem);
+        font-size: clamp(1.75rem, 8vw, 2.5rem);
+        line-height: 1.2;
     }
 
     .subhead {

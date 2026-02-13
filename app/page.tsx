@@ -20,12 +20,15 @@ import type { Review } from '@/src/lib/proof'
 
 async function getGoogleReviews(): Promise<Review[]> {
     try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/google-reviews`, {
-            next: { revalidate: 300 } // Revalidate every 5 minutes
+        // Use relative URL for API calls to work in all environments
+        const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || ''
+        const response = await fetch(`${baseUrl}/api/google-reviews`, {
+            next: { revalidate: 300 }, // Revalidate every 5 minutes
+            cache: 'no-store' // Disable caching for development
         })
 
         if (!response.ok) {
-            console.error('Failed to fetch Google reviews')
+            console.error('Failed to fetch Google reviews:', response.status)
             return []
         }
 
