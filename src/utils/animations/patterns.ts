@@ -4,8 +4,11 @@
  * Reusable animation patterns and helper functions for common GSAP animations
  */
 
-import type { TweenVars } from 'gsap'
+// import type { TweenVars } from 'gsap'
 import { ANIMATION_DURATION, EASING } from './config'
+
+// Temporary type definition to avoid GSAP dependency
+type TweenVars = any
 
 /**
  * Options for fade-in animations

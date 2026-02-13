@@ -4,13 +4,16 @@
  * Helper functions for creating scroll-triggered animations with GSAP ScrollTrigger
  */
 
-import type { ScrollTriggerInstanceVars } from 'gsap/ScrollTrigger'
+// import type { ScrollTriggerInstanceVars } from 'gsap/ScrollTrigger'
 import {
   SCROLL_TRIGGER_DEFAULTS,
   MOBILE_BREAKPOINT,
   MOBILE_DURATION_MULTIPLIER,
   MOBILE_STAGGER_MULTIPLIER,
 } from './config'
+
+// Temporary type definition to avoid GSAP dependency
+type ScrollTriggerInstanceVars = any
 
 /**
  * Options for creating a ScrollTrigger
