@@ -12,17 +12,17 @@ export function Resources() {
         {
             title: 'First-Time Homebuyer Checklist (Houston)',
             excerpt: 'Essential steps and considerations for Houston first-time buyers.',
-            href: '/blog/first-time-homebuyer-checklist-houston'
+            href: '/blog'
         },
         {
             title: 'Understanding Mortgage Pre-Approval',
             excerpt: 'What pre-approval means and how it strengthens your offer.',
-            href: '/blog/understanding-mortgage-pre-approval'
+            href: '/blog'
         },
         {
             title: 'How Refinancing Works in Texas',
             excerpt: 'Overview of the refinance process and when it makes sense.',
-            href: '/blog/how-refinancing-works-texas'
+            href: '/blog'
         }
     ]
 

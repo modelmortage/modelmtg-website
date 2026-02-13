@@ -26,7 +26,7 @@
 .radialGlow {
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at center, rgba(197, 160, 89, 0.08) 0%, transparent 60%);
+    background: radial-gradient(circle at center, rgba(197, 160, 89, 0.03) 0%, transparent 60%);
     pointer-events: none;
 }
 
@@ -109,7 +109,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
+    padding: 1.25rem;
     border: 1px solid rgba(197, 160, 89, 0.4);
     /* border-primary/40 */
     transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -117,7 +117,7 @@
     color: inherit;
     background: transparent;
     cursor: pointer;
-    min-height: 200px;
+    min-height: 100px;
 }
 
 .strategyBlock:hover {
@@ -127,20 +127,20 @@
 }
 
 .cardLabel {
-    font-size: 0.75rem;
-    /* text-xs */
+    font-size: 0.625rem;
+    /* text-[10px] */
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: #c5a059;
     /* text-primary */
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
 }
 
 .cardTitle {
     font-family: var(--font-serif);
-    font-size: 1.5rem;
-    /* text-2xl */
-    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+    /* text-xl */
+    margin-bottom: 0.25rem;
 }
 
 .cardLine {
@@ -151,6 +151,6 @@
 }
 
 .strategyBlock:hover .cardLine {
-    width: 3rem;
-    /* w-12 */
+    width: 2rem;
+    /* w-8 */
 }

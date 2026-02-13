@@ -43,7 +43,7 @@ export default function Footer() {
                     <div className={styles.linkColumn}>
                         <h3>About Us</h3>
                         <Link href="/about-us">Our Story</Link>
-                        <Link href="/team">Meet Our Team</Link>
+                        <Link href="/meet-our-team">Meet Our Team</Link>
                         <Link href="/reviews">Client Reviews</Link>
                         <Link href="/contact">Contact Us</Link>
                     </div>
@@ -59,7 +59,7 @@ export default function Footer() {
 
                     <div className={styles.linkColumn}>
                         <h3>Resources</h3>
-                        <Link href="/learn">
+                        <Link href="/learning-center">
                             <Icon icon={FaGraduationCap} size="sm" ariaLabel="" />
                             <span>Learning Center</span>
                         </Link>
@@ -137,7 +137,7 @@ export default function Footer() {
                     <div className={styles.legalLinks}>
                         <Link href="/privacy-policy">Privacy Policy</Link>
                         <span className={styles.separator}>|</span>
-                        <Link href="/nmls">NMLS Consumer Access</Link>
+                        <a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/2516810" target="_blank" rel="noopener noreferrer">NMLS Consumer Access</a>
                         <span className={styles.separator}>|</span>
                         <Link href="/ada-accessibility-statement">ADA Accessibility</Link>
                     </div>

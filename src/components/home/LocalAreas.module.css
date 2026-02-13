@@ -175,27 +175,7 @@
   color: #f2ad0d;
 }
 
-/* Institutional Note */
-.institutionalNote {
-  margin-top: 3rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  color: rgba(242, 173, 13, 0.6);
-}
 
-.noteLine {
-  height: 1px;
-  flex-grow: 1;
-  background-color: rgba(242, 173, 13, 0.1);
-}
-
-.noteText {
-  font-size: 0.625rem;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  white-space: nowrap;
-}
 
 /* Decorative TX */
 .decorativeTX {

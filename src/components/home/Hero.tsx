@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { FaLock, FaBuilding, FaMapMarkerAlt } from 'react-icons/fa'
+import { FaLock, FaBuilding } from 'react-icons/fa'
 import { siteData } from '@/src/lib/siteData'
 import { homeSections } from '@/src/lib/homeSections'
 import { Button } from '@/src/components/ui/Button'
@@ -20,8 +20,7 @@ export function Hero() {
 
   const iconMap: { [key: string]: React.ComponentType<any> } = {
     'Confidential': FaLock,
-    'Lender': FaBuilding,
-    'Houston': FaMapMarkerAlt
+    'Lender': FaBuilding
   }
 
   return (
@@ -123,7 +122,7 @@ export function Hero() {
             {/* Memo Footer */}
             <div className={styles.memoFooter}>
               <div className={styles.memoFooterText}>
-                <p className={styles.memoAvailability}>Ready When You Are</p>
+                <p className={styles.memoAvailability}>Experience Over Assumptions</p>
               </div>
             </div>
           </div>

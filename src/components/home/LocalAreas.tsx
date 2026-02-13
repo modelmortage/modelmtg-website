@@ -48,9 +48,9 @@ export function LocalAreas() {
               {neighborhoods.map((column, colIndex) => (
                 <div key={colIndex} className={styles.column}>
                   {column.map((neighborhood, index) => (
-                    <Link 
-                      key={index} 
-                      href="#" 
+                    <Link
+                      key={index}
+                      href="#"
                       className={styles.neighborhoodLink}
                     >
                       <span className={styles.neighborhoodName}>{neighborhood}</span>
@@ -60,12 +60,7 @@ export function LocalAreas() {
               ))}
             </div>
 
-            {/* Institutional Note */}
-            <div className={styles.institutionalNote}>
-              <div className={styles.noteLine}></div>
-              <span className={styles.noteText}>Model Mortgage Regional Authority</span>
-              <div className={styles.noteLine}></div>
-            </div>
+
           </div>
         </div>
       </div>
