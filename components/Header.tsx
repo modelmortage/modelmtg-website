@@ -108,7 +108,7 @@ export default function Header() {
             <div className={styles.container}>
                 <Link href="/" className={styles.logo} onClick={handleLinkClick}>
                     <Image
-                        src="/logo-v3.png"
+                        src="/model-mortage-logo.png"
                         alt="Model Mortgage - Houston Mortgage Broker"
                         width={180}
                         height={60}

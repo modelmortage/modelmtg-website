@@ -26,7 +26,7 @@ export default function Footer() {
                 {/* Logo Section */}
                 <div className={styles.logoSection}>
                     <Image
-                        src="/logo-v3.png"
+                        src="/model-mortage-logo.png"
                         alt="Model Mortgage - Houston Mortgage Broker"
                         width={50}
                         height={17}

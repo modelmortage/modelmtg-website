@@ -23,8 +23,8 @@ export const metadata: Metadata = {
     authors: [{ name: 'Matthew Bramow' }],
     metadataBase: new URL('https://modelmtg.com'),
     icons: {
-        icon: '/logo-v3.png',
-        apple: '/logo-v3.png',
+        icon: '/model-mortage-logo.png',
+        apple: '/model-mortage-logo.png',
     },
     openGraph: {
         title: 'Private Mortgage Advisory | Houston Mortgage Broker',
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
         locale: 'en_US',
         images: [
             {
-                url: '/logo-v3.png',
+                url: '/model-mortage-logo.png',
                 width: 1200,
                 height: 630,
                 alt: 'Model Mortgage Logo',
@@ -77,7 +77,7 @@ export default function RootLayout({
                     "longitude": "-95.4086"
                 },
                 "areaServed": ["Houston", "River Oaks", "Memorial", "West University", "Sugar Land", "Katy", "Texas"],
-                "image": "https://modelmtg.com/logo-v3.png",
+                "image": "https://modelmtg.com/model-mortage-logo.png",
                 "sameAs": [
                     "https://www.facebook.com/modelmortgage",
                     "https://www.instagram.com/modelmortgage",

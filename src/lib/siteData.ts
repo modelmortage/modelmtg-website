@@ -13,7 +13,7 @@ export const siteData = {
     tagline: "Private Client Mortgage Advisory",
     shortDescription:
       "Houston-based mortgage advisory specializing in structured lending for primary residences, investment properties, and jumbo homes.",
-    logo: "/logo-v3.png",
+    logo: "/model-mortage-logo.png",
 
     // Photography registry (paths and settings)
     photography: {
@@ -167,7 +167,7 @@ export const siteData = {
     siteTitle: "Private Mortgage Advisory | Houston Mortgage Broker | Model Mortgage",
     siteDescription:
       "Houston-based mortgage advisory specializing in structured lending for primary residences, investment properties, and jumbo homes.",
-    ogImage: "/logo-v3.png",
+    ogImage: "/model-mortage-logo.png",
   },
 } as const
 
