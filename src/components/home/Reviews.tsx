@@ -2,7 +2,7 @@
 
 import { getGoogleProof, Review } from '@/src/lib/proof'
 import styles from './Reviews.module.css'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 interface ReviewsProps {
   reviews?: Review[]
@@ -41,7 +41,33 @@ function ReviewAvatar({ url, author, className }: ReviewAvatarProps) {
  * Reviews Section - Elite Editorial Layout
  * Asymmetric card positioning with institutional social proof
  */
-export function Reviews({ reviews = [] }: ReviewsProps) {
+export function Reviews({ reviews: initialReviews = [] }: ReviewsProps) {
+  const [reviews, setReviews] = useState<Review[]>(initialReviews)
+  const [loading, setLoading] = useState(initialReviews.length === 0)
+
+  useEffect(() => {
+    // Only fetch if we don't have initial reviews
+    if (initialReviews.length === 0) {
+      fetch('/api/google-reviews')
+        .then(res => res.json())
+        .then(data => {
+          const transformedReviews = (data.reviews || []).map((review: any) => ({
+            rating: review.rating || 5,
+            author: review.authorName || 'Anonymous',
+            text: review.text || '',
+            date: review.relativeTime || review.time || 'Recent',
+            profile_photo_url: review.authorPhoto || null
+          }))
+          setReviews(transformedReviews)
+          setLoading(false)
+        })
+        .catch(err => {
+          console.error('Failed to load reviews:', err)
+          setLoading(false)
+        })
+    }
+  }, [initialReviews.length])
+
   const proof = getGoogleProof(reviews)
 
   // Take first 3 reviews for display
@@ -95,7 +121,11 @@ export function Reviews({ reviews = [] }: ReviewsProps) {
 
         {/* RIGHT: Asymmetric Editorial Cards */}
         <div className={styles.cardsContainer}>
-          {displayReviews.length > 0 ? (
+          {loading ? (
+            <div className={styles.noReviews}>
+              <p>Loading reviews from Google...</p>
+            </div>
+          ) : displayReviews.length > 0 ? (
             <>
               {/* Card 1: Wide / Top Left */}
               {displayReviews[0] && (
