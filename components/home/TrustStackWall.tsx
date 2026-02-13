@@ -44,7 +44,7 @@ export default function TrustStackWall() {
     ]
 
     return (
-        <section className={styles.section} ref={sectionRef as React.RefObject<HTMLSectionElement>}>
+        <section className={styles.section} ref={sectionRef as React.RefObject<HTMLElement>}>
             <div className={`${styles.container} ${isVisible ? styles.visible : ''}`}>
 
                 <h2 className={styles.sectionTitle}>Client <span className={styles.goldText}>Success Stories</span></h2>

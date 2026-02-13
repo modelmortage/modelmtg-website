@@ -1,126 +1,70 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import HeroSection from '@/components/home/HeroSection'
-import PerformanceMetrics from '@/components/home/PerformanceMetrics'
-import ClientProfiles from '@/components/home/ClientProfiles'
-import AdvantageSection from '@/components/home/AdvantageSection'
-import HowWeWinSection from '@/components/home/HowWeWinSection'
-import MarketPowerSection from '@/components/home/MarketPowerSection'
-import TeamPreviewSection from '@/components/home/TeamPreviewSection'
-import TrustStackWall from '@/components/home/TrustStackWall'
-import CinematicCTA from '@/components/home/CinematicCTA'
-import GoogleReviews from '@/components/home/GoogleReviews'
-import Link from 'next/link'
-import { Button } from '@/components/design-system'
+import { Hero } from '@/src/components/home/Hero'
+import { Pillars } from '@/src/components/home/Pillars'
+import { Programs } from '@/src/components/home/Programs'
+import { Rates } from '@/src/components/home/Rates'
+import { Process } from '@/src/components/home/Process'
+import { Team } from '@/src/components/home/Team'
+import { Reviews } from '@/src/components/home/Reviews'
+import { Transactions } from '@/src/components/home/Transactions'
+import { Resources } from '@/src/components/home/Resources'
+import { LocalAreas } from '@/src/components/home/LocalAreas'
+import { FinalCta } from '@/src/components/home/FinalCta'
+import type { Review } from '@/src/lib/proof'
 
-import { Metadata } from 'next'
+/**
+ * Homepage - Private Client Mortgage Advisory
+ * 
+ * Data-driven architecture with Google Reviews API integration
+ */
 
-export const metadata: Metadata = {
-    alternates: {
-        canonical: '/',
-    },
+async function getGoogleReviews(): Promise<Review[]> {
+    try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/google-reviews`, {
+            next: { revalidate: 300 } // Revalidate every 5 minutes
+        })
+
+        if (!response.ok) {
+            console.error('Failed to fetch Google reviews')
+            return []
+        }
+
+        const data = await response.json()
+
+        // Transform API response to match Review interface
+        return (data.reviews || []).map((review: any) => ({
+            rating: review.rating || 5,
+            author: review.authorName || 'Anonymous',
+            text: review.text || '',
+            date: review.relativeTime || review.time || 'Recent'
+        }))
+    } catch (error) {
+        console.error('Error fetching reviews:', error)
+        return []
+    }
 }
 
-export default function Home() {
+export default async function Home() {
+    const reviews = await getGoogleReviews()
+
     return (
         <>
             <Header />
             <main id="main-content">
-                <HeroSection />
-                <PerformanceMetrics />
-                <GoogleReviews />
-                <ClientProfiles />
-                <AdvantageSection />
-                <HowWeWinSection />
-                <MarketPowerSection />
-                <TeamPreviewSection />
-                <TrustStackWall />
-                <CinematicCTA />
+                <Hero />
+                <Pillars />
+                <Programs />
+                <Rates />
+                <Process />
+                <Team />
+                <Reviews reviews={reviews} />
+                <Transactions />
+                <Resources />
+                <LocalAreas />
+                <FinalCta />
             </main>
             <Footer />
-
-            {/* Sticky CTA */}
-            <div
-                style={{
-                    position: 'fixed',
-                    bottom: '2rem',
-                    right: '2rem',
-                    zIndex: 1000,
-                }}
-                className="sticky-cta-container"
-            >
-                <Link href="/contact" passHref legacyBehavior>
-                    <a className="btn-glass-pill" style={{ textDecoration: 'none' }}>
-                        <span style={{ width: '8px', height: '8px', background: '#1FB6A6', borderRadius: '50%', display: 'inline-block' }}></span>
-                        Schedule Call
-                    </a>
-                </Link>
-            </div>
-
-            {/* Structured Data - Organization Schema */}
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{
-                    __html: JSON.stringify({
-                        "@context": "https://schema.org",
-                        "@type": "Organization",
-                        "name": "Model Mortgage",
-                        "url": "https://modelmtg.com",
-                        "logo": "https://modelmtg.com/logo.png",
-                        "description": "Strategic mortgage planning for buyers who refuse to lose. Expert mortgage broker in Houston, TX.",
-                        "address": {
-                            "@type": "PostalAddress",
-                            "addressLocality": "Houston",
-                            "addressRegion": "TX",
-                            "postalCode": "77002",
-                            "addressCountry": "US"
-                        },
-                        "contactPoint": {
-                            "@type": "ContactPoint",
-                            "telephone": "(832) 727-4128",
-                            "contactType": "customer service",
-                            "areaServed": "US",
-                            "availableLanguage": "English"
-                        },
-                        "sameAs": [
-                            "https://www.facebook.com/modelmortgage",
-                            "https://www.linkedin.com/company/model-mortgage"
-                        ]
-                    })
-                }}
-            />
-
-            {/* Structured Data - LocalBusiness Schema */}
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{
-                    __html: JSON.stringify({
-                        "@context": "https://schema.org",
-                        "@type": "RealEstateAgent",
-                        "name": "Model Mortgage - Matthew Bramow",
-                        "image": "/logo.png",
-                        "description": "Strategic mortgage planning for buyers who refuse to lose. Expert mortgage broker in Houston, TX.",
-                        "address": {
-                            "@type": "PostalAddress",
-                            "addressLocality": "Houston",
-                            "addressRegion": "TX",
-                            "addressCountry": "US"
-                        },
-                        "geo": {
-                            "@type": "GeoCoordinates",
-                            "latitude": 29.7604,
-                            "longitude": -95.3698
-                        },
-                        "telephone": "(832) 727-4128",
-                        "priceRange": "$",
-                        "aggregateRating": {
-                            "@type": "AggregateRating",
-                            "ratingValue": "5.0",
-                            "reviewCount": "1000"
-                        }
-                    })
-                }}
-            />
         </>
     )
 }

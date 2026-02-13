@@ -28,8 +28,8 @@ export default function Footer() {
                     <Image
                         src="/logo-v3.png"
                         alt="Model Mortgage - Houston Mortgage Broker"
-                        width={200}
-                        height={67}
+                        width={140}
+                        height={47}
                         loading="lazy"
                         className={styles.footerLogo}
                     />

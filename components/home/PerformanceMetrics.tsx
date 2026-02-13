@@ -31,7 +31,7 @@ export default function PerformanceMetrics() {
     ]
 
     return (
-        <section className={styles.section} ref={ref as React.RefObject<HTMLSectionElement>}>
+        <section className={styles.section} ref={ref as React.RefObject<HTMLElement>}>
             <div className={`${styles.container} ${isVisible ? styles.visible : ''}`}>
 
                 <div className={styles.header}>

@@ -39,7 +39,7 @@ export default function ClientProfiles() {
     ]
 
     return (
-        <section className={styles.section} ref={sectionRef as React.RefObject<HTMLSectionElement>}>
+        <section className={styles.section} ref={sectionRef as React.RefObject<HTMLElement>}>
             <div className={`${styles.container} ${isVisible ? styles.visible : ''}`}>
 
                 {/* LEFT: EDITORIAL COPY */}
