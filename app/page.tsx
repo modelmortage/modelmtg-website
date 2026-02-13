@@ -12,6 +12,8 @@ import { LocationMap } from '@/src/components/home/LocationMap'
 import { FinalCta } from '@/src/components/home/FinalCta'
 import type { Review } from '@/src/lib/proof'
 
+export const runtime = 'edge'
+
 /**
  * Homepage - Private Client Mortgage Advisory
  * 
@@ -23,8 +25,7 @@ async function getGoogleReviews(): Promise<Review[]> {
         // Use relative URL for API calls to work in all environments
         const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || ''
         const response = await fetch(`${baseUrl}/api/google-reviews`, {
-            next: { revalidate: 300 }, // Revalidate every 5 minutes
-            cache: 'no-store' // Disable caching for development
+            next: { revalidate: 300 } // Revalidate every 5 minutes
         })
 
         if (!response.ok) {
