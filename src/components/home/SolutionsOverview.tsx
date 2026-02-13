@@ -1,11 +1,14 @@
 'use client'
 
-import React, { useEffect, useRef } from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
+import { FaChevronDown } from 'react-icons/fa'
 import styles from './SolutionsOverview.module.css'
 
 export function SolutionsOverview() {
+  const [purchaseOpen, setPurchaseOpen] = useState(false)
+  const [refinanceOpen, setRefinanceOpen] = useState(false)
   const purchasePrograms = [
     {
       title: 'Fixed-Rate Mortgage',
@@ -139,36 +142,64 @@ export function SolutionsOverview() {
           viewport={{ once: true, margin: "-50px" }}
           variants={containerVariants}
         >
-          <motion.h2 className={styles.categoryTitle} variants={itemVariants}>
-            Purchase Programs
-          </motion.h2>
-          <motion.p className={styles.categoryDescription} variants={itemVariants}>
-            Financing structured for primary residences, second homes, and investment properties across Houston.
-          </motion.p>
+          <button 
+            className={styles.accordionHeader}
+            onClick={() => setPurchaseOpen(!purchaseOpen)}
+            aria-expanded={purchaseOpen}
+          >
+            <div>
+              <motion.h2 className={styles.categoryTitle} variants={itemVariants}>
+                Purchase Programs
+              </motion.h2>
+              <motion.p className={styles.categoryDescription} variants={itemVariants}>
+                Financing structured for primary residences, second homes, and investment properties across Houston.
+              </motion.p>
+            </div>
+            <motion.div 
+              className={styles.accordionIcon}
+              animate={{ rotate: purchaseOpen ? 180 : 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <FaChevronDown />
+            </motion.div>
+          </button>
           
-          <div className={styles.loanList}>
-            {purchasePrograms.map((program, index) => (
-              <motion.div
-                key={index}
-                variants={cardVariants}
+          <AnimatePresence>
+            {purchaseOpen && (
+              <motion.div 
+                className={styles.loanList}
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.3 }}
               >
-                <Link 
-                  href={program.href} 
-                  className={styles.loanRow}
-                >
-                  <div className={styles.loanInfo}>
-                    <h3 className={styles.loanTitle}>{program.title}</h3>
-                    <p className={styles.loanDescription}>{program.description}</p>
-                    <div className={styles.loanMeta}>
-                      <span className={styles.dealLabel}>Core Parameters</span>
-                      <span className={styles.dealSpecs}>{program.profile}</span>
-                    </div>
-                  </div>
-                  <div className={styles.inquireBtn}>Explore Options →</div>
-                </Link>
+                {purchasePrograms.map((program, index) => (
+                  <motion.div
+                    key={index}
+                    variants={cardVariants}
+                    initial="hidden"
+                    animate="visible"
+                    transition={{ delay: index * 0.05 }}
+                  >
+                    <Link 
+                      href={program.href} 
+                      className={styles.loanRow}
+                    >
+                      <div className={styles.loanInfo}>
+                        <h3 className={styles.loanTitle}>{program.title}</h3>
+                        <p className={styles.loanDescription}>{program.description}</p>
+                        <div className={styles.loanMeta}>
+                          <span className={styles.dealLabel}>Core Parameters</span>
+                          <span className={styles.dealSpecs}>{program.profile}</span>
+                        </div>
+                      </div>
+                      <div className={styles.inquireBtn}>Explore Options →</div>
+                    </Link>
+                  </motion.div>
+                ))}
               </motion.div>
-            ))}
-          </div>
+            )}
+          </AnimatePresence>
         </motion.div>
 
         {/* Refinance Programs */}
@@ -179,36 +210,64 @@ export function SolutionsOverview() {
           viewport={{ once: true, margin: "-50px" }}
           variants={containerVariants}
         >
-          <motion.h2 className={styles.categoryTitle} variants={itemVariants}>
-            Refinance Programs
-          </motion.h2>
-          <motion.p className={styles.categoryDescription} variants={itemVariants}>
-            Optimize your current mortgage structure to align with your financial goals.
-          </motion.p>
+          <button 
+            className={styles.accordionHeader}
+            onClick={() => setRefinanceOpen(!refinanceOpen)}
+            aria-expanded={refinanceOpen}
+          >
+            <div>
+              <motion.h2 className={styles.categoryTitle} variants={itemVariants}>
+                Refinance Programs
+              </motion.h2>
+              <motion.p className={styles.categoryDescription} variants={itemVariants}>
+                Optimize your current mortgage structure to align with your financial goals.
+              </motion.p>
+            </div>
+            <motion.div 
+              className={styles.accordionIcon}
+              animate={{ rotate: refinanceOpen ? 180 : 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <FaChevronDown />
+            </motion.div>
+          </button>
           
-          <div className={styles.loanList}>
-            {refinancePrograms.map((program, index) => (
-              <motion.div
-                key={index}
-                variants={cardVariants}
+          <AnimatePresence>
+            {refinanceOpen && (
+              <motion.div 
+                className={styles.loanList}
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.3 }}
               >
-                <Link 
-                  href={program.href} 
-                  className={styles.loanRow}
-                >
-                  <div className={styles.loanInfo}>
-                    <h3 className={styles.loanTitle}>{program.title}</h3>
-                    <p className={styles.loanDescription}>{program.description}</p>
-                    <div className={styles.loanMeta}>
-                      <span className={styles.dealLabel}>Core Parameters</span>
-                      <span className={styles.dealSpecs}>{program.profile}</span>
-                    </div>
-                  </div>
-                  <div className={styles.inquireBtn}>Explore Options →</div>
-                </Link>
+                {refinancePrograms.map((program, index) => (
+                  <motion.div
+                    key={index}
+                    variants={cardVariants}
+                    initial="hidden"
+                    animate="visible"
+                    transition={{ delay: index * 0.05 }}
+                  >
+                    <Link 
+                      href={program.href} 
+                      className={styles.loanRow}
+                    >
+                      <div className={styles.loanInfo}>
+                        <h3 className={styles.loanTitle}>{program.title}</h3>
+                        <p className={styles.loanDescription}>{program.description}</p>
+                        <div className={styles.loanMeta}>
+                          <span className={styles.dealLabel}>Core Parameters</span>
+                          <span className={styles.dealSpecs}>{program.profile}</span>
+                        </div>
+                      </div>
+                      <div className={styles.inquireBtn}>Explore Options →</div>
+                    </Link>
+                  </motion.div>
+                ))}
               </motion.div>
-            ))}
-          </div>
+            )}
+          </AnimatePresence>
         </motion.div>
       </div>
     </section>

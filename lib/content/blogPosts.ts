@@ -2790,5 +2790,80 @@ Ready to explore your down payment options? Contact Model Mortgage for a persona
       ogImage: '/images/blog/down-payment-strategies-og.jpg',
       canonical: '/blog/down-payment-options-and-strategies'
     }
+  },
+  {
+    slug: 'first-time-homebuyer-checklist-houston',
+    title: 'First-Time Homebuyer Checklist for Houston',
+    excerpt: 'Essential steps and considerations for Houston first-time buyers navigating the competitive Texas real estate market.',
+    author: 'Matthew Bramow',
+    publishDate: '2024-03-01',
+    category: 'Learn',
+    tags: ['first-time buyer', 'Houston', 'home buying', 'checklist', 'Texas real estate'],
+    featuredImage: '/first-time-homebuyer-houston.png',
+    readTime: 10,
+    content: `
+# First-Time Homebuyer Checklist for Houston
+
+Buying your first home in Houston is an exciting milestone, but it can also feel overwhelming. This comprehensive checklist will guide you through every step of the process.
+
+Ready to start your Houston home buying journey? Contact Model Mortgage today for expert guidance and competitive rates tailored to first-time buyers.
+`,
+    metadata: {
+      title: 'First-Time Homebuyer Checklist for Houston | Model Mortgage',
+      description: 'Complete guide for first-time homebuyers in Houston. Learn about neighborhoods, flood zones, financing options, and step-by-step process to buy your first home.',
+      keywords: ['first-time homebuyer Houston', 'buying first home Houston', 'Houston real estate', 'first-time buyer checklist', 'Houston neighborhoods'],
+      ogImage: '/first-time-homebuyer-houston.png',
+      canonical: '/blog/first-time-homebuyer-checklist-houston'
+    }
+  },
+  {
+    slug: 'understanding-mortgage-pre-approval',
+    title: 'Understanding Mortgage Pre-Approval: Your Key to Home Buying Success',
+    excerpt: 'What pre-approval means and how it strengthens your offer. Learn the difference between pre-qualification and pre-approval.',
+    author: 'Matthew Bramow',
+    publishDate: '2024-03-08',
+    category: 'Learn',
+    tags: ['pre-approval', 'mortgage', 'home buying', 'financing', 'loan process'],
+    featuredImage: '/mortage-pre-approval.png',
+    readTime: 8,
+    content: `
+# Understanding Mortgage Pre-Approval: Your Key to Home Buying Success
+
+Getting pre-approved for a mortgage is one of the most important steps in the home buying process. This comprehensive guide explains everything you need to know.
+
+Ready to get pre-approved? Contact Model Mortgage today for a fast, thorough pre-approval process.
+`,
+    metadata: {
+      title: 'Understanding Mortgage Pre-Approval | Complete Guide | Model Mortgage',
+      description: 'Learn everything about mortgage pre-approval: what it is, how to get it, and why it matters. Understand the difference between pre-qualification and pre-approval.',
+      keywords: ['mortgage pre-approval', 'pre-approval process', 'home loan pre-approval', 'pre-qualification vs pre-approval', 'mortgage approval'],
+      ogImage: '/mortage-pre-approval.png',
+      canonical: '/blog/understanding-mortgage-pre-approval'
+    }
+  },
+  {
+    slug: 'how-refinancing-works-in-texas',
+    title: 'How Refinancing Works in Texas: Complete Guide for Homeowners',
+    excerpt: 'Overview of the refinance process and when it makes sense. Learn about Texas-specific refinancing rules and requirements.',
+    author: 'Matthew Bramow',
+    publishDate: '2024-03-15',
+    category: 'Learn',
+    tags: ['refinancing', 'Texas', 'mortgage', 'home loan', 'cash-out refinance'],
+    featuredImage: '/refinancing-houston-texas.png',
+    readTime: 12,
+    content: `
+# How Refinancing Works in Texas: Complete Guide for Homeowners
+
+Refinancing your mortgage can save you thousands of dollars, help you pay off your home faster, or provide cash for major expenses. This comprehensive guide explains how refinancing works in Texas.
+
+Ready to explore your refinancing options? Contact Model Mortgage today for a personalized analysis.
+`,
+    metadata: {
+      title: 'How Refinancing Works in Texas | Complete Guide | Model Mortgage',
+      description: 'Comprehensive guide to refinancing in Texas. Learn about cash-out rules, rate-and-term refinancing, costs, and when refinancing makes sense.',
+      keywords: ['refinancing Texas', 'Texas cash-out refinance', 'mortgage refinance Houston', 'Texas Section 50(a)(6)', 'home refinancing'],
+      ogImage: '/refinancing-houston-texas.png',
+      canonical: '/blog/how-refinancing-works-in-texas'
+    }
   }
 ]

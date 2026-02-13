@@ -189,3 +189,49 @@
     align-self: flex-end;
   }
 }
+
+/* Accordion Styles */
+.accordionHeader {
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  transition: opacity 0.2s ease;
+  margin-bottom: 20px;
+}
+
+.accordionHeader:hover {
+  opacity: 0.8;
+}
+
+.accordionHeader:focus {
+  outline: 2px solid #c5a059;
+  outline-offset: 4px;
+}
+
+.accordionIcon {
+  color: #c5a059;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  margin-top: 10px;
+}
+
+.loanList {
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .accordionHeader {
+    gap: 1rem;
+  }
+
+  .accordionIcon {
+    font-size: 1.25rem;
+  }
+}

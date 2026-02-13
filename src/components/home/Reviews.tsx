@@ -113,7 +113,6 @@ export function Reviews({ reviews: initialReviews = [] }: ReviewsProps) {
           </div>
 
           <div className={styles.ratingContainer}>
-            <h1 className={styles.ratingBackground}>5.0</h1>
             <div className={styles.ratingDisplay}>
               <span className={styles.ratingNumber}>
                 {proof.rating !== null ? proof.rating : '5.0'}

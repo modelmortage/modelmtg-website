@@ -50,10 +50,37 @@
     display: flex;
     flex-direction: column;
     border: 1px solid var(--mm-line);
-    padding: 1.5rem;
+    padding: 0;
     background: transparent;
     border-radius: 4px;
     transition: border-color 0.2s ease;
+    overflow: hidden;
+}
+
+.imageContainer {
+    width: 100%;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    background: var(--mm-surface);
+}
+
+.resourceImage {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+}
+
+.resourceLink:hover .resourceImage {
+    transform: scale(1.05);
+}
+
+.cardContent {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .resourceLink:hover .resourceCard {

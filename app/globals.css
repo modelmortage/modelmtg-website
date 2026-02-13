@@ -17,6 +17,18 @@
   --mm-surface-alt: #252525;
   /* Subtle highlight surface */
 
+  /* === LIGHT BACKGROUNDS === */
+  --ivory-white: #FFFFFF;
+  /* White background for content pages */
+  
+  /* === COLORS === */
+  --midnight-black: #0a0a0a;
+  /* Dark text color */
+  --deep-charcoal: #2a2a2a;
+  /* Secondary dark color */
+  --gold-main: #c5a059;
+  /* Gold accent color */
+
   /* === TEXT - Refined Light Hierarchy === */
   --mm-text: rgba(255, 255, 255, 0.78);
   /* Primary text */

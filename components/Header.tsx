@@ -26,6 +26,7 @@ export default function Header() {
     const [isScrolled, setIsScrolled] = useState(false)
     const [lastScrollY, setLastScrollY] = useState(0)
     const [showHeader, setShowHeader] = useState(true)
+    const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false)
     const pathname = usePathname()
     const headerRef = useRef<HTMLElement>(null)
 
@@ -160,16 +161,25 @@ export default function Header() {
                     <div className={styles.navDropdown}>
                         <Link
                             href="/about-us"
-                            className={`${styles.navLink} ${isActive('/about-us') || isActive('/meet-our-team') ? styles.active : ''}`}
-                            aria-current={isActive('/about-us') ? 'page' : undefined}
-                            onClick={handleLinkClick}
+                            className={`${styles.navLink} ${styles.dropdownToggle} ${isActive('/about-us') || isActive('/meet-our-team') ? styles.active : ''}`}
+                            onClick={(e) => {
+                                // On mobile, toggle dropdown instead of navigating
+                                if (window.innerWidth <= 768) {
+                                    e.preventDefault()
+                                    setAboutDropdownOpen(!aboutDropdownOpen)
+                                } else {
+                                    handleLinkClick()
+                                }
+                            }}
+                            aria-expanded={aboutDropdownOpen}
                         >
                             About Us
+                            <FaChevronDown className={`${styles.chevron} ${aboutDropdownOpen ? styles.chevronOpen : ''}`} />
                         </Link>
-                        <div className={styles.dropdownMenu}>
+                        <div className={`${styles.dropdownMenu} ${aboutDropdownOpen ? styles.dropdownMenuOpen : ''}`}>
                             <Link
                                 href="/about-us"
-                                className={styles.dropdownItem}
+                                className={`${styles.dropdownItem} ${styles.dropdownItemDesktopOnly}`}
                                 onClick={handleLinkClick}
                             >
                                 About Us

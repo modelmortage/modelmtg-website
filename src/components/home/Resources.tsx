@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Card } from '@/src/components/ui/Card'
 import styles from './Resources.module.css'
@@ -13,19 +14,22 @@ import styles from './Resources.module.css'
 export function Resources() {
     const resources = [
         {
-            title: 'First-Time Homebuyer Checklist (Houston)',
+            title: 'First-Time Homebuyer Checklist',
             excerpt: 'Essential steps and considerations for Houston first-time buyers.',
-            href: '/blog'
+            href: '/blog/first-time-homebuyer-checklist-houston',
+            image: '/first-time-homebuyer-houston.png'
         },
         {
             title: 'Understanding Mortgage Pre-Approval',
             excerpt: 'What pre-approval means and how it strengthens your offer.',
-            href: '/blog'
+            href: '/blog/understanding-mortgage-pre-approval',
+            image: '/mortage-pre-approval.png'
         },
         {
             title: 'How Refinancing Works in Texas',
             excerpt: 'Overview of the refinance process and when it makes sense.',
-            href: '/blog'
+            href: '/blog/how-refinancing-works-in-texas',
+            image: '/refinancing-houston-texas.png'
         }
     ]
 
@@ -80,9 +84,20 @@ export function Resources() {
                                     whileHover={{ y: -8, transition: { duration: 0.3 } }}
                                 >
                                     <Card className={styles.resourceCard}>
-                                        <h3>{resource.title}</h3>
-                                        <p>{resource.excerpt}</p>
-                                        <span className={styles.readMore}>Read more →</span>
+                                        <div className={styles.imageContainer}>
+                                            <Image
+                                                src={resource.image}
+                                                alt={resource.title}
+                                                width={400}
+                                                height={250}
+                                                className={styles.resourceImage}
+                                            />
+                                        </div>
+                                        <div className={styles.cardContent}>
+                                            <h3>{resource.title}</h3>
+                                            <p>{resource.excerpt}</p>
+                                            <span className={styles.readMore}>Read more →</span>
+                                        </div>
                                     </Card>
                                 </motion.div>
                             </Link>

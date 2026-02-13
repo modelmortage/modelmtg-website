@@ -494,7 +494,11 @@
   }
 
   .title {
-    font-size: 2.5rem;
+    font-size: 2.25rem;
+    line-height: 1.15;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
   }
 
   .subtitle {
@@ -518,5 +522,28 @@
   .programSpecs {
     padding-left: 0;
     padding-right: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 2.5rem 1rem 1.5rem;
+  }
+
+  .title {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    font-size: 0.9375rem;
+  }
+
+  .programRow {
+    padding: 1.5rem 1rem;
+  }
+
+  .categoryHeader {
+    padding: 1rem;
   }
 }
