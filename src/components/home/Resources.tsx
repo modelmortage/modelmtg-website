@@ -1,4 +1,7 @@
+'use client'
+
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 import { Card } from '@/src/components/ui/Card'
 import styles from './Resources.module.css'
 
@@ -26,31 +29,78 @@ export function Resources() {
         }
     ]
 
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.15,
+                delayChildren: 0.2
+            }
+        }
+    }
+
+    const cardVariants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.6,
+                ease: [0.22, 1, 0.36, 1] as const
+            }
+        }
+    }
+
     return (
         <section className={styles.section}>
             <div className={styles.container}>
-                <div className={styles.header}>
+                <motion.div 
+                    className={styles.header}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.6 }}
+                >
                     <h2>Resources</h2>
                     <p>Guides and insights to help you make confident mortgage decisions.</p>
-                </div>
+                </motion.div>
 
-                <div className={styles.grid}>
+                <motion.div 
+                    className={styles.grid}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-50px" }}
+                    variants={containerVariants}
+                >
                     {resources.map((resource, index) => (
-                        <Link key={index} href={resource.href} className={styles.resourceLink}>
-                            <Card className={styles.resourceCard}>
-                                <h3>{resource.title}</h3>
-                                <p>{resource.excerpt}</p>
-                                <span className={styles.readMore}>Read more →</span>
-                            </Card>
-                        </Link>
+                        <motion.div key={index} variants={cardVariants}>
+                            <Link href={resource.href} className={styles.resourceLink}>
+                                <motion.div
+                                    whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                                >
+                                    <Card className={styles.resourceCard}>
+                                        <h3>{resource.title}</h3>
+                                        <p>{resource.excerpt}</p>
+                                        <span className={styles.readMore}>Read more →</span>
+                                    </Card>
+                                </motion.div>
+                            </Link>
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
 
-                <div className={styles.ctaContainer}>
+                <motion.div 
+                    className={styles.ctaContainer}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                >
                     <Link href="/blog" className={styles.viewAllBtn}>
                         View All Resources
                     </Link>
-                </div>
+                </motion.div>
             </div>
         </section>
     )

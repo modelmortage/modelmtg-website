@@ -1,5 +1,6 @@
 'use client'
 
+import { motion } from 'framer-motion'
 import styles from './Process.module.css'
 
 export function Process() {
@@ -26,33 +27,70 @@ export function Process() {
     }
   ]
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1
+      }
+    }
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, x: -30 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.22, 1, 0.36, 1]
+      }
+    }
+  }
+
   return (
     <section className={styles.section}>
       <div className={styles.container}>
         {/* Header */}
-        <div className={styles.header}>
+        <motion.div 
+          className={styles.header}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+        >
           <h2 className={styles.title}>A Clear, Structured Mortgage Process</h2>
           <div className={styles.divider}></div>
           <p className={styles.subtitle}>
             Professional guidance through every stage of your home financing journey, delivered with institutional precision.
           </p>
-        </div>
+        </motion.div>
 
         {/* Process Grid */}
-        <div className={styles.grid}>
+        <motion.div 
+          className={styles.grid}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={containerVariants}
+        >
           {steps.map((step, index) => (
-            <div 
+            <motion.div 
               key={index} 
               className={`${styles.step} ${index > 0 ? styles.stepBorder : ''}`}
+              variants={itemVariants}
+              whileHover={{ x: 10, transition: { duration: 0.2 } }}
             >
               <div className={styles.stepHeader}>
                 <span className={styles.stepNumber}>{step.number}</span>
                 <h3 className={styles.stepTitle}>{step.title}</h3>
               </div>
               <p className={styles.stepDescription}>{step.description}</p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

@@ -3,6 +3,7 @@
 import { getGoogleProof, Review } from '@/src/lib/proof'
 import styles from './Reviews.module.css'
 import React, { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 
 interface ReviewsProps {
   reviews?: Review[]
@@ -69,12 +70,40 @@ export function Reviews({ reviews: initialReviews = [] }: ReviewsProps) {
   }, [initialReviews.length])
 
   const proof = getGoogleProof(reviews)
-
-  // Take first 3 reviews for display
   const displayReviews = reviews.slice(0, 3)
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2
+      }
+    }
+  }
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 30, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.6,
+        ease: [0.22, 1, 0.36, 1] as const
+      }
+    }
+  }
+
   return (
-    <section className={styles.section}>
+    <motion.section 
+      className={styles.section}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.6 }}
+    >
       <div className={styles.container}>
         {/* LEFT: Institutional Rating Block */}
         <div className={styles.ratingPanel}>
@@ -120,7 +149,13 @@ export function Reviews({ reviews: initialReviews = [] }: ReviewsProps) {
         </div>
 
         {/* RIGHT: Asymmetric Editorial Cards */}
-        <div className={styles.cardsContainer}>
+        <motion.div 
+          className={styles.cardsContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={containerVariants}
+        >
           {loading ? (
             <div className={styles.noReviews}>
               <p>Loading reviews from Google...</p>
@@ -129,7 +164,11 @@ export function Reviews({ reviews: initialReviews = [] }: ReviewsProps) {
             <>
               {/* Card 1: Wide / Top Left */}
               {displayReviews[0] && (
-                <div className={`${styles.reviewCard} ${styles.card1}`}>
+                <motion.div 
+                  className={`${styles.reviewCard} ${styles.card1}`}
+                  variants={cardVariants}
+                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                >
                   <span className={styles.quoteIcon}>"</span>
                   <p className={styles.reviewText}>
                     {displayReviews[0].text}
@@ -163,12 +202,16 @@ export function Reviews({ reviews: initialReviews = [] }: ReviewsProps) {
                       <span className={styles.externalIcon}>↗</span>
                     </a>
                   </div>
-                </div>
+                </motion.div>
               )}
 
               {/* Card 2: Narrow/Tall / Mid Right */}
               {displayReviews[1] && (
-                <div className={`${styles.reviewCard} ${styles.card2}`}>
+                <motion.div 
+                  className={`${styles.reviewCard} ${styles.card2}`}
+                  variants={cardVariants}
+                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                >
                   <span className={styles.quoteIcon}>"</span>
                   <p className={styles.reviewText}>
                     {displayReviews[1].text}
@@ -193,12 +236,16 @@ export function Reviews({ reviews: initialReviews = [] }: ReviewsProps) {
                       <span>★</span>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               )}
 
               {/* Card 3: Medium / Bottom Left */}
               {displayReviews[2] && (
-                <div className={`${styles.reviewCard} ${styles.card3}`}>
+                <motion.div 
+                  className={`${styles.reviewCard} ${styles.card3}`}
+                  variants={cardVariants}
+                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                >
                   <span className={styles.quoteIcon}>"</span>
                   <p className={styles.reviewText}>
                     {displayReviews[2].text}
@@ -220,7 +267,7 @@ export function Reviews({ reviews: initialReviews = [] }: ReviewsProps) {
                       <span>★</span>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               )}
             </>
           ) : (
@@ -228,9 +275,9 @@ export function Reviews({ reviews: initialReviews = [] }: ReviewsProps) {
               <p>Loading reviews from Google...</p>
             </div>
           )}
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   )
 }
 

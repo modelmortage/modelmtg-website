@@ -1,19 +1,59 @@
 'use client'
 
+import { motion } from 'framer-motion'
 import styles from './HoustonNuances.module.css'
 import { FaFileInvoiceDollar, FaWater, FaHome } from 'react-icons/fa'
 
 export function HoustonNuances() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1
+      }
+    }
+  }
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.22, 1, 0.36, 1] as const
+      }
+    }
+  }
+
   return (
     <section className={styles.section}>
       <div className={styles.container}>
-        <h2 className={styles.title}>
+        <motion.h2 
+          className={styles.title}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+        >
           Local Insight for <span className={styles.accent}>Houston Buyers.</span>
-        </h2>
+        </motion.h2>
 
-        <div className={styles.grid}>
+        <motion.div 
+          className={styles.grid}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={containerVariants}
+        >
           {/* Property Taxes */}
-          <div className={styles.card}>
+          <motion.div 
+            className={styles.card}
+            variants={cardVariants}
+            whileHover={{ y: -8, transition: { duration: 0.3 } }}
+          >
             <div className={styles.iconWrapper}>
               <FaFileInvoiceDollar className={styles.icon} />
             </div>
@@ -21,10 +61,14 @@ export function HoustonNuances() {
             <p className={styles.cardText}>
               Texas property taxes are unique. We help you calculate true monthly costs including homestead exemptions and school district assessments.
             </p>
-          </div>
+          </motion.div>
 
           {/* Flood Zones */}
-          <div className={styles.card}>
+          <motion.div 
+            className={styles.card}
+            variants={cardVariants}
+            whileHover={{ y: -8, transition: { duration: 0.3 } }}
+          >
             <div className={styles.iconWrapper}>
               <FaWater className={styles.icon} />
             </div>
@@ -32,10 +76,14 @@ export function HoustonNuances() {
             <p className={styles.cardText}>
               Essential guidance on FEMA maps, flood insurance requirements, and how different zones affect your lending eligibility.
             </p>
-          </div>
+          </motion.div>
 
           {/* HOA Navigation */}
-          <div className={styles.card}>
+          <motion.div 
+            className={styles.card}
+            variants={cardVariants}
+            whileHover={{ y: -8, transition: { duration: 0.3 } }}
+          >
             <div className={styles.iconWrapper}>
               <FaHome className={styles.icon} />
             </div>
@@ -43,8 +91,8 @@ export function HoustonNuances() {
             <p className={styles.cardText}>
               Understanding Houston's complex HOA landscape and how mandatory dues impact your debt-to-income ratios.
             </p>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   )
