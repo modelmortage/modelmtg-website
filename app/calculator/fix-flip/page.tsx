@@ -13,9 +13,17 @@ import {
 import styles from './fix-flip.module.css'
 
 const fixFlipConfig = {
+  id: 'fix-flip-calculator',
   title: 'Fix & Flip Calculator',
   description: 'Calculate potential returns on fix and flip investment properties',
-  icon: 'FaHome'
+  icon: 'FaHome',
+  inputs: [],
+  calculate: () => [],
+  metadata: {
+    title: 'Fix & Flip Calculator',
+    description: 'Calculate potential returns on fix and flip investment properties',
+    keywords: ['fix and flip', 'calculator', 'real estate', 'investment']
+  }
 }
 
 export default function FixFlipCalculator() {
@@ -73,7 +81,7 @@ export default function FixFlipCalculator() {
     // Loan calculations
     const loanAmount = purchasePrice * (ltv / 100)
     const downPayment = purchasePrice - loanAmount
-    
+
     // Interest calculations
     const monthlyInterestRate = (interestRate / 100) / 12
     const monthlyInterestPayment = loanAmount * monthlyInterestRate

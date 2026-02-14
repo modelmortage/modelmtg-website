@@ -47,7 +47,7 @@
 .divider {
   width: 6rem;
   height: 1px;
-  background-color: #f2ad0d;
+  background-color: var(--mm-gold);
   margin: 0 auto 2rem;
 }
 
@@ -86,17 +86,17 @@
 }
 
 .step:hover {
-  background-color: rgba(242, 173, 13, 0.02);
+  background-color: rgba(201, 164, 76, 0.02);
 }
 
 .stepBorder {
-  border-top: 1px solid rgba(242, 173, 13, 0.2);
+  border-top: 1px solid rgba(201, 164, 76, 0.2);
 }
 
 @media (min-width: 768px) {
   .stepBorder {
     border-top: none;
-    border-left: 1px solid rgba(242, 173, 13, 0.2);
+    border-left: 1px solid rgba(201, 164, 76, 0.2);
   }
 }
 
@@ -107,7 +107,7 @@
 }
 
 .stepNumber {
-  color: #f2ad0d;
+  color: var(--mm-gold);
   font-size: 1.125rem;
   font-weight: 500;
   margin-bottom: 1rem;
@@ -146,7 +146,7 @@
 }
 
 .ctaButton:hover .ctaCircle {
-  border-color: #f2ad0d;
+  border-color: var(--mm-gold);
 }
 
 .ctaButton:hover .ctaArrow {
@@ -157,7 +157,7 @@
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.4em;
-  color: rgba(242, 173, 13, 0.7);
+  color: rgba(201, 164, 76, 0.7);
   font-weight: 600;
 }
 
@@ -165,7 +165,7 @@
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
-  border: 1px solid rgba(242, 173, 13, 0.3);
+  border: 1px solid rgba(201, 164, 76, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -173,7 +173,7 @@
 }
 
 .ctaArrow {
-  color: #f2ad0d;
+  color: var(--mm-gold);
   font-size: 1.5rem;
   transition: transform 0.3s ease;
 }

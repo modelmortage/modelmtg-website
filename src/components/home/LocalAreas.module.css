@@ -67,7 +67,7 @@
 }
 
 .label {
-  color: #f2ad0d;
+  color: var(--mm-gold);
   font-size: 0.625rem;
   letter-spacing: 0.3em;
   font-weight: 700;
@@ -108,7 +108,7 @@
 .divider {
   height: 1px;
   width: 6rem;
-  background-color: rgba(242, 173, 13, 0.4);
+  background-color: rgba(201, 164, 76, 0.4);
   margin-top: 2rem;
   display: none;
 }
@@ -153,7 +153,7 @@
 
 .neighborhoodLink {
   padding: 1.25rem 0;
-  border-bottom: 1px solid rgba(242, 173, 13, 0.2);
+  border-bottom: 1px solid rgba(201, 164, 76, 0.2);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -162,7 +162,7 @@
 }
 
 .neighborhoodLink:hover {
-  border-bottom-color: rgba(242, 173, 13, 0.6);
+  border-bottom-color: rgba(201, 164, 76, 0.6);
 }
 
 .neighborhoodName {
@@ -172,7 +172,7 @@
 }
 
 .neighborhoodLink:hover .neighborhoodName {
-  color: #f2ad0d;
+  color: var(--mm-gold);
 }
 
 
@@ -198,7 +198,7 @@
   font-weight: 700;
   line-height: 1;
   user-select: none;
-  color: #f2ad0d;
+  color: var(--mm-gold);
   transform: translateY(50%);
   display: block;
 }

@@ -6,6 +6,7 @@ import { SolutionsOverview } from '@/src/components/home/SolutionsOverview'
 import { Process } from '@/src/components/home/Process'
 
 import { Reviews } from '@/src/components/home/Reviews'
+import { ElfsightWidget } from '@/src/components/home/ElfsightWidget'
 import { Resources } from '@/src/components/home/Resources'
 import { LocalAreas } from '@/src/components/home/LocalAreas'
 import { HoustonNuances } from '@/src/components/home/HoustonNuances'
@@ -39,6 +40,7 @@ export default function Home() {
                 <Process />
 
                 <Reviews />
+                <ElfsightWidget />
                 <HoustonNuances />
                 <LocalAreas />
                 <LocationMap />
