@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import type { Metadata } from 'next'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { motion } from 'framer-motion'
@@ -45,9 +44,11 @@ function ReviewAvatar({ url, author }: ReviewAvatarProps) {
 
 export default function ReviewsPage() {
   const [reviews, setReviews] = useState<Review[]>([])
+  const [loading, setLoading] = useState(true)
   const [rating, setRating] = useState<number>(5.0)
   const [reviewCount, setReviewCount] = useState<number>(0)
-  const [loading, setLoading] = useState(true)
+
+  const googleReviewUrl = "https://maps.app.goo.gl/35L6crTX7ygjNAJ4A"
 
   useEffect(() => {
     // Load Elfsight script
@@ -117,32 +118,6 @@ export default function ReviewsPage() {
             <p className={styles.heroSubtitle}>
               Real feedback from Houston homebuyers and investors who trusted Model Mortgage with their financing strategy.
             </p>
-
-            {/* Rating Summary */}
-            <div className={styles.ratingSummary}>
-              <div className={styles.ratingDisplay}>
-                <span className={styles.ratingNumber}>{rating.toFixed(1)}</span>
-                <div className={styles.stars}>
-                  {[...Array(5)].map((_, i) => (
-                    <span key={i}>★</span>
-                  ))}
-                </div>
-              </div>
-              <div className={styles.ratingMeta}>
-                <p className={styles.ratingCount}>Based on {reviewCount} Google Reviews</p>
-                <a
-                  href="https://maps.app.goo.gl/35L6crTX7ygjNAJ4A"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.googleLink}
-                >
-                  <svg viewBox="0 0 24 24" fill="currentColor" className={styles.googleIcon}>
-                    <path d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z" />
-                  </svg>
-                  View on Google
-                </a>
-              </div>
-            </div>
           </div>
         </section>
 
@@ -153,14 +128,52 @@ export default function ReviewsPage() {
               <div className={styles.loading}>
                 <p>Loading reviews from Google...</p>
               </div>
-            ) : reviews.length > 0 ? (
+            ) : (
+              /* ONE unified grid */
               <motion.div
                 className={styles.reviewsGrid}
                 initial="hidden"
                 animate="visible"
                 variants={containerVariants}
               >
-                {reviews.map((review, index) => (
+                {/* 1) Google Rating Card - UPDATED LAYOUT */}
+                <motion.a
+                  href={googleReviewUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={styles.googleRatingCard}
+                  variants={cardVariants}
+                >
+                  <div className={styles.ratingHeader}>
+                    {/* Left Side: Rating */}
+                    <div className={styles.ratingNumber}>{rating.toFixed(1)}</div>
+
+                    {/* Right Side: Meta */}
+                    <div className={styles.ratingMeta}>
+                      <div className={styles.ratingCount}>
+                        Based on {reviewCount} <br /> Google Reviews
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className={styles.stars}>
+                    {"★★★★★".split("").map((s, i) => (
+                      <span key={i}>{s}</span>
+                    ))}
+                  </div>
+
+                  <div style={{ marginTop: 'auto', paddingTop: '1rem', display: 'flex', justifyContent: 'flex-end' }}>
+                    <div className={styles.googleLinkText}>
+                      <svg viewBox="0 0 24 24" fill="currentColor" className={styles.googleIcon}>
+                        <path d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z" />
+                      </svg>
+                      <span>View on Google</span>
+                    </div>
+                  </div>
+                </motion.a>
+
+                {/* 2) Review cards */}
+                {reviews.map((r, index) => (
                   <motion.div
                     key={index}
                     className={styles.reviewCard}
@@ -170,28 +183,29 @@ export default function ReviewsPage() {
                     <div className={styles.cardHeader}>
                       <div className={styles.authorInfo}>
                         <ReviewAvatar
-                          url={review.authorPhoto}
-                          author={review.authorName}
+                          url={r.authorPhoto}
+                          author={r.authorName}
                         />
                         <div className={styles.authorDetails}>
-                          <h3 className={styles.authorName}>{review.authorName}</h3>
-                          <p className={styles.reviewDate}>{review.relativeTime}</p>
+                          <h3 className={styles.authorName}>{r.authorName}</h3>
+                          <p className={styles.reviewDate}>{r.relativeTime}</p>
                         </div>
                       </div>
+
+                      {/* Stars Top Right */}
                       <div className={styles.reviewStars}>
-                        {[...Array(5)].map((_, i) => (
-                          <span key={i} className={i < review.rating ? styles.starFilled : styles.starEmpty}>★</span>
+                        {"★★★★★".slice(0, r.rating || 5).split("").map((s, i) => (
+                          <span key={i} className={i < r.rating ? styles.starFilled : styles.starEmpty}>★</span>
                         ))}
                       </div>
                     </div>
-                    <p className={styles.reviewText}>{review.text}</p>
+
+                    <p className={styles.reviewText}>
+                      {r.text}
+                    </p>
                   </motion.div>
                 ))}
               </motion.div>
-            ) : (
-              <div className={styles.noReviews}>
-                <p>No reviews available at this time.</p>
-              </div>
             )}
 
             {/* Elfsight All-in-One Reviews Widget (Zillow) */}

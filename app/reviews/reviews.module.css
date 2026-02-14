@@ -6,7 +6,7 @@
 
 /* Hero Section */
 .hero {
-    padding: 10rem 2rem 6rem;
+    padding: 8rem 2rem 4rem;
     text-align: left;
     position: relative;
     border-bottom: 1px solid rgba(197, 160, 89, 0.2);
@@ -40,7 +40,7 @@
 
 .heroTitle {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(3.5rem, 10vw, 6.5rem);
+    font-size: clamp(3.5rem, 8vw, 5.5rem);
     font-weight: 400;
     font-style: italic;
     line-height: 1.1;
@@ -58,73 +58,7 @@
     line-height: 1.8;
     color: rgba(255, 255, 255, 0.7);
     max-width: 700px;
-    margin: 0 0 3rem 0;
-}
-
-/* Rating Summary */
-.ratingSummary {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 3rem;
-    padding: 2rem;
-    border: 1px solid rgba(197, 160, 89, 0.2);
-    border-radius: 8px;
-    background: rgba(197, 160, 89, 0.05);
-    backdrop-filter: blur(10px);
-    max-width: fit-content;
-}
-
-.ratingDisplay {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.ratingNumber {
-    font-size: 3rem;
-    font-weight: 700;
-    color: #c5a059;
-}
-
-.stars {
-    display: flex;
-    gap: 0.25rem;
-    font-size: 1.5rem;
-    color: #c5a059;
-}
-
-.ratingMeta {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    text-align: left;
-}
-
-.ratingCount {
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.8);
-}
-
-.googleLink {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: #c5a059;
-    text-decoration: none;
-    font-size: 0.875rem;
-    font-weight: 600;
-    transition: color 0.2s;
-}
-
-.googleLink:hover {
-    color: #d4b06a;
-}
-
-.googleIcon {
-    width: 20px;
-    height: 20px;
+    margin: 0;
 }
 
 /* Reviews Section */
@@ -137,42 +71,107 @@
     margin: 0 auto;
 }
 
-.elfsightWidget {
-    margin-top: 4rem;
-    padding: 2rem;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(197, 160, 89, 0.2);
-    border-radius: 8px;
-}
-
-.widgetTitle {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 5vw, 3rem);
-    font-weight: 400;
-    font-style: italic;
-    color: #c5a059;
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
 .reviewsGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
     margin-bottom: 4rem;
 }
 
-.reviewCard {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(197, 160, 89, 0.2);
+/* Google Rating Card - Special Styling */
+.googleRatingCard {
+    grid-column: span 1;
+    background: #050505;
+    /* Dark background matching screenshot */
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 300px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.googleRatingCard:hover {
+    background: #0a0a0a;
+    border-color: rgba(197, 160, 89, 0.3);
+}
+
+.ratingHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.ratingNumber {
+    font-size: 5rem;
+    font-weight: 400;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: #c5a059;
+    /* Gold color */
+    line-height: 1;
+}
+
+.stars {
+    display: flex;
+    gap: 0.25rem;
+    font-size: 1.5rem;
+    color: #c5a059;
+    margin-top: 1rem;
+}
+
+.ratingMeta {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+}
+
+.ratingCount {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+}
+
+.googleLinkText {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #c5a059;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.googleIcon {
+    width: 18px;
+    height: 18px;
+}
+
+/* Individual Review Cards */
+.reviewCard {
+    background: #050505;
+    /* Match screenshot dark background */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 300px;
     transition: all 0.3s ease;
 }
 
 .reviewCard:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(197, 160, 89, 0.4);
+    background: #0a0a0a;
+    border-color: rgba(197, 160, 89, 0.3);
+    transform: translateY(-5px);
 }
 
 .cardHeader {
@@ -193,46 +192,47 @@
     height: 48px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid rgba(197, 160, 89, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .authorInitial {
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    background: rgba(197, 160, 89, 0.2);
-    border: 2px solid rgba(197, 160, 89, 0.3);
+    background: #1a1a1a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.25rem;
-    font-weight: 700;
+    font-weight: 600;
     color: #c5a059;
+    /* Gold initial */
 }
 
 .authorDetails {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
 }
 
 .authorName {
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 700;
     color: white;
     margin: 0;
+    line-height: 1.2;
 }
 
 .reviewDate {
-    font-size: 0.875rem;
+    font-size: 0.8rem;
     color: rgba(255, 255, 255, 0.5);
-    margin: 0;
+    margin: 2px 0 0 0;
 }
 
 .reviewStars {
     display: flex;
-    gap: 0.125rem;
-    font-size: 1rem;
+    gap: 2px;
+    font-size: 0.9rem;
 }
 
 .starFilled {
@@ -240,14 +240,15 @@
 }
 
 .starEmpty {
-    color: rgba(197, 160, 89, 0.2);
+    color: rgba(255, 255, 255, 0.2);
 }
 
 .reviewText {
-    font-size: 0.9375rem;
-    line-height: 1.7;
+    font-size: 0.95rem;
+    line-height: 1.6;
     color: rgba(255, 255, 255, 0.8);
     margin: 0;
+    flex-grow: 1;
 }
 
 .loading,
@@ -256,6 +257,24 @@
     padding: 4rem 2rem;
     color: rgba(255, 255, 255, 0.6);
     font-size: 1.125rem;
+}
+
+/* Elfsight Widget */
+.elfsightWidget {
+    margin-top: 4rem;
+    padding: 2rem;
+    background: transparent;
+    border-top: 1px solid rgba(197, 160, 89, 0.2);
+}
+
+.widgetTitle {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 400;
+    font-style: italic;
+    color: #c5a059;
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
 /* CTA Section */
@@ -319,6 +338,7 @@
 .ctaButton:hover {
     background: #d4b06a;
     transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(197, 160, 89, 0.3);
 }
 
 .ctaButtonSecondary {
@@ -340,76 +360,26 @@
 }
 
 /* Responsive */
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
     .reviewsGrid {
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 768px) {
+    .reviewsGrid {
+        grid-template-columns: 1fr;
+    }
+
     .hero {
         padding: 8rem 1.5rem 4rem;
     }
 
     .heroTitle {
-        font-size: 2.75rem;
-    }
-
-    .ratingSummary {
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-
-    .ratingMeta {
-        text-align: center;
-    }
-
-    .reviewsSection {
-        padding: 3rem 1.5rem 4rem;
-    }
-
-    .elfsightWidget {
-        padding: 1.5rem;
-        margin-top: 3rem;
-    }
-
-    .widgetTitle {
-        font-size: 2rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .reviewsGrid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-        margin-bottom: 3rem;
-    }
-
-    .ctaSection {
-        padding: 4rem 1.5rem;
-    }
-
-    .ctaButtons {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .ctaButton,
-    .ctaButtonSecondary {
-        width: 100%;
-        text-align: center;
-    }
-}
-
-@media (max-width: 480px) {
-    .heroTitle {
-        font-size: 2.5rem;
+        font-size: 3rem;
     }
 
     .ratingNumber {
-        font-size: 2.5rem;
-    }
-
-    .reviewCard {
-        padding: 1.5rem;
+        font-size: 4rem;
     }
 }
