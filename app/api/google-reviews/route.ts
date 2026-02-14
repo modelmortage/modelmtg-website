@@ -35,6 +35,7 @@ export async function GET() {
                 'X-Goog-Api-Key': apiKey,
                 'X-Goog-FieldMask': fields,
             },
+            next: { revalidate: 3600 } // Cache for 1 hour
         })
 
         if (!response.ok) {

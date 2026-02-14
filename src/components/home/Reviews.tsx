@@ -42,6 +42,8 @@ function ReviewAvatar({ url, author, className }: ReviewAvatarProps) {
  * Reviews Section - Elite Editorial Layout
  * Asymmetric card positioning with institutional social proof
  */
+
+
 export function Reviews({ reviews: initialReviews = [] }: ReviewsProps) {
   const [reviews, setReviews] = useState<Review[]>(initialReviews)
   const [loading, setLoading] = useState(initialReviews.length === 0)
@@ -57,9 +59,12 @@ export function Reviews({ reviews: initialReviews = [] }: ReviewsProps) {
             author: review.authorName || 'Anonymous',
             text: review.text || '',
             date: review.relativeTime || review.time || 'Recent',
-            profile_photo_url: review.authorPhoto || null
+            profile_photo_url: review.authorPhoto || undefined
           }))
-          setReviews(transformedReviews)
+
+          if (transformedReviews.length > 0) {
+            setReviews(transformedReviews)
+          }
           setLoading(false)
         })
         .catch(err => {
