@@ -295,7 +295,14 @@
 }
 
 .externalIcon {
-  font-size: 0.75rem;
+  width: 0.875rem;
+  height: 0.875rem;
+  color: #eeb32b;
+  stroke: #eeb32b;
+}
+
+.externalIcon path {
+  stroke: #eeb32b;
 }
 
 .reviewStars {

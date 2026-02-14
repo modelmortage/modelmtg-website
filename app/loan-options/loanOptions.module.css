@@ -425,6 +425,12 @@
   width: 1rem;
   height: 1rem;
   flex-shrink: 0;
+  min-width: 1rem;
+  min-height: 1rem;
+}
+
+.checkIcon path {
+  stroke: #c5a059;
 }
 
 .specText {
