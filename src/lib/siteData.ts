@@ -95,7 +95,7 @@ export const siteData = {
 
   // === SOCIAL MEDIA ===
   social: {
-    facebook: "https://www.facebook.com/modelmortgage",
+    facebook: "https://www.facebook.com/model.mortgage/",
     instagram: "https://www.instagram.com/modelmortgage",
     linkedin: "https://www.linkedin.com/company/modelmortgage",
   },

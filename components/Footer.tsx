@@ -15,6 +15,7 @@ import {
     FaLock
 } from 'react-icons/fa'
 import { Icon } from './design-system/Icon/Icon'
+import { siteData } from '@/src/lib/siteData'
 import styles from './Footer.module.css'
 
 export default function Footer() {
@@ -89,7 +90,7 @@ export default function Footer() {
                         </p>
                         <div className={styles.socialIcons}>
                             <a
-                                href="https://www.facebook.com/modelmortgage"
+                                href={siteData.social.facebook}
                                 aria-label="Follow us on Facebook"
                                 className={styles.socialIcon}
                                 target="_blank"

@@ -137,7 +137,7 @@ export default function RootLayout({
                     }
                 ],
                 "sameAs": [
-                    "https://www.facebook.com/modelmortgage",
+                    "https://www.facebook.com/model.mortgage/",
                     "https://www.instagram.com/modelmortgage",
                     "https://www.linkedin.com/company/modelmortgage"
                 ],
