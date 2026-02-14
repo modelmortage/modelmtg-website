@@ -1,58 +1,389 @@
-/* Introduction Section */
-.intro {
-  max-width: 800px;
-  margin: 0 auto 4rem;
-  text-align: center;
+/* Meet Our Team - Registry Design */
+
+.main {
+  background: #000000;
+  color: #ffffff;
+  min-height: 100vh;
 }
 
-.introText {
-  font-size: 1.125rem;
-  line-height: 1.8;
-  color: var(--deep-charcoal);
+/* Hero Section */
+.hero {
+  padding: 8rem 2rem 4rem;
+  border-bottom: 1px solid rgba(197, 160, 89, 0.2);
 }
 
-/* Team Section */
-.teamSection {
-  margin-bottom: 4rem;
+@media (max-width: 767px) {
+  .hero {
+    padding: 6rem 1.5rem 3rem;
+  }
 }
 
-.teamGrid {
+.heroContent {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.heroLabel {
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: #c5a059;
+  font-weight: 400;
+}
+
+.heroTitle {
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  line-height: 1.1;
+}
+
+/* Content Grid */
+.contentGrid {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 4rem 2rem 8rem;
   display: grid;
   grid-template-columns: 1fr;
+  gap: 4rem;
+}
+
+@media (min-width: 1024px) {
+  .contentGrid {
+    grid-template-columns: 380px 1fr;
+    gap: 6rem;
+    padding: 6rem 2rem 10rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .contentGrid {
+    padding: 3rem 1.5rem 6rem;
+    gap: 3rem;
+  }
+}
+
+/* Mission Section (Left Side) */
+.missionSection {
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .missionSection {
+    position: sticky;
+    top: 8rem;
+    align-self: start;
+  }
+}
+
+.missionContent {
+  display: flex;
+  flex-direction: column;
   gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
 }
 
-/* Company Info */
-.companyInfo {
-  text-align: center;
-  padding: 2rem 0;
-  border-top: 1px solid #e5e5e5;
-  margin-top: 3rem;
+.goldLine {
+  width: 60px;
+  height: 1px;
+  background: #c5a059;
 }
 
-.companyNmls {
+.missionTitle {
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #ffffff;
+  font-style: italic;
+}
+
+@media (max-width: 767px) {
+  .missionTitle {
+    font-size: 1.25rem;
+  }
+}
+
+.missionText {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: #a0a0a0;
+  font-weight: 300;
+}
+
+.missionCta {
+  padding-top: 1rem;
+}
+
+.ctaLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
   font-size: 0.875rem;
-  color: var(--deep-charcoal);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #c5a059;
+  text-decoration: none;
+  transition: all 0.3s ease;
   font-weight: 500;
 }
 
-/* Tablet and up */
-@media (min-width: 768px) {
-  .teamGrid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2.5rem;
+.ctaLink:hover {
+  color: #ffffff;
+  gap: 1rem;
+}
+
+.arrow {
+  font-size: 1.25rem;
+  transition: transform 0.3s ease;
+}
+
+.ctaLink:hover .arrow {
+  transform: translateX(4px);
+}
+
+/* Registry Section (Right Side) */
+.registrySection {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Registry Header */
+.registryHeader {
+  display: grid;
+  grid-template-columns: 300px 1px 1fr;
+  gap: 0;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 1023px) {
+  .registryHeader {
+    display: none;
   }
 }
 
-/* Desktop */
-@media (min-width: 1024px) {
-  .introText {
-    font-size: 1.25rem;
-  }
+.headerPortrait,
+.headerProfile {
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: #c5a059;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+}
 
-  .teamGrid {
-    gap: 3rem;
+.headerPortrait {
+  padding-left: 1rem;
+}
+
+.headerProfile {
+  padding-left: 3rem;
+}
+
+.headerDivider {
+  width: 1px;
+  background: rgba(197, 160, 89, 0.3);
+}
+
+/* Profile Entry */
+.profileEntry {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding: 3rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.profileEntry:last-child {
+  border-bottom: none;
+}
+
+@media (min-width: 1024px) {
+  .profileEntry {
+    grid-template-columns: 300px 1px 1fr;
+    gap: 0;
   }
+}
+
+@media (max-width: 767px) {
+  .profileEntry {
+    padding: 2rem 0;
+  }
+}
+
+/* Portrait Container */
+.profilePortrait {
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 1024px) {
+  .profilePortrait {
+    padding-right: 1rem;
+  }
+}
+
+.portraitContainer {
+  position: relative;
+  width: 300px;
+  height: 375px;
+  overflow: hidden;
+}
+
+@media (max-width: 767px) {
+  .portraitContainer {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    aspect-ratio: 4/5;
+  }
+}
+
+.portraitImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) contrast(105%) brightness(95%);
+  transition: filter 0.6s ease;
+}
+
+.portraitContainer:hover .portraitImage {
+  filter: grayscale(0%) contrast(100%) brightness(100%);
+}
+
+/* Gold Hairline Divider */
+.profileDivider {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .profileDivider {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+  }
+}
+
+.goldHairline {
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(197, 160, 89, 0.4) 10%,
+    rgba(197, 160, 89, 0.6) 50%,
+    rgba(197, 160, 89, 0.4) 90%,
+    transparent 100%
+  );
+}
+
+/* Profile Info */
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .profileInfo {
+    padding-left: 3rem;
+    padding-top: 0.5rem;
+  }
+}
+
+.profileNameRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .profileNameRow {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 1.5rem;
+  }
+}
+
+.profileName {
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+@media (max-width: 767px) {
+  .profileName {
+    font-size: 1.75rem;
+  }
+}
+
+.profileNmls {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #c5a059;
+  font-weight: 500;
+}
+
+.profileTitle {
+  font-size: 1rem;
+  color: #a0a0a0;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.profileBio {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: #808080;
+  font-weight: 300;
+  max-width: 600px;
+}
+
+@media (max-width: 767px) {
+  .profileBio {
+    font-size: 0.875rem;
+  }
+}
+
+
+/* Profile Button */
+.profileButton {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.75rem 2rem;
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    background: transparent;
+    color: #c5a059;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.profileButton:hover {
+    background: #c5a059;
+    color: #000000;
+    border-color: #c5a059;
+}
+
+@media (max-width: 767px) {
+    .profileButton {
+        padding: 0.625rem 1.5rem;
+        font-size: 0.8125rem;
+    }
 }

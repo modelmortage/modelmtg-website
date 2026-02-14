@@ -1,33 +1,23 @@
 /* === FINAL CTA - DARK THEME === */
 .section {
     position: relative;
-    min-height: 85vh;
+    padding: 6rem 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     overflow: hidden;
     background-color: #0a0a0a;
-    /* background-dark */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    color: #f1f5f9;
-    /* slate-100 */
+    color: #ffffff;
 }
 
 /* === BACKGROUND EFFECTS === */
 .pinstripeBg {
-    position: absolute;
-    inset: 0;
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 60px 100%;
-    pointer-events: none;
+    display: none;
 }
 
 .radialGlow {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at center, rgba(197, 160, 89, 0.03) 0%, transparent 60%);
-    pointer-events: none;
+    display: none;
 }
 
 /* === CONTENT CONTAINER === */
@@ -44,43 +34,36 @@
 .label {
     display: inline-block;
     color: #c5a059;
-    /* primary gold */
-    letter-spacing: 0.4em;
+    letter-spacing: 0.5em;
     text-transform: uppercase;
-    font-size: 0.75rem;
-    /* text-xs */
-    margin-bottom: 2rem;
-    opacity: 0.8;
+    font-size: 0.625rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
 }
 
 .headline {
     font-family: var(--font-serif);
     font-style: italic;
-    font-size: clamp(3.75rem, 6vw, 6rem);
-    /* text-6xl to text-8xl */
+    font-size: clamp(2.5rem, 6vw, 4rem);
     line-height: 1.1;
     letter-spacing: -0.025em;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     font-weight: 400;
+    color: #ffffff;
 }
 
 .subtext {
     max-width: 42rem;
-    /* max-w-2xl */
-    margin: 0 auto 4rem;
-    font-size: 1.125rem;
-    /* text-lg */
+    margin: 0 auto 2.5rem;
+    font-size: 1rem;
     color: #94a3b8;
-    /* slate-400 */
     font-weight: 300;
-    /* font-light */
     line-height: 1.625;
 }
 
 @media (min-width: 768px) {
     .subtext {
-        font-size: 1.25rem;
-        /* md:text-xl */
+        font-size: 1.125rem;
     }
 }
 
@@ -88,11 +71,10 @@
 .cardGroup {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
     justify-content: center;
     align-items: stretch;
     max-width: 56rem;
-    /* max-w-4xl */
     margin: 0 auto;
 }
 
@@ -109,48 +91,78 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 1.25rem;
-    border: 1px solid rgba(197, 160, 89, 0.4);
-    /* border-primary/40 */
+    padding: 1.5rem 2.5rem;
+    min-height: 140px;
+    border: 1px solid rgba(197, 160, 89, 0.2);
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
     transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
     text-decoration: none;
     color: inherit;
-    background: transparent;
     cursor: pointer;
-    min-height: 100px;
 }
 
 .strategyBlock:hover {
-    background-color: rgba(197, 160, 89, 0.05);
+    border-color: #c5a059;
     transform: translateY(-2px);
-    border-color: rgba(197, 160, 89, 0.8);
 }
 
 .cardLabel {
     font-size: 0.625rem;
-    /* text-[10px] */
-    letter-spacing: 0.3em;
+    letter-spacing: 0.4em;
     text-transform: uppercase;
     color: #c5a059;
-    /* text-primary */
-    margin-bottom: 0.5rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
 }
 
 .cardTitle {
     font-family: var(--font-serif);
     font-size: 1.25rem;
-    /* text-xl */
-    margin-bottom: 0.25rem;
+    font-style: italic;
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+.strategyBlock:hover .cardTitle {
+    color: #c5a059;
 }
 
 .cardLine {
+    margin-top: 1rem;
     height: 1px;
-    width: 0;
-    background-color: #c5a059;
-    transition: width 0.5s ease;
+    width: 3rem;
+    background: rgba(255, 255, 255, 0.1);
+    transition: all 0.7s ease;
 }
 
 .strategyBlock:hover .cardLine {
-    width: 2rem;
-    /* w-8 */
+    width: 100%;
+    background: rgba(197, 160, 89, 0.3);
+}
+
+
+/* === MOBILE ADJUSTMENTS === */
+@media (max-width: 767px) {
+    .section {
+        padding: 4rem 0;
+    }
+
+    .headline {
+        font-size: 2rem;
+    }
+
+    .subtext {
+        font-size: 0.9375rem;
+        margin-bottom: 2rem;
+    }
+
+    .strategyBlock {
+        padding: 1.25rem 2rem;
+        min-height: 120px;
+    }
+
+    .cardTitle {
+        font-size: 1.125rem;
+    }
 }

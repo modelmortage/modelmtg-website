@@ -44,24 +44,24 @@ export default function Footer() {
                         <h3>About Us</h3>
                         <Link href="/about-us">Our Story</Link>
                         <Link href="/meet-our-team">Meet Our Team</Link>
-                        <Link href="/reviews">Client Reviews</Link>
                         <Link href="/contact">Contact Us</Link>
                     </div>
 
                     <div className={styles.linkColumn}>
                         <h3>Loan Options</h3>
+                        <Link href="/loan-options">All Loan Options</Link>
                         <Link href="/loan-options/conventional">Conventional Loans</Link>
-                        <Link href="/loan-options/fha-home-loan">FHA Loans</Link>
+                        <Link href="/loan-options/fha">FHA Loans</Link>
                         <Link href="/loan-options/va">VA Loans</Link>
                         <Link href="/loan-options/jumbo">Jumbo Loans</Link>
-                        <Link href="/loan-options/refinance">Refinance</Link>
+                        <Link href="/loan-options/investment">Investment Property</Link>
                     </div>
 
                     <div className={styles.linkColumn}>
                         <h3>Resources</h3>
-                        <Link href="/learning-center">
+                        <Link href="/blog">
                             <Icon icon={FaGraduationCap} size="sm" ariaLabel="" />
-                            <span>Learning Center</span>
+                            <span>Blog</span>
                         </Link>
                         <Link href="/calculator">
                             <Icon icon={FaCalculator} size="sm" ariaLabel="" />
@@ -71,19 +71,22 @@ export default function Footer() {
                             <Icon icon={FaFileAlt} size="sm" ariaLabel="" />
                             <span>Pre-Qualification</span>
                         </a>
-                        <Link href="/blog">Blog</Link>
                     </div>
 
                     <div className={styles.linkColumn}>
                         <h3>Connect With Us</h3>
-                        <a href="tel:832-727-4128" className={styles.contactLink}>
+                        <a href="tel:+18327274128" className={styles.contactLink}>
                             <Icon icon={FaPhone} size="sm" ariaLabel="Phone" />
                             <span>(832) 727-4128</span>
                         </a>
-                        <a href="mailto:info@modelmortgage.com" className={styles.contactLink}>
+                        <a href="mailto:matthew@modelmtg.com" className={styles.contactLink}>
                             <Icon icon={FaEnvelope} size="sm" ariaLabel="Email" />
-                            <span>info@modelmortgage.com</span>
+                            <span>matthew@modelmtg.com</span>
                         </a>
+                        <p className={styles.address}>
+                            18 Augusta Pines Dr #203<br />
+                            Spring, TX 77389
+                        </p>
                         <div className={styles.socialIcons}>
                             <a
                                 href="https://www.facebook.com/modelmortgage"
@@ -150,11 +153,11 @@ export default function Footer() {
                         <span className={styles.complianceDivider}>/</span>
                         <div className={styles.complianceItem}>
                             <Icon icon={FaCertificate} size="sm" ariaLabel="" />
-                            <span>NMLS #2518610</span>
+                            <span>NMLS #2516810</span>
                         </div>
                         <span className={styles.complianceDivider}>/</span>
                         <div className={styles.complianceItem}>
-                            <span>1177 West Loop South, Suite 1700, Houston, TX 77027</span>
+                            <span>Licensed in Texas</span>
                         </div>
                     </div>
 

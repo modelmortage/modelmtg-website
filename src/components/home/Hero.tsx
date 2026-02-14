@@ -167,18 +167,13 @@ export function Hero() {
 
           {/* CTA Buttons */}
           <div className={styles.ctaGroup} ref={ctaGroupRef}>
-            <Button
-              href={siteData.cta.preQualify.href}
-              variant="primary"
-            >
+            <a href={siteData.cta.preQualify.href} className={styles.primaryButton}>
               {siteData.cta.preQualify.label}
-            </Button>
-            <Button
-              href={siteData.cta.applyOnline.href}
-              variant="secondary"
-            >
-              {siteData.cta.applyOnline.label}
-            </Button>
+            </a>
+            <a href={siteData.cta.applyOnline.href} className={styles.secondaryButton}>
+              <span className={styles.buttonText}>{siteData.cta.applyOnline.label}</span>
+              <span className={styles.buttonArrow}>→</span>
+            </a>
           </div>
         </div>
 

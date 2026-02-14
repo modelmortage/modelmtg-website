@@ -205,17 +205,6 @@ export default function Header() {
 
                     <div className={styles.ctaButtons}>
                         <a
-                            href={siteData.cta.preQualify.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={styles.ctaLink}
-                            onClick={handleLinkClick}
-                        >
-                            <Button variant="outline" size="sm">
-                                Pre-Qualify
-                            </Button>
-                        </a>
-                        <a
                             href={siteData.cta.applyOnline.href}
                             target="_blank"
                             rel="noopener noreferrer"
