@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
-import { FaDollarSign, FaHome, FaSyncAlt, FaBalanceScale, FaFlag, FaMedal, FaChartBar } from 'react-icons/fa'
+import { FaDollarSign, FaHome, FaSyncAlt, FaBalanceScale, FaFlag, FaMedal, FaChartBar, FaHammer } from 'react-icons/fa'
 import styles from './calculator.module.css'
 
 export const metadata: Metadata = {
@@ -73,6 +73,13 @@ const calculators = [
         slug: 'dscr',
         category: 'Investment Analysis',
         icon: FaChartBar
+    },
+    {
+        title: 'Fix & Flip Calculator',
+        description: 'Analyze renovation projects with detailed profit, ROI, and deal metrics.',
+        slug: 'fix-flip',
+        category: 'Investment Analysis',
+        icon: FaHammer
     }
 ]
 

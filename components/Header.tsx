@@ -169,7 +169,7 @@ export default function Header() {
                     <div className={styles.navDropdown}>
                         <Link
                             href="/about-us"
-                            className={`${styles.navLink} ${styles.dropdownToggle} ${isActive('/about-us') || isActive('/meet-our-team') ? styles.active : ''}`}
+                            className={`${styles.navLink} ${styles.dropdownToggle} ${isActive('/about-us') || isActive('/meet-our-team') || isActive('/reviews') ? styles.active : ''}`}
                             onClick={(e) => {
                                 // On mobile, toggle dropdown instead of navigating
                                 if (window.innerWidth <= 768) {
@@ -198,6 +198,13 @@ export default function Header() {
                                 onClick={handleLinkClick}
                             >
                                 Meet the Team
+                            </Link>
+                            <Link
+                                href="/reviews"
+                                className={styles.dropdownItem}
+                                onClick={handleLinkClick}
+                            >
+                                Reviews
                             </Link>
                         </div>
                     </div>

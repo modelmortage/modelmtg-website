@@ -47,12 +47,18 @@
 
 /* icon spacing */
 .hasIcon .input {
-  padding-left: 42px;
+  padding-left: 42px !important;
 }
 
 /* give room for number spinners so text never collides */
 .input[type="number"] {
-  padding-right: 44px;
+  padding-right: 44px !important;
+}
+
+/* when both icon and number type, ensure proper spacing */
+.hasIcon .input[type="number"] {
+  padding-left: 42px !important;
+  padding-right: 44px !important;
 }
 
 .input:focus {

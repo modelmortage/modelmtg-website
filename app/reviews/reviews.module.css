@@ -1,314 +1,401 @@
-/* Introduction Section */
-.introduction {
-  margin-bottom: 3rem;
-  text-align: center;
+.main {
+    background: #000000;
+    min-height: 100vh;
+    color: white;
 }
 
-.introduction p {
-  font-size: 1.125rem;
-  line-height: 1.8;
-  color: var(--deep-charcoal);
-  max-width: 800px;
-  margin: 0 auto;
+/* Hero Section */
+.hero {
+    padding: 10rem 2rem 6rem;
+    text-align: center;
+    position: relative;
 }
 
-/* Overall Rating Section */
-.overallRating {
-  background: linear-gradient(135deg, var(--gold-main) 0%, #d4a574 100%);
-  border-radius: 12px;
-  padding: 2.5rem;
-  margin-bottom: 3rem;
-  text-align: center;
+.heroContainer {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.heroLabel {
+    display: inline-block;
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #c5a059;
+    margin-bottom: 1.5rem;
+}
+
+.heroTitle {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.5rem, 10vw, 6.5rem);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+.heroTitleAccent {
+    color: #c5a059;
+}
+
+.heroSubtitle {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 700px;
+    margin: 0 auto 3rem;
+}
+
+/* Rating Summary */
+.ratingSummary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    padding: 2rem;
+    border: 1px solid rgba(197, 160, 89, 0.2);
+    border-radius: 8px;
+    background: rgba(197, 160, 89, 0.05);
+    backdrop-filter: blur(10px);
 }
 
 .ratingDisplay {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-.ratingValue {
-  font-size: 4rem;
-  font-weight: 700;
-  color: var(--midnight-black);
-  line-height: 1;
-}
-
-.ratingDetails {
-  text-align: left;
+.ratingNumber {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #c5a059;
 }
 
 .stars {
-  display: flex;
-  gap: 0.25rem;
-  margin-bottom: 0.5rem;
-  color: var(--midnight-black);
+    display: flex;
+    gap: 0.25rem;
+    font-size: 1.5rem;
+    color: #c5a059;
 }
 
-.ratingText {
-  font-size: 1rem;
-  color: var(--midnight-black);
-  margin: 0;
-  font-weight: 500;
+.ratingMeta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: left;
+}
+
+.ratingCount {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.googleLink {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #c5a059;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.googleLink:hover {
+    color: #d4b06a;
+}
+
+.googleIcon {
+    width: 20px;
+    height: 20px;
 }
 
 /* Reviews Section */
 .reviewsSection {
-  margin-bottom: 4rem;
+    padding: 4rem 2rem 6rem;
 }
 
-.sectionTitle {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--midnight-black);
-  text-align: center;
-  margin-bottom: 2.5rem;
+.reviewsContainer {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.elfsightWidget {
+    margin-top: 4rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(197, 160, 89, 0.2);
+    border-radius: 8px;
+}
+
+.widgetTitle {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 400;
+    font-style: italic;
+    color: #c5a059;
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
 .reviewsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
 }
 
 .reviewCard {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(197, 160, 89, 0.2);
+    border-radius: 8px;
+    padding: 2rem;
+    transition: all 0.3s ease;
 }
 
-.reviewHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
+.reviewCard:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(197, 160, 89, 0.4);
 }
 
-.reviewStars {
-  display: flex;
-  gap: 0.125rem;
-  color: var(--gold-main);
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
 }
 
-.loanType {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--gold-main);
-  background: rgba(198, 146, 72, 0.1);
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  white-space: nowrap;
+.authorInfo {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
 }
 
-.reviewText {
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--deep-charcoal);
-  margin: 0;
-  flex-grow: 1;
+.authorImage {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(197, 160, 89, 0.3);
 }
 
-.quote {
-  color: var(--gold-main);
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 1;
+.authorInitial {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(197, 160, 89, 0.2);
+    border: 2px solid rgba(197, 160, 89, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #c5a059;
 }
 
-.reviewFooter {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
+.authorDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
 }
 
-.clientInfo {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.clientAvatar {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--gold-main) 0%, #d4a574 100%);
-  color: var(--midnight-black);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 1rem;
-  flex-shrink: 0;
-}
-
-.clientDetails {
-  display: flex;
-  flex-direction: column;
-  gap: 0.125rem;
-}
-
-.clientName {
-  font-weight: 600;
-  color: var(--midnight-black);
-  margin: 0;
-  font-size: 0.9375rem;
-}
-
-.clientLocation {
-  font-size: 0.875rem;
-  color: var(--deep-charcoal);
-  opacity: 0.7;
-  margin: 0;
+.authorName {
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    margin: 0;
 }
 
 .reviewDate {
-  font-size: 0.8125rem;
-  color: var(--deep-charcoal);
-  opacity: 0.6;
-  white-space: nowrap;
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0;
 }
 
-/* Trust Badges Section */
-.trustSection {
-  background: var(--ivory-white);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
-  padding: 2.5rem;
-  margin-bottom: 2rem;
-}
-
-.badgesGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
-}
-
-.badge {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.badgeIcon {
-  color: var(--gold-main);
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.badgeInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.badgeName {
-  font-weight: 600;
-  color: var(--midnight-black);
-  margin: 0;
-  font-size: 0.9375rem;
-}
-
-.badgeDescription {
-  font-size: 0.875rem;
-  color: var(--deep-charcoal);
-  opacity: 0.7;
-  margin: 0;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .introduction p {
+.reviewStars {
+    display: flex;
+    gap: 0.125rem;
     font-size: 1rem;
-  }
+}
 
-  .overallRating {
-    padding: 2rem 1.5rem;
-  }
+.starFilled {
+    color: #c5a059;
+}
 
-  .ratingDisplay {
-    flex-direction: column;
-    gap: 1rem;
-  }
+.starEmpty {
+    color: rgba(197, 160, 89, 0.2);
+}
 
-  .ratingValue {
-    font-size: 3rem;
-  }
+.reviewText {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+}
 
-  .ratingDetails {
+.loading,
+.noReviews {
     text-align: center;
-  }
+    padding: 4rem 2rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.125rem;
+}
 
-  .sectionTitle {
-    font-size: 1.75rem;
-  }
+/* CTA Section */
+.ctaSection {
+    padding: 6rem 2rem;
+    text-align: center;
+    border-top: 1px solid rgba(197, 160, 89, 0.2);
+}
 
-  .reviewsGrid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
+.ctaContainer {
+    max-width: 800px;
+    margin: 0 auto;
+}
 
-  .reviewCard {
-    padding: 1.5rem;
-  }
+.ctaLabel {
+    display: inline-block;
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #c5a059;
+    margin-bottom: 1.5rem;
+}
 
-  .reviewFooter {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.75rem;
-  }
+.ctaTitle {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: white;
+}
 
-  .reviewDate {
-    align-self: flex-end;
-  }
+.ctaSubtitle {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 2.5rem;
+}
 
-  .trustSection {
-    padding: 2rem 1.5rem;
-  }
+.ctaButtons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 
-  .badgesGrid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
+.ctaButton {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: #c5a059;
+    color: #000000;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.ctaButton:hover {
+    background: #d4b06a;
+    transform: translateY(-2px);
+}
+
+.ctaButtonSecondary {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: transparent;
+    color: #c5a059;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    border: 2px solid #c5a059;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.ctaButtonSecondary:hover {
+    background: rgba(197, 160, 89, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .reviewsGrid {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 8rem 1.5rem 4rem;
+    }
+
+    .heroTitle {
+        font-size: 2.75rem;
+    }
+
+    .ratingSummary {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .ratingMeta {
+        text-align: center;
+    }
+
+    .reviewsSection {
+        padding: 3rem 1.5rem 4rem;
+    }
+
+    .elfsightWidget {
+        padding: 1.5rem;
+        margin-top: 3rem;
+    }
+
+    .widgetTitle {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .reviewsGrid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+    }
+
+    .ctaSection {
+        padding: 4rem 1.5rem;
+    }
+
+    .ctaButtons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .ctaButton,
+    .ctaButtonSecondary {
+        width: 100%;
+        text-align: center;
+    }
 }
 
 @media (max-width: 480px) {
-  .overallRating {
-    padding: 1.5rem 1rem;
-  }
+    .heroTitle {
+        font-size: 2.5rem;
+    }
 
-  .ratingValue {
-    font-size: 2.5rem;
-  }
+    .ratingNumber {
+        font-size: 2.5rem;
+    }
 
-  .stars {
-    justify-content: center;
-  }
-
-  .star {
-    font-size: 1.25rem;
-  }
-
-  .reviewCard {
-    padding: 1.25rem;
-  }
-
-  .reviewHeader {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .loanType {
-    align-self: flex-start;
-  }
-
-  .trustSection {
-    padding: 1.5rem 1rem;
-  }
+    .reviewCard {
+        padding: 1.5rem;
+    }
 }
