@@ -26,7 +26,10 @@ export default function PreQualifyPage() {
                 {/* Hero Section */}
                 <section className={styles.hero}>
                     <div className={styles.heroContainer}>
-                        <span className={styles.heroLabel}>Strategic Advantage</span>
+                        <div className={styles.labelContainer}>
+                            <span className={styles.labelLine}></span>
+                            <span className={styles.heroLabel}>Strategic Advantage</span>
+                        </div>
                         <h1 className={styles.heroTitle}>
                             Become More <span className={styles.heroTitleAccent}>Attractive</span> to Sellers with a Pre-Qualification
                         </h1>
@@ -66,9 +69,9 @@ export default function PreQualifyPage() {
                                 </div>
                             </div>
                             <div className={styles.memoActions}>
-                                <a 
-                                    href="https://2516810.my1003app.com/?time=1702581789975" 
-                                    target="_blank" 
+                                <a
+                                    href="https://2516810.my1003app.com/?time=1702581789975"
+                                    target="_blank"
                                     rel="noopener noreferrer"
                                     className={styles.primaryButton}
                                 >
@@ -85,12 +88,12 @@ export default function PreQualifyPage() {
                             <div className={styles.creditCard}>
                                 <div className={styles.cardCornerTopRight}></div>
                                 <div className={styles.cardCornerBottomLeft}></div>
-                                
+
                                 <div className={styles.cardHeader}>
                                     <span className={styles.cardLabel}>Risk Assessment</span>
                                     <svg className={styles.cardIcon} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M12 2L3 7V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                                        <path d="M9 12L11 14L15 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                        <path d="M12 2L3 7V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                        <path d="M9 12L11 14L15 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                     </svg>
                                 </div>
 
@@ -115,26 +118,26 @@ export default function PreQualifyPage() {
                                 <div className={styles.externalResources}>
                                     <span className={styles.resourcesLabel}>External Resources</span>
                                     <div className={styles.resourcesGrid}>
-                                        <a 
-                                            href="https://www.freecreditreport.com" 
-                                            target="_blank" 
+                                        <a
+                                            href="https://www.freecreditreport.com"
+                                            target="_blank"
                                             rel="noopener noreferrer"
                                             className={styles.resourceLink}
                                         >
                                             <span>FreeCreditReport</span>
                                             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                             </svg>
                                         </a>
-                                        <a 
-                                            href="https://www.creditkarma.com" 
-                                            target="_blank" 
+                                        <a
+                                            href="https://www.creditkarma.com"
+                                            target="_blank"
                                             rel="noopener noreferrer"
                                             className={styles.resourceLink}
                                         >
                                             <span>Credit Karma</span>
                                             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                             </svg>
                                         </a>
                                     </div>

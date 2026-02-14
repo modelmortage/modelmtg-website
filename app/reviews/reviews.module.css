@@ -7,23 +7,35 @@
 /* Hero Section */
 .hero {
     padding: 10rem 2rem 6rem;
-    text-align: center;
+    text-align: left;
     position: relative;
+    border-bottom: 1px solid rgba(197, 160, 89, 0.2);
 }
 
 .heroContainer {
-    max-width: 900px;
+    max-width: 1400px;
     margin: 0 auto;
 }
 
+.labelContainer {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.labelLine {
+    height: 1px;
+    width: 2rem;
+    background-color: #c5a059;
+}
+
 .heroLabel {
-    display: inline-block;
     font-size: 0.625rem;
     font-weight: 700;
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: #c5a059;
-    margin-bottom: 1.5rem;
 }
 
 .heroTitle {
@@ -34,6 +46,7 @@
     line-height: 1.1;
     margin-bottom: 1.5rem;
     color: white;
+    max-width: 900px;
 }
 
 .heroTitleAccent {
@@ -45,20 +58,21 @@
     line-height: 1.8;
     color: rgba(255, 255, 255, 0.7);
     max-width: 700px;
-    margin: 0 auto 3rem;
+    margin: 0 0 3rem 0;
 }
 
 /* Rating Summary */
 .ratingSummary {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 3rem;
     padding: 2rem;
     border: 1px solid rgba(197, 160, 89, 0.2);
     border-radius: 8px;
     background: rgba(197, 160, 89, 0.05);
     backdrop-filter: blur(10px);
+    max-width: fit-content;
 }
 
 .ratingDisplay {

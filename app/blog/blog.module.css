@@ -29,10 +29,19 @@
     letter-spacing: 0.2em;
     color: #c5a059;
     font-weight: 700;
-    display: inline-block;
-    border-bottom: 1px solid rgba(197, 160, 89, 0.5);
-    padding-bottom: 0.25rem;
-    margin-bottom: 1rem;
+}
+
+.labelContainer {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.labelLine {
+    height: 1px;
+    width: 2rem;
+    background-color: #c5a059;
 }
 
 .heroTitle {

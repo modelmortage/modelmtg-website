@@ -26,7 +26,10 @@ export default function AboutPage() {
                 {/* Hero Section */}
                 <section className={styles.hero}>
                     <div className={styles.heroContainer}>
-                        <span className={styles.heroLabel}>Our Story</span>
+                        <div className={styles.labelContainer}>
+                            <span className={styles.labelLine}></span>
+                            <span className={styles.heroLabel}>Our Story</span>
+                        </div>
                         <h1 className={styles.heroTitle}>
                             Precision-Structured <span className={styles.heroTitleAccent}>Residential Financing</span>
                         </h1>

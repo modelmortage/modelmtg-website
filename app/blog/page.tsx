@@ -37,7 +37,10 @@ export default function BlogPage() {
         {/* Hero Header */}
         <header className={styles.hero}>
           <div className={styles.heroContainer}>
-            <span className={styles.heroLabel}>Resources</span>
+            <div className={styles.labelContainer}>
+              <span className={styles.labelLine}></span>
+              <span className={styles.heroLabel}>Resources</span>
+            </div>
             <h1 className={styles.heroTitle}>
               Market Insights <br className={styles.heroBreak} />
               <span className={styles.heroAmpersand}>&</span> Strategy
@@ -67,7 +70,7 @@ export default function BlogPage() {
               <div className={styles.featuredContent}>
                 <div className={styles.featuredIcon}>
                   <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
                 <span className={styles.featuredCategory}>{featuredPost.category}</span>
@@ -76,7 +79,7 @@ export default function BlogPage() {
                 <span className={styles.featuredLink}>
                   Read Strategy
                   <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </span>
               </div>
@@ -123,7 +126,7 @@ export default function BlogPage() {
                       <span className={styles.articleReadMore}>
                         Read Strategy
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                          <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                       </span>
                     </div>

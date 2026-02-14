@@ -9,7 +9,7 @@
 /* Hero Section */
 .hero {
     padding: 10rem 2rem 6rem;
-    text-align: center;
+    text-align: left;
 }
 
 @media (max-width: 767px) {
@@ -19,12 +19,24 @@
 }
 
 .heroContainer {
-    max-width: 1024px;
+    max-width: 1400px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 2rem;
+}
+
+.labelContainer {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.labelLine {
+    height: 1px;
+    width: 2rem;
+    background-color: #c5a059;
 }
 
 .heroLabel {
@@ -33,8 +45,6 @@
     letter-spacing: 0.4em;
     color: #c5a059;
     font-weight: 700;
-    border-bottom: 1px solid rgba(197, 160, 89, 0.4);
-    padding-bottom: 0.25rem;
 }
 
 .heroTitle {

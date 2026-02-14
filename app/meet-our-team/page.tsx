@@ -28,7 +28,7 @@ export default function MeetOurTeamPage() {
                 <header className={styles.hero}>
                     <div className={styles.heroContent}>
                         <span className={styles.heroLabel}>Expertise</span>
-                        <h1 className={styles.heroTitle}>Capital Structuring & Mortgage Strategy</h1>
+                        <h1 className={styles.heroTitle}>Meet the Team</h1>
                     </div>
                 </header>
 

@@ -107,7 +107,10 @@ export default function ReviewsPage() {
         {/* Hero Section */}
         <section className={styles.hero}>
           <div className={styles.heroContainer}>
-            <span className={styles.heroLabel}>Client Testimonials</span>
+            <div className={styles.labelContainer}>
+              <span className={styles.labelLine}></span>
+              <span className={styles.heroLabel}>Client Testimonials</span>
+            </div>
             <h1 className={styles.heroTitle}>
               Client <span className={styles.heroTitleAccent}>Reviews</span>
             </h1>
