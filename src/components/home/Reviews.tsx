@@ -59,7 +59,8 @@ export function Reviews({ reviews: initialReviews = [] }: ReviewsProps) {
             author: review.authorName || 'Anonymous',
             text: review.text || '',
             date: review.relativeTime || review.time || 'Recent',
-            profile_photo_url: review.authorPhoto || undefined
+            profile_photo_url: review.authorPhoto || undefined,
+            review_url: review.reviewUrl || undefined
           }))
 
           if (transformedReviews.length > 0) {
@@ -198,7 +199,7 @@ export function Reviews({ reviews: initialReviews = [] }: ReviewsProps) {
                       <span>★</span>
                     </div>
                     <a
-                      href="https://maps.app.goo.gl/35L6crTX7ygjNAJ4A"
+                      href={displayReviews[0].review_url || "https://maps.app.goo.gl/35L6crTX7ygjNAJ4A"}
                       target="_blank"
                       rel="noopener noreferrer"
                       className={styles.verifyLink}
@@ -242,6 +243,17 @@ export function Reviews({ reviews: initialReviews = [] }: ReviewsProps) {
                       <span>★</span>
                       <span>★</span>
                     </div>
+                    <a
+                      href={displayReviews[1].review_url || "https://maps.app.goo.gl/35L6crTX7ygjNAJ4A"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.verifyLink}
+                    >
+                      <span>View More</span>
+                      <svg className={styles.externalIcon} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </a>
                   </div>
                 </motion.div>
               )}
@@ -276,6 +288,17 @@ export function Reviews({ reviews: initialReviews = [] }: ReviewsProps) {
                       <span>★</span>
                       <span>★</span>
                     </div>
+                    <a
+                      href={displayReviews[2].review_url || "https://maps.app.goo.gl/35L6crTX7ygjNAJ4A"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.verifyLink}
+                    >
+                      <span>View More</span>
+                      <svg className={styles.externalIcon} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </a>
                   </div>
                 </motion.div>
               )}
@@ -310,6 +333,17 @@ export function Reviews({ reviews: initialReviews = [] }: ReviewsProps) {
                       <span>★</span>
                       <span>★</span>
                     </div>
+                    <a
+                      href={displayReviews[3].review_url || "https://maps.app.goo.gl/35L6crTX7ygjNAJ4A"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.verifyLink}
+                    >
+                      <span>View More</span>
+                      <svg className={styles.externalIcon} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </a>
                   </div>
                 </motion.div>
               )}
@@ -344,6 +378,17 @@ export function Reviews({ reviews: initialReviews = [] }: ReviewsProps) {
                       <span>★</span>
                       <span>★</span>
                     </div>
+                    <a
+                      href={displayReviews[4].review_url || "https://maps.app.goo.gl/35L6crTX7ygjNAJ4A"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.verifyLink}
+                    >
+                      <span>View More</span>
+                      <svg className={styles.externalIcon} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </a>
                   </div>
                 </motion.div>
               )}

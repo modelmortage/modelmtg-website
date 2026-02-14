@@ -26,7 +26,7 @@ export async function GET() {
         }
 
         // Fetch from Google Places API (New)
-        const fields = 'reviews,rating,userRatingCount'
+        const fields = 'reviews.rating,reviews.text,reviews.relativePublishTimeDescription,reviews.authorAttribution,reviews.publishTime,reviews.googleMapsUri,rating,userRatingCount'
         const url = `https://places.googleapis.com/v1/places/${placeId}`
 
         const response = await fetch(url, {
@@ -60,6 +60,7 @@ export async function GET() {
                 text: review.text?.text || review.originalText?.text || '',
                 relativeTime: review.relativePublishTimeDescription || '',
                 time: review.publishTime || '',
+                reviewUrl: review.googleMapsUri || review.authorAttribution?.uri || null,
             })),
         }
 

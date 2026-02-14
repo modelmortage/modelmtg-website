@@ -12,6 +12,7 @@ export interface Review {
   text?: string
   date?: string
   profile_photo_url?: string
+  review_url?: string
 }
 
 export interface ProofMetrics {
