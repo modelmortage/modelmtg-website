@@ -359,6 +359,11 @@
     padding-left: 24px;
 }
 
+/* Hide "About Us" in dropdown on desktop */
+.dropdownItemDesktopOnly {
+    display: none;
+}
+
 /* Mobile Dropdown Styles */
 @media (max-width: 768px) {
     .navDropdown {

@@ -422,8 +422,8 @@
 
 .checkIcon {
   color: #c5a059;
-  font-size: 0.875rem;
-  margin-top: 0.25rem;
+  width: 1rem;
+  height: 1rem;
   flex-shrink: 0;
 }
 
@@ -486,7 +486,7 @@
 /* Mobile Adjustments */
 @media (max-width: 767px) {
   .header {
-    padding: 3rem 1.5rem 2rem;
+    padding: 4rem 1.5rem 2rem;
   }
 
   .headerContainer {
@@ -499,6 +499,7 @@
     word-wrap: break-word;
     overflow-wrap: break-word;
     hyphens: auto;
+    margin-top: 1rem;
   }
 
   .subtitle {
@@ -527,12 +528,13 @@
 
 @media (max-width: 480px) {
   .header {
-    padding: 2.5rem 1rem 1.5rem;
+    padding: 4.5rem 1rem 1.5rem;
   }
 
   .title {
     font-size: 2rem;
     line-height: 1.2;
+    margin-top: 1rem;
   }
 
   .subtitle {

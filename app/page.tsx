@@ -41,8 +41,8 @@ export default function Home() {
                 <Reviews />
                 <HoustonNuances />
                 <LocalAreas />
-                <Resources />
                 <LocationMap />
+                <Resources />
                 <FinalCta />
             </main>
             <Footer />
