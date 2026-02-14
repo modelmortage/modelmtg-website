@@ -155,6 +155,7 @@ export function Reviews({ reviews: initialReviews = [] }: ReviewsProps) {
         {/* RIGHT: Asymmetric Editorial Cards */}
         <motion.div
           className={styles.cardsContainer}
+          key={loading ? 'loading' : 'loaded'}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
