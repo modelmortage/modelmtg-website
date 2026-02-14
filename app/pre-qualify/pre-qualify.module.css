@@ -1,0 +1,411 @@
+/* Pre-Qualify Page */
+
+.main {
+    background: #000000;
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+/* Hero Section */
+.hero {
+    padding: 10rem 2rem 6rem;
+    text-align: center;
+}
+
+@media (max-width: 767px) {
+    .hero {
+        padding: 8rem 1.5rem 4rem;
+    }
+}
+
+.heroContainer {
+    max-width: 1024px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.heroLabel {
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+    color: #c5a059;
+    font-weight: 700;
+    border-bottom: 1px solid rgba(197, 160, 89, 0.4);
+    padding-bottom: 0.25rem;
+}
+
+.heroTitle {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: #ffffff;
+    margin: 0;
+}
+
+.heroTitleAccent {
+    font-style: italic;
+    color: #c5a059;
+}
+
+.heroSubtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    line-height: 1.6;
+    color: #a0a0a0;
+    font-weight: 300;
+    font-style: italic;
+    max-width: 42rem;
+}
+
+/* Content Section */
+.contentSection {
+    padding: 6rem 2rem 12rem;
+}
+
+@media (max-width: 767px) {
+    .contentSection {
+        padding: 4rem 1.5rem 8rem;
+    }
+}
+
+.contentGrid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+}
+
+@media (min-width: 1024px) {
+    .contentGrid {
+        grid-template-columns: 7fr 5fr;
+        gap: 6rem;
+    }
+}
+
+/* Strategy Memo (Left) */
+.strategyMemo {
+    padding-left: 2rem;
+    border-left: 1px solid #c5a059;
+}
+
+@media (max-width: 1023px) {
+    .strategyMemo {
+        padding-left: 1.5rem;
+    }
+}
+
+.memoId {
+    margin-bottom: 1.5rem;
+}
+
+.memoId span {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #808080;
+}
+
+.memoTitle {
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+    color: #ffffff;
+}
+
+@media (max-width: 767px) {
+    .memoTitle {
+        font-size: 1.75rem;
+    }
+}
+
+.memoContent {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: #d0d0d0;
+    font-weight: 300;
+}
+
+@media (max-width: 767px) {
+    .memoContent {
+        font-size: 1rem;
+    }
+}
+
+.memoSection {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.sectionTitle {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #c5a059;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.sectionLine {
+    width: 2rem;
+    height: 1px;
+    background: #c5a059;
+}
+
+.memoSection p {
+    color: #a0a0a0;
+    transition: color 0.3s ease;
+}
+
+.memoSection:hover p {
+    color: #d0d0d0;
+}
+
+.memoActions {
+    margin-top: 4rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+@media (max-width: 767px) {
+    .memoActions {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+.primaryButton {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: #c5a059;
+    color: #000000;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.primaryButton:hover {
+    background: #ffffff;
+}
+
+.secondaryButton {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    border: 1px solid #404040;
+    color: #d0d0d0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.secondaryButton:hover {
+    border-color: #c5a059;
+    color: #c5a059;
+}
+
+/* Sidebar Container (Right) */
+.sidebarContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+    .sidebarContainer {
+        position: sticky;
+        top: 8rem;
+        align-self: start;
+    }
+}
+
+/* Credit Card */
+.creditCard {
+    padding: 2.5rem;
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    background: rgba(26, 26, 26, 0.4);
+    backdrop-filter: blur(12px);
+    position: relative;
+}
+
+.cardCornerTopRight {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2rem;
+    height: 2rem;
+    border-top: 1px solid rgba(197, 160, 89, 0.6);
+    border-right: 1px solid rgba(197, 160, 89, 0.6);
+}
+
+.cardCornerBottomLeft {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 2rem;
+    height: 2rem;
+    border-bottom: 1px solid rgba(197, 160, 89, 0.6);
+    border-left: 1px solid rgba(197, 160, 89, 0.6);
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.cardLabel {
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #c5a059;
+    font-weight: 700;
+}
+
+.cardIcon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: rgba(197, 160, 89, 0.5);
+    stroke: currentColor;
+}
+
+.cardTitle {
+    font-size: 1.5rem;
+    font-weight: 400;
+    font-style: italic;
+    margin-bottom: 2rem;
+    color: #ffffff;
+}
+
+.scoreDisplay {
+    margin-bottom: 2rem;
+}
+
+.scoreNumber {
+    font-size: 3rem;
+    font-weight: 300;
+    color: #ffffff;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.scorePlus {
+    font-size: 2rem;
+    color: #c5a059;
+}
+
+.scoreLabel {
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #808080;
+}
+
+.cardDescription {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: #a0a0a0;
+    font-weight: 300;
+    margin-bottom: 3rem;
+}
+
+.externalResources {
+    padding-top: 2rem;
+    border-top: 1px solid rgba(197, 160, 89, 0.1);
+}
+
+.resourcesLabel {
+    display: block;
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #808080;
+    margin-bottom: 1rem;
+}
+
+.resourcesGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.resourceLink {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem;
+    border: 1px solid #2a2a2a;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    transition: all 0.3s ease;
+}
+
+.resourceLink:hover {
+    border-color: rgba(197, 160, 89, 0.4);
+}
+
+.resourceLink svg {
+    width: 0.75rem;
+    height: 0.75rem;
+    color: #606060;
+    transition: color 0.3s ease;
+}
+
+.resourceLink:hover svg {
+    color: #c5a059;
+}
+
+/* Market Widget */
+.marketWidget {
+    padding: 1.5rem;
+    background: rgba(197, 160, 89, 0.05);
+    border-left: 2px solid #c5a059;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.widgetIcon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #c5a059;
+    flex-shrink: 0;
+    stroke: currentColor;
+}
+
+.widgetLabel {
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #c5a059;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.widgetText {
+    font-size: 0.75rem;
+    color: #a0a0a0;
+    font-style: italic;
+    line-height: 1.5;
+}

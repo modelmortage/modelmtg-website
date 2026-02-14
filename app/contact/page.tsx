@@ -32,7 +32,7 @@ export default function ContactPage() {
                             <span className={styles.titleAccent}>Conversation</span>
                         </h1>
                         <p className={styles.subtitle}>
-                            Exquisite financial strategies for discerning borrowers. Connect with our senior advisory team to discuss your portfolio objectives.
+                            Strategic mortgage guidance for Houston buyers, homeowners, and investors.
                         </p>
                     </div>
 

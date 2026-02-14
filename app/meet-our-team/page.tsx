@@ -28,7 +28,7 @@ export default function MeetOurTeamPage() {
                 <header className={styles.hero}>
                     <div className={styles.heroContent}>
                         <span className={styles.heroLabel}>Expertise</span>
-                        <h1 className={styles.heroTitle}>The Advisory Team</h1>
+                        <h1 className={styles.heroTitle}>Capital Structuring & Mortgage Strategy</h1>
                     </div>
                 </header>
 
@@ -39,14 +39,36 @@ export default function MeetOurTeamPage() {
                         <div className={styles.missionContent}>
                             <div className={styles.goldLine}></div>
                             <h2 className={styles.missionTitle}>
-                                Guided by a commitment to financial leadership, our advisory collective navigates the complexities of the modern mortgage landscape with surgical precision.
+                                At Model Mortgage, we specialize in precision-structured residential financing for primary residences, second homes, and investment properties across Houston and surrounding markets.
                             </h2>
                             <p className={styles.missionText}>
-                                Based in Houston, Model Mortgage serves as the institutional benchmark for high-net-worth lending. We don't just facilitate transactions; we architect legacy-driven capital solutions.
+                                We operate at the intersection of:
+                            </p>
+                            <ul className={styles.missionList}>
+                                <li>Conventional & Agency lending</li>
+                                <li>Jumbo & high-balance financing</li>
+                                <li>Investor-focused acquisition strategy</li>
+                                <li>Credit repositioning & scenario optimization</li>
+                                <li>Complex income structuring (self-employed, asset-based, multi-entity)</li>
+                            </ul>
+                            <p className={styles.missionText}>
+                                We don't "sell loan products." We structure capital intelligently.
+                            </p>
+                            <p className={styles.missionText}>
+                                Every file is analyzed through:
+                            </p>
+                            <ul className={styles.missionList}>
+                                <li>Risk layering review</li>
+                                <li>Cash-flow positioning</li>
+                                <li>Equity preservation strategy</li>
+                                <li>Long-term hold modeling</li>
+                            </ul>
+                            <p className={styles.missionText} style={{ fontStyle: 'italic', marginTop: '1.5rem' }}>
+                                Houston is our focus. Strategy is our edge.
                             </p>
                             <div className={styles.missionCta}>
                                 <Link href="/contact" className={styles.ctaLink}>
-                                    <span>View Firm Credentials</span>
+                                    <span>View Lending Credentials</span>
                                     <span className={styles.arrow}>→</span>
                                 </Link>
                             </div>
@@ -59,7 +81,7 @@ export default function MeetOurTeamPage() {
                         <div className={styles.registryHeader}>
                             <div className={styles.headerPortrait}>Portrait</div>
                             <div className={styles.headerDivider}></div>
-                            <div className={styles.headerProfile}>Professional Profile</div>
+                            <div className={styles.headerProfile}>Leadership</div>
                         </div>
 
                         {/* Profile Item 1: Matthew Bramow */}
@@ -85,7 +107,26 @@ export default function MeetOurTeamPage() {
                                 </div>
                                 <p className={styles.profileTitle}>CEO | Mortgage Broker</p>
                                 <p className={styles.profileBio}>
-                                    Leading Model Mortgage with a commitment to excellence and personalized service. Specializing in navigating complex financing solutions for Houston homebuyers and investors with institutional precision.
+                                    Founder of Model Mortgage, Matthew leads with a systems-first approach to residential lending. His focus is structuring efficient mortgage solutions for:
+                                </p>
+                                <ul className={styles.profileList}>
+                                    <li>Primary homebuyers</li>
+                                    <li>Move-up buyers</li>
+                                    <li>Self-employed borrowers</li>
+                                    <li>Real estate investors</li>
+                                    <li>High-balance / jumbo clients</li>
+                                </ul>
+                                <p className={styles.profileBio}>
+                                    Matthew specializes in:
+                                </p>
+                                <ul className={styles.profileList}>
+                                    <li>Income analysis & scenario engineering</li>
+                                    <li>Investor financing structures</li>
+                                    <li>Equity optimization</li>
+                                    <li>Clean underwriting positioning</li>
+                                </ul>
+                                <p className={styles.profileBio} style={{ fontStyle: 'italic', marginTop: '1rem' }}>
+                                    Every transaction is treated as a financial decision — not a form submission.
                                 </p>
                                 <Link href="/matthew-bramow" className={styles.profileButton}>
                                     View Full Profile
@@ -116,7 +157,25 @@ export default function MeetOurTeamPage() {
                                 </div>
                                 <p className={styles.profileTitle}>Loan Officer</p>
                                 <p className={styles.profileBio}>
-                                    Bringing dedication and expertise to every client interaction. Specializing in guiding clients through the mortgage process with clarity and precision, ensuring exceptional service at every step.
+                                    Rolston works directly with clients to ensure smooth execution from consultation to closing. His approach emphasizes:
+                                </p>
+                                <ul className={styles.profileList}>
+                                    <li>Clear communication</li>
+                                    <li>Accurate pre-qualification</li>
+                                    <li>Document preparation efficiency</li>
+                                    <li>Process transparency</li>
+                                </ul>
+                                <p className={styles.profileBio}>
+                                    He ensures borrowers understand:
+                                </p>
+                                <ul className={styles.profileList}>
+                                    <li>Approval pathways</li>
+                                    <li>Payment structure options</li>
+                                    <li>Timeline expectations</li>
+                                    <li>Risk variables</li>
+                                </ul>
+                                <p className={styles.profileBio} style={{ fontStyle: 'italic', marginTop: '1rem' }}>
+                                    The result: controlled closings and predictable execution.
                                 </p>
                                 <Link href="/contact" className={styles.profileButton}>
                                     Contact Rolston

@@ -1,124 +1,139 @@
 import { Metadata } from 'next'
-import { FaCalendarAlt, FaPhone } from 'react-icons/fa'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import BlogCard from '@/components/content/BlogCard'
-import { Button } from '@/components/design-system/Button/Button'
+import Link from 'next/link'
+import Image from 'next/image'
 import { blogPosts } from '@/lib/content/blogPosts'
 import styles from './blog.module.css'
 
 export const metadata: Metadata = {
-  title: 'Mortgage & Home Buying Blog | Expert Tips & Guides | Model Mortgage',
-  description: 'Expert mortgage advice, home buying tips, and financial guidance. Learn about loan types, rates, affordability, and more from Model Mortgage professionals.',
-  keywords: 'mortgage blog, home buying tips, mortgage advice, real estate blog, home financing, mortgage guides, first-time homebuyer',
+  title: 'Market Insights & Strategy | Model Mortgage Blog',
+  description: 'Expert analysis on Houston real estate, mortgage rates, and wealth-building strategies for the modern investor.',
+  keywords: 'mortgage blog, home buying tips, mortgage advice, real estate blog, home financing, mortgage guides, Houston real estate',
   openGraph: {
-    title: 'Mortgage & Home Buying Blog | Model Mortgage',
-    description: 'Expert mortgage advice, home buying tips, and financial guidance from Model Mortgage professionals.',
+    title: 'Market Insights & Strategy | Model Mortgage Blog',
+    description: 'Expert analysis on Houston real estate, mortgage rates, and wealth-building strategies.',
     type: 'website',
-    images: [{ url: '/images/blog/blog-og.jpg' }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Mortgage & Home Buying Blog | Model Mortgage',
-    description: 'Expert mortgage advice, home buying tips, and financial guidance from Model Mortgage professionals.',
-    images: ['/images/blog/blog-og.jpg'],
   },
   alternates: {
     canonical: '/blog',
   },
 }
 
-// Configure Incremental Static Regeneration (ISR)
-// Revalidate every 24 hours (86400 seconds)
 export const revalidate = 86400
 
 export default function BlogPage() {
-  // Sort blog posts by date (newest first)
   const sortedPosts = [...blogPosts].sort((a, b) => {
     return new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
   })
 
+  const featuredPost = sortedPosts[0]
+  const regularPosts = sortedPosts.slice(1)
+
   return (
     <>
       <Header />
-      <div className={styles.blogPage}>
-        {/* Hero Section */}
-        <section className={styles.hero}>
-          <div className={styles.heroContent}>
-            <h1 className={styles.heroTitle}>Mortgage & Home Buying Blog</h1>
+      <main className={styles.main}>
+        {/* Hero Header */}
+        <header className={styles.hero}>
+          <div className={styles.heroContainer}>
+            <span className={styles.heroLabel}>Resources</span>
+            <h1 className={styles.heroTitle}>
+              Market Insights <br className={styles.heroBreak} />
+              <span className={styles.heroAmpersand}>&</span> Strategy
+            </h1>
             <p className={styles.heroSubtitle}>
-              Expert advice, tips, and guides to help you navigate the home buying and mortgage process with confidence.
+              Expert analysis on Houston real estate, mortgage rates, and wealth-building strategies for the modern investor.
             </p>
           </div>
-        </section>
+        </header>
 
-        {/* Blog Posts Grid */}
-        <section className={styles.postsSection}>
-          <div className={styles.container}>
-            <div className={styles.postsGrid}>
-              {sortedPosts.map((post) => (
-                <BlogCard key={post.slug} blogPost={post} />
-              ))}
-            </div>
+        {/* Featured Article */}
+        {featuredPost && (
+          <section className={styles.featuredSection}>
+            <Link href={`/blog/${featuredPost.slug}`} className={styles.featuredCard}>
+              <div className={styles.featuredImage}>
+                <div className={styles.featuredOverlay}></div>
+                <Image
+                  src={featuredPost.featuredImage}
+                  alt={featuredPost.title}
+                  fill
+                  className={styles.featuredImg}
+                />
+                <div className={styles.featuredBadge}>
+                  <span>Featured Strategy</span>
+                </div>
+              </div>
+              <div className={styles.featuredContent}>
+                <div className={styles.featuredIcon}>
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <span className={styles.featuredCategory}>{featuredPost.category}</span>
+                <h2 className={styles.featuredTitle}>{featuredPost.title}</h2>
+                <p className={styles.featuredExcerpt}>{featuredPost.excerpt}</p>
+                <span className={styles.featuredLink}>
+                  Read Strategy
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </span>
+              </div>
+            </Link>
+          </section>
+        )}
+
+        {/* Category Filter */}
+        <div className={styles.filterSection}>
+          <div className={styles.filterContainer}>
+            <button className={styles.filterActive}>All Insights</button>
+            <button className={styles.filterButton}>Mortgage Guides</button>
+            <button className={styles.filterButton}>Real Estate News</button>
+            <button className={styles.filterButton}>Investment Strategy</button>
+            <button className={styles.filterButton}>Client Stories</button>
+          </div>
+        </div>
+
+        {/* Articles Grid */}
+        <section className={styles.articlesSection}>
+          <div className={styles.articlesGrid}>
+            {regularPosts.map((post) => (
+              <article key={post.slug} className={styles.articleCard}>
+                <Link href={`/blog/${post.slug}`} className={styles.articleLink}>
+                  <div className={styles.articleImage}>
+                    <div className={styles.articleOverlay}></div>
+                    <Image
+                      src={post.featuredImage}
+                      alt={post.title}
+                      fill
+                      className={styles.articleImg}
+                    />
+                  </div>
+                  <div className={styles.articleContent}>
+                    <div className={styles.articleMeta}>
+                      <span className={styles.articleCategory}>{post.category}</span>
+                      <span className={styles.articleDate}>
+                        {new Date(post.publishDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                      </span>
+                    </div>
+                    <h3 className={styles.articleTitle}>{post.title}</h3>
+                    <p className={styles.articleExcerpt}>{post.excerpt}</p>
+                    <div className={styles.articleFooter}>
+                      <span className={styles.articleReadMore}>
+                        Read Strategy
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              </article>
+            ))}
           </div>
         </section>
-
-        {/* Call to Action */}
-        <section className={styles.ctaSection}>
-          <div className={styles.ctaContent}>
-            <h2 className={styles.ctaTitle}>Ready to Start Your Home Buying Journey?</h2>
-            <p className={styles.ctaText}>
-              Get personalized mortgage advice and competitive rates from our experienced team.
-            </p>
-            <div className={styles.ctaButtons}>
-              <a href="/schedule-a-call" className={styles.buttonLink}>
-                <Button variant="primary" size="lg" icon={<FaPhone />} iconPosition="left">
-                  Schedule a Call
-                </Button>
-              </a>
-              <a href="/calculator/affordability" className={styles.buttonLink}>
-                <Button variant="secondary" size="lg" icon={<FaCalendarAlt />} iconPosition="left">
-                  Calculate Affordability
-                </Button>
-              </a>
-            </div>
-          </div>
-        </section>
-
-        {/* Structured Data for Blog */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Blog",
-              "name": "Model Mortgage Blog",
-              "description": "Expert mortgage advice, home buying tips, and financial guidance",
-              "url": "https://modelmtg.com/blog",
-              "publisher": {
-                "@type": "Organization",
-                "name": "Model Mortgage",
-                "logo": {
-                  "@type": "ImageObject",
-                  "url": "https://modelmtg.com/images/logo.png"
-                }
-              },
-              "blogPost": sortedPosts.slice(0, 10).map(post => ({
-                "@type": "BlogPosting",
-                "headline": post.title,
-                "description": post.excerpt,
-                "author": {
-                  "@type": "Person",
-                  "name": post.author
-                },
-                "datePublished": post.publishDate,
-                "image": post.featuredImage,
-                "url": `https://modelmtg.com/blog/${post.slug}`
-              }))
-            })
-          }}
-        />
-      </div>
+      </main>
       <Footer />
     </>
   )

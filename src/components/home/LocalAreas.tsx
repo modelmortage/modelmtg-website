@@ -7,9 +7,9 @@ import styles from './LocalAreas.module.css'
 
 export function LocalAreas() {
   const neighborhoods = [
-    ['River Oaks', 'The Heights', 'Memorial', 'Tanglewood'],
-    ['West University', 'Sugar Land', 'Katy', 'The Woodlands'],
-    ['Bellaire', 'Montrose', 'Museum District', 'Piney Point']
+    ['Houston, TX', 'Spring, TX', 'The Woodlands, TX', 'Memorial'],
+    ['River Oaks', 'West University Place', 'Bellaire', 'Katy'],
+    ['Sugar Land', 'Cypress', 'Tomball', 'Conroe']
   ]
 
   const containerVariants = {

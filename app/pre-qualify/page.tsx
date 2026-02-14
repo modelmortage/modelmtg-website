@@ -1,280 +1,150 @@
-'use client'
-
+import type { Metadata } from 'next'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
-import { FaBolt, FaHandFist, FaRocket, FaLock } from 'react-icons/fa6'
+import styles from './pre-qualify.module.css'
+
+export const metadata: Metadata = {
+    title: 'Pre-Qualification | Model Mortgage Houston',
+    description: 'Become more attractive to sellers with a pre-qualification. In the competitive Houston landscape, institutional readiness is the differentiator.',
+    keywords: 'mortgage pre-qualification, Houston pre-approval, home loan pre-qualification, mortgage readiness',
+    openGraph: {
+        title: 'Pre-Qualification | Model Mortgage Houston',
+        description: 'Become more attractive to sellers with a pre-qualification.',
+        type: 'website',
+    },
+    alternates: {
+        canonical: '/pre-qualify',
+    },
+}
 
 export default function PreQualifyPage() {
     return (
         <>
             <Header />
-            <main style={{ marginTop: '80px', minHeight: '100vh' }}>
-                {/* Hero */}
-                <section style={{
-                    background: 'linear-gradient(135deg, var(--midnight-black), var(--deep-charcoal))',
-                    padding: '6rem 2rem 4rem',
-                    textAlign: 'center',
-                    borderBottom: '1px solid rgba(200, 154, 91, 0.2)'
-                }}>
-                    <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-                        <h1 style={{
-                            fontSize: 'clamp(2.5rem, 5vw, 4rem)',
-                            marginBottom: '1.5rem',
-                            color: 'var(--ivory-white)'
-                        }}>
-                            Get <span style={{ color: 'var(--gold-main)' }}>Pre-Approved</span> in Minutes
+            <main className={styles.main}>
+                {/* Hero Section */}
+                <section className={styles.hero}>
+                    <div className={styles.heroContainer}>
+                        <span className={styles.heroLabel}>Strategic Advantage</span>
+                        <h1 className={styles.heroTitle}>
+                            Become More <span className={styles.heroTitleAccent}>Attractive</span> to Sellers with a Pre-Qualification
                         </h1>
-                        <p style={{
-                            fontSize: '1.125rem',
-                            color: 'var(--ivory-white)',
-                            opacity: 0.8,
-                            maxWidth: '700px',
-                            margin: '0 auto 2rem'
-                        }}>
-                            Free, fast, and won't impact your credit score. Get a personalized pre-approval letter
-                            that gives you real buying power in Houston's competitive market.
+                        <p className={styles.heroSubtitle}>
+                            In the competitive Houston landscape, institutional readiness is the differentiator between a submitted offer and a secured asset.
                         </p>
-                        <div style={{
-                            display: 'flex',
-                            gap: '1rem',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            flexWrap: 'wrap'
-                        }}>
-                            <span style={{ color: 'var(--gold-main)', fontSize: '0.9375rem' }}>• No Hard Credit Pull</span>
-                            <span style={{ color: 'var(--gold-main)', fontSize: '0.9375rem' }}>• 5-Minute Process</span>
-                            <span style={{ color: 'var(--gold-main)', fontSize: '0.9375rem' }}>• Expert Review</span>
-                        </div>
                     </div>
                 </section>
 
-                {/* Pre-Qualification Form */}
-                <section style={{
-                    background: 'var(--ivory-white)',
-                    padding: '5rem 2rem',
-                    color: 'var(--midnight-black)'
-                }}>
-                    <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-                        <div style={{
-                            background: 'white',
-                            padding: '3rem',
-                            borderRadius: '4px',
-                            border: '2px solid rgba(200, 154, 91, 0.2)',
-                            boxShadow: '0 10px 40px rgba(0, 0, 0, 0.1)'
-                        }}>
-                            <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-                                <h2 style={{
-                                    fontSize: '2rem',
-                                    marginBottom: '1rem',
-                                    color: 'var(--midnight-black)'
-                                }}>
-                                    Start Your Pre-Approval
-                                </h2>
-                                <p style={{ fontSize: '1.0625rem', opacity: 0.7 }}>
-                                    Fill out the form below and Matthew will review your application personally.
+                {/* Split Editorial Content */}
+                <section className={styles.contentSection}>
+                    <div className={styles.contentGrid}>
+                        {/* Left: Strategy Memo */}
+                        <div className={styles.strategyMemo}>
+                            <h2 className={styles.memoTitle}>Market Execution Strategy</h2>
+                            <div className={styles.memoContent}>
+                                <p>
+                                    Pre-qualification serves as the foundational validation of your purchasing power. By establishing your creditworthiness before engaging in the search process, you position yourself as a serious contender in high-stakes negotiations.
                                 </p>
-                            </div>
-
-                            <form style={{
-                                display: 'flex',
-                                flexDirection: 'column',
-                                gap: '2rem'
-                            }}>
-                                {/* Personal Information */}
-                                <div>
-                                    <h3 style={{
-                                        fontSize: '1.25rem',
-                                        marginBottom: '1.5rem',
-                                        color: 'var(--midnight-black)',
-                                        paddingBottom: '0.5rem',
-                                        borderBottom: '2px solid var(--gold-main)'
-                                    }}>
-                                        Personal Information
+                                <div className={styles.memoSection}>
+                                    <h3 className={styles.sectionTitle}>
+                                        <span className={styles.sectionLine}></span>
+                                        Learn More
                                     </h3>
-                                    <div style={{
-                                        display: 'grid',
-                                        gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-                                        gap: '1.5rem'
-                                    }}>
-                                        <input type="text" placeholder="First Name *" required className="form-input" />
-                                        <input type="text" placeholder="Last Name *" required className="form-input" />
-                                        <input type="email" placeholder="Email *" required className="form-input" />
-                                        <input type="tel" placeholder="Phone *" required className="form-input" />
-                                    </div>
-                                </div>
-
-                                {/* Property Information */}
-                                <div>
-                                    <h3 style={{
-                                        fontSize: '1.25rem',
-                                        marginBottom: '1.5rem',
-                                        color: 'var(--midnight-black)',
-                                        paddingBottom: '0.5rem',
-                                        borderBottom: '2px solid var(--gold-main)'
-                                    }}>
-                                        Property Information
-                                    </h3>
-                                    <div style={{
-                                        display: 'grid',
-                                        gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-                                        gap: '1.5rem'
-                                    }}>
-                                        <select className="form-input">
-                                            <option>Looking to Purchase or Refinance?</option>
-                                            <option>Purchase</option>
-                                            <option>Refinance</option>
-                                        </select>
-                                        <input type="text" placeholder="Estimated Purchase Price" className="form-input" />
-                                        <input type="text" placeholder="Down Payment" className="form-input" />
-                                        <select className="form-input">
-                                            <option>Property Type</option>
-                                            <option>Single Family</option>
-                                            <option>Condo</option>
-                                            <option>Townhouse</option>
-                                            <option>Multi-Family</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                {/* Financial Information */}
-                                <div>
-                                    <h3 style={{
-                                        fontSize: '1.25rem',
-                                        marginBottom: '1.5rem',
-                                        color: 'var(--midnight-black)',
-                                        paddingBottom: '0.5rem',
-                                        borderBottom: '2px solid var(--gold-main)'
-                                    }}>
-                                        Financial Information
-                                    </h3>
-                                    <div style={{
-                                        display: 'grid',
-                                        gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-                                        gap: '1.5rem'
-                                    }}>
-                                        <input type="text" placeholder="Annual Income" className="form-input" />
-                                        <input type="text" placeholder="Monthly Debts" className="form-input" />
-                                        <select className="form-input">
-                                            <option>Credit Score Range</option>
-                                            <option>Excellent (740+)</option>
-                                            <option>Good (700-739)</option>
-                                            <option>Fair (650-699)</option>
-                                            <option>Building (below 650)</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <button
-                                    type="submit"
-                                    className="btn btn-primary"
-                                    style={{
-                                        padding: '1.5rem 3rem',
-                                        border: 'none',
-                                        cursor: 'pointer',
-                                        fontSize: '1rem'
-                                    }}
-                                >
-                                    Get My Pre-Approval Letter
-                                </button>
-
-                                <p style={{
-                                    fontSize: '0.875rem',
-                                    opacity: 0.6,
-                                    textAlign: 'center'
-                                }}>
-                                    By submitting, you agree to receive communication from Model Mortgage.
-                                    Your information is secure and will never be shared.
-                                </p>
-                            </form>
-                        </div>
-                    </div>
-                </section>
-
-                {/* Benefits Section */}
-                <section style={{
-                    background: 'var(--midnight-black)',
-                    padding: '5rem 2rem',
-                    color: 'var(--ivory-white)'
-                }}>
-                    <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-                        <h2 style={{
-                            fontSize: '2.5rem',
-                            textAlign: 'center',
-                            marginBottom: '3rem'
-                        }}>
-                            Why Get Pre-Approved?
-                        </h2>
-                        <div style={{
-                            display: 'grid',
-                            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-                            gap: '2rem'
-                        }}>
-                            {[
-                                {
-                                    icon: FaBolt,
-                                    title: 'Shop with Confidence',
-                                    description: 'Know exactly what you can afford before house hunting'
-                                },
-                                {
-                                    icon: FaHandFist,
-                                    title: 'Stronger Offers',
-                                    description: 'Sellers take pre-approved buyers seriously'
-                                },
-                                {
-                                    icon: FaRocket,
-                                    title: 'Faster Closing',
-                                    description: 'Pre-approval speeds up the entire process'
-                                },
-                                {
-                                    icon: FaLock,
-                                    title: 'Rate Lock Protection',
-                                    description: 'Lock in rates before they rise'
-                                }
-                            ].map((benefit, i) => (
-                                <div key={i} style={{
-                                    background: 'var(--deep-charcoal)',
-                                    padding: '2.5rem',
-                                    borderRadius: '4px',
-                                    border: '1px solid rgba(200, 154, 91, 0.1)',
-                                    textAlign: 'center'
-                                }}>
-                                    <div style={{ fontSize: '3rem', marginBottom: '1rem', color: 'var(--gold-main)', display: 'flex', justifyContent: 'center' }}>
-                                        <benefit.icon />
-                                    </div>
-                                    <h3 style={{
-                                        fontSize: '1.25rem',
-                                        color: 'var(--gold-main)',
-                                        marginBottom: '0.75rem'
-                                    }}>
-                                        {benefit.title}
-                                    </h3>
-                                    <p style={{ opacity: 0.8, lineHeight: 1.6 }}>
-                                        {benefit.description}
+                                    <p>
+                                        Understanding the nuances of your financial profile allows for a more agile response to market opportunities. We analyze your debt-to-income ratio and liquidity to provide a comprehensive outlook on your acquisition capacity.
                                     </p>
                                 </div>
-                            ))}
+                                <div className={styles.memoSection}>
+                                    <h3 className={styles.sectionTitle}>
+                                        <span className={styles.sectionLine}></span>
+                                        Narrow Your Search
+                                    </h3>
+                                    <p>
+                                        Targeted acquisitions require precision. Pre-qualification defines the boundaries of your search, ensuring that resources are allocated only toward properties that align with your institutional financing capabilities.
+                                    </p>
+                                </div>
+                            </div>
+                            <div className={styles.memoActions}>
+                                <a 
+                                    href="https://2516810.my1003app.com/?time=1702581789975" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    className={styles.primaryButton}
+                                >
+                                    Initiate Pre-Qualification
+                                </a>
+                                <Link href="/contact" className={styles.secondaryButton}>
+                                    Contact Our Team
+                                </Link>
+                            </div>
+                        </div>
+
+                        {/* Right: Credit Evaluation Card */}
+                        <div className={styles.sidebarContainer}>
+                            <div className={styles.creditCard}>
+                                <div className={styles.cardCornerTopRight}></div>
+                                <div className={styles.cardCornerBottomLeft}></div>
+                                
+                                <div className={styles.cardHeader}>
+                                    <span className={styles.cardLabel}>Risk Assessment</span>
+                                    <svg className={styles.cardIcon} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 2L3 7V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                        <path d="M9 12L11 14L15 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                    </svg>
+                                </div>
+
+                                <h3 className={styles.cardTitle}>Credit Evaluation</h3>
+
+                                <div className={styles.scoreDisplay}>
+                                    <div className={styles.scoreNumber}>
+                                        640<span className={styles.scorePlus}>+</span>
+                                    </div>
+                                    <div className={styles.scoreLabel}>Minimum Recommended Score</div>
+                                </div>
+
+                                <div className={styles.cardDescription}>
+                                    <p>
+                                        A score of 640 or higher is the benchmark for institutional reliability. This metric ensures that your financial history reflects the stability required for elite mortgage structures.
+                                    </p>
+                                    <p>
+                                        Reliability is the cornerstone of our lending philosophy. We prioritize clients who demonstrate consistent fiscal responsibility and a clear trajectory of asset management.
+                                    </p>
+                                </div>
+
+                                <div className={styles.externalResources}>
+                                    <span className={styles.resourcesLabel}>External Resources</span>
+                                    <div className={styles.resourcesGrid}>
+                                        <a 
+                                            href="https://www.freecreditreport.com" 
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            className={styles.resourceLink}
+                                        >
+                                            <span>FreeCreditReport</span>
+                                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                            </svg>
+                                        </a>
+                                        <a 
+                                            href="https://www.creditkarma.com" 
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            className={styles.resourceLink}
+                                        >
+                                            <span>Credit Karma</span>
+                                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
             </main>
             <Footer />
-
-            <style jsx>{`
-        .form-input {
-          padding: 1rem;
-          border: 2px solid rgba(200, 154, 91, 0.2);
-          border-radius: 2px;
-          font-size: 1rem;
-          font-family: var(--font-sans);
-          width: 100%;
-          transition: border-color 0.2s;
-        }
-        .form-input:focus {
-          outline: none;
-          border-color: var(--gold-main);
-        }
-      `}</style>
         </>
     )
 }

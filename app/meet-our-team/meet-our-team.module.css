@@ -387,3 +387,50 @@
         font-size: 0.8125rem;
     }
 }
+
+
+/* Mission and Profile Lists */
+.missionList,
+.profileList {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.missionList li,
+.profileList li {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: #a0a0a0;
+    font-weight: 300;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.missionList li::before,
+.profileList li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #c5a059;
+    font-weight: 700;
+}
+
+.profileList {
+    margin: 0.75rem 0;
+}
+
+.profileList li {
+    font-size: 0.875rem;
+    color: #808080;
+}
+
+@media (max-width: 767px) {
+    .missionList li,
+    .profileList li {
+        font-size: 0.875rem;
+    }
+}

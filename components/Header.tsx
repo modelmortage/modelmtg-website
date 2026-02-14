@@ -149,6 +149,14 @@ export default function Header() {
                         Calculator
                     </Link>
                     <Link
+                        href="/pre-qualify"
+                        className={`${styles.navLink} ${isActive('/pre-qualify') ? styles.active : ''}`}
+                        aria-current={isActive('/pre-qualify') ? 'page' : undefined}
+                        onClick={handleLinkClick}
+                    >
+                        Pre-Qualify
+                    </Link>
+                    <Link
                         href="/blog"
                         className={`${styles.navLink} ${isActive('/blog') ? styles.active : ''}`}
                         aria-current={isActive('/blog') ? 'page' : undefined}
