@@ -70,7 +70,7 @@ export function Reviews({ reviews: initialReviews = [] }: ReviewsProps) {
   }, [initialReviews.length])
 
   const proof = getGoogleProof(reviews)
-  const displayReviews = reviews.slice(0, 3)
+  const displayReviews = reviews.slice(0, 5)
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -97,7 +97,7 @@ export function Reviews({ reviews: initialReviews = [] }: ReviewsProps) {
   }
 
   return (
-    <motion.section 
+    <motion.section
       className={styles.section}
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
@@ -148,7 +148,7 @@ export function Reviews({ reviews: initialReviews = [] }: ReviewsProps) {
         </div>
 
         {/* RIGHT: Asymmetric Editorial Cards */}
-        <motion.div 
+        <motion.div
           className={styles.cardsContainer}
           initial="hidden"
           whileInView="visible"
@@ -161,9 +161,9 @@ export function Reviews({ reviews: initialReviews = [] }: ReviewsProps) {
             </div>
           ) : displayReviews.length > 0 ? (
             <>
-              {/* Card 1: Wide / Top Left */}
+              {/* Card 1: Top Left */}
               {displayReviews[0] && (
-                <motion.div 
+                <motion.div
                   className={`${styles.reviewCard} ${styles.card1}`}
                   variants={cardVariants}
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
@@ -199,16 +199,16 @@ export function Reviews({ reviews: initialReviews = [] }: ReviewsProps) {
                     >
                       <span>View More</span>
                       <svg className={styles.externalIcon} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                     </a>
                   </div>
                 </motion.div>
               )}
 
-              {/* Card 2: Narrow/Tall / Mid Right */}
+              {/* Card 2: Top Right */}
               {displayReviews[1] && (
-                <motion.div 
+                <motion.div
                   className={`${styles.reviewCard} ${styles.card2}`}
                   variants={cardVariants}
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
@@ -240,9 +240,9 @@ export function Reviews({ reviews: initialReviews = [] }: ReviewsProps) {
                 </motion.div>
               )}
 
-              {/* Card 3: Medium / Bottom Left */}
+              {/* Card 3: Middle Left */}
               {displayReviews[2] && (
-                <motion.div 
+                <motion.div
                   className={`${styles.reviewCard} ${styles.card3}`}
                   variants={cardVariants}
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
@@ -258,7 +258,78 @@ export function Reviews({ reviews: initialReviews = [] }: ReviewsProps) {
                         author={displayReviews[2].author || 'Anonymous'}
                         className={styles.authorImage}
                       />
-                      <h4 className={styles.authorName}>{displayReviews[2].author || 'Anonymous'}</h4>
+                      <div>
+                        <h4 className={styles.authorName}>{displayReviews[2].author || 'Anonymous'}</h4>
+                        <p className={styles.reviewDate}>{displayReviews[2].date || 'Recent'}</p>
+                      </div>
+                    </div>
+                    <div className={styles.reviewStars}>
+                      <span>★</span>
+                      <span>★</span>
+                      <span>★</span>
+                      <span>★</span>
+                      <span>★</span>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+
+              {/* Card 4: Middle Right */}
+              {displayReviews[3] && (
+                <motion.div
+                  className={`${styles.reviewCard} ${styles.card4}`}
+                  variants={cardVariants}
+                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                >
+                  <span className={styles.quoteIcon}>"</span>
+                  <p className={styles.reviewText}>
+                    {displayReviews[3].text}
+                  </p>
+                  <div className={styles.cardFooter}>
+                    <div className={styles.authorInfo}>
+                      <ReviewAvatar
+                        url={displayReviews[3].profile_photo_url}
+                        author={displayReviews[3].author || 'Anonymous'}
+                        className={styles.authorImage}
+                      />
+                      <div>
+                        <h4 className={styles.authorName}>{displayReviews[3].author || 'Anonymous'}</h4>
+                        <p className={styles.reviewDate}>{displayReviews[3].date || 'Recent'}</p>
+                      </div>
+                    </div>
+                    <div className={styles.reviewStars}>
+                      <span>★</span>
+                      <span>★</span>
+                      <span>★</span>
+                      <span>★</span>
+                      <span>★</span>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+
+              {/* Card 5: Bottom Center */}
+              {displayReviews[4] && (
+                <motion.div
+                  className={`${styles.reviewCard} ${styles.card5}`}
+                  variants={cardVariants}
+                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                >
+                  <span className={styles.quoteIcon}>"</span>
+                  <p className={styles.reviewText}>
+                    {displayReviews[4].text}
+                  </p>
+                  <div className={styles.cardFooter}>
+                    <div className={styles.authorInfo}>
+                      <ReviewAvatar
+                        url={displayReviews[4].profile_photo_url}
+                        author={displayReviews[4].author || 'Anonymous'}
+                        className={styles.authorImage}
+                      />
+                      <div>
+                        <h4 className={styles.authorName}>{displayReviews[4].author || 'Anonymous'}</h4>
+                        <p className={styles.reviewDate}>{displayReviews[4].date || 'Recent'}</p>
+                      </div>
                     </div>
                     <div className={styles.reviewStars}>
                       <span>★</span>

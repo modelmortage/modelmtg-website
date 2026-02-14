@@ -24,8 +24,7 @@ import { siteData } from '@/src/lib/siteData'
 export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
     const [isScrolled, setIsScrolled] = useState(false)
-    const [lastScrollY, setLastScrollY] = useState(0)
-    const [showHeader, setShowHeader] = useState(true)
+
     const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false)
     const pathname = usePathname()
     const headerRef = useRef<HTMLElement>(null)
@@ -39,29 +38,17 @@ export default function Header() {
         return pathname.startsWith(path)
     }
 
-    // Handle scroll behavior for show/hide header
+    // Handle scroll behavior for styling
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY
-
             // Set scrolled state for styling
             setIsScrolled(currentScrollY > 10)
-
-            // Show/hide header based on scroll direction
-            if (currentScrollY > lastScrollY && currentScrollY > 100) {
-                // Scrolling down
-                setShowHeader(false)
-            } else {
-                // Scrolling up
-                setShowHeader(true)
-            }
-
-            setLastScrollY(currentScrollY)
         }
 
         window.addEventListener('scroll', handleScroll, { passive: true })
         return () => window.removeEventListener('scroll', handleScroll)
-    }, [lastScrollY])
+    }, [])
 
     // Close mobile menu when route changes
     useEffect(() => {
@@ -104,7 +91,7 @@ export default function Header() {
     return (
         <header
             ref={headerRef}
-            className={`${styles.header} ${isScrolled ? styles.headerScrolled : ''} ${showHeader ? styles.headerVisible : styles.headerHidden} ${mobileMenuOpen ? styles.headerMobileOpen : ''}`}
+            className={`${styles.header} ${isScrolled ? styles.headerScrolled : ''} ${mobileMenuOpen ? styles.headerMobileOpen : ''}`}
         >
             <div className={styles.container}>
                 <Link href="/" className={styles.logo} onClick={handleLinkClick}>
@@ -164,7 +151,7 @@ export default function Header() {
                     >
                         Blog
                     </Link>
-                    
+
                     {/* About Dropdown */}
                     <div className={styles.navDropdown}>
                         <Link
@@ -208,7 +195,7 @@ export default function Header() {
                             </Link>
                         </div>
                     </div>
-                    
+
                     <Link
                         href="/contact"
                         className={`${styles.navLink} ${isActive('/contact') ? styles.active : ''}`}

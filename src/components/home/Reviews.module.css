@@ -137,8 +137,8 @@
 /* RIGHT PANEL - Asymmetric Cards */
 .cardsContainer {
   position: relative;
-  height: 35rem;
-  min-height: 35rem;
+  height: 65rem;
+  min-height: 65rem;
 }
 
 .reviewCard {
@@ -154,37 +154,55 @@
   border-color: rgba(201, 164, 76, 0.4);
 }
 
-/* Card 1: Wide / Top Left */
+/* Card 1: Wise / Top Left */
 .card1 {
   top: 0;
   left: 0;
   width: 48%;
-  max-height: 18rem;
+  max-height: 20rem;
   z-index: 3;
 }
 
-/* Card 2: Narrow/Tall / Mid Right */
+/* Card 2: Top Right (Offset) */
 .card2 {
-  top: 5%;
+  top: 6rem;
   right: 0;
-  width: 42%;
-  max-height: 20rem;
+  width: 48%;
+  max-height: 22rem;
   z-index: 2;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
 
-/* Card 3: Medium / Bottom Left */
+/* Card 3: Middle Left */
 .card3 {
-  bottom: 0;
-  left: 8%;
-  width: 45%;
-  max-height: 16rem;
-  z-index: 1;
+  top: 22rem;
+  left: 0;
+  width: 48%;
+  max-height: 20rem;
+  z-index: 3;
+}
+
+/* Card 4: Middle Right */
+.card4 {
+  top: 30rem;
+  right: 0;
+  width: 48%;
+  max-height: 20rem;
+  z-index: 2;
+}
+
+/* Card 5: Bottom Left */
+.card5 {
+  top: 44rem;
+  left: 0;
+  width: 48%;
+  max-height: 20rem;
+  z-index: 3;
 }
 
 .quoteIcon {
   font-size: 2rem;
-  color: #eeb32b;
+  color: var(--mm-gold);
   line-height: 1;
   display: block;
   margin-bottom: 0.75rem;
@@ -205,13 +223,15 @@
   -webkit-box-orient: vertical;
 }
 
-.card2 .reviewText {
+.card2 .reviewText,
+.card4 .reviewText {
   font-size: 0.95rem;
   -webkit-line-clamp: 6;
   line-clamp: 6;
 }
 
-.card3 .reviewText {
+.card3 .reviewText,
+.card5 .reviewText {
   font-size: 0.95rem;
   line-height: 1.4;
   -webkit-line-clamp: 4;
@@ -262,7 +282,8 @@
   color: #ffffff;
 }
 
-.card3 .authorName {
+.card3 .authorName,
+.card5 .authorName {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
