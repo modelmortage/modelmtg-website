@@ -29,47 +29,113 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(3px 3px at 12% 20%, rgba(255, 255, 255, 0.6), transparent 50%),
-    radial-gradient(2px 2px at 22% 70%, rgba(255, 255, 255, 0.5), transparent 50%),
-    radial-gradient(3px 3px at 36% 40%, rgba(197, 160, 89, 0.7), transparent 50%),
-    radial-gradient(2px 2px at 48% 15%, rgba(255, 255, 255, 0.4), transparent 50%),
-    radial-gradient(3px 3px at 60% 55%, rgba(255, 255, 255, 0.55), transparent 50%),
-    radial-gradient(2px 2px at 76% 30%, rgba(197, 160, 89, 0.6), transparent 50%),
-    radial-gradient(3px 3px at 88% 72%, rgba(255, 255, 255, 0.5), transparent 50%),
-    radial-gradient(2px 2px at 15% 50%, rgba(197, 160, 89, 0.5), transparent 50%),
-    radial-gradient(2px 2px at 45% 80%, rgba(255, 255, 255, 0.4), transparent 50%),
-    radial-gradient(3px 3px at 70% 60%, rgba(197, 160, 89, 0.45), transparent 50%),
-    radial-gradient(2px 2px at 85% 45%, rgba(255, 255, 255, 0.4), transparent 50%),
-    radial-gradient(2px 2px at 8% 35%, rgba(255, 255, 255, 0.45), transparent 50%),
-    radial-gradient(3px 3px at 28% 25%, rgba(197, 160, 89, 0.55), transparent 50%),
-    radial-gradient(2px 2px at 42% 65%, rgba(255, 255, 255, 0.5), transparent 50%),
-    radial-gradient(2px 2px at 55% 10%, rgba(197, 160, 89, 0.4), transparent 50%),
-    radial-gradient(3px 3px at 68% 85%, rgba(255, 255, 255, 0.6), transparent 50%),
-    radial-gradient(2px 2px at 82% 58%, rgba(197, 160, 89, 0.5), transparent 50%),
-    radial-gradient(2px 2px at 92% 22%, rgba(255, 255, 255, 0.45), transparent 50%),
-    radial-gradient(2px 2px at 18% 88%, rgba(255, 255, 255, 0.4), transparent 50%),
-    radial-gradient(3px 3px at 33% 5%, rgba(197, 160, 89, 0.65), transparent 50%),
-    radial-gradient(2px 2px at 52% 42%, rgba(255, 255, 255, 0.5), transparent 50%),
-    radial-gradient(2px 2px at 65% 75%, rgba(197, 160, 89, 0.45), transparent 50%),
-    radial-gradient(3px 3px at 78% 12%, rgba(255, 255, 255, 0.55), transparent 50%),
-    radial-gradient(2px 2px at 95% 68%, rgba(197, 160, 89, 0.5), transparent 50%),
-    radial-gradient(2px 2px at 5% 62%, rgba(255, 255, 255, 0.4), transparent 50%),
-    radial-gradient(2px 2px at 25% 92%, rgba(197, 160, 89, 0.45), transparent 50%),
-    radial-gradient(3px 3px at 38% 28%, rgba(255, 255, 255, 0.6), transparent 50%),
-    radial-gradient(2px 2px at 58% 48%, rgba(197, 160, 89, 0.5), transparent 50%),
-    radial-gradient(2px 2px at 72% 18%, rgba(255, 255, 255, 0.45), transparent 50%),
-    radial-gradient(3px 3px at 88% 38%, rgba(197, 160, 89, 0.55), transparent 50%);
+    radial-gradient(3px 3px at 5% 10%, rgba(197, 160, 89, 0.8), transparent 50%),
+    radial-gradient(2px 2px at 12% 25%, rgba(255, 255, 255, 0.7), transparent 50%),
+    radial-gradient(3px 3px at 20% 5%, rgba(197, 160, 89, 0.7), transparent 50%),
+    radial-gradient(2px 2px at 28% 15%, rgba(255, 255, 255, 0.6), transparent 50%),
+    radial-gradient(3px 3px at 35% 30%, rgba(197, 160, 89, 0.8), transparent 50%),
+    radial-gradient(2px 2px at 42% 10%, rgba(255, 255, 255, 0.7), transparent 50%),
+    radial-gradient(3px 3px at 50% 25%, rgba(197, 160, 89, 0.75), transparent 50%),
+    radial-gradient(2px 2px at 58% 5%, rgba(255, 255, 255, 0.65), transparent 50%),
+    radial-gradient(3px 3px at 65% 20%, rgba(197, 160, 89, 0.8), transparent 50%),
+    radial-gradient(2px 2px at 72% 35%, rgba(255, 255, 255, 0.7), transparent 50%),
+    radial-gradient(3px 3px at 80% 10%, rgba(197, 160, 89, 0.75), transparent 50%),
+    radial-gradient(2px 2px at 88% 25%, rgba(255, 255, 255, 0.65), transparent 50%),
+    radial-gradient(3px 3px at 95% 40%, rgba(197, 160, 89, 0.8), transparent 50%),
+
+    radial-gradient(2px 2px at 8% 55%, rgba(255, 255, 255, 0.7), transparent 50%),
+    radial-gradient(3px 3px at 15% 70%, rgba(197, 160, 89, 0.75), transparent 50%),
+    radial-gradient(2px 2px at 22% 85%, rgba(255, 255, 255, 0.65), transparent 50%),
+    radial-gradient(3px 3px at 30% 60%, rgba(197, 160, 89, 0.8), transparent 50%),
+    radial-gradient(2px 2px at 38% 75%, rgba(255, 255, 255, 0.7), transparent 50%),
+    radial-gradient(3px 3px at 45% 90%, rgba(197, 160, 89, 0.75), transparent 50%),
+    radial-gradient(2px 2px at 52% 65%, rgba(255, 255, 255, 0.65), transparent 50%),
+    radial-gradient(3px 3px at 60% 80%, rgba(197, 160, 89, 0.8), transparent 50%),
+    radial-gradient(2px 2px at 68% 95%, rgba(255, 255, 255, 0.7), transparent 50%),
+    radial-gradient(3px 3px at 75% 55%, rgba(197, 160, 89, 0.75), transparent 50%),
+    radial-gradient(2px 2px at 82% 70%, rgba(255, 255, 255, 0.65), transparent 50%),
+    radial-gradient(3px 3px at 90% 85%, rgba(197, 160, 89, 0.8), transparent 50%),
+    radial-gradient(2px 2px at 98% 60%, rgba(255, 255, 255, 0.7), transparent 50%),
+
+    radial-gradient(3px 3px at 3% 45%, rgba(197, 160, 89, 0.7), transparent 50%),
+    radial-gradient(2px 2px at 97% 90%, rgba(255, 255, 255, 0.6), transparent 50%);
   opacity: 1;
-  animation: dust 16s linear infinite;
+  animation: dust 20s linear infinite;
+}
+
+.successMessage {
+  margin-top: 2rem;
+  padding: 1.5rem 2rem;
+  background: rgba(197, 160, 89, 0.1);
+  border: 1px solid rgba(197, 160, 89, 0.3);
+  border-left: 3px solid #c5a059;
+  color: #c5a059;
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  letter-spacing: 0.02em;
+  animation: fadeIn 0.6s ease-out forwards;
+  position: relative;
+  overflow: hidden;
+}
+
+.successMessage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.1), transparent);
+  transform: translateX(-100%);
+  animation: glimmer 2s infinite;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.errorMessage {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+  font-size: 0.875rem;
+  border-radius: 4px;
+}
+
+.charCount {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 0.75rem;
+  color: #64748b;
+  margin-top: 0.5rem;
+  font-variant-numeric: tabular-nums;
 }
 
 @keyframes dust {
   0% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-14px);
   }
+
   100% {
     transform: translateY(0);
   }
@@ -325,6 +391,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
+
   .formInput,
   .formSelect,
   .formTextarea {
