@@ -370,130 +370,24 @@ export default function VAPurchaseCalculator() {
             </Card>
 
             <Card variant="elevated" padding="md" className={`${styles.resultCard} ${styles.singleResultCard}`}>
-              <div className={styles.resultLabel}>Savings</div>
-              <div className={styles.resultValue}>$0</div>
-            </Card>
-
-            <Card variant="elevated" padding="md" className={`${styles.resultCard} ${styles.singleResultCard}`}>
-              <div className={styles.resultLabel}>Payment Amount</div>
+              <div className={styles.resultLabel}>Monthly Payment</div>
               <div className={styles.resultValue}>${results.totalMonthlyPayment.toFixed(2)}</div>
-            </Card>
-
-            <Card variant="elevated" padding="md" className={`${styles.resultCard} ${styles.singleResultCard}`}>
-              <div className={styles.resultLabel}>Shorten Loan Term By</div>
-              <div className={styles.resultValue}>--</div>
             </Card>
           </div>
 
           <Card variant="elevated" padding="md" className={styles.summaryCard}>
-            <div className={styles.summaryTitle}>Early Payoff Strategy</div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '1rem' }}>
-              <label style={{ fontSize: '0.875rem', color: '#374151' }}>Additional Monthly</label>
-              <input
-                type="text"
-                placeholder="You can add below $500.00"
-                style={{
-                  padding: '0.5rem',
-                  border: '1px solid #d1d5db',
-                  borderRadius: '4px',
-                  fontSize: '0.875rem'
-                }}
-              />
-            </div>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '1rem' }}>
-              <label style={{ fontSize: '0.875rem', color: '#374151' }}>Increase Frequency</label>
-              <div style={{ display: 'flex', gap: '0.5rem' }}>
-                <button style={{
-                  flex: 1,
-                  padding: '0.5rem',
-                  background: '#10b981',
-                  color: 'white',
-                  border: 'none',
-                  borderRadius: '4px',
-                  fontSize: '0.875rem'
-                }}>
-                  Monthly
-                </button>
-                <button style={{
-                  flex: 1,
-                  padding: '0.5rem',
-                  background: '#e5e7eb',
-                  color: '#374151',
-                  border: 'none',
-                  borderRadius: '4px',
-                  fontSize: '0.875rem'
-                }}>
-                  Bi Weekly
-                </button>
-                <button style={{
-                  flex: 1,
-                  padding: '0.5rem',
-                  background: '#e5e7eb',
-                  color: '#374151',
-                  border: 'none',
-                  borderRadius: '4px',
-                  fontSize: '0.875rem'
-                }}>
-                  Weekly
-                </button>
-              </div>
-            </div>
-          </Card>
-
-          <Card variant="elevated" padding="md" className={styles.summaryCard}>
-            <div className={styles.summaryTitle}>Lump Sum Payment</div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '1rem' }}>
-              <label style={{ fontSize: '0.875rem', color: '#374151' }}>Lump Sum Addition</label>
-              <input
-                type="text"
-                placeholder="You can add below $100k"
-                style={{
-                  padding: '0.5rem',
-                  border: '1px solid #d1d5db',
-                  borderRadius: '4px',
-                  fontSize: '0.875rem'
-                }}
-              />
-            </div>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-              <label style={{ fontSize: '0.875rem', color: '#374151' }}>Frequency</label>
-              <div style={{ display: 'flex', gap: '0.5rem' }}>
-                <button style={{
-                  flex: 1,
-                  padding: '0.5rem',
-                  background: '#10b981',
-                  color: 'white',
-                  border: 'none',
-                  borderRadius: '4px',
-                  fontSize: '0.875rem'
-                }}>
-                  One time
-                </button>
-                <button style={{
-                  flex: 1,
-                  padding: '0.5rem',
-                  background: '#e5e7eb',
-                  color: '#374151',
-                  border: 'none',
-                  borderRadius: '4px',
-                  fontSize: '0.875rem'
-                }}>
-                  Yearly
-                </button>
-                <button style={{
-                  flex: 1,
-                  padding: '0.5rem',
-                  background: '#e5e7eb',
-                  color: '#374151',
-                  border: 'none',
-                  borderRadius: '4px',
-                  fontSize: '0.875rem'
-                }}>
-                  Quarterly
-                </button>
-              </div>
+            <div className={styles.summaryTitle}>VA Loan Benefits</div>
+            <div style={{ fontSize: '0.875rem', lineHeight: '1.6', color: '#374151' }}>
+              <p style={{ marginBottom: '0.75rem' }}>
+                VA loans offer significant advantages for eligible veterans and service members:
+              </p>
+              <ul style={{ paddingLeft: '1.25rem', margin: 0 }}>
+                <li style={{ marginBottom: '0.5rem' }}>No down payment required (0% down)</li>
+                <li style={{ marginBottom: '0.5rem' }}>No private mortgage insurance (PMI)</li>
+                <li style={{ marginBottom: '0.5rem' }}>Competitive interest rates</li>
+                <li style={{ marginBottom: '0.5rem' }}>Limited closing costs</li>
+                <li>Easier qualification requirements</li>
+              </ul>
             </div>
           </Card>
         </div>

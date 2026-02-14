@@ -21,7 +21,7 @@
 }
 
 .inputCard {
-  background: var(--deep-charcoal, #1a1a1a);
+  background: var(--deep-charcoal, #1a1a1a) !important;
 }
 
 .cardTitle {
@@ -111,7 +111,7 @@
 }
 
 .metricCardTop {
-  background: #e8f5e9;
+  background: #e8f5e9 !important;
   text-align: center;
   padding: 1.5rem 1rem !important;
 }
@@ -132,7 +132,7 @@
 }
 
 .breakdownCard {
-  background: var(--deep-charcoal, #1a1a1a);
+  background: var(--deep-charcoal, #1a1a1a) !important;
 }
 
 .breakdownGrid {
@@ -174,7 +174,7 @@
 }
 
 .returnMetricsCard {
-  background: var(--deep-charcoal, #1a1a1a);
+  background: var(--deep-charcoal, #1a1a1a) !important;
 }
 
 .returnMetrics {

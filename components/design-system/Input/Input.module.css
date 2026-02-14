@@ -11,8 +11,8 @@
 .label {
   font-size: 0.85rem;
   font-weight: 600;
-  color: inherit;
-  opacity: 0.95;
+  color: #1f2937;
+  opacity: 1;
 }
 
 .control {
