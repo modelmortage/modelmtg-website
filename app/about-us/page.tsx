@@ -45,18 +45,22 @@ export default function AboutPage() {
                         {/* Left Column */}
                         <div className={styles.missionContent}>
                             <div className={styles.goldLine}></div>
-                            <h2 className={styles.missionTitle}>
-                                We don't "sell loan products." We structure capital intelligently.
-                            </h2>
+                            <div className={styles.goldLine}></div>
                             <div className={styles.missionText}>
                                 <p>
-                                    At Model Mortgage, we operate at the intersection of conventional lending, jumbo financing, and investor-focused acquisition strategy. Our approach is rooted in precision analysis and strategic positioning.
+                                    Welcome to Model Mortgage, a leading mortgage agency owned by Matthew Bramow. At Model Mortgage, we believe in empowering our clients not only through exceptional mortgage services but also through valuable financial education. Matthew Bramow, our esteemed owner, is not only a knowledgeable mortgage expert but also a passionate advocate for financial literacy.
                                 </p>
                                 <p>
-                                    Every file is analyzed through risk layering review, cash-flow positioning, equity preservation strategy, and long-term hold modeling. We serve clients who value clarity, speed, and institutional precision.
+                                    With a deep understanding of the mortgage industry and a commitment to helping individuals and families achieve their financial goals, Matthew goes beyond traditional mortgage services. He actively incorporates financial education into the client experience, providing valuable insights and guidance to ensure that clients make informed decisions about their mortgage options.
                                 </p>
                                 <p>
-                                    Based in Spring, Texas, we serve the Greater Houston metropolitan area with a focus on high-net-worth lending and complex income structuring for self-employed borrowers, real estate investors, and multi-entity clients.
+                                    Matthew’s dedication to financial education stems from his belief that informed clients are empowered clients. By equipping our clients with the necessary knowledge and tools, we aim to foster long-term financial well-being and success.
+                                </p>
+                                <p>
+                                    At Model Mortgage, we prioritize personalized service, offering tailored solutions that align with our clients’ unique needs and aspirations. Our team of experienced professionals, under Matthew’s leadership, is committed to providing exceptional support throughout the mortgage process.
+                                </p>
+                                <p>
+                                    Whether you are a first-time homebuyer, looking to refinance, or seeking guidance on real estate investments, Model Mortgage is your trusted partner. Join us on this journey towards financial empowerment and let us help you navigate the world of mortgages while providing valuable financial education along the way.
                                 </p>
                             </div>
                         </div>

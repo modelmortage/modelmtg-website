@@ -180,6 +180,13 @@ export default function Header() {
                                 About Us
                             </Link>
                             <Link
+                                href="/about-us"
+                                className={styles.dropdownItem}
+                                onClick={handleLinkClick}
+                            >
+                                Our Story
+                            </Link>
+                            <Link
                                 href="/meet-our-team"
                                 className={styles.dropdownItem}
                                 onClick={handleLinkClick}
