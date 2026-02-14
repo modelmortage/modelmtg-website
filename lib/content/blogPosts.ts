@@ -2309,7 +2309,7 @@ Ready to start your home buying journey? Contact Model Mortgage for a free consu
     publishDate: '2024-03-25',
     category: 'Learn',
     tags: ['down payment', 'home buying', 'savings strategies', 'low down payment', 'first-time buyer'],
-    featuredImage: '/images/blog/down-payment-strategies.jpg',
+    featuredImage: '/down-payment-options-and-strategies-for-homebuyers.png',
     readTime: 10,
     content: `
 # Down Payment Options and Strategies for Homebuyers

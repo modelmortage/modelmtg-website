@@ -17,8 +17,9 @@ export default function CalculatorLayout({ config, children }: CalculatorLayoutP
       <Header />
       <main id="main-content" style={{ marginTop: '80px', minHeight: '100vh' }}>
         {/* Hero Section */}
+        {/* Hero Section */}
         <section style={{
-          background: 'var(--deep-charcoal)',
+          background: '#000000',
           padding: '3rem 2rem',
         }}>
           <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
