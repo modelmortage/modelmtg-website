@@ -12,7 +12,8 @@ import {
     FaCalculator,
     FaShieldAlt,
     FaCertificate,
-    FaLock
+    FaLock,
+    FaCheckCircle
 } from 'react-icons/fa'
 import { Icon } from './design-system/Icon/Icon'
 import { siteData } from '@/src/lib/siteData'
@@ -41,16 +42,33 @@ export default function Footer() {
 
                 {/* Links Grid - Four Column Layout */}
                 <div className={styles.linksGrid}>
+                    {/* Column 1: Company & Resources */}
                     <div className={styles.linkColumn}>
-                        <h3>About Us</h3>
-                        <Link href="/about-us">Our Story</Link>
-                        <Link href="/meet-our-team">Meet Our Team</Link>
+                        <h3>Company</h3>
+                        <Link href="/about-us">About Model Mortgage</Link>
+                        <Link href="/meet-our-team">Meet The Team</Link>
+                        <Link href="/reviews">Client Reviews</Link>
                         <Link href="/contact">Contact Us</Link>
+
+                        <h3 style={{ marginTop: '1.5rem' }}>Resources</h3>
+                        <Link href="/blog">
+                            <Icon icon={FaGraduationCap} size="sm" ariaLabel="" />
+                            <span>Mortgage Blog</span>
+                        </Link>
+                        <Link href="/learning-center">
+                            <Icon icon={FaFileAlt} size="sm" ariaLabel="" />
+                            <span>Learning Center</span>
+                        </Link>
+                        <a href="https://2516810.my1003app.com/?time=1702581789975" target="_blank" rel="noopener noreferrer">
+                            <Icon icon={FaCheckCircle} size="sm" ariaLabel="" />
+                            <span>Pre-Qualify Now</span>
+                        </a>
                     </div>
 
+                    {/* Column 2: Loan Options */}
                     <div className={styles.linkColumn}>
                         <h3>Loan Options</h3>
-                        <Link href="/loan-options">All Loan Options</Link>
+                        <Link href="/loan-options">All Loan Programs</Link>
                         <Link href="/loan-options/conventional">Conventional Loans</Link>
                         <Link href="/loan-options/fha">FHA Loans</Link>
                         <Link href="/loan-options/va">VA Loans</Link>
@@ -58,22 +76,20 @@ export default function Footer() {
                         <Link href="/loan-options/investment">Investment Property</Link>
                     </div>
 
+                    {/* Column 3: Calculators */}
                     <div className={styles.linkColumn}>
-                        <h3>Resources</h3>
-                        <Link href="/blog">
-                            <Icon icon={FaGraduationCap} size="sm" ariaLabel="" />
-                            <span>Blog</span>
-                        </Link>
-                        <Link href="/calculator">
-                            <Icon icon={FaCalculator} size="sm" ariaLabel="" />
-                            <span>Mortgage Calculator</span>
-                        </Link>
-                        <a href="https://2516810.my1003app.com/?time=1702581789975" target="_blank" rel="noopener noreferrer">
-                            <Icon icon={FaFileAlt} size="sm" ariaLabel="" />
-                            <span>Pre-Qualification</span>
-                        </a>
+                        <h3>Calculators</h3>
+                        <Link href="/calculator/purchase">Purchase Calculator</Link>
+                        <Link href="/calculator/refinance">Refinance Calculator</Link>
+                        <Link href="/calculator/affordability">Affordability</Link>
+                        <Link href="/calculator/va-purchase">VA Purchase</Link>
+                        <Link href="/calculator/va-refinance">VA Refinance</Link>
+                        <Link href="/calculator/rent-vs-buy">Rent vs. Buy</Link>
+                        <Link href="/calculator/dscr">DSCR Calculator</Link>
+                        <Link href="/calculator/fix-flip">Fix & Flip</Link>
                     </div>
 
+                    {/* Column 4: Connect */}
                     <div className={styles.linkColumn}>
                         <h3>Connect With Us</h3>
                         <a href="tel:+18327274128" className={styles.contactLink}>
