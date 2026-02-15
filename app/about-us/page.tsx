@@ -45,7 +45,7 @@ export default function AboutPage() {
                         {/* Left Column */}
                         <div className={styles.missionContent}>
                             <div className={styles.goldLine}></div>
-                            <div className={styles.goldLine}></div>
+
                             <div className={styles.missionText}>
                                 <p>
                                     Welcome to Model Mortgage, a leading mortgage agency owned by Matthew Bramow. At Model Mortgage, we believe in empowering our clients not only through exceptional mortgage services but also through valuable financial education. Matthew Bramow, our esteemed owner, is not only a knowledgeable mortgage expert but also a passionate advocate for financial literacy.

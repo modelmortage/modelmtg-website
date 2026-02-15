@@ -90,7 +90,7 @@
 .fieldLabel {
     font-size: 0.875rem;
     font-weight: 500;
-    color: #f3f4f6;
+    color: #ffffff;
 }
 
 .toggleButtons {
@@ -147,6 +147,10 @@
 .breakdownCard {
     background: white !important;
     height: fit-content;
+}
+
+.breakdownCard h3 {
+    color: #000000 !important;
 }
 
 .comparisonChart {
@@ -214,12 +218,12 @@
 
 .legendLabel {
     flex: 1;
-    color: #374151;
+    color: #1f2937;
 }
 
 .legendValue {
     font-weight: 600;
-    color: #1f2937;
+    color: #000000;
 }
 
 /* Right Panel - Results */
@@ -270,12 +274,12 @@
     align-items: center;
     margin-bottom: 0.75rem;
     font-size: 0.875rem;
-    color: #374151;
+    color: #1f2937;
 }
 
 .sliderValue {
     font-weight: 600;
-    color: #1f2937;
+    color: #000000;
 }
 
 .slider {
@@ -313,17 +317,17 @@
 .summaryTitle {
     font-weight: 600;
     margin-bottom: 0.75rem;
-    color: #1f2937;
+    color: #000000;
 }
 
 .summaryText {
     font-size: 0.875rem;
     line-height: 1.6;
-    color: #374151;
+    color: #1f2937;
 }
 
 .summaryText strong {
-    color: #1f2937;
+    color: #000000;
 }
 
 /* Responsive */

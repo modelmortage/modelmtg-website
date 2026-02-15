@@ -377,11 +377,11 @@ export default function VAPurchaseCalculator() {
 
           <Card variant="elevated" padding="md" className={styles.summaryCard}>
             <div className={styles.summaryTitle}>VA Loan Benefits</div>
-            <div style={{ fontSize: '0.875rem', lineHeight: '1.6', color: '#374151' }}>
-              <p style={{ marginBottom: '0.75rem' }}>
+            <div style={{ fontSize: '0.875rem', lineHeight: '1.6', color: '#1f2937' }}>
+              <p style={{ marginBottom: '0.75rem', color: '#1f2937' }}>
                 VA loans offer significant advantages for eligible veterans and service members:
               </p>
-              <ul style={{ paddingLeft: '1.25rem', margin: 0 }}>
+              <ul style={{ paddingLeft: '1.25rem', margin: 0, color: '#1f2937' }}>
                 <li style={{ marginBottom: '0.5rem' }}>No down payment required (0% down)</li>
                 <li style={{ marginBottom: '0.5rem' }}>No private mortgage insurance (PMI)</li>
                 <li style={{ marginBottom: '0.5rem' }}>Competitive interest rates</li>
