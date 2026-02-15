@@ -119,7 +119,7 @@ export function SolutionsOverview() {
   return (
     <section className={styles.sectionWrapper}>
       <div className={styles.container}>
-        <motion.header 
+        <motion.header
           className={styles.headerContent}
           initial="hidden"
           whileInView="visible"
@@ -135,14 +135,14 @@ export function SolutionsOverview() {
         </motion.header>
 
         {/* Purchase Programs */}
-        <motion.div 
+        <motion.div
           className={styles.categorySection}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
           variants={containerVariants}
         >
-          <button 
+          <button
             className={styles.accordionHeader}
             onClick={() => setPurchaseOpen(!purchaseOpen)}
             aria-expanded={purchaseOpen}
@@ -155,7 +155,7 @@ export function SolutionsOverview() {
                 Financing structured for primary residences, second homes, and investment properties across Houston.
               </motion.p>
             </div>
-            <motion.div 
+            <motion.div
               className={styles.accordionIcon}
               animate={{ rotate: purchaseOpen ? 180 : 0 }}
               transition={{ duration: 0.3 }}
@@ -163,10 +163,10 @@ export function SolutionsOverview() {
               <FaChevronDown />
             </motion.div>
           </button>
-          
+
           <AnimatePresence>
             {purchaseOpen && (
-              <motion.div 
+              <motion.div
                 className={styles.loanList}
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: 'auto', opacity: 1 }}
@@ -181,16 +181,22 @@ export function SolutionsOverview() {
                     animate="visible"
                     transition={{ delay: index * 0.05 }}
                   >
-                    <Link 
-                      href={program.href} 
+                    <Link
+                      href={program.href}
                       className={styles.loanRow}
                     >
                       <div className={styles.loanInfo}>
                         <h3 className={styles.loanTitle}>{program.title}</h3>
                         <p className={styles.loanDescription}>{program.description}</p>
                         <div className={styles.loanMeta}>
-                          <span className={styles.dealLabel}>Core Parameters</span>
-                          <span className={styles.dealSpecs}>{program.profile}</span>
+                          <span className={styles.dealSpecs}>
+                            {program.profile.split(' • ').map((spec, i, arr) => (
+                              <React.Fragment key={i}>
+                                {spec}
+                                {i < arr.length - 1 && <span style={{ color: '#c5a059' }}> • </span>}
+                              </React.Fragment>
+                            ))}
+                          </span>
                         </div>
                       </div>
                       <div className={styles.inquireBtn}>Explore Options →</div>
@@ -203,14 +209,14 @@ export function SolutionsOverview() {
         </motion.div>
 
         {/* Refinance Programs */}
-        <motion.div 
+        <motion.div
           className={styles.categorySection}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
           variants={containerVariants}
         >
-          <button 
+          <button
             className={styles.accordionHeader}
             onClick={() => setRefinanceOpen(!refinanceOpen)}
             aria-expanded={refinanceOpen}
@@ -223,7 +229,7 @@ export function SolutionsOverview() {
                 Optimize your current mortgage structure to align with your financial goals.
               </motion.p>
             </div>
-            <motion.div 
+            <motion.div
               className={styles.accordionIcon}
               animate={{ rotate: refinanceOpen ? 180 : 0 }}
               transition={{ duration: 0.3 }}
@@ -231,10 +237,10 @@ export function SolutionsOverview() {
               <FaChevronDown />
             </motion.div>
           </button>
-          
+
           <AnimatePresence>
             {refinanceOpen && (
-              <motion.div 
+              <motion.div
                 className={styles.loanList}
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: 'auto', opacity: 1 }}
@@ -249,16 +255,22 @@ export function SolutionsOverview() {
                     animate="visible"
                     transition={{ delay: index * 0.05 }}
                   >
-                    <Link 
-                      href={program.href} 
+                    <Link
+                      href={program.href}
                       className={styles.loanRow}
                     >
                       <div className={styles.loanInfo}>
                         <h3 className={styles.loanTitle}>{program.title}</h3>
                         <p className={styles.loanDescription}>{program.description}</p>
                         <div className={styles.loanMeta}>
-                          <span className={styles.dealLabel}>Core Parameters</span>
-                          <span className={styles.dealSpecs}>{program.profile}</span>
+                          <span className={styles.dealSpecs}>
+                            {program.profile.split(' • ').map((spec, i, arr) => (
+                              <React.Fragment key={i}>
+                                {spec}
+                                {i < arr.length - 1 && <span style={{ color: '#c5a059' }}> • </span>}
+                              </React.Fragment>
+                            ))}
+                          </span>
                         </div>
                       </div>
                       <div className={styles.inquireBtn}>Explore Options →</div>
