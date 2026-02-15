@@ -78,11 +78,7 @@ export default function MeetOurTeamPage() {
                     {/* Right Side: Vertical Team Registry */}
                     <div className={styles.registrySection}>
                         {/* Registry Header Labels */}
-                        <div className={styles.registryHeader}>
-                            <div className={styles.headerPortrait}>Portrait</div>
-                            <div className={styles.headerDivider}></div>
-                            <div className={styles.headerProfile}>Leadership</div>
-                        </div>
+
 
                         {/* Profile Item 1: Matthew Bramow */}
                         <div className={styles.profileEntry}>

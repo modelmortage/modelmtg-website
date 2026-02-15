@@ -198,7 +198,7 @@
 
 @media (prefers-color-scheme: dark) {
   .subtitle {
-    color: #94a3b8;
+    color: #cbd5e1;
   }
 }
 
@@ -263,7 +263,7 @@
 
 @media (prefers-color-scheme: dark) {
   .itemLabel {
-    color: #64748b;
+    color: #cbd5e1;
   }
 }
 
@@ -281,7 +281,7 @@
 
 @media (prefers-color-scheme: dark) {
   .itemValue {
-    color: #e2e8f0;
+    color: #ffffff;
   }
 }
 
@@ -295,7 +295,7 @@
 
 @media (prefers-color-scheme: dark) {
   .address {
-    color: #94a3b8;
+    color: #e2e8f0;
   }
 }
 
@@ -372,6 +372,12 @@
   transition: color 0.2s ease;
 }
 
+@media (prefers-color-scheme: dark) {
+  .formLabel {
+    color: #cbd5e1;
+  }
+}
+
 .formGroup:focus-within .formLabel {
   color: #c5a059;
 }
@@ -403,6 +409,14 @@
 .formInput::placeholder,
 .formTextarea::placeholder {
   color: rgba(100, 116, 139, 0.3);
+}
+
+@media (prefers-color-scheme: dark) {
+
+  .formInput::placeholder,
+  .formTextarea::placeholder {
+    color: rgba(148, 163, 184, 0.5);
+  }
 }
 
 .formInput:focus,

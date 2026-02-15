@@ -196,133 +196,127 @@ export default function LoanOptionsPage() {
             <div className={styles.page}>
                 {/* Header Section */}
                 <section className={styles.header}>
-                <div className={styles.headerContainer}>
-                    <div className={styles.headerContent}>
-                        <h1 className={styles.title}>
-                            Loan <span className={styles.titleAccent}>Options</span>.
-                        </h1>
-                        <p className={styles.subtitle}>
-                            A curated catalog of purchase and refinance structures. Built for Houston buyers, homeowners, and investors who prefer clarity, speed, and precision.
-                        </p>
+                    <div className={styles.headerContainer}>
+                        <div className={styles.headerContent}>
+                            <h1 className={styles.title}>
+                                Loan <span className={styles.titleAccent}>Options</span>.
+                            </h1>
+                            <p className={styles.subtitle}>
+                                A curated catalog of purchase and refinance structures. Built for Houston buyers, homeowners, and investors who prefer clarity, speed, and precision.
+                            </p>
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            {/* Column Headers */}
-            <div className={styles.columnHeaders}>
-                <div className={styles.colName}>Program Name</div>
-                <div className={styles.colMemo}>Client Memo / Ideal Profile</div>
-                <div className={styles.colSpecs}>Technical Specifications</div>
-                <div className={styles.colInquire}>Inquire</div>
-            </div>
-
-            {/* Purchase Programs */}
-            <div className={styles.categoryHeader}>
-                <div className={styles.categoryInfo}>
-                    <span className={styles.categoryLabel}>Purchase</span>
-                    <p className={styles.categoryDesc}>Acquisition structures for primary, secondary, and investment properties.</p>
+                {/* Column Headers */}
+                <div className={styles.columnHeaders}>
+                    <div className={styles.colName}>Program Name</div>
+                    <div className={styles.colMemo}>Client Memo / Ideal Profile</div>
+                    <div className={styles.colSpecs}>Technical Specifications</div>
+                    <div className={styles.colInquire}>Inquire</div>
                 </div>
-                <div className={styles.categoryBadges}>
-                    <span className={styles.badge}>8 Programs</span>
-                    <span className={styles.badge}>Houston Focused</span>
-                </div>
-            </div>
 
-            {purchasePrograms.map((program) => (
-                <div key={program.number} className={styles.programRow}>
-                    <div className={styles.programName}>
-                        <span className={styles.programNumber}>{program.number} / PURCHASE</span>
-                        <h2 className={styles.programTitle}>{program.title}</h2>
-                        <p className={styles.programSubtitle}>{program.subtitle}</p>
-                        <div className={styles.programTags}>
-                            {program.tags.map((tag, i) => (
-                                <span key={i} className={styles.tag}>{tag}</span>
+                {/* Purchase Programs */}
+                <div className={styles.categoryHeader}>
+                    <div className={styles.categoryInfo}>
+                        <span className={styles.categoryLabel}>Purchase</span>
+                        <p className={styles.categoryDesc}>Acquisition structures for primary, secondary, and investment properties.</p>
+                    </div>
+
+                </div>
+
+                {purchasePrograms.map((program) => (
+                    <div key={program.number} className={styles.programRow}>
+                        <div className={styles.programName}>
+
+                            <h2 className={styles.programTitle}>{program.title}</h2>
+                            <p className={styles.programSubtitle}>{program.subtitle}</p>
+                            <div className={styles.programTags}>
+                                {program.tags.map((tag, i) => (
+                                    <span key={i} className={styles.tag}>{tag}</span>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className={styles.programMemo}>
+                            <p className={styles.memoText}>{program.memo}</p>
+                            <div className={styles.clientTarget}>
+                                <div className={styles.dot}></div>
+                                <span className={styles.targetLabel}>Best Fit: {program.clientTarget}</span>
+                            </div>
+                        </div>
+
+                        <div className={styles.programSpecs}>
+                            {program.specs.map((spec, i) => (
+                                <div key={i} className={styles.specItem}>
+                                    <svg className={styles.checkIcon} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M20 6L9 17L4 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                    </svg>
+                                    <p className={styles.specText}>{spec}</p>
+                                </div>
                             ))}
                         </div>
-                    </div>
 
-                    <div className={styles.programMemo}>
-                        <p className={styles.memoText}>{program.memo}</p>
-                        <div className={styles.clientTarget}>
-                            <div className={styles.dot}></div>
-                            <span className={styles.targetLabel}>Best Fit: {program.clientTarget}</span>
+                        <div className={styles.programInquire}>
+                            <Link href={program.href} className={styles.inquireBtn}>
+                                <svg className={styles.inquireArrow} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                </svg>
+                            </Link>
                         </div>
                     </div>
+                ))}
 
-                    <div className={styles.programSpecs}>
-                        {program.specs.map((spec, i) => (
-                            <div key={i} className={styles.specItem}>
-                                <svg className={styles.checkIcon} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M20 6L9 17L4 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                                </svg>
-                                <p className={styles.specText}>{spec}</p>
+                {/* Refinance Programs */}
+                <div className={`${styles.categoryHeader} ${styles.spacer}`}>
+                    <div className={styles.categoryInfo}>
+                        <span className={styles.categoryLabel}>Refinance</span>
+                        <p className={styles.categoryDesc}>Restructure your mortgage to reduce cost, access equity, or improve terms.</p>
+                    </div>
+
+                </div>
+
+                {refinancePrograms.map((program) => (
+                    <div key={program.number} className={styles.programRow}>
+                        <div className={styles.programName}>
+
+                            <h2 className={styles.programTitle}>{program.title}</h2>
+                            <p className={styles.programSubtitle}>{program.subtitle}</p>
+                            <div className={styles.programTags}>
+                                {program.tags.map((tag, i) => (
+                                    <span key={i} className={styles.tag}>{tag}</span>
+                                ))}
                             </div>
-                        ))}
-                    </div>
+                        </div>
 
-                    <div className={styles.programInquire}>
-                        <Link href={program.href} className={styles.inquireBtn}>
-                            <svg className={styles.inquireArrow} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                            </svg>
-                        </Link>
-                    </div>
-                </div>
-            ))}
+                        <div className={styles.programMemo}>
+                            <p className={styles.memoText}>{program.memo}</p>
+                            <div className={styles.clientTarget}>
+                                <div className={styles.dot}></div>
+                                <span className={styles.targetLabel}>Best Fit: {program.clientTarget}</span>
+                            </div>
+                        </div>
 
-            {/* Refinance Programs */}
-            <div className={styles.categoryHeader}>
-                <div className={styles.categoryInfo}>
-                    <span className={styles.categoryLabel}>Refinance</span>
-                    <p className={styles.categoryDesc}>Restructure your mortgage to reduce cost, access equity, or improve terms.</p>
-                </div>
-                <div className={styles.categoryBadges}>
-                    <span className={styles.badge}>3 Programs</span>
-                    <span className={styles.badge}>Optimization</span>
-                </div>
-            </div>
-
-            {refinancePrograms.map((program) => (
-                <div key={program.number} className={styles.programRow}>
-                    <div className={styles.programName}>
-                        <span className={styles.programNumber}>{program.number} / REFI</span>
-                        <h2 className={styles.programTitle}>{program.title}</h2>
-                        <p className={styles.programSubtitle}>{program.subtitle}</p>
-                        <div className={styles.programTags}>
-                            {program.tags.map((tag, i) => (
-                                <span key={i} className={styles.tag}>{tag}</span>
+                        <div className={styles.programSpecs}>
+                            {program.specs.map((spec, i) => (
+                                <div key={i} className={styles.specItem}>
+                                    <svg className={styles.checkIcon} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M20 6L9 17L4 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                    </svg>
+                                    <p className={styles.specText}>{spec}</p>
+                                </div>
                             ))}
                         </div>
-                    </div>
 
-                    <div className={styles.programMemo}>
-                        <p className={styles.memoText}>{program.memo}</p>
-                        <div className={styles.clientTarget}>
-                            <div className={styles.dot}></div>
-                            <span className={styles.targetLabel}>Best Fit: {program.clientTarget}</span>
+                        <div className={styles.programInquire}>
+                            <Link href={program.href} className={styles.inquireBtn}>
+                                <svg className={styles.inquireArrow} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                </svg>
+                            </Link>
                         </div>
                     </div>
-
-                    <div className={styles.programSpecs}>
-                        {program.specs.map((spec, i) => (
-                            <div key={i} className={styles.specItem}>
-                                <svg className={styles.checkIcon} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M20 6L9 17L4 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                                </svg>
-                                <p className={styles.specText}>{spec}</p>
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className={styles.programInquire}>
-                        <Link href={program.href} className={styles.inquireBtn}>
-                            <svg className={styles.inquireArrow} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                            </svg>
-                        </Link>
-                    </div>
-                </div>
-            ))}
+                ))}
             </div>
             <Footer />
         </>

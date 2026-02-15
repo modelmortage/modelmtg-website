@@ -1,10 +1,10 @@
 import { MetadataRoute } from 'next'
-import { blogPosts } from '@/lib/content/blogPosts'
+import { getAllPosts } from '@/lib/blog'
 import { loanOptions } from '@/lib/content/loanOptions'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://modelmtg.com'
-  
+
   // Static pages
   const staticPages: MetadataRoute.Sitemap = [
     {
@@ -148,7 +148,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ]
 
   // Individual blog posts
-  const blogPostPages: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+  const posts = getAllPosts()
+  const blogPostPages: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
     lastModified: new Date(post.publishDate),
     changeFrequency: 'monthly' as const,

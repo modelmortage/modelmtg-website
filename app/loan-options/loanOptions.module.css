@@ -136,6 +136,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
+
   .colName,
   .colMemo,
   .colInquire {
@@ -560,4 +561,8 @@
   .categoryHeader {
     padding: 1rem;
   }
+}
+
+.spacer {
+  margin-top: 6rem;
 }

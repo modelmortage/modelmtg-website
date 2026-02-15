@@ -26,6 +26,7 @@ export default function Header() {
     const [isScrolled, setIsScrolled] = useState(false)
 
     const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false)
+    const [calculatorDropdownOpen, setCalculatorDropdownOpen] = useState(false)
     const pathname = usePathname()
     const headerRef = useRef<HTMLElement>(null)
 
@@ -127,14 +128,83 @@ export default function Header() {
                     >
                         Loan Options
                     </Link>
-                    <Link
-                        href="/calculator"
-                        className={`${styles.navLink} ${isActive('/calculator') ? styles.active : ''}`}
-                        aria-current={isActive('/calculator') ? 'page' : undefined}
-                        onClick={handleLinkClick}
-                    >
-                        Calculator
-                    </Link>
+                    {/* Calculator Dropdown */}
+                    <div className={styles.navDropdown}>
+                        <Link
+                            href="/calculator"
+                            className={`${styles.navLink} ${styles.dropdownToggle} ${isActive('/calculator') ? styles.active : ''}`}
+                            onClick={(e) => {
+                                if (window.innerWidth <= 768) {
+                                    e.preventDefault()
+                                    setCalculatorDropdownOpen(!calculatorDropdownOpen)
+                                } else {
+                                    handleLinkClick()
+                                }
+                            }}
+                            aria-expanded={calculatorDropdownOpen}
+                        >
+                            Calculators
+                            <FaChevronDown className={`${styles.chevron} ${calculatorDropdownOpen ? styles.chevronOpen : ''}`} />
+                        </Link>
+                        <div className={`${styles.dropdownMenu} ${calculatorDropdownOpen ? styles.dropdownMenuOpen : ''}`}>
+                            <Link
+                                href="/calculator/purchase"
+                                className={styles.dropdownItem}
+                                onClick={handleLinkClick}
+                            >
+                                Purchase Calculator
+                            </Link>
+                            <Link
+                                href="/calculator/affordability"
+                                className={styles.dropdownItem}
+                                onClick={handleLinkClick}
+                            >
+                                How Much Can I Afford?
+                            </Link>
+                            <Link
+                                href="/calculator/refinance"
+                                className={styles.dropdownItem}
+                                onClick={handleLinkClick}
+                            >
+                                Refinance Calculator
+                            </Link>
+                            <Link
+                                href="/calculator/rent-vs-buy"
+                                className={styles.dropdownItem}
+                                onClick={handleLinkClick}
+                            >
+                                Rent vs Buy
+                            </Link>
+                            <Link
+                                href="/calculator/va-purchase"
+                                className={styles.dropdownItem}
+                                onClick={handleLinkClick}
+                            >
+                                VA Purchase Calculator
+                            </Link>
+                            <Link
+                                href="/calculator/va-refinance"
+                                className={styles.dropdownItem}
+                                onClick={handleLinkClick}
+                            >
+                                VA Refinance Calculator
+                            </Link>
+                            <Link
+                                href="/calculator/dscr"
+                                className={styles.dropdownItem}
+                                onClick={handleLinkClick}
+                            >
+                                DSCR Investment Calculator
+                            </Link>
+                            <Link
+                                href="/calculator/fix-flip"
+                                className={styles.dropdownItem}
+                                onClick={handleLinkClick}
+                            >
+                                Fix & Flip Calculator
+                            </Link>
+                        </div>
+                    </div>
                     <Link
                         href="/pre-qualify"
                         className={`${styles.navLink} ${isActive('/pre-qualify') ? styles.active : ''}`}

@@ -3,7 +3,7 @@ import { FaHome, FaFileAlt, FaDollarSign, FaSync, FaCalculator, FaPhone, FaInfoC
 import BlogCard from '@/components/content/BlogCard'
 import { Card } from '@/components/design-system/Card/Card'
 import { Button } from '@/components/design-system/Button/Button'
-import { blogPosts } from '@/lib/content/blogPosts'
+import { getAllPosts } from '@/lib/blog'
 import styles from './learning-center.module.css'
 
 export const metadata: Metadata = {
@@ -28,8 +28,10 @@ export const metadata: Metadata = {
 }
 
 export default function LearningCenterPage() {
+  const allPosts = getAllPosts()
+
   // Sort blog posts by date (newest first)
-  const sortedPosts = [...blogPosts].sort((a, b) => {
+  const sortedPosts = [...allPosts].sort((a, b) => {
     return new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
   })
 
@@ -77,7 +79,7 @@ export default function LearningCenterPage() {
     if (categoryKeywords.length === 0) {
       return sortedPosts // Return all posts for "All Articles"
     }
-    
+
     return sortedPosts.filter(post => {
       const postText = `${post.title} ${post.excerpt} ${post.tags.join(' ')}`.toLowerCase()
       return categoryKeywords.some(keyword => postText.includes(keyword.toLowerCase()))
@@ -91,7 +93,7 @@ export default function LearningCenterPage() {
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>Learning Center</h1>
           <p className={styles.heroSubtitle}>
-            Your comprehensive resource for mortgage education. From first-time home buying to refinancing, 
+            Your comprehensive resource for mortgage education. From first-time home buying to refinancing,
             we provide expert guidance to help you make informed decisions about your home financing.
           </p>
         </div>
@@ -120,7 +122,7 @@ export default function LearningCenterPage() {
       {/* Category Sections */}
       {categories.map((category) => {
         const categoryPosts = getPostsByCategory(category.keywords)
-        
+
         // Skip empty categories (except "All Articles")
         if (categoryPosts.length === 0 && category.id !== 'all-articles') {
           return null

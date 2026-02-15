@@ -1,0 +1,30 @@
+{
+  "slug": "how-refinancing-works-in-texas",
+  "title": "How Refinancing Works in Texas: Complete Guide for Homeowners",
+  "excerpt": "Overview of the refinance process and when it makes sense. Learn about Texas-specific refinancing rules and requirements.",
+  "author": "Matthew Bramow",
+  "publishDate": "2024-03-15T00:00:00.000Z",
+  "category": "Learn",
+  "tags": [
+    "refinancing",
+    "Texas",
+    "mortgage",
+    "home loan",
+    "cash-out refinance"
+  ],
+  "featuredImage": "/refinancing-houston-texas.png",
+  "readTime": 12,
+  "metadata": {
+    "title": "How Refinancing Works in Texas | Complete Guide | Model Mortgage",
+    "description": "Comprehensive guide to refinancing in Texas. Learn about cash-out rules, rate-and-term refinancing, costs, and when refinancing makes sense.",
+    "keywords": [
+      "refinancing Texas",
+      "Texas cash-out refinance",
+      "mortgage refinance Houston",
+      "Texas Section 50(a)(6)",
+      "home refinancing"
+    ],
+    "ogImage": "/refinancing-houston-texas.png",
+    "canonical": "/blog/how-refinancing-works-in-texas"
+  }
+}

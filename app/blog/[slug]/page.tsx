@@ -7,18 +7,20 @@ import Breadcrumbs from '@/components/shared/Breadcrumbs'
 import { Button } from '@/components/design-system/Button/Button'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import { blogPosts } from '@/lib/content/blogPosts'
+import { getAllPosts, getPostBySlug } from '@/lib/blog'
+import { MDXRemote } from 'next-mdx-remote/rsc'
 import styles from './BlogPostPage.module.css'
 
 interface BlogPostPageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 // Generate static params for all blog posts
 export async function generateStaticParams() {
-  return blogPosts.map((post) => ({
+  const posts = getAllPosts()
+  return posts.map((post) => ({
     slug: post.slug,
   }))
 }
@@ -26,47 +28,52 @@ export async function generateStaticParams() {
 // Generate metadata for each blog post page
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params
-  const post = blogPosts.find((p) => p.slug === slug)
+  try {
+    const { frontmatter: post } = getPostBySlug(slug)
 
-  if (!post) {
+    return {
+      title: post.metadata?.title || post.title,
+      description: post.metadata?.description || post.excerpt,
+      keywords: post.metadata?.keywords?.join(', '),
+      openGraph: {
+        title: post.metadata?.title || post.title,
+        description: post.metadata?.description || post.excerpt,
+        type: 'article',
+        images: post.metadata?.ogImage ? [{ url: post.metadata.ogImage }] : undefined,
+        publishedTime: post.publishDate,
+        authors: [post.author],
+        tags: post.tags,
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: post.metadata?.title || post.title,
+        description: post.metadata?.description || post.excerpt,
+        images: post.metadata?.ogImage ? [post.metadata.ogImage] : undefined,
+      },
+      alternates: {
+        canonical: post.metadata?.canonical,
+      },
+    }
+  } catch (e) {
     return {
       title: 'Blog Post Not Found',
       description: 'The requested blog post could not be found.',
     }
   }
-
-  return {
-    title: post.metadata.title,
-    description: post.metadata.description,
-    keywords: post.metadata.keywords.join(', '),
-    openGraph: {
-      title: post.metadata.title,
-      description: post.metadata.description,
-      type: 'article',
-      images: post.metadata.ogImage ? [{ url: post.metadata.ogImage }] : undefined,
-      publishedTime: post.publishDate,
-      authors: [post.author],
-      tags: post.tags,
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: post.metadata.title,
-      description: post.metadata.description,
-      images: post.metadata.ogImage ? [post.metadata.ogImage] : undefined,
-    },
-    alternates: {
-      canonical: post.metadata.canonical,
-    },
-  }
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params
-  const post = blogPosts.find((p) => p.slug === slug)
+  let postData
 
-  if (!post) {
+  try {
+    postData = getPostBySlug(slug)
+  } catch (e) {
     notFound()
   }
+
+  const { frontmatter: post, content } = postData
+  const allPosts = getAllPosts()
 
   // Format the date for display
   const [year, month, day] = post.publishDate.split('-').map(Number)
@@ -86,137 +93,28 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     email: `mailto:?subject=${encodeURIComponent(post.title)}&body=${encodeURIComponent(`Check out this article: ${pageUrl}`)}`
   }
 
-  // Process content to convert markdown-style headings to HTML
-  const processContent = (content: string) => {
-    const lines = content.trim().split('\n')
-    const elements: JSX.Element[] = []
-    let currentParagraph: string[] = []
-    let key = 0
+  // MDX Components Map to match the original design's classes
+  const mdxComponents = {
+    // Basic formatting
+    p: (props: any) => <p className={styles.paragraph} {...props} />,
+    strong: (props: any) => <strong {...props} />,
+    em: (props: any) => <em {...props} />,
 
-    const flushParagraph = () => {
-      if (currentParagraph.length > 0) {
-        const text = currentParagraph.join(' ').trim()
-        if (text) {
-          elements.push(
-            <p key={`p-${key++}`} className={styles.paragraph}>
-              {text}
-            </p>
-          )
-        }
-        currentParagraph = []
-      }
-    }
+    // Headings - Shifted levels to match user's previous logic
+    // user mapped "# " to h2, "## " to h3, "### " to h4, "#### " to h5
+    h1: (props: any) => <h2 className={styles.h2} {...props} />,
+    h2: (props: any) => <h3 className={styles.h3} {...props} />,
+    h3: (props: any) => <h4 className={styles.h4} {...props} />,
+    h4: (props: any) => <h5 className={styles.h5} {...props} />,
 
-    lines.forEach((line) => {
-      const trimmedLine = line.trim()
+    // Lists
+    ul: (props: any) => <ul className={styles.list} {...props} />,
+    ol: (props: any) => <ol className={styles.list} {...props} />, // Using same list style
+    li: (props: any) => <li className={styles.listItem} {...props} />,
 
-      // Skip empty lines
-      if (!trimmedLine) {
-        flushParagraph()
-        return
-      }
-
-      // H1 in markdown content should become H2 (page title is already H1)
-      if (trimmedLine.startsWith('# ')) {
-        flushParagraph()
-        elements.push(
-          <h2 key={`h2-${key++}`} className={styles.h2}>
-            {trimmedLine.substring(2)}
-          </h2>
-        )
-        return
-      }
-
-      // H2 in markdown content should become H3
-      if (trimmedLine.startsWith('## ')) {
-        flushParagraph()
-        elements.push(
-          <h3 key={`h3-${key++}`} className={styles.h3}>
-            {trimmedLine.substring(3)}
-          </h3>
-        )
-        return
-      }
-
-      // H3 in markdown content should become H4
-      if (trimmedLine.startsWith('### ')) {
-        flushParagraph()
-        elements.push(
-          <h4 key={`h4-${key++}`} className={styles.h4}>
-            {trimmedLine.substring(4)}
-          </h4>
-        )
-        return
-      }
-
-      // H4 in markdown content should become H5
-      if (trimmedLine.startsWith('#### ')) {
-        flushParagraph()
-        elements.push(
-          <h5 key={`h5-${key++}`} className={styles.h5}>
-            {trimmedLine.substring(5)}
-          </h5>
-        )
-        return
-      }
-
-      // Unordered list item
-      if (trimmedLine.startsWith('- ')) {
-        flushParagraph()
-        // Check if previous element is a ul, if not create one
-        const lastElement = elements[elements.length - 1]
-        if (lastElement && lastElement.type === 'ul') {
-          // Add to existing ul
-          const existingItems = lastElement.props.children
-          elements[elements.length - 1] = (
-            <ul key={lastElement.key} className={styles.list}>
-              {existingItems}
-              <li key={`li-${key++}`} className={styles.listItem}>
-                {trimmedLine.substring(2)}
-              </li>
-            </ul>
-          )
-        } else {
-          elements.push(
-            <ul key={`ul-${key++}`} className={styles.list}>
-              <li key={`li-${key++}`} className={styles.listItem}>
-                {trimmedLine.substring(2)}
-              </li>
-            </ul>
-          )
-        }
-        return
-      }
-
-      // Bold text (simple **text** pattern)
-      if (trimmedLine.includes('**')) {
-        flushParagraph()
-        const parts = trimmedLine.split('**')
-        const formatted = parts.map((part, index) => {
-          if (index % 2 === 1) {
-            return <strong key={`strong-${key++}`}>{part}</strong>
-          }
-          return part
-        })
-        elements.push(
-          <p key={`p-${key++}`} className={styles.paragraph}>
-            {formatted}
-          </p>
-        )
-        return
-      }
-
-      // Regular paragraph line
-      currentParagraph.push(trimmedLine)
-    })
-
-    // Flush any remaining paragraph
-    flushParagraph()
-
-    return elements
+    // Links
+    a: (props: any) => <a className={styles.link} {...props} target="_blank" rel="noopener noreferrer" />,
   }
-
-  const contentElements = processContent(post.content)
 
   return (
     <>
@@ -269,16 +167,18 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </header>
 
           {/* Featured Image */}
-          <div className={styles.featuredImage}>
-            <Image
-              src={post.featuredImage}
-              alt={post.title}
-              width={1200}
-              height={630}
-              priority
-              className={styles.image}
-            />
-          </div>
+          {post.featuredImage && (
+            <div className={styles.featuredImage}>
+              <Image
+                src={post.featuredImage}
+                alt={post.title}
+                width={1200}
+                height={630}
+                priority
+                className={styles.image}
+              />
+            </div>
+          )}
 
           {/* Social Sharing Buttons */}
           <div className={styles.socialShare}>
@@ -323,7 +223,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
           {/* Article Content */}
           <div className={styles.content}>
-            {contentElements}
+            <MDXRemote source={content} components={mdxComponents} />
           </div>
 
           {/* Article Footer */}
@@ -346,7 +246,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <div className={styles.relatedContainer}>
             <h2 className={styles.relatedTitle}>Continue Reading</h2>
             <div className={styles.relatedGrid}>
-              {blogPosts
+              {allPosts
                 .filter((p) => p.slug !== post.slug)
                 .slice(0, 3)
                 .map((relatedPost) => {
@@ -365,16 +265,18 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                       className={styles.relatedCard}
                     >
                       <div className={styles.relatedImageContainer}>
-                        <Image
-                          src={relatedPost.featuredImage}
-                          alt={relatedPost.title}
-                          fill
-                          sizes="(max-width: 768px) 100vw, 33vw"
-                          loading="lazy"
-                          placeholder="blur"
-                          blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2Y3ZjdmNyIvPjwvc3ZnPg=="
-                          className={styles.relatedImage}
-                        />
+                        {relatedPost.featuredImage && (
+                          <Image
+                            src={relatedPost.featuredImage}
+                            alt={relatedPost.title}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 33vw"
+                            loading="lazy"
+                            placeholder="blur"
+                            blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2Y3ZjdmNyIvPjwvc3ZnPg=="
+                            className={styles.relatedImage}
+                          />
+                        )}
                       </div>
                       <div className={styles.relatedContent}>
                         <h3 className={styles.relatedCardTitle}>{relatedPost.title}</h3>
@@ -422,7 +324,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             },
             "keywords": post.tags.join(', '),
             "articleSection": post.category,
-            "wordCount": post.content.split(/\s+/).length
+            "wordCount": content.split(/\s+/).length
           })
         }}
       />

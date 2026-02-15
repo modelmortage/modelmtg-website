@@ -1,12 +1,12 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { FaCalendar, FaClock, FaArrowRight } from 'react-icons/fa'
-import { BlogPost } from '@/lib/types/content'
+import { BlogFrontmatter } from '@/lib/blog'
 import { Card } from '@/components/design-system/Card/Card'
 import styles from './BlogCard.module.css'
 
 export interface BlogCardProps {
-  blogPost: BlogPost
+  blogPost: BlogFrontmatter
 }
 
 /**
@@ -36,7 +36,7 @@ export default function BlogCard({ blogPost }: BlogCardProps) {
         {/* Featured Image */}
         <div className={styles.imageContainer}>
           <Image
-            src={blogPost.featuredImage}
+            src={blogPost.featuredImage || '/images/blog/default.jpg'}
             alt={blogPost.title}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -69,7 +69,7 @@ export default function BlogCard({ blogPost }: BlogCardProps) {
             <span className={styles.separator}>•</span>
             <span className={styles.metadataItem}>
               <FaClock className={styles.icon} aria-hidden="true" />
-              <span className={styles.readTime}>{blogPost.readTime} min read</span>
+              <span className={styles.readTime}>{blogPost.readTime || 5} min read</span>
             </span>
           </div>
 

@@ -3,7 +3,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
 import Image from 'next/image'
-import { blogPosts } from '@/lib/content/blogPosts'
+import { getAllPosts } from '@/lib/blog'
 import styles from './blog.module.css'
 
 export const metadata: Metadata = {
@@ -23,12 +23,11 @@ export const metadata: Metadata = {
 export const revalidate = 86400
 
 export default function BlogPage() {
-  const sortedPosts = [...blogPosts].sort((a, b) => {
-    return new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
-  })
+  const posts = getAllPosts()
+  // getAllPosts already sorts by date desc
 
-  const featuredPost = sortedPosts[0]
-  const regularPosts = sortedPosts.slice(1)
+  const featuredPost = posts[0]
+  const regularPosts = posts.slice(1)
 
   return (
     <>
@@ -57,12 +56,14 @@ export default function BlogPage() {
             <Link href={`/blog/${featuredPost.slug}`} className={styles.featuredCard}>
               <div className={styles.featuredImage}>
                 <div className={styles.featuredOverlay}></div>
-                <Image
-                  src={featuredPost.featuredImage}
-                  alt={featuredPost.title}
-                  fill
-                  className={styles.featuredImg}
-                />
+                {featuredPost.featuredImage && (
+                  <Image
+                    src={featuredPost.featuredImage}
+                    alt={featuredPost.title}
+                    fill
+                    className={styles.featuredImg}
+                  />
+                )}
                 <div className={styles.featuredBadge}>
                   <span>Featured Strategy</span>
                 </div>
@@ -106,12 +107,14 @@ export default function BlogPage() {
                 <Link href={`/blog/${post.slug}`} className={styles.articleLink}>
                   <div className={styles.articleImage}>
                     <div className={styles.articleOverlay}></div>
-                    <Image
-                      src={post.featuredImage}
-                      alt={post.title}
-                      fill
-                      className={styles.articleImg}
-                    />
+                    {post.featuredImage && (
+                      <Image
+                        src={post.featuredImage}
+                        alt={post.title}
+                        fill
+                        className={styles.articleImg}
+                      />
+                    )}
                   </div>
                   <div className={styles.articleContent}>
                     <div className={styles.articleMeta}>
