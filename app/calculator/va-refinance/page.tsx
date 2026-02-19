@@ -14,9 +14,12 @@ import { vaRefinanceConfig } from '@/lib/calculators/configs/vaRefinance.config'
 import styles from './va-refinance.module.css'
 
 type TermMode = 'year' | 'month'
+type Priority = 'payment' | 'interest'
 
 export default function VARefinanceCalculator() {
   const [loanTermMode, setLoanTermMode] = useState<TermMode>('year')
+  const [priority, setPriority] = useState<Priority>('interest')
+  const [loanStartDate, setLoanStartDate] = useState('2022-03')
   const [values, setValues] = useState({
     currentBalance: '300000',
     currentRate: '5',
@@ -30,7 +33,10 @@ export default function VARefinanceCalculator() {
     currentPayment: 0,
     newPayment: 0,
     monthlyIncrease: 0,
-    totalInterestDiff: 0
+    totalInterestDiff: 0,
+    monthsToRecoup: 0,
+    remainingTerm: 360,
+    newLoanTerm: 360
   })
 
   const handleChange = (name: string, value: string) => {
@@ -51,32 +57,68 @@ export default function VARefinanceCalculator() {
   // Auto-calculate
   useEffect(() => {
     calculateResults()
-  }, [values, loanTermMode])
+  }, [values, loanTermMode, priority, loanStartDate])
 
   const calculateResults = () => {
     const currentBalance = parseFloat(values.currentBalance) || 0
     const currentRate = (parseFloat(values.currentRate) || 0) / 100 / 12
     const newRate = (parseFloat(values.newRate) || 0) / 100 / 12
-    const term = loanTermMode === 'year'
+    const originalTerm = loanTermMode === 'year'
       ? (parseFloat(values.currentTermYears) || 30) * 12
       : parseFloat(values.currentTermMonths) || 360
 
-    const currentPayment = currentRate === 0
-      ? currentBalance / term
-      : currentBalance * (currentRate * Math.pow(1 + currentRate, term)) / (Math.pow(1 + currentRate, term) - 1)
+    // Calculate months elapsed since loan start date
+    const [startYear, startMonth] = loanStartDate.split('-').map(Number)
+    const startDate = new Date(startYear, startMonth - 1)
+    const currentDate = new Date()
+    const monthsElapsed = Math.max(0, 
+      (currentDate.getFullYear() - startDate.getFullYear()) * 12 + 
+      (currentDate.getMonth() - startDate.getMonth())
+    )
 
+    // Calculate remaining term for current loan
+    const remainingTerm = Math.max(1, originalTerm - monthsElapsed)
+
+    // Calculate current payment based on original loan
+    const currentPayment = currentRate === 0
+      ? currentBalance / remainingTerm
+      : currentBalance * (currentRate * Math.pow(1 + currentRate, remainingTerm)) / (Math.pow(1 + currentRate, remainingTerm) - 1)
+
+    // Determine new loan term based on priority
+    let newLoanTerm = originalTerm
+    if (priority === 'payment') {
+      // Lower monthly payment: use full original term
+      newLoanTerm = originalTerm
+    } else {
+      // Lower interest paid: use remaining term to pay off faster
+      newLoanTerm = remainingTerm
+    }
+
+    // Calculate new payment
     const newPayment = newRate === 0
-      ? currentBalance / term
-      : currentBalance * (newRate * Math.pow(1 + newRate, term)) / (Math.pow(1 + newRate, term) - 1)
+      ? currentBalance / newLoanTerm
+      : currentBalance * (newRate * Math.pow(1 + newRate, newLoanTerm)) / (Math.pow(1 + newRate, newLoanTerm) - 1)
 
     const monthlyIncrease = newPayment - currentPayment
-    const totalInterestDiff = (newPayment * term - currentBalance) - (currentPayment * term - currentBalance)
+    
+    // Calculate total interest for remaining term
+    const currentRemainingInterest = (currentPayment * remainingTerm) - currentBalance
+    const newTotalInterest = (newPayment * newLoanTerm) - currentBalance
+    const totalInterestDiff = newTotalInterest - currentRemainingInterest
+
+    // Calculate time to recoup closing costs
+    const closingCosts = parseFloat(values.cashOut) || 0
+    const monthlySavings = Math.abs(monthlyIncrease)
+    const monthsToRecoup = monthlySavings > 0 ? closingCosts / monthlySavings : 0
 
     setResults({
       currentPayment,
       newPayment,
       monthlyIncrease,
-      totalInterestDiff
+      totalInterestDiff,
+      monthsToRecoup,
+      remainingTerm,
+      newLoanTerm
     })
   }
 
@@ -95,9 +137,13 @@ export default function VARefinanceCalculator() {
                 What is most important to you?
               </h3>
               <div className={styles.selectField}>
-                <select className={styles.select}>
-                  <option>Low Monthly Payment</option>
-                  <option>Lower Interest Paid</option>
+                <select 
+                  className={styles.select}
+                  value={priority}
+                  onChange={(e) => setPriority(e.target.value as Priority)}
+                >
+                  <option value="interest">Lower Interest Paid</option>
+                  <option value="payment">Low Monthly Payment</option>
                 </select>
               </div>
 
@@ -178,9 +224,13 @@ export default function VARefinanceCalculator() {
 
               <div className={styles.selectField}>
                 <label className={styles.fieldLabel}>Loan Start Date</label>
-                <select className={styles.select}>
-                  <option>March 2022</option>
-                </select>
+                <input
+                  type="month"
+                  className={styles.select}
+                  value={loanStartDate}
+                  onChange={(e) => setLoanStartDate(e.target.value)}
+                  max={new Date().toISOString().slice(0, 7)}
+                />
               </div>
 
               <h3 style={{ fontSize: '0.875rem', fontWeight: '600', color: '#e5e7eb', marginTop: '0.5rem', marginBottom: '-0.5rem' }}>
@@ -254,12 +304,12 @@ export default function VARefinanceCalculator() {
                 <div className={styles.legendItem}>
                   <span className={styles.legendDot} style={{ backgroundColor: '#ef4444' }}></span>
                   <span className={styles.legendLabel}>Current Loan Remaining Interest</span>
-                  <span className={styles.legendValue}>${((results.currentPayment * 360) - parseFloat(values.currentBalance) || 0).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</span>
+                  <span className={styles.legendValue}>${((results.currentPayment * results.remainingTerm) - parseFloat(values.currentBalance) || 0).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</span>
                 </div>
                 <div className={styles.legendItem}>
                   <span className={styles.legendDot} style={{ backgroundColor: '#10b981' }}></span>
                   <span className={styles.legendLabel}>New Loan Interest</span>
-                  <span className={styles.legendValue}>${((results.newPayment * 360) - parseFloat(values.currentBalance) || 0).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</span>
+                  <span className={styles.legendValue}>${((results.newPayment * results.newLoanTerm) - parseFloat(values.currentBalance) || 0).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</span>
                 </div>
                 <div className={styles.legendItem}>
                   <span className={styles.legendDot} style={{ backgroundColor: '#3b82f6' }}></span>
@@ -300,7 +350,11 @@ export default function VARefinanceCalculator() {
 
             <Card variant="elevated" padding="md" className={`${styles.resultCard} ${styles.singleResultCard}`}>
               <div className={styles.resultLabel}>Time to Recoup Fees</div>
-              <div className={styles.resultValue}>--</div>
+              <div className={styles.resultValue}>
+                {results.monthsToRecoup > 0 && results.monthsToRecoup < 1000
+                  ? `${Math.ceil(results.monthsToRecoup)} months`
+                  : '--'}
+              </div>
             </Card>
           </div>
 
@@ -308,7 +362,7 @@ export default function VARefinanceCalculator() {
             <div className={styles.summaryTitle}>Summary:</div>
             <p className={styles.summaryText}>
               Your monthly payment will {results.monthlyIncrease >= 0 ? 'increase' : 'decrease'} by <strong>${Math.abs(results.monthlyIncrease).toFixed(2)}</strong> per month.
-              Overall expenses (incurred and interest) are significantly <strong>{results.totalInterestDiff >= 0 ? 'higher' : 'lower'}</strong>. providing you intend to reside in the house for more than <strong>8 years</strong>.
+              Overall expenses (incurred and interest) are significantly <strong>{results.totalInterestDiff >= 0 ? 'higher' : 'lower'}</strong>{results.monthsToRecoup > 0 && results.monthsToRecoup < 1000 ? `, and you'll recoup closing costs in ${Math.ceil(results.monthsToRecoup)} months` : ''}.
             </p>
           </Card>
         </div>

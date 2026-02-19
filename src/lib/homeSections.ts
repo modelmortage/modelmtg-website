@@ -9,7 +9,7 @@
 export const homeSections = {
   hero: {
     headline: "Houston Mortgage Lender for Home Purchase & Refinance",
-    subheadline: "Helping Houston buyers secure the right mortgage with competitive rates, fast pre-approvals, and local expertise you can trust.",
+    subheadline: "Helping homebuyers structure smart financing with competitive pricing, efficient approvals, and informed market insight.",
     bullets: [
       "Personalized mortgage advice",
       "Access to multiple loan programs",
@@ -18,7 +18,7 @@ export const homeSections = {
     trustPoints: [
       "Personalized Mortgage Advice—We walk you through every step — from pre-approval to closing.",
       "Access to Multiple Loan Programs—Conventional, FHA, VA, jumbo, and investor loan options.",
-      "Local Houston Expertise—We understand local property taxes, insurance, and market conditions."
+      "Local Market Expertise—We understand regional property taxes, insurance variables, and housing trends."
     ]
   },
 

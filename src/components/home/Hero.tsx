@@ -46,7 +46,7 @@ export function Hero() {
   // Hero entrance animations
   useEffect(() => {
     if (typeof window === 'undefined') return
-    
+
     const isReduced = checkReducedMotion()
 
     const ctx = gsap.context(() => {
@@ -144,7 +144,7 @@ export function Hero() {
           {/* Eyebrow with decorative line */}
           <div className={styles.eyebrowGroup} ref={eyebrowRef}>
             <div className={styles.eyebrowLine}></div>
-            <p className={styles.eyebrow}>Trusted Mortgage Guidance in Houston</p>
+            <p className={styles.eyebrow}>Trusted Mortgage Guidance in Texas</p>
           </div>
 
           {/* Headline with italic accent */}
