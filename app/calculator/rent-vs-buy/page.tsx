@@ -16,12 +16,16 @@ import {
   FaChartLine
 } from 'react-icons/fa'
 import { rentVsBuyConfig } from '@/lib/calculators/configs/rentVsBuy.config'
+import ExportPDFButton from '@/components/ExportPDFButton'
+import { useCalculatorExport } from '@/hooks/useCalculatorExport'
 import styles from './rent-vs-buy.module.css'
 
 type LoanType = 'conventional' | 'fha' | 'va' | 'usda' | 'jumbo'
 type ToggleMode = 'dollar' | 'percent'
 
 export default function RentVsBuyCalculator() {
+  const { chartRef, getExportData } = useCalculatorExport('Rent vs Buy')
+  
   const [activeLoanType, setActiveLoanType] = useState<LoanType>('conventional')
   const [downPaymentMode, setDownPaymentMode] = useState<ToggleMode>('dollar')
 
@@ -370,6 +374,11 @@ export default function RentVsBuyCalculator() {
 
         {/* Right Panel - Results */}
         <div className={styles.resultsPanel}>
+          <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '1rem' }}>
+            <ExportPDFButton 
+              getCalculatorData={() => getExportData(values, results)}
+            />
+          </div>
           <div className={styles.resultCards}>
             <Card variant="elevated" padding="md" className={styles.resultCard}>
               <div className={styles.resultLabel}>Total Rent Cost</div>

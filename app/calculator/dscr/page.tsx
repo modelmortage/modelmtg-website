@@ -12,9 +12,13 @@ import {
   FaKey
 } from 'react-icons/fa'
 import { dscrConfig } from '@/lib/calculators/configs/dscr.config'
+import ExportPDFButton from '@/components/ExportPDFButton'
+import { useCalculatorExport } from '@/hooks/useCalculatorExport'
 import styles from './dscr.module.css'
 
 export default function DSCRCalculator() {
+  const { chartRef, getExportData } = useCalculatorExport('DSCR')
+  
   const [values, setValues] = useState({
     units: '1',
     purchaseOrRefi: 'purchase',
@@ -321,6 +325,11 @@ export default function DSCRCalculator() {
 
         {/* Right Panel - Results */}
         <div className={styles.resultsPanel}>
+          <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '1rem' }}>
+            <ExportPDFButton 
+              getCalculatorData={() => getExportData(values, results)}
+            />
+          </div>
           <div className={styles.resultCards}>
             <Card variant="elevated" padding="md" className={`${styles.resultCard} ${styles.singleResultCard}`}>
               <div className={styles.resultLabel}>Cash Flow</div>

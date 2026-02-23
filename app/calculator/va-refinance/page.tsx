@@ -11,12 +11,16 @@ import {
   FaCalendar
 } from 'react-icons/fa'
 import { vaRefinanceConfig } from '@/lib/calculators/configs/vaRefinance.config'
+import ExportPDFButton from '@/components/ExportPDFButton'
+import { useCalculatorExport } from '@/hooks/useCalculatorExport'
 import styles from './va-refinance.module.css'
 
 type TermMode = 'year' | 'month'
 type Priority = 'payment' | 'interest'
 
 export default function VARefinanceCalculator() {
+  const { chartRef, getExportData } = useCalculatorExport('VA Refinance')
+  
   const [loanTermMode, setLoanTermMode] = useState<TermMode>('year')
   const [priority, setPriority] = useState<Priority>('interest')
   const [loanStartDate, setLoanStartDate] = useState('2022-03')
@@ -328,6 +332,11 @@ export default function VARefinanceCalculator() {
 
         {/* Right Panel - Results */}
         <div className={styles.resultsPanel}>
+          <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '1rem' }}>
+            <ExportPDFButton 
+              getCalculatorData={() => getExportData(values, results)}
+            />
+          </div>
           <div className={styles.resultCards}>
             <Card variant="elevated" padding="md" className={`${styles.resultCard} ${styles.singleResultCard}`}>
               <div className={styles.resultLabel}>Monthly Payment Increase</div>

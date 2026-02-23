@@ -98,7 +98,7 @@ export default function ExportPDFButton({ getCalculatorData, className = '' }: E
       </button>
       
       {/* Rate limit info */}
-      {rateLimitInfo && rateLimitInfo.allowed && (
+      {rateLimitInfo && rateLimitInfo.allowed && rateLimitInfo.remaining < 999 && (
         <p className="mt-1 text-xs text-gray-600">
           {rateLimitInfo.remaining} export{rateLimitInfo.remaining !== 1 ? 's' : ''} remaining today
         </p>

@@ -10,6 +10,8 @@ import {
   FaPercent,
   FaHome
 } from 'react-icons/fa'
+import ExportPDFButton from '@/components/ExportPDFButton'
+import { useCalculatorExport } from '@/hooks/useCalculatorExport'
 import styles from './fix-flip.module.css'
 
 const fixFlipConfig = {
@@ -27,6 +29,8 @@ const fixFlipConfig = {
 }
 
 export default function FixFlipCalculator() {
+  const { chartRef, getExportData } = useCalculatorExport('Fix & Flip')
+  
   const [values, setValues] = useState({
     purchasePrice: '500000',
     renovationCost: '75000',
@@ -361,7 +365,12 @@ export default function FixFlipCalculator() {
         {/* Right Panel - Return Metrics */}
         <div className={styles.resultsPanel}>
           <Card variant="elevated" padding="lg" className={styles.returnMetricsCard}>
-            <h3 className={styles.cardTitle}>Return Metrics</h3>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+              <h3 className={styles.cardTitle}>Return Metrics</h3>
+              <ExportPDFButton 
+                getCalculatorData={() => getExportData(values, results)}
+              />
+            </div>
             <div className={styles.returnMetrics}>
               <div className={styles.returnMetricItem}>
                 <div className={styles.returnMetricLabel}>Net Profit:</div>
