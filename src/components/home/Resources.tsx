@@ -14,22 +14,22 @@ import styles from './Resources.module.css'
 export function Resources() {
     const resources = [
         {
-            title: 'First-Time Homebuyer Checklist',
-            excerpt: 'Essential steps and considerations for Houston first-time buyers.',
-            href: '/blog/first-time-homebuyer-checklist-houston',
-            image: '/first-time-homebuyer-houston.png'
+            title: 'Down Payment Options and Strategies for Homebuyers',
+            excerpt: 'Explore down payment requirements for different loan types and discover strategies to save faster.',
+            href: '/blog/down-payment-options-and-strategies',
+            image: '/down-payment-options-and-strategies-for-homebuyers.png'
         },
         {
-            title: 'Understanding Mortgage Pre-Approval',
-            excerpt: 'What pre-approval means and how it strengthens your offer.',
-            href: '/blog/understanding-mortgage-pre-approval',
-            image: '/mortage-pre-approval.png'
+            title: 'A Step-by-Step Guide to Shopping for a New Home',
+            excerpt: 'Navigate the home buying process with confidence. Learn the essential steps from getting pre-approved to closing on your dream home.',
+            href: '/blog/step-by-step-guide-shopping-new-home',
+            image: '/images/blog/step_by_step_home_shopping.png'
         },
         {
-            title: 'How Refinancing Works in Texas',
-            excerpt: 'Overview of the refinance process and when it makes sense.',
-            href: '/blog/how-refinancing-works-in-texas',
-            image: '/refinancing-houston-texas.png'
+            title: 'The Complete Guide to VA Loans for Veterans and Military',
+            excerpt: 'Discover the powerful benefits of VA loans including zero down payment, no PMI, and competitive rates.',
+            href: '/blog/complete-guide-to-va-loans',
+            image: '/images/blog/complete_guide_va_loans.png'
         }
     ]
 
@@ -59,7 +59,7 @@ export function Resources() {
     return (
         <section className={styles.section}>
             <div className={styles.container}>
-                <motion.div 
+                <motion.div
                     className={styles.header}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -70,7 +70,7 @@ export function Resources() {
                     <p>Guides and insights to help you make confident mortgage decisions.</p>
                 </motion.div>
 
-                <motion.div 
+                <motion.div
                     className={styles.grid}
                     initial="hidden"
                     whileInView="visible"
@@ -105,7 +105,7 @@ export function Resources() {
                     ))}
                 </motion.div>
 
-                <motion.div 
+                <motion.div
                     className={styles.ctaContainer}
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
