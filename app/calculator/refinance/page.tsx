@@ -16,12 +16,16 @@ import {
   FaFlag
 } from 'react-icons/fa'
 import { refinanceConfig } from '@/lib/calculators/configs/refinance.config'
+import ExportPDFButton from '@/components/ExportPDFButton'
+import { useCalculatorExport } from '@/hooks/useCalculatorExport'
 import styles from './refinance.module.css'
 
 type LoanType = 'conventional' | 'fha' | 'va' | 'usda' | 'jumbo'
 type TermMode = 'year' | 'month'
 
 export default function RefinanceCalculator() {
+  const { chartRef, getExportData } = useCalculatorExport('Refinance')
+  
   const [activeLoanType, setActiveLoanType] = useState<LoanType>('conventional')
   const [loanTermMode, setLoanTermMode] = useState<TermMode>('year')
 

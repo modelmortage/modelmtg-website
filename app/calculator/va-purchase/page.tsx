@@ -14,6 +14,8 @@ import {
   FaShieldAlt
 } from 'react-icons/fa'
 import { vaPurchaseConfig } from '@/lib/calculators/configs/vaPurchase.config'
+import ExportPDFButton from '@/components/ExportPDFButton'
+import { useCalculatorExport } from '@/hooks/useCalculatorExport'
 import styles from './va-purchase.module.css'
 
 type ToggleMode = 'dollar' | 'percent'
@@ -121,29 +123,33 @@ function calculateAmortization(
   const monthlyRate = annualRate / 12
   
   // Standard monthly payment (principal + interest)
-  // Handle zero interest rate with simple division
   const monthlyPI = monthlyRate === 0
     ? principal / termInMonths
     : principal * (monthlyRate * Math.pow(1 + monthlyRate, termInMonths)) / 
       (Math.pow(1 + monthlyRate, termInMonths) - 1)
   
-  // Cap extra payment at P&I to prevent excessive payments
-  const cappedExtraPayment = Math.min(extraPayment, monthlyPI)
+  // If no extra payment, use simple calculation
+  if (extraPayment === 0) {
+    const totalInterest = (monthlyPI * termInMonths) - principal
+    return {
+      monthlyPayment: monthlyPI,
+      totalInterest,
+      actualTermMonths: termInMonths
+    }
+  }
   
-  // Calculate actual payoff with extra payments
+  // With extra payments, simulate month by month
   let balance = principal
   let totalInterest = 0
   let monthsPaid = 0
   
-  while (balance > 0 && monthsPaid < termInMonths * 2) { // Max 2x term to prevent infinite loops
+  while (balance > 0.01 && monthsPaid < termInMonths) {
     const interestPayment = balance * monthlyRate
-    const principalPayment = Math.min(monthlyPI - interestPayment + cappedExtraPayment, balance + interestPayment)
+    const principalPayment = monthlyPI - interestPayment + extraPayment
     
     totalInterest += interestPayment
-    balance -= (principalPayment - interestPayment)
+    balance = Math.max(0, balance - principalPayment)
     monthsPaid++
-    
-    if (balance <= 0) break
   }
   
   return {
@@ -237,6 +243,8 @@ function parseNumericInput(value: string, defaultValue: number = 0): number {
 }
 
 export default function VAPurchaseCalculator() {
+  const { chartRef, getExportData } = useCalculatorExport('VA Purchase')
+  
   const [downPaymentMode, setDownPaymentMode] = useState<ToggleMode>('dollar')
   const [loanTermMode, setLoanTermMode] = useState<TermMode>('year')
   const [propertyTaxMode, setPropertyTaxMode] = useState<ToggleMode>('dollar')
@@ -782,9 +790,57 @@ export default function VAPurchaseCalculator() {
         {/* Center Panel - Payment Breakdown */}
         <div className={styles.centerPanel}>
           <Card variant="elevated" padding="lg" className={styles.breakdownCard}>
-            <h3 className={styles.cardTitle}>Payment Breakdown</h3>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+              <h3 className={styles.cardTitle}>Payment Breakdown</h3>
+              <ExportPDFButton 
+                getCalculatorData={() => {
+                  const exportData = getExportData(values, results)
+                  // Add chart data for PDF generation
+                  const chartSegments = []
+                  if (results.principalInterest > 0) {
+                    chartSegments.push({
+                      label: 'Principal & Interest',
+                      value: results.principalInterest,
+                      color: chartColors.pi
+                    })
+                  }
+                  if (results.propertyTax > 0) {
+                    chartSegments.push({
+                      label: 'Taxes',
+                      value: results.propertyTax,
+                      color: chartColors.tax
+                    })
+                  }
+                  if (results.insurance > 0) {
+                    chartSegments.push({
+                      label: 'Insurance',
+                      value: results.insurance,
+                      color: chartColors.insurance
+                    })
+                  }
+                  if (results.hoaDues > 0) {
+                    chartSegments.push({
+                      label: 'HOA Dues',
+                      value: results.hoaDues,
+                      color: chartColors.hoa
+                    })
+                  }
+                  if (results.extraPayment > 0) {
+                    chartSegments.push({
+                      label: 'Extra Payment',
+                      value: results.extraPayment,
+                      color: chartColors.extra
+                    })
+                  }
+                  return {
+                    ...exportData,
+                    chartData: { segments: chartSegments }
+                  }
+                }}
+              />
+            </div>
 
-            <div className={styles.pieChart}>
+            <div ref={chartRef} className={styles.pieChart}>
               <div className={styles.donut} style={{ background: getDonutGradient() }}>
                 <div className={styles.centerAmount}>
                   <div className={styles.centerLabel}>Payment</div>
