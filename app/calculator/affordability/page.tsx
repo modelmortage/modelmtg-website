@@ -17,6 +17,8 @@ import {
   FaFlag
 } from 'react-icons/fa'
 import { affordabilityConfig } from '@/lib/calculators/configs/affordability.config'
+import ExportPDFButton from '@/components/ExportPDFButton'
+import { useCalculatorExport } from '@/hooks/useCalculatorExport'
 import styles from './affordability.module.css'
 
 type LoanType = 'conventional' | 'fha' | 'va' | 'usda' | 'jumbo'
@@ -24,6 +26,8 @@ type ToggleMode = 'dollar' | 'percent'
 type TermMode = 'year' | 'month'
 
 export default function AffordabilityCalculator() {
+  const { chartRef, getExportData } = useCalculatorExport('Affordability')
+  
   const [activeLoanType, setActiveLoanType] = useState<LoanType>('conventional')
   const [downPaymentMode, setDownPaymentMode] = useState<ToggleMode>('dollar')
   const [propertyTaxMode, setPropertyTaxMode] = useState<ToggleMode>('percent')
@@ -480,9 +484,33 @@ export default function AffordabilityCalculator() {
         {/* Center Panel - Payment Breakdown */}
         <div className={styles.centerPanel}>
           <Card variant="elevated" padding="lg" className={styles.breakdownCard}>
-            <h3 className={styles.cardTitle}>Payment Breakdown</h3>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+              <h3 className={styles.cardTitle}>Payment Breakdown</h3>
+              <ExportPDFButton 
+                getCalculatorData={() => {
+                  const exportData = getExportData(values, results)
+                  const chartSegments = []
+                  if (results.principalInterest > 0) {
+                    chartSegments.push({ label: 'Principal & Interest', value: results.principalInterest, color: chartColors.pi })
+                  }
+                  if (results.taxes > 0) {
+                    chartSegments.push({ label: 'Taxes', value: results.taxes, color: chartColors.tax })
+                  }
+                  if (results.insurance > 0) {
+                    chartSegments.push({ label: 'Insurance', value: results.insurance, color: chartColors.insurance })
+                  }
+                  if (results.hoaDues > 0) {
+                    chartSegments.push({ label: 'HOA Dues', value: results.hoaDues, color: chartColors.hoa })
+                  }
+                  if (results.pmi > 0) {
+                    chartSegments.push({ label: 'PMI', value: results.pmi, color: chartColors.pmi })
+                  }
+                  return { ...exportData, chartData: { segments: chartSegments } }
+                }}
+              />
+            </div>
 
-            <div className={styles.pieChart}>
+            <div ref={chartRef} className={styles.pieChart}>
               <div className={styles.donut} style={{ background: getDonutGradient() }}>
                 <div className={styles.centerAmount}>
                   <div className={styles.paymentAmount}>

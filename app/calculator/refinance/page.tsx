@@ -410,9 +410,33 @@ export default function RefinanceCalculator() {
         {/* Center Panel - Payment Comparison */}
         <div className={styles.centerPanel}>
           <Card variant="elevated" padding="lg" className={styles.breakdownCard}>
-            <h3 className={styles.cardTitle}>Payment Comparison</h3>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+              <h3 className={styles.cardTitle}>Payment Comparison</h3>
+              <ExportPDFButton 
+                getCalculatorData={() => {
+                  const exportData = getExportData(values, results)
+                  const chartSegments = []
+                  if (results.currentPrincipalInterest > 0) {
+                    chartSegments.push({ label: 'Current P&I', value: results.currentPrincipalInterest, color: chartColors.currentPI })
+                  }
+                  if (results.newPrincipalInterest > 0) {
+                    chartSegments.push({ label: 'New P&I', value: results.newPrincipalInterest, color: chartColors.newPI })
+                  }
+                  if (results.currentTaxes > 0) {
+                    chartSegments.push({ label: 'Taxes', value: results.currentTaxes, color: chartColors.tax })
+                  }
+                  if (results.currentInsurance > 0) {
+                    chartSegments.push({ label: 'Insurance', value: results.currentInsurance, color: chartColors.insurance })
+                  }
+                  if (results.currentHOA > 0) {
+                    chartSegments.push({ label: 'HOA', value: results.currentHOA, color: chartColors.hoa })
+                  }
+                  return { ...exportData, chartData: { segments: chartSegments } }
+                }}
+              />
+            </div>
 
-            <div className={styles.pieChart}>
+            <div ref={chartRef} className={styles.pieChart}>
               <div className={styles.donut} style={{ background: getDonutGradient() }}>
                 <div className={styles.centerAmount}>
                   <div className={styles.paymentAmount}>

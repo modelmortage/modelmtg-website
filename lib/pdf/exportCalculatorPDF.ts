@@ -134,27 +134,41 @@ export async function exportCalculatorPDF(data: CalculatorData): Promise<string>
       // Add text in center
       const centerText = data.chartElement.querySelector('[class*="centerAmount"]')
       if (centerText) {
-        const label = centerText.querySelector('[class*="centerLabel"]')?.textContent || ''
-        const value = centerText.querySelector('[class*="centerValue"]')?.textContent || ''
-        const perMonth = centerText.querySelector('[class*="centerPerMonth"]')?.textContent || ''
+        // Try VA Purchase structure first
+        let label = centerText.querySelector('[class*="centerLabel"]')?.textContent || ''
+        let value = centerText.querySelector('[class*="centerValue"]')?.textContent || ''
+        let perMonth = centerText.querySelector('[class*="centerPerMonth"]')?.textContent || ''
+        
+        // If not found, try Purchase/Refinance/Affordability structure
+        if (!value) {
+          value = centerText.querySelector('[class*="paymentAmount"]')?.textContent || ''
+          perMonth = centerText.querySelector('[class*="perMonth"]')?.textContent || ''
+          label = 'Payment' // Default label for these calculators
+        }
         
         ctx.textAlign = 'center'
         ctx.textBaseline = 'middle'
         
         // Draw label
-        ctx.fillStyle = '#6b7280'
-        ctx.font = '18px sans-serif'
-        ctx.fillText(label, centerX, centerY - 40)
+        if (label) {
+          ctx.fillStyle = '#6b7280'
+          ctx.font = '18px sans-serif'
+          ctx.fillText(label, centerX, centerY - 40)
+        }
         
         // Draw value
-        ctx.fillStyle = '#1f2937'
-        ctx.font = 'bold 36px sans-serif'
-        ctx.fillText(value, centerX, centerY)
+        if (value) {
+          ctx.fillStyle = '#1f2937'
+          ctx.font = 'bold 36px sans-serif'
+          ctx.fillText(value, centerX, centerY)
+        }
         
         // Draw per month
-        ctx.fillStyle = '#9ca3af'
-        ctx.font = '16px sans-serif'
-        ctx.fillText(perMonth, centerX, centerY + 35)
+        if (perMonth) {
+          ctx.fillStyle = '#9ca3af'
+          ctx.font = '16px sans-serif'
+          ctx.fillText(perMonth, centerX, centerY + 35)
+        }
       }
       
       // Add legend below the chart
