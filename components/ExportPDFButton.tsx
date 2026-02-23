@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import { FaFilePdf, FaDownload, FaExclamationTriangle } from 'react-icons/fa'
-import { exportCalculatorPDF, CalculatorData } from '@/lib/pdf/exportCalculatorPDF'
 import { checkRateLimit, formatTimeRemaining, RateLimitResult } from '@/lib/pdf/rateLimiter'
+import type { CalculatorData } from '@/lib/pdf/exportCalculatorPDF'
 
 interface ExportPDFButtonProps {
   getCalculatorData: () => CalculatorData  // Changed: function instead of data
@@ -43,10 +43,11 @@ export default function ExportPDFButton({ getCalculatorData, className = '' }: E
       console.log('Chart element:', calculatorData.chartElement)
       console.log('Chart element visible:', calculatorData.chartElement?.offsetParent !== null)
       console.log('===========================')
-      
+
+      const { exportCalculatorPDF } = await import('@/lib/pdf/exportCalculatorPDF')
       const pdfUrl = await exportCalculatorPDF(calculatorData)
       console.log('PDF URL received:', pdfUrl)
-      
+
       // Download the PDF
       const link = document.createElement('a')
       link.href = pdfUrl
@@ -55,7 +56,7 @@ export default function ExportPDFButton({ getCalculatorData, className = '' }: E
       document.body.appendChild(link)
       link.click()
       document.body.removeChild(link)
-      
+
       console.log('Download link clicked')
 
       // Refresh rate limit info after successful export
@@ -96,7 +97,7 @@ export default function ExportPDFButton({ getCalculatorData, className = '' }: E
           </>
         )}
       </button>
-      
+
       {/* Rate limit info */}
       {rateLimitInfo && rateLimitInfo.allowed && rateLimitInfo.remaining < 999 && (
         <p className="mt-1 text-xs text-gray-600">
