@@ -116,28 +116,39 @@ export default function RefinanceCalculator() {
     const monthlyInsurance = (parseFloat(values.homeownersInsurance) || 0) / 12
     const monthlyHOA = parseFloat(values.hoaDues) || 0
 
-    // PMI calculations based on loan type
+    // PMI/MIP calculations based on loan type
     let currentPMI = 0
     let newPMI = 0
 
+    // User can manually input PMI for all loan types
+    const manualPMI = (parseFloat(values.pmi) || 0) / 12
+
     if (activeLoanType === 'conventional') {
-      currentPMI = (parseFloat(values.pmi) || 0) / 12
-      if (currentPMI === 0) {
-        currentPMI = (loanBalance * 0.005) / 12
-      }
-      newPMI = currentPMI
+      // Conventional: Use manual PMI if provided, otherwise estimate at 0.5% annually
+      // Note: PMI typically required if LTV > 80%, but we don't have home value to calculate LTV
+      currentPMI = manualPMI > 0 ? manualPMI : (loanBalance * 0.005) / 12
+      newPMI = manualPMI > 0 ? manualPMI : (loanBalance * 0.005) / 12
     } else if (activeLoanType === 'fha') {
-      currentPMI = (loanBalance * 0.0085) / 12
-      newPMI = (loanBalance * 0.0085) / 12
+      // FHA: Mortgage Insurance Premium (MIP) - 0.85% annual for most loans
+      // FHA MIP is required for the life of the loan if down payment < 10%
+      // Use manual input if provided, otherwise use standard 0.85% rate
+      currentPMI = manualPMI > 0 ? manualPMI : (loanBalance * 0.0085) / 12
+      newPMI = manualPMI > 0 ? manualPMI : (loanBalance * 0.0085) / 12
     } else if (activeLoanType === 'va') {
+      // VA: No monthly PMI/MIP
+      // VA loans have a one-time funding fee (not monthly), so no PMI
       currentPMI = 0
       newPMI = 0
     } else if (activeLoanType === 'usda') {
-      currentPMI = (loanBalance * 0.0035) / 12
-      newPMI = (loanBalance * 0.0035) / 12
+      // USDA: Annual guarantee fee of 0.35%
+      // Use manual input if provided, otherwise use standard 0.35% rate
+      currentPMI = manualPMI > 0 ? manualPMI : (loanBalance * 0.0035) / 12
+      newPMI = manualPMI > 0 ? manualPMI : (loanBalance * 0.0035) / 12
     } else if (activeLoanType === 'jumbo') {
-      currentPMI = (loanBalance * 0.01) / 12
-      newPMI = (loanBalance * 0.01) / 12
+      // Jumbo: Typically no PMI if borrower has 20% equity
+      // Use manual input if provided, otherwise assume no PMI (most jumbo borrowers have sufficient equity)
+      currentPMI = manualPMI
+      newPMI = manualPMI
     }
 
     const currentTotal = currentMonthlyPI + monthlyTax + monthlyInsurance + currentPMI + monthlyHOA
@@ -174,6 +185,51 @@ export default function RefinanceCalculator() {
     { id: 'usda' as LoanType, label: 'USDA', icon: FaHome },
     { id: 'jumbo' as LoanType, label: 'Jumbo', icon: FaDollarSign }
   ]
+
+  // Colors for donut chart
+  const chartColors = {
+    currentPI: '#E97451',
+    newPI: '#51C2E9',
+    tax: '#E94D8A',
+    insurance: '#51E9B4',
+    hoa: '#F4D03F'
+  }
+
+  const getDonutGradient = () => {
+    const total = results.currentPrincipalInterest + results.newPrincipalInterest + results.currentTaxes + results.currentInsurance + results.currentHOA
+    if (total === 0) return 'conic-gradient(#e5e7eb 100%)'
+
+    let currentPIPercent = (results.currentPrincipalInterest / total) * 100
+    let newPIPercent = (results.newPrincipalInterest / total) * 100
+    let taxPercent = (results.currentTaxes / total) * 100
+    let insPercent = (results.currentInsurance / total) * 100
+    let hoaPercent = (results.currentHOA / total) * 100
+
+    let accumulated = 0
+    const segments = []
+
+    if (currentPIPercent > 0) {
+      segments.push(`${chartColors.currentPI} 0% ${currentPIPercent}%`)
+      accumulated = currentPIPercent
+    }
+    if (newPIPercent > 0) {
+      segments.push(`${chartColors.newPI} ${accumulated}% ${accumulated + newPIPercent}%`)
+      accumulated += newPIPercent
+    }
+    if (taxPercent > 0) {
+      segments.push(`${chartColors.tax} ${accumulated}% ${accumulated + taxPercent}%`)
+      accumulated += taxPercent
+    }
+    if (insPercent > 0) {
+      segments.push(`${chartColors.insurance} ${accumulated}% ${accumulated + insPercent}%`)
+      accumulated += insPercent
+    }
+    if (hoaPercent > 0) {
+      segments.push(`${chartColors.hoa} ${accumulated}% 100%`)
+    }
+
+    return `conic-gradient(${segments.join(', ')})`
+  }
 
   return (
     <CalculatorLayout config={refinanceConfig}>
@@ -353,7 +409,7 @@ export default function RefinanceCalculator() {
             <h3 className={styles.cardTitle}>Payment Comparison</h3>
 
             <div className={styles.pieChart}>
-              <div className={styles.donut}>
+              <div className={styles.donut} style={{ background: getDonutGradient() }}>
                 <div className={styles.centerAmount}>
                   <div className={styles.paymentAmount}>
                     ${results.monthlySavings.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
@@ -365,27 +421,27 @@ export default function RefinanceCalculator() {
 
             <div className={styles.breakdownLegend}>
               <div className={styles.legendItem}>
-                <span className={styles.legendDot} style={{ backgroundColor: '#E97451' }}></span>
+                <span className={styles.legendDot} style={{ backgroundColor: chartColors.currentPI }}></span>
                 <span className={styles.legendLabel}>Current P&I</span>
                 <span className={styles.legendValue}>${results.currentPrincipalInterest.toFixed(2)}</span>
               </div>
               <div className={styles.legendItem}>
-                <span className={styles.legendDot} style={{ backgroundColor: '#51C2E9' }}></span>
+                <span className={styles.legendDot} style={{ backgroundColor: chartColors.newPI }}></span>
                 <span className={styles.legendLabel}>New P&I</span>
                 <span className={styles.legendValue}>${results.newPrincipalInterest.toFixed(2)}</span>
               </div>
               <div className={styles.legendItem}>
-                <span className={styles.legendDot} style={{ backgroundColor: '#E94D8A' }}></span>
+                <span className={styles.legendDot} style={{ backgroundColor: chartColors.tax }}></span>
                 <span className={styles.legendLabel}>Taxes (Both)</span>
                 <span className={styles.legendValue}>${results.currentTaxes.toFixed(2)}</span>
               </div>
               <div className={styles.legendItem}>
-                <span className={styles.legendDot} style={{ backgroundColor: '#51E9B4' }}></span>
+                <span className={styles.legendDot} style={{ backgroundColor: chartColors.insurance }}></span>
                 <span className={styles.legendLabel}>Insurance (Both)</span>
                 <span className={styles.legendValue}>${results.currentInsurance.toFixed(2)}</span>
               </div>
               <div className={styles.legendItem}>
-                <span className={styles.legendDot} style={{ backgroundColor: '#F4D03F' }}></span>
+                <span className={styles.legendDot} style={{ backgroundColor: chartColors.hoa }}></span>
                 <span className={styles.legendLabel}>HOA (Both)</span>
                 <span className={styles.legendValue}>${results.currentHOA.toFixed(2)}</span>
               </div>

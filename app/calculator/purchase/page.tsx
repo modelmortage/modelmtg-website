@@ -185,6 +185,51 @@ export default function PurchaseCalculator() {
     { id: 'jumbo' as LoanType, label: 'Jumbo', icon: FaDollarSign }
   ]
 
+  // Colors for donut chart
+  const chartColors = {
+    pi: '#E97451',
+    tax: '#51C2E9',
+    insurance: '#E94D8A',
+    hoa: '#51E9B4',
+    pmi: '#F4D03F'
+  }
+
+  const getDonutGradient = () => {
+    const total = results.principalInterest + results.taxes + results.insurance + results.hoaDues + results.pmi
+    if (total === 0) return 'conic-gradient(#e5e7eb 100%)'
+
+    let piPercent = (results.principalInterest / total) * 100
+    let taxPercent = (results.taxes / total) * 100
+    let insPercent = (results.insurance / total) * 100
+    let hoaPercent = (results.hoaDues / total) * 100
+    let pmiPercent = (results.pmi / total) * 100
+
+    let accumulated = 0
+    const segments = []
+
+    if (piPercent > 0) {
+      segments.push(`${chartColors.pi} 0% ${piPercent}%`)
+      accumulated = piPercent
+    }
+    if (taxPercent > 0) {
+      segments.push(`${chartColors.tax} ${accumulated}% ${accumulated + taxPercent}%`)
+      accumulated += taxPercent
+    }
+    if (insPercent > 0) {
+      segments.push(`${chartColors.insurance} ${accumulated}% ${accumulated + insPercent}%`)
+      accumulated += insPercent
+    }
+    if (hoaPercent > 0) {
+      segments.push(`${chartColors.hoa} ${accumulated}% ${accumulated + hoaPercent}%`)
+      accumulated += hoaPercent
+    }
+    if (pmiPercent > 0) {
+      segments.push(`${chartColors.pmi} ${accumulated}% 100%`)
+    }
+
+    return `conic-gradient(${segments.join(', ')})`
+  }
+
   return (
     <CalculatorLayout config={purchaseConfig}>
       <div className={styles.calculatorWrapper}>
@@ -401,7 +446,7 @@ export default function PurchaseCalculator() {
             <h3 className={styles.cardTitle}>Payment Breakdown</h3>
 
             <div className={styles.pieChart}>
-              <div className={styles.donut}>
+              <div className={styles.donut} style={{ background: getDonutGradient() }}>
                 <div className={styles.centerAmount}>
                   <div className={styles.paymentAmount}>
                     ${results.monthlyPayment.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
@@ -413,27 +458,27 @@ export default function PurchaseCalculator() {
 
             <div className={styles.breakdownLegend}>
               <div className={styles.legendItem}>
-                <span className={styles.legendDot} style={{ backgroundColor: '#E97451' }}></span>
+                <span className={styles.legendDot} style={{ backgroundColor: chartColors.pi }}></span>
                 <span className={styles.legendLabel}>Principal & Interest</span>
                 <span className={styles.legendValue}>${results.principalInterest.toFixed(2)}</span>
               </div>
               <div className={styles.legendItem}>
-                <span className={styles.legendDot} style={{ backgroundColor: '#51C2E9' }}></span>
+                <span className={styles.legendDot} style={{ backgroundColor: chartColors.tax }}></span>
                 <span className={styles.legendLabel}>Taxes</span>
                 <span className={styles.legendValue}>${results.taxes.toFixed(2)}</span>
               </div>
               <div className={styles.legendItem}>
-                <span className={styles.legendDot} style={{ backgroundColor: '#E94D8A' }}></span>
+                <span className={styles.legendDot} style={{ backgroundColor: chartColors.insurance }}></span>
                 <span className={styles.legendLabel}>Insurance</span>
                 <span className={styles.legendValue}>${results.insurance.toFixed(2)}</span>
               </div>
               <div className={styles.legendItem}>
-                <span className={styles.legendDot} style={{ backgroundColor: '#51E9B4' }}></span>
+                <span className={styles.legendDot} style={{ backgroundColor: chartColors.hoa }}></span>
                 <span className={styles.legendLabel}>HOA Dues</span>
                 <span className={styles.legendValue}>${results.hoaDues.toFixed(2)}</span>
               </div>
               <div className={styles.legendItem}>
-                <span className={styles.legendDot} style={{ backgroundColor: '#F4D03F' }}></span>
+                <span className={styles.legendDot} style={{ backgroundColor: chartColors.pmi }}></span>
                 <span className={styles.legendLabel}>PMI</span>
                 <span className={styles.legendValue}>${results.pmi.toFixed(2)}</span>
               </div>

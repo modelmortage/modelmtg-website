@@ -380,6 +380,14 @@
     background: white !important;
 }
 
+.summaryCard label {
+    color: #111827 !important;
+}
+
+.summaryCard .fieldLabel {
+    color: #111827 !important;
+}
+
 .summaryTitle {
     font-weight: 600;
     margin-bottom: 0.75rem;
@@ -417,14 +425,14 @@
 
 .summaryItemLabel {
     font-size: 0.875rem;
-    color: #6b7280;
+    color: #374151;
     flex: 1;
 }
 
 .summaryItemValue {
     font-size: 0.875rem;
     font-weight: 600;
-    color: #1f2937;
+    color: #111827;
     text-align: right;
 }
 
@@ -447,14 +455,14 @@
 
 .earlyPayoffResultLabel {
     font-size: 0.875rem;
-    color: #6b7280;
+    color: #374151;
     flex: 1;
 }
 
 .earlyPayoffResultValue {
     font-size: 0.875rem;
     font-weight: 600;
-    color: #1f2937;
+    color: #111827;
     text-align: right;
 }
 
@@ -464,9 +472,21 @@
     gap: 1rem;
 }
 
+.earlyPayoffInputs .fieldLabel {
+    color: #111827 !important;
+}
+
+.earlyPayoffInputs label {
+    color: #111827 !important;
+}
+
 .earlyPayoffInputField {
     display: flex;
     flex-direction: column;
+}
+
+.earlyPayoffInputField label {
+    color: #111827 !important;
 }
 
 .earlyPayoffDropdown {
@@ -475,12 +495,20 @@
     gap: 0.5rem;
 }
 
+.earlyPayoffDropdown .fieldLabel {
+    color: #111827 !important;
+}
+
+.earlyPayoffDropdown label {
+    color: #111827 !important;
+}
+
 .selectInput {
     padding: 0.75rem;
     background: #f9fafb;
     border: 1px solid #d1d5db;
     border-radius: 4px;
-    color: #1f2937;
+    color: #111827;
     font-size: 0.875rem;
     cursor: pointer;
     transition: all 0.2s;
@@ -507,10 +535,18 @@
     margin-top: 0.5rem;
 }
 
+.earlyPayoffSubsection .fieldLabel {
+    color: #111827 !important;
+}
+
+.earlyPayoffSubsection label {
+    color: #111827 !important;
+}
+
 .subsectionTitle {
     font-size: 0.875rem;
     font-weight: 600;
-    color: #1f2937;
+    color: #111827;
 }
 
 /* Responsive */
