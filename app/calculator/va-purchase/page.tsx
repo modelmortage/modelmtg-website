@@ -18,11 +18,236 @@ import styles from './va-purchase.module.css'
 
 type ToggleMode = 'dollar' | 'percent'
 type TermMode = 'year' | 'month'
+type VAFundingFeeType = 'first-time' | 'subsequent' | 'exempt'
+type PaymentFrequency = 'monthly' | 'bi-weekly' | 'weekly'
+type LumpSumFrequency = 'one-time' | 'yearly' | 'quarterly'
+
+function calculateVAFundingFee(
+  baseMortgageAmount: number,
+  feeType: VAFundingFeeType
+): number {
+  switch (feeType) {
+    case 'first-time':
+      return baseMortgageAmount * 0.0215
+    case 'subsequent':
+      return baseMortgageAmount * 0.033
+    case 'exempt':
+      return 0
+  }
+}
+
+function getPeriodsPerYear(frequency: PaymentFrequency): number {
+  switch (frequency) {
+    case 'monthly':
+      return 12
+    case 'bi-weekly':
+      return 26
+    case 'weekly':
+      return 52
+  }
+}
+
+function adjustPaymentForFrequency(
+  monthlyPayment: number,
+  frequency: PaymentFrequency
+): number {
+  const periodsPerYear = getPeriodsPerYear(frequency)
+  return (monthlyPayment * 12) / periodsPerYear
+}
+
+function getFrequencyLabel(frequency: PaymentFrequency): string {
+  switch (frequency) {
+    case 'monthly':
+      return 'per month'
+    case 'bi-weekly':
+      return 'per bi-weekly period'
+    case 'weekly':
+      return 'per week'
+  }
+}
+
+function getDefaultFirstPaymentDate(): Date {
+  const today = new Date()
+  today.setDate(today.getDate() + 30)
+  return today
+}
+
+function calculatePaymentSchedule(
+  firstPaymentDate: Date,
+  frequency: PaymentFrequency,
+  numberOfPayments: number
+): Date[] {
+  const schedule: Date[] = []
+  let currentDate = new Date(firstPaymentDate)
+  
+  for (let i = 0; i < numberOfPayments; i++) {
+    schedule.push(new Date(currentDate))
+    
+    switch (frequency) {
+      case 'monthly':
+        currentDate.setMonth(currentDate.getMonth() + 1)
+        break
+      case 'bi-weekly':
+        currentDate.setDate(currentDate.getDate() + 14)
+        break
+      case 'weekly':
+        currentDate.setDate(currentDate.getDate() + 7)
+        break
+    }
+  }
+  
+  return schedule
+}
+
+function calculateAmortization(
+  principal: number,
+  annualRate: number,
+  termInMonths: number,
+  extraPayment: number = 0
+): {
+  monthlyPayment: number
+  totalInterest: number
+  actualTermMonths: number
+} {
+  // Handle edge cases
+  if (principal <= 0 || termInMonths <= 0) {
+    return {
+      monthlyPayment: 0,
+      totalInterest: 0,
+      actualTermMonths: 0
+    }
+  }
+
+  const monthlyRate = annualRate / 12
+  
+  // Standard monthly payment (principal + interest)
+  // Handle zero interest rate with simple division
+  const monthlyPI = monthlyRate === 0
+    ? principal / termInMonths
+    : principal * (monthlyRate * Math.pow(1 + monthlyRate, termInMonths)) / 
+      (Math.pow(1 + monthlyRate, termInMonths) - 1)
+  
+  // Cap extra payment at P&I to prevent excessive payments
+  const cappedExtraPayment = Math.min(extraPayment, monthlyPI)
+  
+  // Calculate actual payoff with extra payments
+  let balance = principal
+  let totalInterest = 0
+  let monthsPaid = 0
+  
+  while (balance > 0 && monthsPaid < termInMonths * 2) { // Max 2x term to prevent infinite loops
+    const interestPayment = balance * monthlyRate
+    const principalPayment = Math.min(monthlyPI - interestPayment + cappedExtraPayment, balance + interestPayment)
+    
+    totalInterest += interestPayment
+    balance -= (principalPayment - interestPayment)
+    monthsPaid++
+    
+    if (balance <= 0) break
+  }
+  
+  return {
+    monthlyPayment: monthlyPI,
+    totalInterest,
+    actualTermMonths: monthsPaid
+  }
+}
+
+function calculateEarlyPayoffStrategy(
+  principal: number,
+  annualRate: number,
+  termInMonths: number,
+  additionalMonthly: number,
+  frequency: PaymentFrequency,
+  lumpSumAmount: number,
+  lumpSumFrequency: LumpSumFrequency
+): {
+  savings: number
+  newPaymentAmount: number
+  termReduction: number
+} {
+  // Calculate baseline (no extra payments)
+  const baseline = calculateAmortization(principal, annualRate, termInMonths, 0)
+  
+  // Calculate with additional monthly payment
+  const extraMonthly = additionalMonthly
+  
+  // Adjust for payment frequency
+  const periodsPerYear = getPeriodsPerYear(frequency)
+  const adjustedExtra = (extraMonthly * 12) / periodsPerYear
+  
+  // Calculate lump sum contribution per month
+  let lumpSumPerMonth = 0
+  if (lumpSumAmount > 0) {
+    switch (lumpSumFrequency) {
+      case 'one-time':
+        lumpSumPerMonth = lumpSumAmount / termInMonths
+        break
+      case 'yearly':
+        lumpSumPerMonth = lumpSumAmount / 12
+        break
+      case 'quarterly':
+        lumpSumPerMonth = lumpSumAmount / 3
+        break
+    }
+  }
+  
+  // Calculate with early payoff strategy
+  const withStrategy = calculateAmortization(
+    principal,
+    annualRate,
+    termInMonths,
+    adjustedExtra + lumpSumPerMonth
+  )
+  
+  return {
+    savings: baseline.totalInterest - withStrategy.totalInterest,
+    newPaymentAmount: withStrategy.monthlyPayment + adjustedExtra + lumpSumPerMonth,
+    termReduction: baseline.actualTermMonths - withStrategy.actualTermMonths
+  }
+}
+function convertInsuranceDollarToPercent(
+  dollarAmount: number,
+  homeValue: number
+): number {
+  return homeValue > 0 ? (dollarAmount / homeValue) * 100 : 0
+}
+
+function convertInsurancePercentToDollar(
+  percent: number,
+  homeValue: number
+): number {
+  return (homeValue * percent) / 100
+}
+
+function formatCurrency(amount: number): string {
+  return amount.toLocaleString('en-US', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  })
+}
+
+function formatPercent(value: number, decimals: number = 4): string {
+  return value.toFixed(decimals) + '%'
+}
+
+function parseNumericInput(value: string, defaultValue: number = 0): number {
+  const parsed = parseFloat(value)
+  return isNaN(parsed) || parsed < 0 ? defaultValue : parsed
+}
 
 export default function VAPurchaseCalculator() {
   const [downPaymentMode, setDownPaymentMode] = useState<ToggleMode>('dollar')
   const [loanTermMode, setLoanTermMode] = useState<TermMode>('year')
   const [propertyTaxMode, setPropertyTaxMode] = useState<ToggleMode>('dollar')
+  const [insuranceMode, setInsuranceMode] = useState<ToggleMode>('dollar')
+  const [vaFundingFeeType, setVaFundingFeeType] = useState<VAFundingFeeType>('first-time')
+  const [paymentFrequency, setPaymentFrequency] = useState<PaymentFrequency>('monthly')
+  const [firstPaymentDate, setFirstPaymentDate] = useState<Date | null>(getDefaultFirstPaymentDate())
+  
+  // Early payoff strategy state
+  const [earlyPayoffFrequency, setEarlyPayoffFrequency] = useState<PaymentFrequency>('monthly')
+  const [lumpSumFrequency, setLumpSumFrequency] = useState<LumpSumFrequency>('one-time')
 
   const [values, setValues] = useState({
     homePrice: '200000',
@@ -35,7 +260,12 @@ export default function VAPurchaseCalculator() {
     propertyTaxDollar: '2400',
     propertyTaxPercent: '1.2',
     insurance: '1200',
-    hoaDues: '0'
+    insuranceDollar: '1200',
+    insurancePercent: '0.6',
+    hoaDues: '0',
+    extraPaymentPerMonth: '0',
+    additionalMonthly: '0',
+    lumpSumAmount: '0'
   })
 
   const [results, setResults] = useState({
@@ -44,7 +274,17 @@ export default function VAPurchaseCalculator() {
     propertyTax: 0,
     insurance: 0,
     hoaDues: 0,
-    loanAmount: 0
+    loanAmount: 0,
+    vaFundingFeeAmount: 0,
+    finalMortgageAmount: 0,
+    paymentPerPeriod: 0,
+    periodsPerYear: 12,
+    extraPayment: 0,
+    totalInterestPaid: 0,
+    actualTermMonths: 0,
+    earlyPayoffSavings: 0,
+    earlyPayoffPaymentAmount: 0,
+    loanTermReduction: 0
   })
 
   const handleChange = (name: string, value: string) => {
@@ -90,45 +330,103 @@ export default function VAPurchaseCalculator() {
     }
   }, [propertyTaxMode])
 
+  // Auto-sync insurance when mode changes
+  useEffect(() => {
+    const homePrice = parseFloat(values.homePrice) || 0
+    if (insuranceMode === 'percent') {
+      const insuranceDollar = parseFloat(values.insuranceDollar) || 0
+      const percent = convertInsuranceDollarToPercent(insuranceDollar, homePrice)
+      setValues(prev => ({ ...prev, insurancePercent: percent.toFixed(4) }))
+    } else {
+      const percent = parseFloat(values.insurancePercent) || 0
+      const dollar = convertInsurancePercentToDollar(percent, homePrice)
+      setValues(prev => ({ ...prev, insuranceDollar: dollar.toFixed(2) }))
+    }
+  }, [insuranceMode])
+
+  // Recalculate insurance dollar when home value changes in percent mode
+  useEffect(() => {
+    if (insuranceMode === 'percent') {
+      const homePrice = parseFloat(values.homePrice) || 0
+      const percent = parseFloat(values.insurancePercent) || 0
+      const dollar = convertInsurancePercentToDollar(percent, homePrice)
+      setValues(prev => ({ ...prev, insuranceDollar: dollar.toFixed(2) }))
+    }
+  }, [values.homePrice, insuranceMode])
+
   // Auto-calculate
   useEffect(() => {
     calculateResults()
-  }, [values, downPaymentMode, loanTermMode, propertyTaxMode])
+  }, [values, downPaymentMode, loanTermMode, propertyTaxMode, insuranceMode, vaFundingFeeType, paymentFrequency, earlyPayoffFrequency, lumpSumFrequency])
 
   const calculateResults = () => {
-    const homePrice = parseFloat(values.homePrice) || 0
+    // Parse and validate all inputs to prevent negative values
+    const homePrice = parseNumericInput(values.homePrice, 0)
     const downPayment = downPaymentMode === 'dollar'
-      ? parseFloat(values.downPaymentDollar) || 0
-      : (homePrice * (parseFloat(values.downPaymentPercent) || 0)) / 100
+      ? parseNumericInput(values.downPaymentDollar, 0)
+      : (homePrice * parseNumericInput(values.downPaymentPercent, 0)) / 100
 
-    const vaFundingFee = (homePrice - downPayment) * ((parseFloat(values.vaFundingFee) || 0) / 100)
-    const loanAmount = homePrice - downPayment + vaFundingFee
+    const baseMortgageAmount = Math.max(0, homePrice - downPayment)
+    const vaFundingFeeAmount = calculateVAFundingFee(baseMortgageAmount, vaFundingFeeType)
+    const finalMortgageAmount = baseMortgageAmount + vaFundingFeeAmount
+    const loanAmount = finalMortgageAmount
 
-    const rate = (parseFloat(values.interestRate) || 0) / 100 / 12
+    const annualRate = parseNumericInput(values.interestRate, 0) / 100
     const term = loanTermMode === 'year'
-      ? (parseFloat(values.loanTermYears) || 30) * 12
-      : parseFloat(values.loanTermMonths) || 360
+      ? parseNumericInput(values.loanTermYears, 30) * 12
+      : parseNumericInput(values.loanTermMonths, 360)
 
-    const monthlyPI = rate === 0
-      ? loanAmount / term
-      : loanAmount * (rate * Math.pow(1 + rate, term)) / (Math.pow(1 + rate, term) - 1)
+    const extraPayment = parseNumericInput(values.extraPaymentPerMonth, 0)
+
+    // Use calculateAmortization to get accurate results with extra payments
+    const amortization = calculateAmortization(loanAmount, annualRate, term, extraPayment)
 
     const monthlyTax = propertyTaxMode === 'dollar'
-      ? (parseFloat(values.propertyTaxDollar) || 0) / 12
-      : (homePrice * (parseFloat(values.propertyTaxPercent) || 0) / 100) / 12
+      ? parseNumericInput(values.propertyTaxDollar, 0) / 12
+      : (homePrice * parseNumericInput(values.propertyTaxPercent, 0) / 100) / 12
 
-    const monthlyInsurance = (parseFloat(values.insurance) || 0) / 12
-    const monthlyHOA = parseFloat(values.hoaDues) || 0
+    const monthlyInsurance = insuranceMode === 'dollar'
+      ? parseNumericInput(values.insuranceDollar, 0) / 12
+      : (homePrice * parseNumericInput(values.insurancePercent, 0) / 100) / 12
+    const monthlyHOA = parseNumericInput(values.hoaDues, 0)
 
-    const totalMonthly = monthlyPI + monthlyTax + monthlyInsurance + monthlyHOA
+    const totalMonthly = amortization.monthlyPayment + monthlyTax + monthlyInsurance + monthlyHOA + extraPayment
+
+    // Calculate payment per period based on frequency
+    const periodsPerYear = getPeriodsPerYear(paymentFrequency)
+    const paymentPerPeriod = adjustPaymentForFrequency(totalMonthly, paymentFrequency)
+
+    // Calculate early payoff strategy
+    const additionalMonthly = parseNumericInput(values.additionalMonthly, 0)
+    const lumpSumAmount = parseNumericInput(values.lumpSumAmount, 0)
+    
+    const earlyPayoffStrategy = calculateEarlyPayoffStrategy(
+      loanAmount,
+      annualRate,
+      term,
+      additionalMonthly,
+      earlyPayoffFrequency,
+      lumpSumAmount,
+      lumpSumFrequency
+    )
 
     setResults({
       totalMonthlyPayment: totalMonthly,
-      principalInterest: monthlyPI,
+      principalInterest: amortization.monthlyPayment,
       propertyTax: monthlyTax,
       insurance: monthlyInsurance,
       hoaDues: monthlyHOA,
-      loanAmount
+      loanAmount,
+      vaFundingFeeAmount,
+      finalMortgageAmount,
+      paymentPerPeriod,
+      periodsPerYear,
+      extraPayment,
+      totalInterestPaid: amortization.totalInterest,
+      actualTermMonths: amortization.actualTermMonths,
+      earlyPayoffSavings: earlyPayoffStrategy.savings,
+      earlyPayoffPaymentAmount: earlyPayoffStrategy.newPaymentAmount,
+      loanTermReduction: earlyPayoffStrategy.termReduction
     })
   }
 
@@ -137,17 +435,19 @@ export default function VAPurchaseCalculator() {
     pi: '#E97451',
     tax: '#51C2E9',
     insurance: '#E94D8A',
-    hoa: '#51E9B4'
+    hoa: '#51E9B4',
+    extra: '#9333EA'
   }
 
   const getDonutGradient = () => {
-    const total = results.principalInterest + results.propertyTax + results.insurance + results.hoaDues
+    const total = results.principalInterest + results.propertyTax + results.insurance + results.hoaDues + results.extraPayment
     if (total === 0) return 'conic-gradient(#e5e7eb 100%)'
 
     let piPercent = (results.principalInterest / total) * 100
     let taxPercent = (results.propertyTax / total) * 100
     let insPercent = (results.insurance / total) * 100
     let hoaPercent = (results.hoaDues / total) * 100
+    let extraPercent = (results.extraPayment / total) * 100
 
     let accumulated = 0
     const segments = []
@@ -165,7 +465,11 @@ export default function VAPurchaseCalculator() {
       accumulated += insPercent
     }
     if (hoaPercent > 0) {
-      segments.push(`${chartColors.hoa} ${accumulated}% 100%`)
+      segments.push(`${chartColors.hoa} ${accumulated}% ${accumulated + hoaPercent}%`)
+      accumulated += hoaPercent
+    }
+    if (extraPercent > 0) {
+      segments.push(`${chartColors.extra} ${accumulated}% 100%`)
     }
 
     return `conic-gradient(${segments.join(', ')})`
@@ -274,14 +578,58 @@ export default function VAPurchaseCalculator() {
               <div className={styles.toggleField}>
                 <label className={styles.fieldLabel}>Payment Frequency</label>
                 <div className={styles.toggleButtons}>
-                  <button className={`${styles.toggleBtn} ${styles.active}`}>
-                    Year
+                  <button
+                    className={`${styles.toggleBtn} ${paymentFrequency === 'monthly' ? styles.active : ''}`}
+                    onClick={() => setPaymentFrequency('monthly')}
+                  >
+                    Monthly
                   </button>
-                  <button className={styles.toggleBtn}>
-                    Month
+                  <button
+                    className={`${styles.toggleBtn} ${paymentFrequency === 'bi-weekly' ? styles.active : ''}`}
+                    onClick={() => setPaymentFrequency('bi-weekly')}
+                  >
+                    Bi-weekly
+                  </button>
+                  <button
+                    className={`${styles.toggleBtn} ${paymentFrequency === 'weekly' ? styles.active : ''}`}
+                    onClick={() => setPaymentFrequency('weekly')}
+                  >
+                    Weekly
                   </button>
                 </div>
               </div>
+
+              <div className={styles.dateField}>
+                <label className={styles.fieldLabel}>First Payment Date</label>
+                <input
+                  type="date"
+                  value={firstPaymentDate ? firstPaymentDate.toISOString().split('T')[0] : ''}
+                  onChange={(e) => {
+                    try {
+                      const selectedDate = e.target.value ? new Date(e.target.value) : getDefaultFirstPaymentDate()
+                      // Validate date is not invalid
+                      if (isNaN(selectedDate.getTime())) {
+                        setFirstPaymentDate(getDefaultFirstPaymentDate())
+                      } else {
+                        setFirstPaymentDate(selectedDate)
+                      }
+                    } catch {
+                      // Handle invalid dates by using default
+                      setFirstPaymentDate(getDefaultFirstPaymentDate())
+                    }
+                  }}
+                  className={styles.dateInput}
+                />
+              </div>
+
+              <Input
+                label="Extra Payment Per Month"
+                type="number"
+                value={values.extraPaymentPerMonth}
+                onChange={(value) => handleChange('extraPaymentPerMonth', value)}
+                icon={<Icon icon={FaDollarSign} size="sm" />}
+                fullWidth
+              />
 
               <Input
                 label="Interest Rate"
@@ -292,17 +640,141 @@ export default function VAPurchaseCalculator() {
                 fullWidth
               />
 
-              <div className={styles.toggleField}>
+              <div className={styles.radioField}>
                 <label className={styles.fieldLabel}>This is my...</label>
-                <div className={styles.toggleButtons}>
-                  <button className={styles.toggleBtn}>
-                    Low Monthly Payment
-                  </button>
-                  <button className={styles.toggleBtn}>
-                    Lower Interest Paid
-                  </button>
+                <div className={styles.radioOptions}>
+                  <label className={styles.radioOption}>
+                    <input
+                      type="radio"
+                      name="vaFundingFeeType"
+                      value="first-time"
+                      checked={vaFundingFeeType === 'first-time'}
+                      onChange={(e) => setVaFundingFeeType(e.target.value as VAFundingFeeType)}
+                      className={styles.radioInput}
+                    />
+                    <span className={styles.radioLabel}>First Time Use of a VA Loan</span>
+                  </label>
+                  <label className={styles.radioOption}>
+                    <input
+                      type="radio"
+                      name="vaFundingFeeType"
+                      value="subsequent"
+                      checked={vaFundingFeeType === 'subsequent'}
+                      onChange={(e) => setVaFundingFeeType(e.target.value as VAFundingFeeType)}
+                      className={styles.radioInput}
+                    />
+                    <span className={styles.radioLabel}>I have used a VA loan before</span>
+                  </label>
+                  <label className={styles.radioOption}>
+                    <input
+                      type="radio"
+                      name="vaFundingFeeType"
+                      value="exempt"
+                      checked={vaFundingFeeType === 'exempt'}
+                      onChange={(e) => setVaFundingFeeType(e.target.value as VAFundingFeeType)}
+                      className={styles.radioInput}
+                    />
+                    <span className={styles.radioLabel}>I am exempt from the VA funding fee</span>
+                  </label>
                 </div>
               </div>
+
+              <div className={styles.displayField}>
+                <label className={styles.fieldLabel}>VA Funding Fee</label>
+                <div className={styles.displayValue}>
+                  ${formatCurrency(results.vaFundingFeeAmount)}
+                </div>
+              </div>
+
+              <div className={styles.displayField}>
+                <label className={styles.fieldLabel}>Final Mortgage Amount</label>
+                <div className={styles.displayValue}>
+                  ${formatCurrency(results.finalMortgageAmount)}
+                </div>
+              </div>
+
+              <div className={styles.toggleField}>
+                <label className={styles.fieldLabel}>Property Tax</label>
+                <div className={styles.toggleButtons}>
+                  <button
+                    className={`${styles.toggleBtn} ${propertyTaxMode === 'dollar' ? styles.active : ''}`}
+                    onClick={() => setPropertyTaxMode('dollar')}
+                  >
+                    $
+                  </button>
+                  <button
+                    className={`${styles.toggleBtn} ${propertyTaxMode === 'percent' ? styles.active : ''}`}
+                    onClick={() => setPropertyTaxMode('percent')}
+                  >
+                    %
+                  </button>
+                </div>
+                {propertyTaxMode === 'dollar' ? (
+                  <Input
+                    label=""
+                    type="number"
+                    value={values.propertyTaxDollar}
+                    onChange={(value) => handleChange('propertyTaxDollar', value)}
+                    placeholder="0"
+                    fullWidth
+                  />
+                ) : (
+                  <Input
+                    label=""
+                    type="number"
+                    value={values.propertyTaxPercent}
+                    onChange={(value) => handleChange('propertyTaxPercent', value)}
+                    placeholder="0"
+                    fullWidth
+                  />
+                )}
+              </div>
+
+              <div className={styles.toggleField}>
+                <label className={styles.fieldLabel}>Homeowners Insurance</label>
+                <div className={styles.toggleButtons}>
+                  <button
+                    className={`${styles.toggleBtn} ${insuranceMode === 'dollar' ? styles.active : ''}`}
+                    onClick={() => setInsuranceMode('dollar')}
+                  >
+                    $
+                  </button>
+                  <button
+                    className={`${styles.toggleBtn} ${insuranceMode === 'percent' ? styles.active : ''}`}
+                    onClick={() => setInsuranceMode('percent')}
+                  >
+                    %
+                  </button>
+                </div>
+                {insuranceMode === 'dollar' ? (
+                  <Input
+                    label=""
+                    type="number"
+                    value={values.insuranceDollar}
+                    onChange={(value) => handleChange('insuranceDollar', value)}
+                    placeholder="0"
+                    fullWidth
+                  />
+                ) : (
+                  <Input
+                    label=""
+                    type="number"
+                    value={values.insurancePercent}
+                    onChange={(value) => handleChange('insurancePercent', value)}
+                    placeholder="0"
+                    fullWidth
+                  />
+                )}
+              </div>
+
+              <Input
+                label="HOA Dues"
+                type="number"
+                value={values.hoaDues}
+                onChange={(value) => handleChange('hoaDues', value)}
+                icon={<Icon icon={FaDollarSign} size="sm" />}
+                fullWidth
+              />
             </div>
           </Card>
         </div>
@@ -315,11 +787,11 @@ export default function VAPurchaseCalculator() {
             <div className={styles.pieChart}>
               <div className={styles.donut} style={{ background: getDonutGradient() }}>
                 <div className={styles.centerAmount}>
-                  <div className={styles.centerLabel}>Monthly Payment</div>
+                  <div className={styles.centerLabel}>Payment</div>
                   <div className={styles.centerValue}>
-                    ${results.totalMonthlyPayment.toFixed(2)}
+                    ${formatCurrency(results.paymentPerPeriod)}
                   </div>
-                  <div className={styles.centerPerMonth}>per month</div>
+                  <div className={styles.centerPerMonth}>{getFrequencyLabel(paymentFrequency)}</div>
                 </div>
               </div>
             </div>
@@ -328,23 +800,30 @@ export default function VAPurchaseCalculator() {
               <div className={styles.legendItem}>
                 <span className={styles.legendDot} style={{ backgroundColor: chartColors.pi }}></span>
                 <span className={styles.legendLabel}>Principal & Interest</span>
-                <span className={styles.legendValue}>${results.principalInterest.toFixed(2)}</span>
+                <span className={styles.legendValue}>${formatCurrency(adjustPaymentForFrequency(results.principalInterest, paymentFrequency))}</span>
               </div>
               <div className={styles.legendItem}>
                 <span className={styles.legendDot} style={{ backgroundColor: chartColors.tax }}></span>
                 <span className={styles.legendLabel}>Taxes</span>
-                <span className={styles.legendValue}>${results.propertyTax.toFixed(2)}</span>
+                <span className={styles.legendValue}>${formatCurrency(adjustPaymentForFrequency(results.propertyTax, paymentFrequency))}</span>
               </div>
               <div className={styles.legendItem}>
                 <span className={styles.legendDot} style={{ backgroundColor: chartColors.insurance }}></span>
                 <span className={styles.legendLabel}>Insurance</span>
-                <span className={styles.legendValue}>${results.insurance.toFixed(2)}</span>
+                <span className={styles.legendValue}>${formatCurrency(adjustPaymentForFrequency(results.insurance, paymentFrequency))}</span>
               </div>
               {results.hoaDues > 0 && (
                 <div className={styles.legendItem}>
                   <span className={styles.legendDot} style={{ backgroundColor: chartColors.hoa }}></span>
                   <span className={styles.legendLabel}>HOA Dues</span>
-                  <span className={styles.legendValue}>${results.hoaDues.toFixed(2)}</span>
+                  <span className={styles.legendValue}>${formatCurrency(adjustPaymentForFrequency(results.hoaDues, paymentFrequency))}</span>
+                </div>
+              )}
+              {results.extraPayment > 0 && (
+                <div className={styles.legendItem}>
+                  <span className={styles.legendDot} style={{ backgroundColor: chartColors.extra }}></span>
+                  <span className={styles.legendLabel}>Extra Payment</span>
+                  <span className={styles.legendValue}>${formatCurrency(adjustPaymentForFrequency(results.extraPayment, paymentFrequency))}</span>
                 </div>
               )}
             </div>
@@ -355,25 +834,163 @@ export default function VAPurchaseCalculator() {
         <div className={styles.resultsPanel}>
           <div className={styles.resultCards}>
             <Card variant="elevated" padding="md" className={`${styles.resultCard} ${styles.singleResultCard}`}>
-              <div className={styles.resultLabel}>All Payment</div>
-              <div className={styles.resultValue}>${(results.totalMonthlyPayment * 360).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
+              <div className={styles.resultLabel}>Total Payment</div>
+              <div className={styles.resultValue}>${formatCurrency(results.totalMonthlyPayment * results.actualTermMonths)}</div>
             </Card>
 
             <Card variant="elevated" padding="md" className={styles.resultCard}>
               <div className={styles.resultLabel}>Total Loan Amount</div>
-              <div className={styles.resultValue}>${results.loanAmount.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</div>
+              <div className={styles.resultValue}>${formatCurrency(results.finalMortgageAmount)}</div>
             </Card>
 
             <Card variant="elevated" padding="md" className={styles.resultCard}>
               <div className={styles.resultLabel}>Total Interest Paid</div>
-              <div className={styles.resultValue}>${((results.principalInterest * 360) - results.loanAmount).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</div>
+              <div className={styles.resultValue}>${formatCurrency(results.totalInterestPaid)}</div>
             </Card>
 
             <Card variant="elevated" padding="md" className={`${styles.resultCard} ${styles.singleResultCard}`}>
               <div className={styles.resultLabel}>Monthly Payment</div>
-              <div className={styles.resultValue}>${results.totalMonthlyPayment.toFixed(2)}</div>
+              <div className={styles.resultValue}>${formatCurrency(results.totalMonthlyPayment)}</div>
             </Card>
           </div>
+
+          <Card variant="elevated" padding="md" className={styles.summaryCard}>
+            <div className={styles.summaryTitle}>Monthly Payment Summary</div>
+            <div className={styles.summaryItems}>
+              <div className={styles.summaryItem}>
+                <span className={styles.summaryItemLabel}>Home Value</span>
+                <span className={styles.summaryItemValue}>
+                  ${formatCurrency(parseNumericInput(values.homePrice, 0))}
+                </span>
+              </div>
+              <div className={styles.summaryItem}>
+                <span className={styles.summaryItemLabel}>Mortgage Amount</span>
+                <span className={styles.summaryItemValue}>
+                  ${formatCurrency(results.finalMortgageAmount)}
+                </span>
+              </div>
+              <div className={styles.summaryItem}>
+                <span className={styles.summaryItemLabel}>Monthly Principal & Interest</span>
+                <span className={styles.summaryItemValue}>
+                  ${formatCurrency(results.principalInterest)}
+                </span>
+              </div>
+              {results.extraPayment > 0 && (
+                <div className={styles.summaryItem}>
+                  <span className={styles.summaryItemLabel}>Monthly Extra Payment</span>
+                  <span className={styles.summaryItemValue}>
+                    ${formatCurrency(results.extraPayment)}
+                  </span>
+                </div>
+              )}
+              <div className={styles.summaryItem}>
+                <span className={styles.summaryItemLabel}>Monthly Property Tax</span>
+                <span className={styles.summaryItemValue}>
+                  ${formatCurrency(results.propertyTax)}
+                </span>
+              </div>
+              <div className={styles.summaryItem}>
+                <span className={styles.summaryItemLabel}>Monthly Home Insurance</span>
+                <span className={styles.summaryItemValue}>
+                  ${formatCurrency(results.insurance)}
+                </span>
+              </div>
+              {results.hoaDues > 0 && (
+                <div className={styles.summaryItem}>
+                  <span className={styles.summaryItemLabel}>Monthly HOA Fees</span>
+                  <span className={styles.summaryItemValue}>
+                    ${formatCurrency(results.hoaDues)}
+                  </span>
+                </div>
+              )}
+            </div>
+          </Card>
+
+          <Card variant="elevated" padding="md" className={styles.summaryCard}>
+            <div className={styles.summaryTitle}>Early Payoff Strategy</div>
+            
+            <div className={styles.earlyPayoffResults}>
+              <div className={styles.earlyPayoffResultItem}>
+                <span className={styles.earlyPayoffResultLabel}>Savings</span>
+                <span className={styles.earlyPayoffResultValue}>
+                  ${formatCurrency(results.earlyPayoffSavings)}
+                </span>
+              </div>
+              <div className={styles.earlyPayoffResultItem}>
+                <span className={styles.earlyPayoffResultLabel}>Payment Amount</span>
+                <span className={styles.earlyPayoffResultValue}>
+                  ${formatCurrency(results.earlyPayoffPaymentAmount)}
+                </span>
+              </div>
+              <div className={styles.earlyPayoffResultItem}>
+                <span className={styles.earlyPayoffResultLabel}>Shorten Loan Term By</span>
+                <span className={styles.earlyPayoffResultValue}>
+                  {(() => {
+                    const months = Math.abs(results.loanTermReduction)
+                    const years = Math.floor(months / 12)
+                    const remainingMonths = months % 12
+                    if (years === 0) return `${remainingMonths} months`
+                    if (remainingMonths === 0) return `${years} years`
+                    return `${years} years, ${remainingMonths} months`
+                  })()}
+                </span>
+              </div>
+            </div>
+
+            <div className={styles.earlyPayoffInputs}>
+              <div className={styles.earlyPayoffInputField}>
+                <Input
+                  label="Additional Monthly"
+                  type="number"
+                  value={values.additionalMonthly}
+                  onChange={(value) => handleChange('additionalMonthly', value)}
+                  icon={<Icon icon={FaDollarSign} size="sm" />}
+                  fullWidth
+                />
+              </div>
+
+              <div className={styles.earlyPayoffDropdown}>
+                <label className={styles.fieldLabel}>Increase Frequency</label>
+                <select
+                  value={earlyPayoffFrequency}
+                  onChange={(e) => setEarlyPayoffFrequency(e.target.value as PaymentFrequency)}
+                  className={styles.selectInput}
+                >
+                  <option value="monthly">Monthly</option>
+                  <option value="bi-weekly">Bi-weekly</option>
+                  <option value="weekly">Weekly</option>
+                </select>
+              </div>
+
+              <div className={styles.earlyPayoffSubsection}>
+                <div className={styles.subsectionTitle}>Lump Sum Payment</div>
+                
+                <div className={styles.earlyPayoffInputField}>
+                  <Input
+                    label="Lump Sum Addition"
+                    type="number"
+                    value={values.lumpSumAmount}
+                    onChange={(value) => handleChange('lumpSumAmount', value)}
+                    icon={<Icon icon={FaDollarSign} size="sm" />}
+                    fullWidth
+                  />
+                </div>
+
+                <div className={styles.earlyPayoffDropdown}>
+                  <label className={styles.fieldLabel}>Frequency</label>
+                  <select
+                    value={lumpSumFrequency}
+                    onChange={(e) => setLumpSumFrequency(e.target.value as LumpSumFrequency)}
+                    className={styles.selectInput}
+                  >
+                    <option value="one-time">One time</option>
+                    <option value="yearly">Yearly</option>
+                    <option value="quarterly">Quarterly</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </Card>
 
           <Card variant="elevated" padding="md" className={styles.summaryCard}>
             <div className={styles.summaryTitle}>VA Loan Benefits</div>
