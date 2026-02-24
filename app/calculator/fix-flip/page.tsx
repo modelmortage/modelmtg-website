@@ -10,7 +10,8 @@ import {
   FaPercent,
   FaHome
 } from 'react-icons/fa'
-import ExportPDFButton from '@/components/ExportPDFButton'
+import dynamic from 'next/dynamic'
+const ExportPDFButton = dynamic(() => import('@/components/ExportPDFButton'), { ssr: false })
 import { useCalculatorExport } from '@/hooks/useCalculatorExport'
 import styles from './fix-flip.module.css'
 

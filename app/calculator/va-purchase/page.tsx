@@ -14,7 +14,8 @@ import {
   FaShieldAlt
 } from 'react-icons/fa'
 import { vaPurchaseConfig } from '@/lib/calculators/configs/vaPurchase.config'
-import ExportPDFButton from '@/components/ExportPDFButton'
+import dynamic from 'next/dynamic'
+const ExportPDFButton = dynamic(() => import('@/components/ExportPDFButton'), { ssr: false })
 import { useCalculatorExport } from '@/hooks/useCalculatorExport'
 import styles from './va-purchase.module.css'
 

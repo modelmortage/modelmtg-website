@@ -11,7 +11,8 @@ import {
   FaCalendar
 } from 'react-icons/fa'
 import { vaRefinanceConfig } from '@/lib/calculators/configs/vaRefinance.config'
-import ExportPDFButton from '@/components/ExportPDFButton'
+import dynamic from 'next/dynamic'
+const ExportPDFButton = dynamic(() => import('@/components/ExportPDFButton'), { ssr: false })
 import { useCalculatorExport } from '@/hooks/useCalculatorExport'
 import styles from './va-refinance.module.css'
 

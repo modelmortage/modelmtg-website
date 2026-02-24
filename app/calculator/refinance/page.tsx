@@ -16,7 +16,8 @@ import {
   FaFlag
 } from 'react-icons/fa'
 import { refinanceConfig } from '@/lib/calculators/configs/refinance.config'
-import ExportPDFButton from '@/components/ExportPDFButton'
+import dynamic from 'next/dynamic'
+const ExportPDFButton = dynamic(() => import('@/components/ExportPDFButton'), { ssr: false })
 import { useCalculatorExport } from '@/hooks/useCalculatorExport'
 import styles from './refinance.module.css'
 

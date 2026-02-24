@@ -16,7 +16,8 @@ import {
   FaChartLine
 } from 'react-icons/fa'
 import { rentVsBuyConfig } from '@/lib/calculators/configs/rentVsBuy.config'
-import ExportPDFButton from '@/components/ExportPDFButton'
+import dynamic from 'next/dynamic'
+const ExportPDFButton = dynamic(() => import('@/components/ExportPDFButton'), { ssr: false })
 import { useCalculatorExport } from '@/hooks/useCalculatorExport'
 import styles from './rent-vs-buy.module.css'
 
