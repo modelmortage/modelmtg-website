@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import ContentPage from '@/components/shared/ContentPage'
 import { loanOptions } from '@/lib/content/loanOptions'
 import Link from 'next/link'
+import InlineCta from '@/components/shared/InlineCta'
 import { Card, Icon, Button } from '@/components/design-system'
 import { FaCheckCircle, FaCircle, FaCalculator, FaArrowRight } from 'react-icons/fa'
 import styles from './LoanOptionPage.module.css'
@@ -82,6 +83,10 @@ export default async function LoanOptionPage({ params }: LoanOptionPageProps) {
           { label: 'Loan Options', href: '/loan-options' },
           { label: loanOption.title, href: `/loan-options/${loanOption.slug}` },
         ]}
+        heroCta={{
+          text: 'Get Pre-Approved',
+          href: '/pre-qualify',
+        }}
         cta={{
           title: 'Ready to Explore This Loan Option?',
           description: `Contact us today to learn more about ${loanOption.title} and see if it's the right fit for your needs.`,
@@ -89,178 +94,186 @@ export default async function LoanOptionPage({ params }: LoanOptionPageProps) {
           buttonHref: '/schedule-a-call',
         }}
       >
-      {/* Overview Section */}
-      <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Overview</h2>
-        <div className={styles.overview}>
-          {loanOption.fullDescription.split('\n\n').map((paragraph, index) => (
-            <p key={index} className={styles.paragraph}>
-              {paragraph}
-            </p>
-          ))}
-        </div>
-      </section>
-
-      {/* Benefits Section */}
-      <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Key Benefits</h2>
-        <ul className={styles.list}>
-          {loanOption.benefits.map((benefit, index) => (
-            <li key={index} className={styles.listItem}>
-              <Icon 
-                icon={FaCheckCircle} 
-                size="md" 
-                className={styles.checkIcon}
-              />
-              <span>{benefit}</span>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      {/* Requirements Section */}
-      <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Requirements</h2>
-        <ul className={styles.list}>
-          {loanOption.requirements.map((requirement, index) => (
-            <li key={index} className={styles.listItem}>
-              <Icon 
-                icon={FaCircle} 
-                size="sm" 
-                className={styles.bulletIcon}
-              />
-              <span>{requirement}</span>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      {/* Ideal For Section */}
-      <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Ideal For</h2>
-        <ul className={styles.list}>
-          {loanOption.idealFor.map((item, index) => (
-            <li key={index} className={styles.listItem}>
-              <Icon 
-                icon={FaCircle} 
-                size="sm" 
-                className={styles.bulletIcon}
-              />
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      {/* Related Calculators Section */}
-      {loanOption.relatedCalculators.length > 0 && (
+        {/* Overview Section */}
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Related Calculators</h2>
-          <p className={styles.paragraph}>
-            Use these calculators to estimate your payments and explore your options:
-          </p>
-          <div className={styles.calculatorGrid}>
-            {loanOption.relatedCalculators.map((calcSlug) => {
-              const calculator = calculatorMap[calcSlug]
-              if (!calculator) return null
-              return (
-                <Link
-                  key={calcSlug}
-                  href={calculator.path}
-                  style={{ textDecoration: 'none' }}
-                >
-                  <Card
-                    variant="outlined"
-                    padding="md"
-                    hoverable
-                    className={styles.calculatorCard}
-                  >
-                    <Icon 
-                      icon={FaCalculator} 
-                      size="lg" 
-                      className={styles.calculatorIcon}
-                    />
-                    <span className={styles.calculatorName}>{calculator.name}</span>
-                    <Icon 
-                      icon={FaArrowRight} 
-                      size="md" 
-                      className={styles.calculatorArrow}
-                    />
-                  </Card>
-                </Link>
-              )
-            })}
+          <h2 className={styles.sectionTitle}>Overview</h2>
+          <div className={styles.overview}>
+            {loanOption.fullDescription.split('\n\n').map((paragraph, index) => (
+              <p key={index} className={styles.paragraph}>
+                {paragraph}
+              </p>
+            ))}
           </div>
         </section>
-      )}
 
-      {/* Next Steps Section */}
-      <section className={styles.section}>
-        <Card variant="flat" padding="lg" className={styles.nextStepsCard}>
-          <h2 className={styles.sectionTitle}>Next Steps</h2>
-          <p className={styles.paragraph}>
-            Ready to move forward with a {loanOption.title}? Here's how to get started:
-          </p>
-          <ol className={styles.orderedList}>
-            <li className={styles.orderedListItem}>
-              <strong>Schedule a consultation</strong> to discuss your specific situation and goals
-            </li>
-            <li className={styles.orderedListItem}>
-              <strong>Get pre-approved</strong> to understand your buying power and strengthen your offer
-            </li>
-            <li className={styles.orderedListItem}>
-              <strong>Find your home</strong> with confidence knowing your financing is secured
-            </li>
-            <li className={styles.orderedListItem}>
-              <strong>Close on your loan</strong> with expert guidance every step of the way
-            </li>
-          </ol>
-          <div className={styles.ctaButtons}>
-            <Link href="/schedule-a-call" style={{ textDecoration: 'none' }}>
-              <Button variant="primary" size="lg" fullWidth>
-                Schedule a Call
-              </Button>
-            </Link>
-            <Link href="/loan-options" style={{ textDecoration: 'none' }}>
-              <Button variant="secondary" size="lg" fullWidth>
-                View All Loan Options
-              </Button>
-            </Link>
-          </div>
-        </Card>
-      </section>
-    </ContentPage>
+        {/* Benefits Section */}
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>Key Benefits</h2>
+          <ul className={styles.list}>
+            {loanOption.benefits.map((benefit, index) => (
+              <li key={index} className={styles.listItem}>
+                <Icon
+                  icon={FaCheckCircle}
+                  size="md"
+                  className={styles.checkIcon}
+                />
+                <span>{benefit}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
 
-    {/* Breadcrumb Structured Data */}
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{
-        __html: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://modelmtg.com"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Loan Options",
-              "item": "https://modelmtg.com/loan-options"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": loanOption.title,
-              "item": `https://modelmtg.com/loan-options/${loanOption.slug}`
-            }
-          ]
-        })
-      }}
-    />
-  </>
+        {/* Requirements Section */}
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>Requirements</h2>
+          <ul className={styles.list}>
+            {loanOption.requirements.map((requirement, index) => (
+              <li key={index} className={styles.listItem}>
+                <Icon
+                  icon={FaCircle}
+                  size="sm"
+                  className={styles.bulletIcon}
+                />
+                <span>{requirement}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* Mid-page Inline CTA */}
+        <InlineCta
+          title="Find Out If You Qualify"
+          description={`Our team can help you navigate ${loanOption.title} requirements and secure the best possible rate.`}
+          buttonText="Get Pre-Approved"
+          buttonHref="/pre-qualify"
+        />
+
+        {/* Ideal For Section */}
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>Ideal For</h2>
+          <ul className={styles.list}>
+            {loanOption.idealFor.map((item, index) => (
+              <li key={index} className={styles.listItem}>
+                <Icon
+                  icon={FaCircle}
+                  size="sm"
+                  className={styles.bulletIcon}
+                />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* Related Calculators Section */}
+        {loanOption.relatedCalculators.length > 0 && (
+          <section className={styles.section}>
+            <h2 className={styles.sectionTitle}>Related Calculators</h2>
+            <p className={styles.paragraph}>
+              Use these calculators to estimate your payments and explore your options:
+            </p>
+            <div className={styles.calculatorGrid}>
+              {loanOption.relatedCalculators.map((calcSlug) => {
+                const calculator = calculatorMap[calcSlug]
+                if (!calculator) return null
+                return (
+                  <Link
+                    key={calcSlug}
+                    href={calculator.path}
+                    style={{ textDecoration: 'none' }}
+                  >
+                    <Card
+                      variant="outlined"
+                      padding="md"
+                      hoverable
+                      className={styles.calculatorCard}
+                    >
+                      <Icon
+                        icon={FaCalculator}
+                        size="lg"
+                        className={styles.calculatorIcon}
+                      />
+                      <span className={styles.calculatorName}>{calculator.name}</span>
+                      <Icon
+                        icon={FaArrowRight}
+                        size="md"
+                        className={styles.calculatorArrow}
+                      />
+                    </Card>
+                  </Link>
+                )
+              })}
+            </div>
+          </section>
+        )}
+
+        {/* Next Steps Section */}
+        <section className={styles.section}>
+          <Card variant="flat" padding="lg" className={styles.nextStepsCard}>
+            <h2 className={styles.sectionTitle}>Next Steps</h2>
+            <p className={styles.paragraph}>
+              Ready to move forward with a {loanOption.title}? Here's how to get started:
+            </p>
+            <ol className={styles.orderedList}>
+              <li className={styles.orderedListItem}>
+                <strong>Schedule a consultation</strong> to discuss your specific situation and goals
+              </li>
+              <li className={styles.orderedListItem}>
+                <strong>Get pre-approved</strong> to understand your buying power and strengthen your offer
+              </li>
+              <li className={styles.orderedListItem}>
+                <strong>Find your home</strong> with confidence knowing your financing is secured
+              </li>
+              <li className={styles.orderedListItem}>
+                <strong>Close on your loan</strong> with expert guidance every step of the way
+              </li>
+            </ol>
+            <div className={styles.ctaButtons}>
+              <Link href="/schedule-a-call" style={{ textDecoration: 'none' }}>
+                <Button variant="primary" size="lg" fullWidth>
+                  Schedule a Call
+                </Button>
+              </Link>
+              <Link href="/loan-options" style={{ textDecoration: 'none' }}>
+                <Button variant="secondary" size="lg" fullWidth>
+                  View All Loan Options
+                </Button>
+              </Link>
+            </div>
+          </Card>
+        </section>
+      </ContentPage>
+
+      {/* Breadcrumb Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://modelmtg.com"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Loan Options",
+                "item": "https://modelmtg.com/loan-options"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": loanOption.title,
+                "item": `https://modelmtg.com/loan-options/${loanOption.slug}`
+              }
+            ]
+          })
+        }}
+      />
+    </>
   )
 }

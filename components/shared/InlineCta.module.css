@@ -1,0 +1,48 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--midnight-black, #111111);
+    border: 1px solid var(--gold-primary, #D4AF37);
+    border-radius: 8px;
+    padding: 2rem;
+    margin: 3rem 0;
+    color: white;
+}
+
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.content {
+    flex: 1;
+    margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .content {
+        margin-bottom: 0;
+        margin-right: 2rem;
+    }
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.description {
+    font-size: 1rem;
+    color: #a1a1aa;
+    /* Zinc 400 */
+    line-height: 1.5;
+}
+
+.action {
+    flex-shrink: 0;
+}

@@ -1,0 +1,111 @@
+{
+  "metadata": {
+    "missingDesc": [],
+    "missingTitle": [
+      "app\\calculator\\affordability\\page.tsx",
+      "app\\calculator\\dscr\\page.tsx",
+      "app\\calculator\\fix-flip\\page.tsx",
+      "app\\calculator\\purchase\\page.tsx",
+      "app\\calculator\\refinance\\page.tsx",
+      "app\\calculator\\rent-vs-buy\\page.tsx",
+      "app\\calculator\\va-purchase\\page.tsx",
+      "app\\calculator\\va-refinance\\page.tsx",
+      "app\\loan-options\\conventional\\page.tsx",
+      "app\\loan-options\\fha\\page.tsx",
+      "app\\loan-options\\investment\\page.tsx",
+      "app\\loan-options\\jumbo\\page.tsx",
+      "app\\loan-options\\va\\page.tsx",
+      "app\\reviews\\page.tsx"
+    ],
+    "hasCanonical": [
+      "app\\about-us\\page.tsx",
+      "app\\ada-accessibility-statement\\page.tsx",
+      "app\\blog\\page.tsx",
+      "app\\blog\\[slug]\\page.tsx",
+      "app\\calculator\\affordability\\layout.tsx",
+      "app\\calculator\\dscr\\layout.tsx",
+      "app\\calculator\\page.tsx",
+      "app\\calculator\\purchase\\layout.tsx",
+      "app\\calculator\\refinance\\layout.tsx",
+      "app\\calculator\\rent-vs-buy\\layout.tsx",
+      "app\\calculator\\va-purchase\\layout.tsx",
+      "app\\calculator\\va-refinance\\layout.tsx",
+      "app\\contact\\page.tsx",
+      "app\\learning-center\\page.tsx",
+      "app\\loan-options\\page.tsx",
+      "app\\loan-options\\[slug]\\page.tsx",
+      "app\\matthew-bramow\\page.tsx",
+      "app\\meet-our-team\\page.tsx",
+      "app\\page.tsx",
+      "app\\pre-qualify\\layout.tsx",
+      "app\\pre-qualify\\page.tsx",
+      "app\\privacy-policy\\page.tsx",
+      "app\\rolston-nicholls\\page.tsx",
+      "app\\schedule-a-call\\page.tsx"
+    ],
+    "hasOG": [
+      "app\\about-us\\page.tsx",
+      "app\\ada-accessibility-statement\\page.tsx",
+      "app\\blog\\page.tsx",
+      "app\\blog\\[slug]\\page.tsx",
+      "app\\calculator\\affordability\\layout.tsx",
+      "app\\calculator\\dscr\\layout.tsx",
+      "app\\calculator\\page.tsx",
+      "app\\calculator\\purchase\\layout.tsx",
+      "app\\calculator\\refinance\\layout.tsx",
+      "app\\calculator\\rent-vs-buy\\layout.tsx",
+      "app\\calculator\\va-purchase\\layout.tsx",
+      "app\\calculator\\va-refinance\\layout.tsx",
+      "app\\contact\\page.tsx",
+      "app\\layout.tsx",
+      "app\\learning-center\\page.tsx",
+      "app\\loan-options\\page.tsx",
+      "app\\loan-options\\[slug]\\page.tsx",
+      "app\\matthew-bramow\\page.tsx",
+      "app\\meet-our-team\\page.tsx",
+      "app\\pre-qualify\\layout.tsx",
+      "app\\pre-qualify\\page.tsx",
+      "app\\privacy-policy\\page.tsx",
+      "app\\rolston-nicholls\\page.tsx",
+      "app\\schedule-a-call\\page.tsx"
+    ]
+  },
+  "h1": {
+    "missing": [
+      "app\\ada-accessibility-statement\\page.tsx",
+      "app\\calculator\\affordability\\page.tsx",
+      "app\\calculator\\dscr\\page.tsx",
+      "app\\calculator\\fix-flip\\page.tsx",
+      "app\\calculator\\purchase\\page.tsx",
+      "app\\calculator\\refinance\\page.tsx",
+      "app\\calculator\\rent-vs-buy\\page.tsx",
+      "app\\calculator\\va-purchase\\page.tsx",
+      "app\\calculator\\va-refinance\\page.tsx",
+      "app\\loan-options\\conventional\\page.tsx",
+      "app\\loan-options\\fha\\page.tsx",
+      "app\\loan-options\\investment\\page.tsx",
+      "app\\loan-options\\jumbo\\page.tsx",
+      "app\\loan-options\\va\\page.tsx",
+      "app\\loan-options\\[slug]\\page.tsx",
+      "app\\matthew-bramow\\page.tsx",
+      "app\\page.tsx",
+      "app\\privacy-policy\\page.tsx",
+      "app\\rolston-nicholls\\page.tsx",
+      "app\\schedule-a-call\\page.tsx"
+    ],
+    "multiple": []
+  },
+  "images": {
+    "missingAlt": []
+  },
+  "schema": {
+    "foundIn": [
+      "app\\blog\\[slug]\\page.tsx",
+      "app\\calculator\\page.tsx",
+      "app\\learning-center\\page.tsx",
+      "app\\loan-options\\[slug]\\page.tsx",
+      "app\\matthew-bramow\\page.tsx",
+      "app\\rolston-nicholls\\page.tsx"
+    ]
+  }
+}

@@ -26,7 +26,7 @@ type ToggleMode = 'dollar' | 'percent'
 
 export default function RentVsBuyCalculator() {
   const { chartRef, getExportData } = useCalculatorExport('Rent vs Buy')
-  
+
   const [activeLoanType, setActiveLoanType] = useState<LoanType>('conventional')
   const [downPaymentMode, setDownPaymentMode] = useState<ToggleMode>('dollar')
 
@@ -178,7 +178,7 @@ export default function RentVsBuyCalculator() {
         {/* Left Panel - Inputs */}
         <div className={styles.inputPanel}>
           <Card variant="elevated" padding="lg" className={styles.inputCard}>
-            <h2 className={styles.cardTitle}>Rent vs Buy Calculator</h2>
+            <h1 className={styles.cardTitle}>Rent vs Buy Calculator</h1>
 
             {/* Loan Type Tabs */}
             <div className={styles.loanTypeTabs}>
@@ -376,7 +376,7 @@ export default function RentVsBuyCalculator() {
         {/* Right Panel - Results */}
         <div className={styles.resultsPanel}>
           <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '1rem' }}>
-            <ExportPDFButton 
+            <ExportPDFButton
               getCalculatorData={() => getExportData(values, results)}
             />
           </div>

@@ -135,7 +135,7 @@ export default function VARefinanceCalculator() {
         {/* Left Panel - Inputs */}
         <div className={styles.inputPanel}>
           <Card variant="elevated" padding="lg" className={styles.inputCard}>
-            <h2 className={styles.cardTitle}>VA Refinance Calculator</h2>
+            <h1 className={styles.cardTitle}>VA Refinance Calculator</h1>
 
             <div className={styles.inputFields}>
               <h3 style={{ fontSize: '0.875rem', fontWeight: '600', color: '#e5e7eb', marginBottom: '-0.5rem' }}>

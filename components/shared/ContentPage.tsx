@@ -26,6 +26,11 @@ export interface ContentPageProps {
     buttonText: string
     buttonHref: string
   }
+  /** Optional CTA to display in the hero section */
+  heroCta?: {
+    text: string
+    href: string
+  }
 }
 
 export default function ContentPage({
@@ -36,6 +41,7 @@ export default function ContentPage({
   heroImage,
   heroBackground,
   showCTA = true,
+  heroCta,
   cta = {
     title: 'Ready to Get Started?',
     description: 'Contact us today to discuss your mortgage needs and get personalized guidance.',
@@ -64,6 +70,13 @@ export default function ContentPage({
             )}
             <h1 className={styles.title}>{title}</h1>
             {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
+            {heroCta && (
+              <div className={styles.heroCtaContainer}>
+                <a href={heroCta.href} className="btn btn-primary">
+                  {heroCta.text}
+                </a>
+              </div>
+            )}
           </div>
         </section>
 

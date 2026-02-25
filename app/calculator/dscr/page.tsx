@@ -121,7 +121,7 @@ export default function DSCRCalculator() {
         {/* Left Panel - Inputs */}
         <div className={styles.inputPanel}>
           <Card variant="elevated" padding="lg" className={styles.inputCard}>
-            <h2 className={styles.cardTitle}>Debt-Service (DSCR)</h2>
+            <h1 className={styles.cardTitle}>Debt-Service (DSCR)</h1>
 
             <div className={styles.inputFields}>
               <div className={styles.selectField}>

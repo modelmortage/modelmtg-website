@@ -29,6 +29,10 @@
   line-height: 1.6;
 }
 
+.heroCtaContainer {
+  margin-top: 2rem;
+}
+
 /* Content Section */
 .content {
   background: #FFFFFF;

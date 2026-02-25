@@ -28,7 +28,7 @@ type TermMode = 'year' | 'month'
 
 export default function AffordabilityCalculator() {
   const { chartRef, getExportData } = useCalculatorExport('Affordability')
-  
+
   const [activeLoanType, setActiveLoanType] = useState<LoanType>('conventional')
   const [downPaymentMode, setDownPaymentMode] = useState<ToggleMode>('dollar')
   const [propertyTaxMode, setPropertyTaxMode] = useState<ToggleMode>('percent')
@@ -260,7 +260,7 @@ export default function AffordabilityCalculator() {
         {/* Left Panel - Inputs */}
         <div className={styles.inputPanel}>
           <Card variant="elevated" padding="lg" className={styles.inputCard}>
-            <h2 className={styles.cardTitle}>Affordability Calculator</h2>
+            <h1 className={styles.cardTitle}>Affordability Calculator</h1>
 
             {/* Loan Type Tabs */}
             <div className={styles.loanTypeTabs}>
@@ -487,7 +487,7 @@ export default function AffordabilityCalculator() {
           <Card variant="elevated" padding="lg" className={styles.breakdownCard}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
               <h3 className={styles.cardTitle}>Payment Breakdown</h3>
-              <ExportPDFButton 
+              <ExportPDFButton
                 getCalculatorData={() => {
                   const exportData = getExportData(values, results)
                   const chartSegments = []

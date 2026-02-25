@@ -31,7 +31,7 @@ const fixFlipConfig = {
 
 export default function FixFlipCalculator() {
   const { chartRef, getExportData } = useCalculatorExport('Fix & Flip')
-  
+
   const [values, setValues] = useState({
     purchasePrice: '500000',
     renovationCost: '75000',
@@ -143,7 +143,7 @@ export default function FixFlipCalculator() {
         {/* Left Panel - Inputs */}
         <div className={styles.inputPanel}>
           <Card variant="elevated" padding="lg" className={styles.inputCard}>
-            <h2 className={styles.cardTitle}>Fix & Flip Calculator</h2>
+            <h1 className={styles.cardTitle}>Fix & Flip Calculator</h1>
 
             <div className={styles.inputFields}>
               <Input
@@ -368,7 +368,7 @@ export default function FixFlipCalculator() {
           <Card variant="elevated" padding="lg" className={styles.returnMetricsCard}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
               <h3 className={styles.cardTitle}>Return Metrics</h3>
-              <ExportPDFButton 
+              <ExportPDFButton
                 getCalculatorData={() => getExportData(values, results)}
               />
             </div>

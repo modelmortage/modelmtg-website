@@ -82,10 +82,10 @@ function calculatePaymentSchedule(
 ): Date[] {
   const schedule: Date[] = []
   let currentDate = new Date(firstPaymentDate)
-  
+
   for (let i = 0; i < numberOfPayments; i++) {
     schedule.push(new Date(currentDate))
-    
+
     switch (frequency) {
       case 'monthly':
         currentDate.setMonth(currentDate.getMonth() + 1)
@@ -98,7 +98,7 @@ function calculatePaymentSchedule(
         break
     }
   }
-  
+
   return schedule
 }
 
@@ -122,13 +122,13 @@ function calculateAmortization(
   }
 
   const monthlyRate = annualRate / 12
-  
+
   // Standard monthly payment (principal + interest)
   const monthlyPI = monthlyRate === 0
     ? principal / termInMonths
-    : principal * (monthlyRate * Math.pow(1 + monthlyRate, termInMonths)) / 
-      (Math.pow(1 + monthlyRate, termInMonths) - 1)
-  
+    : principal * (monthlyRate * Math.pow(1 + monthlyRate, termInMonths)) /
+    (Math.pow(1 + monthlyRate, termInMonths) - 1)
+
   // If no extra payment, use simple calculation
   if (extraPayment === 0) {
     const totalInterest = (monthlyPI * termInMonths) - principal
@@ -138,21 +138,21 @@ function calculateAmortization(
       actualTermMonths: termInMonths
     }
   }
-  
+
   // With extra payments, simulate month by month
   let balance = principal
   let totalInterest = 0
   let monthsPaid = 0
-  
+
   while (balance > 0.01 && monthsPaid < termInMonths) {
     const interestPayment = balance * monthlyRate
     const principalPayment = monthlyPI - interestPayment + extraPayment
-    
+
     totalInterest += interestPayment
     balance = Math.max(0, balance - principalPayment)
     monthsPaid++
   }
-  
+
   return {
     monthlyPayment: monthlyPI,
     totalInterest,
@@ -175,14 +175,14 @@ function calculateEarlyPayoffStrategy(
 } {
   // Calculate baseline (no extra payments)
   const baseline = calculateAmortization(principal, annualRate, termInMonths, 0)
-  
+
   // Calculate with additional monthly payment
   const extraMonthly = additionalMonthly
-  
+
   // Adjust for payment frequency
   const periodsPerYear = getPeriodsPerYear(frequency)
   const adjustedExtra = (extraMonthly * 12) / periodsPerYear
-  
+
   // Calculate lump sum contribution per month
   let lumpSumPerMonth = 0
   if (lumpSumAmount > 0) {
@@ -198,7 +198,7 @@ function calculateEarlyPayoffStrategy(
         break
     }
   }
-  
+
   // Calculate with early payoff strategy
   const withStrategy = calculateAmortization(
     principal,
@@ -206,7 +206,7 @@ function calculateEarlyPayoffStrategy(
     termInMonths,
     adjustedExtra + lumpSumPerMonth
   )
-  
+
   return {
     savings: baseline.totalInterest - withStrategy.totalInterest,
     newPaymentAmount: withStrategy.monthlyPayment + adjustedExtra + lumpSumPerMonth,
@@ -245,7 +245,7 @@ function parseNumericInput(value: string, defaultValue: number = 0): number {
 
 export default function VAPurchaseCalculator() {
   const { chartRef, getExportData } = useCalculatorExport('VA Purchase')
-  
+
   const [downPaymentMode, setDownPaymentMode] = useState<ToggleMode>('dollar')
   const [loanTermMode, setLoanTermMode] = useState<TermMode>('year')
   const [propertyTaxMode, setPropertyTaxMode] = useState<ToggleMode>('dollar')
@@ -253,7 +253,7 @@ export default function VAPurchaseCalculator() {
   const [vaFundingFeeType, setVaFundingFeeType] = useState<VAFundingFeeType>('first-time')
   const [paymentFrequency, setPaymentFrequency] = useState<PaymentFrequency>('monthly')
   const [firstPaymentDate, setFirstPaymentDate] = useState<Date | null>(getDefaultFirstPaymentDate())
-  
+
   // Early payoff strategy state
   const [earlyPayoffFrequency, setEarlyPayoffFrequency] = useState<PaymentFrequency>('monthly')
   const [lumpSumFrequency, setLumpSumFrequency] = useState<LumpSumFrequency>('one-time')
@@ -408,7 +408,7 @@ export default function VAPurchaseCalculator() {
     // Calculate early payoff strategy
     const additionalMonthly = parseNumericInput(values.additionalMonthly, 0)
     const lumpSumAmount = parseNumericInput(values.lumpSumAmount, 0)
-    
+
     const earlyPayoffStrategy = calculateEarlyPayoffStrategy(
       loanAmount,
       annualRate,
@@ -490,7 +490,7 @@ export default function VAPurchaseCalculator() {
         {/* Left Panel - Inputs */}
         <div className={styles.inputPanel}>
           <Card variant="elevated" padding="lg" className={styles.inputCard}>
-            <h2 className={styles.cardTitle}>VA Purchase Calculator</h2>
+            <h1 className={styles.cardTitle}>VA Purchase Calculator</h1>
 
             <div className={styles.inputFields}>
               <Input
@@ -793,7 +793,7 @@ export default function VAPurchaseCalculator() {
           <Card variant="elevated" padding="lg" className={styles.breakdownCard}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
               <h3 className={styles.cardTitle}>Payment Breakdown</h3>
-              <ExportPDFButton 
+              <ExportPDFButton
                 getCalculatorData={() => {
                   const exportData = getExportData(values, results)
                   // Add chart data for PDF generation
@@ -965,7 +965,7 @@ export default function VAPurchaseCalculator() {
 
           <Card variant="elevated" padding="md" className={styles.summaryCard}>
             <div className={styles.summaryTitle}>Early Payoff Strategy</div>
-            
+
             <div className={styles.earlyPayoffResults}>
               <div className={styles.earlyPayoffResultItem}>
                 <span className={styles.earlyPayoffResultLabel}>Savings</span>
@@ -1021,7 +1021,7 @@ export default function VAPurchaseCalculator() {
 
               <div className={styles.earlyPayoffSubsection}>
                 <div className={styles.subsectionTitle}>Lump Sum Payment</div>
-                
+
                 <div className={styles.earlyPayoffInputField}>
                   <Input
                     label="Lump Sum Addition"
