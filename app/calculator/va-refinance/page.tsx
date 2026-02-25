@@ -21,7 +21,7 @@ type Priority = 'payment' | 'interest'
 
 export default function VARefinanceCalculator() {
   const { chartRef, getExportData } = useCalculatorExport('VA Refinance')
-  
+
   const [loanTermMode, setLoanTermMode] = useState<TermMode>('year')
   const [priority, setPriority] = useState<Priority>('interest')
   const [loanStartDate, setLoanStartDate] = useState('2022-03')
@@ -76,8 +76,8 @@ export default function VARefinanceCalculator() {
     const [startYear, startMonth] = loanStartDate.split('-').map(Number)
     const startDate = new Date(startYear, startMonth - 1)
     const currentDate = new Date()
-    const monthsElapsed = Math.max(0, 
-      (currentDate.getFullYear() - startDate.getFullYear()) * 12 + 
+    const monthsElapsed = Math.max(0,
+      (currentDate.getFullYear() - startDate.getFullYear()) * 12 +
       (currentDate.getMonth() - startDate.getMonth())
     )
 
@@ -105,7 +105,7 @@ export default function VARefinanceCalculator() {
       : currentBalance * (newRate * Math.pow(1 + newRate, newLoanTerm)) / (Math.pow(1 + newRate, newLoanTerm) - 1)
 
     const monthlyIncrease = newPayment - currentPayment
-    
+
     // Calculate total interest for remaining term
     const currentRemainingInterest = (currentPayment * remainingTerm) - currentBalance
     const newTotalInterest = (newPayment * newLoanTerm) - currentBalance
@@ -142,7 +142,7 @@ export default function VARefinanceCalculator() {
                 What is most important to you?
               </h3>
               <div className={styles.selectField}>
-                <select 
+                <select
                   className={styles.select}
                   value={priority}
                   onChange={(e) => setPriority(e.target.value as Priority)}
@@ -271,7 +271,7 @@ export default function VARefinanceCalculator() {
           <Card variant="elevated" padding="lg" className={styles.breakdownCard}>
             <h3 className={styles.cardTitle}>Monthly Payment Comparison</h3>
 
-            <div className={styles.comparisonBars}>
+            <div className={styles.comparisonBars} ref={chartRef}>
               <div className={styles.barRow}>
                 <div className={styles.barLabel}>
                   <span>Current Loan</span>
@@ -334,7 +334,7 @@ export default function VARefinanceCalculator() {
         {/* Right Panel - Results */}
         <div className={styles.resultsPanel}>
           <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '1rem' }}>
-            <ExportPDFButton 
+            <ExportPDFButton
               getCalculatorData={() => getExportData(values, results)}
             />
           </div>
