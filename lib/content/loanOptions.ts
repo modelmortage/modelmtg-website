@@ -44,6 +44,61 @@ Fixed-rate mortgages are ideal for borrowers who value stability and plan to sta
     ],
     icon: 'home',
     relatedCalculators: ['purchase', 'affordability', 'refinance'],
+    whoQualifies: [
+      'W2 employees with a consistent 2-year job history',
+      'Self-employed borrowers with 2 years of tax returns showing adequate income',
+      'Buyers with a credit score of 620 or above',
+      'Borrowers with a debt-to-income ratio under 43% (up to 50% with strong compensating factors)'
+    ],
+    minimumCreditScore: '620',
+    downPayment: 'As low as 3% for first-time buyers, typically 5% to 20%',
+    closingTimeline: '30 to 45 Days',
+    pros: [
+      'Total payment predictability; principal and interest never change',
+      'Easier to understand and budget for than adjustable-rate mortgages (ARMs)',
+      'Protects you from future interest rate hikes'
+    ],
+    cons: [
+      'Initial interest rates are often slightly higher than ARMs',
+      'Harder to qualify for a larger loan amount compared to initial ARM rates',
+      'If rates drop significantly, you must pay closing costs to refinance'
+    ],
+    whatToExpect: [
+      'Pre-Approval: We will review your income, assets, and credit to determine exactly how much you can borrow.',
+      'House Hunting: Shop for homes with confidence using your pre-approval letter.',
+      'Underwriting: Once under contract, we will verify all documents and order a property appraisal.',
+      'Clear to Close: Sign your final loan documents and get the keys to your new home.'
+    ],
+    faqs: [
+      {
+        question: 'Should I get a 15-year or 30-year fixed mortgage?',
+        answer: 'A 15-year mortgage has higher monthly payments but saves you tens of thousands in interest over the life of the loan. A 30-year gives you lower, more affordable monthly payments but costs more in long-term interest.'
+      },
+      {
+        question: 'Does my payment ever change on a fixed-rate mortgage?',
+        answer: 'Your principal and interest portion will never change. However, if your property taxes or homeowners insurance premiums go up, your total monthly payment (if escrowed) will increase.'
+      },
+      {
+        question: 'What credit score do I need for a conventional fixed-rate mortgage?',
+        answer: 'Generally, you need a minimum credit score of 620 to qualify for a conventional loan. However, borrowers with credit scores of 740 or higher secure the best interest rates.'
+      },
+      {
+        question: 'Can I pay off my fixed-rate mortgage early?',
+        answer: 'Yes! Most conventional fixed-rate mortgages do not have prepayment penalties. You can make extra principal payments at any time to pay down your loan faster and save on interest.'
+      },
+      {
+        question: 'How do I get rid of Private Mortgage Insurance (PMI)?',
+        answer: 'If you put down less than 20%, you will typically pay PMI. You can request to cancel PMI once your loan balance reaches 80% of your home\'s original appraised value, or it will automatically cancel at 78%.'
+      },
+      {
+        question: 'Are there maximum loan limits for conventional loans?',
+        answer: 'Yes. The Federal Housing Finance Agency (FHFA) sets conforming loan limits annually. For 2024, the baseline limit is $766,550 for a single-family home, though it is higher in designated high-cost areas.'
+      }
+    ],
+    comparison: [
+      { title: 'vs. Adjustable-Rate Mortgage (ARM)', description: 'ARMs offer lower introductory rates for the first 3-10 years before adjusting. A fixed-rate remains exactly the same forever.' },
+      { title: 'vs. FHA Loan', description: 'Conventional fixed-rate loans carry stricter credit requirements (620+) but allow you to remove mortgage insurance once you have 20% equity, whereas FHA loans often require mortgage insurance for the life of the loan.' }
+    ],
     metadata: {
       title: 'Fixed Rate Mortgage | Stable Home Loans - Model Mortgage',
       description: 'Learn about fixed-rate mortgages with predictable payments and locked interest rates. Get expert guidance on 15, 20, and 30-year fixed-rate home loans.',
@@ -94,6 +149,59 @@ FHA loans are particularly attractive for borrowers who may not have a large dow
     ],
     icon: 'shield',
     relatedCalculators: ['purchase', 'affordability'],
+    whoQualifies: [
+      'Buyers with a minimum credit score of 580 (for 3.5% down) or 500 (for 10% down)',
+      'Borrowers with higher debt-to-income ratios (up to 50% or more depending on compensating factors)',
+      'First-time or repeat homebuyers purchasing a primary residence'
+    ],
+    minimumCreditScore: '580 (or 500 with a 10% down payment)',
+    downPayment: '3.5%',
+    closingTimeline: '30 to 45 Days',
+    pros: [
+      'Extremely relaxed credit and income qualification standards',
+      'Allows 100% of down payment to come from a family gift',
+      'Competitive interest rates compared to subprime conventional loans'
+    ],
+    cons: [
+      'Mortgage Insurance Premium (MIP) is required for the life of the loan in most cases',
+      'Requires an upfront mortgage insurance fee (usually 1.75% of the loan amount)',
+      'Property must pass a strict FHA safety and habitability appraisal'
+    ],
+    whatToExpect: [
+      'Application: Gather your W2s, paystubs, and bank statements.',
+      'FHA Appraisal: An FHA-approved appraiser will check the home\'s value and ensure it has no safety hazards (e.g., peeling paint, broken handrails).',
+      'Final Underwriting: The loan is approved and cleared to close.'
+    ],
+    faqs: [
+      {
+        question: 'Can I get rid of FHA mortgage insurance later?',
+        answer: 'If you put down less than 10%, FHA mortgage insurance lasts for the life of the loan. The only way to remove it is to refinance into a conventional loan once you reach 20% equity.'
+      },
+      {
+        question: 'Do I have to be a first-time homebuyer to use an FHA loan?',
+        answer: 'No! FHA loans are available to both first-time and repeat buyers, as long as the home will be your primary residence.'
+      },
+      {
+        question: 'What is the minimum down payment for an FHA loan?',
+        answer: 'The minimum down payment is 3.5% if your credit score is 580 or higher. If your credit score is between 500 and 579, a 10% down payment is required.'
+      },
+      {
+        question: 'Are FHA appraisals more strict than conventional appraisals?',
+        answer: 'FHA appraisals include both a valuation and a safety inspection. The home must meet Minimum Property Standards, meaning it must be safe, sound, and secure. Issues like peeling paint, missing handrails, or a leaking roof will need to be repaired before closing.'
+      },
+      {
+        question: 'Can I use gift funds for my FHA down payment?',
+        answer: 'Yes! FHA guidelines allow you to use a documented monetary gift from a family member, employer, or close friend to cover 100% of your required down payment.'
+      },
+      {
+        question: 'Is there a maximum loan amount for an FHA loan?',
+        answer: 'Yes, the FHA sets county-by-county borrowing limits that are adjusted annually. High-cost counties have higher limits than standard areas. You cannot borrow more than your county\'s FHA limit.'
+      }
+    ],
+    comparison: [
+      { title: 'vs. Conventional Loan', description: 'Conventional loans require better credit but offer cheaper mortgage insurance that can be canceled later. FHA is easier to get but costs slightly more in long-term fees.' },
+      { title: 'vs. USDA Loan', description: 'USDA loans require zero down but are geographically restricted to rural areas and have strict income limits. FHA can be used anywhere and has no maximum income limit.' }
+    ],
     metadata: {
       title: 'FHA Home Loan | Low Down Payment Mortgages - Model Mortgage',
       description: 'FHA loans offer low down payments (3.5%) and flexible credit requirements. Perfect for first-time buyers and those with limited savings.',
@@ -146,6 +254,61 @@ VA loans recognize the service and sacrifice of our military members by making h
     ],
     icon: 'flag',
     relatedCalculators: ['va-purchase', 'va-refinance', 'affordability'],
+    whoQualifies: [
+      'Active-duty military members with at least 90 days of continuous service',
+      'Veterans with acceptable discharge (time requirements vary by era)',
+      'National Guard and Reserve members with at least 6 years of service',
+      'Unremarried surviving spouses of service members who died in the line of duty'
+    ],
+    minimumCreditScore: 'No official VA minimum, but most lenders look for 580-620+',
+    downPayment: '0% Required',
+    closingTimeline: '30 to 45 Days',
+    pros: [
+      'Absolutely no down payment required',
+      'Never charges monthly Private Mortgage Insurance (PMI)',
+      'Interest rates are typically lower than conventional and FHA rates'
+    ],
+    cons: [
+      'Requires an upfront VA Funding Fee (1.25% to 3.3%), though it can be financed',
+      'Can only be used for a primary residence (no vacation homes or pure investments)',
+      'Appraisal requirements are strict to ensure the home is move-in ready'
+    ],
+    whatToExpect: [
+      'Obtain COE: We help you pull your Certificate of Eligibility directly from the VA portal.',
+      'House Hunting: Shop for a home. Note that sellers may need to fix safety or pest issues before closing.',
+      'VA Appraisal: The VA appraiser will determine the value and check for Minimum Property Requirements (MPRs).',
+      'Closing: Sign your paperwork and enjoy your new home.'
+    ],
+    faqs: [
+      {
+        question: 'Can I use my VA loan benefit more than once?',
+        answer: 'Yes! Your VA entitlement is reusable. You can even have two VA loans at the same time if you have remaining entitlement and meet VA occupancy requirements.'
+      },
+      {
+        question: 'Who is exempt from the VA Funding Fee?',
+        answer: 'Veterans receiving VA compensation for a service-connected disability are completely exempt from the funding fee.'
+      },
+      {
+        question: 'Does a VA loan require a down payment?',
+        answer: 'No! The most powerful benefit of the VA home loan is that eligible borrowers can finance 100% of the home\'s purchase price with a $0 down payment.'
+      },
+      {
+        question: 'Is there Private Mortgage Insurance (PMI) on a VA loan?',
+        answer: 'No. VA loans never require monthly mortgage insurance (PMI or MIP), saving veterans hundreds of dollars per month compared to FHA or low-down-payment conventional loans.'
+      },
+      {
+        question: 'What are the minimum credit score requirements for a VA loan?',
+        answer: 'The Department of Veterans Affairs does not set a minimum credit score, but most lenders require a score of at least 580 to 620 to be approved.'
+      },
+      {
+        question: 'Can I use a VA loan to buy an investment property?',
+        answer: 'VA loans are strictly for primary residences. You cannot use a VA loan to purchase a dedicated rental property or vacation home. However, you can buy a multi-unit property (up to 4 units) as long as you live in one of the units.'
+      }
+    ],
+    comparison: [
+      { title: 'vs. Conventional Loan', description: 'Conventional requires 3-20% down and charges PMI under 20%. The VA loan requires 0% down and zero PMI, making it universally better for eligible veterans.' },
+      { title: 'vs. FHA Loan', description: 'FHA charges heavy mortgage insurance and requires 3.5% down. VA is dramatically cheaper for those who qualify.' }
+    ],
     metadata: {
       title: 'VA Home Loan | Zero Down Payment for Veterans - Model Mortgage',
       description: 'VA loans offer 0% down payment, no PMI, and competitive rates for veterans and active military. Learn about VA loan benefits and requirements.',
@@ -197,6 +360,43 @@ Despite the "rural" designation, many suburban areas qualify for USDA financing.
     ],
     icon: 'tree',
     relatedCalculators: ['purchase', 'affordability'],
+    whoQualifies: [
+      'Buyers purchasing a home located in a USDA-designated "rural" area (includes many suburbs)',
+      'Households whose total income does not exceed 115% of the local area median income',
+      'Individuals looking for a primary residence ONLY'
+    ],
+    minimumCreditScore: '640 for automated approval',
+    downPayment: '0% Required',
+    closingTimeline: '45 to 60 Days',
+    pros: [
+      'One of the only 0% down payment programs available to non-military civilians',
+      'USDA mortgage insurance fees are cheaper than FHA fees',
+      'Rates are typically very low because the loan is government-guaranteed'
+    ],
+    cons: [
+      'Strict geographical limitations. Property must be in an eligible perimeter',
+      'Strict household income caps. If your family makes too much money, you do not qualify',
+      'Processing times can be slightly longer due to USDA rural development office reviews'
+    ],
+    whatToExpect: [
+      'Eligibility Check: We will map your desired properties and verify your household income against the county limits.',
+      'Application: Gather financial documents for all adults living in the household (even if not on the loan).',
+      'USDA Review: Once the lender approves the loan, the USDA office must also review and issue a final commitment.'
+    ],
+    faqs: [
+      {
+        question: 'What qualifies as a rural area?',
+        answer: 'You\'d be surprised! The USDA defines "rural" very broadly. Many small towns, exurbs, and communities outside of major metropolitan borders fully qualify for the program.'
+      },
+      {
+        question: 'Does everyone in the house have to be on the loan?',
+        answer: 'No, but the USDA will count the income of EVERY adult living in the home toward the maximum household income limit, regardless of whether they are on the mortgage.'
+      }
+    ],
+    comparison: [
+      { title: 'vs. FHA Loan', description: 'USDA requires 0% down and has cheaper monthly fees. However, FHA has no geographic restrictions and no income limits.' },
+      { title: 'vs. Conventional Loan', description: 'Conventional allows you to buy in cities and has no max income caps, but requires at least 3% down.' }
+    ],
     metadata: {
       title: 'USDA Loan | Zero Down Rural Home Financing - Model Mortgage',
       description: 'USDA loans offer 0% down payment for rural and suburban homebuyers. Check eligibility and learn about USDA loan benefits and requirements.',
@@ -247,6 +447,42 @@ Because jumbo loans aren't backed by Fannie Mae or Freddie Mac, they typically h
     ],
     icon: 'building',
     relatedCalculators: ['purchase', 'affordability', 'refinance'],
+    whoQualifies: [
+      'Borrowers needing loan amounts greater than $766,550 (or local higher-cost limits)',
+      'Individuals with excellent credit profiles (700+)',
+      'High-earning individuals with verifiable income and strong asset reserves'
+    ],
+    minimumCreditScore: '700+',
+    downPayment: 'Typically 10% to 20%+',
+    closingTimeline: '30 to 45 Days',
+    pros: [
+      'Allows you to finance luxury properties with a single loan rather than getting a 1st and 2nd mortgage',
+      'Flexible terms available (Fixed rates, ARMs, Interest-Only options)'
+    ],
+    cons: [
+      'Stricter underwriting guidelines because the loan cannot be sold to Fannie Mae/Freddie Mac',
+      'Requires significant cash reserves (often 6 to 12 months of mortgage payments saved in the bank)',
+      'May require two independent appraisals for very high loan amounts'
+    ],
+    whatToExpect: [
+      'Extensive Documentation: Prepare to provide complete tax returns, statements for all asset accounts, and business returns if self-employed.',
+      'Reserve Verification: We will verify that you have enough liquid cash to cover several months of payments post-closing.',
+      'Closing: Jumbo loans go through rigorous quality control before closing.'
+    ],
+    faqs: [
+      {
+        question: 'Are jumbo rates higher than conventional rates?',
+        answer: 'Not always! In many markets, jumbo rates are actually comparable to or sometimes lower than conforming rates, because banks want to attract high-net-worth clients.'
+      },
+      {
+        question: 'Do I have to put 20% down?',
+        answer: 'Not necessarily. There are jumbo programs that allow 10% down, though they may carry slightly higher rates or require you to pay private mortgage insurance.'
+      }
+    ],
+    comparison: [
+      { title: 'vs. Conforming Loan', description: 'Conforming loans are capped by the government at a specific dollar amount but have easier credit and reserve requirements.' },
+      { title: 'vs. Super Conforming', description: 'In certain high-cost counties, the conforming limit is raised. A jumbo is only required when you exceed that specific high-cost limit.' }
+    ],
     metadata: {
       title: 'Jumbo Home Loan | Luxury Property Financing - Model Mortgage',
       description: 'Jumbo loans for high-value properties exceeding conforming loan limits. Competitive rates for qualified borrowers purchasing luxury homes.',
@@ -298,6 +534,42 @@ Whether through FHA loans, conventional 97% LTV programs, state and local assist
     ],
     icon: 'key',
     relatedCalculators: ['affordability', 'purchase'],
+    whoQualifies: [
+      'Anyone who has not owned a principal residence in the last 3 years',
+      'Single parents who only owned previously with a former spouse',
+      'Displaced homemakers'
+    ],
+    minimumCreditScore: '580 for FHA options, 620 for Conventional options',
+    downPayment: '0% to 3.5%',
+    closingTimeline: '30 to 45 Days',
+    pros: [
+      'Allows you to buy a home without draining your savings',
+      'Access to down payment assistance (DPA) and local grants',
+      'Lower mortgage insurance rates on certain conventional first-time buyer programs (like HomeReady or HomePossible)'
+    ],
+    cons: [
+      'Some down payment assistance programs result in a slightly higher interest rate',
+      'May require you to complete an online homebuyer education course',
+      'Often strict income caps apply to qualify for the best grants'
+    ],
+    whatToExpect: [
+      'Education: You may need to take a quick, HUD-approved online course about budgeting and homeownership.',
+      'Grant Approval: If using a local grant, we will coordinate the paperwork to ensure the funds are wired to title for your closing.',
+      'Closing: You bring far less cash to the table than a traditional buyer.'
+    ],
+    faqs: [
+      {
+        question: 'What happens if I sell the house later?',
+        answer: 'Some grants require you to live in the home for 3-5 years. If you sell before then, you may have to repay a prorated portion of the assistance.'
+      },
+      {
+        question: 'I owned a home 5 years ago, do I qualify?',
+        answer: 'Yes! The industry defines a "first-time buyer" as anyone who hasn\'t had ownership interest in a primary residence for the last 3 years.'
+      }
+    ],
+    comparison: [
+      { title: 'vs. Repeat Buyer Programs', description: 'Repeat buyers usually have to put down a minimum of 5% on conventional loans and get worse pricing on mortgage insurance.' }
+    ],
     metadata: {
       title: 'First Time Home Buyer Programs | Low Down Payment Options - Model Mortgage',
       description: 'Discover first-time homebuyer programs with low down payments, assistance programs, and educational resources to help you purchase your first home.',
@@ -348,6 +620,41 @@ While a smaller down payment means you can purchase a home sooner, it's importan
     ],
     icon: 'percent',
     relatedCalculators: ['affordability', 'purchase'],
+    whoQualifies: [
+      'Buyers looking to conserve cash for renovations or emergencies',
+      'First-time homebuyers',
+      'Those with credit scores of 580 or higher'
+    ],
+    minimumCreditScore: '580',
+    downPayment: '0% to 5%',
+    closingTimeline: '30 Days',
+    pros: [
+      'Get into a home months or years faster than saving 20%',
+      'Keeps your liquid cash free for furniture, emergencies, or renovations',
+      'Can be combined with family gifts or seller concessions'
+    ],
+    cons: [
+      'Requires Private Mortgage Insurance (PMI) or FHA Mortgage Insurance Program (MIP)',
+      'Your monthly payment will be higher due to borrowing a larger amount',
+      'You begin homeownership with less equity buffer against market downturns'
+    ],
+    whatToExpect: [
+      'Strategy Session: We will compare FHA at 3.5% vs. Conventional at 3% to see which offers the lowest total monthly payment based on your credit score.',
+      'Sourcing Funds: We will help you document where your down payment is coming from, ensuring all gift letters and bank histories are compliant.'
+    ],
+    faqs: [
+      {
+        question: 'Is it bad to put less than 20% down?',
+        answer: 'Not at all. In fact, the average first-time buyer puts down just 6%. Waiting to save 20% often means missing out on years of home appreciation and paying tens of thousands in rent instead.'
+      },
+      {
+        question: 'Can I pay off my PMI early?',
+        answer: 'If you have a conventional loan, yes. Once your home appreciates or you pay down the balance to 80% Loan-to-Value, you can petition to have PMI removed.'
+      }
+    ],
+    comparison: [
+      { title: 'vs. 20% Down Conventional', description: 'Putting 20% down avoids PMI entirely and lowers your monthly bill, but costs vastly more cash upfront.' }
+    ],
     metadata: {
       title: 'Low Down Payment Mortgage Options | 3% Down Loans - Model Mortgage',
       description: 'Explore low down payment mortgage options from 0-3.5% down. Learn about FHA, conventional, VA, and USDA low down payment programs.',
@@ -399,6 +706,42 @@ Investment property loans typically require larger down payments and have strict
     ],
     icon: 'chart',
     relatedCalculators: ['dscr', 'purchase', 'rent-vs-buy'],
+    whoQualifies: [
+      'Investors with a minimum 15% to 20% down payment',
+      'Borrowers with strong credit (typically 680+ for best terms)',
+      'Those who can show adequate reserve assets',
+      'Borrowers who qualify via standard income OR via property cash flow (DSCR)'
+    ],
+    minimumCreditScore: '640 (680+ recommended)',
+    downPayment: '15% to 25%',
+    closingTimeline: '30 to 45 Days',
+    pros: [
+      'Allows you to build scalable wealth and passive rental income',
+      'Projected rental income from the subject property can be used to help you qualify',
+      'Interest and depreciation are often tax-deductible (consult a CPA)'
+    ],
+    cons: [
+      'Interest rates are higher than primary residence loans',
+      'Requires significant down payments (no 3% down options)',
+      'Typically requires 6 months of cash reserves in the bank'
+    ],
+    whatToExpect: [
+      'Rent Schedule Appraisal: The appraiser won\'t just determine the home\'s value; they will also complete a rent schedule to determine the fair market rental income the property can generate.',
+      'Reserve Checks: Underwriting will scrutinize your bank statements to ensure you have enough cash to withstand a vacancy.'
+    ],
+    faqs: [
+      {
+        question: 'What is a DSCR Loan?',
+        answer: 'DSCR stands for Debt Service Coverage Ratio. It relies purely on the rental income of the property to qualify the loan. If the rent covers the mortgage payment, you qualify—no W2s or tax returns required.'
+      },
+      {
+        question: 'Can I use an FHA loan for an investment property?',
+        answer: 'FHA loans generally cannot be used for pure investment properties. However, you CAN use an FHA loan to buy a 2-4 unit multi-family home, live in one unit, and rent out the others with just 3.5% down.'
+      }
+    ],
+    comparison: [
+      { title: 'Standard Full Doc vs. DSCR', description: 'Standard investment loans use your personal tax returns and W2s. DSCR loans ignore your personal income and only look at the property\'s cash flow, making them much faster for heavy investors.' }
+    ],
     metadata: {
       title: 'Investment Property Loans | Rental Property Financing - Model Mortgage',
       description: 'Finance rental properties and real estate investments with specialized investment property loans. Learn about DSCR loans and portfolio financing.',
@@ -450,6 +793,57 @@ The decision to refinance depends on several factors including current interest 
     ],
     icon: 'refresh',
     relatedCalculators: ['refinance', 'purchase'],
+    whoQualifies: [
+      'Existing homeowners who want to lower their rate or change their term length',
+      'Homeowners whose property has appreciated enough to cancel PMI',
+      'Borrowers who have improved their credit score since they first bought the home'
+    ],
+    minimumCreditScore: '620',
+    downPayment: 'N/A',
+    closingTimeline: '21 to 30 Days',
+    pros: [
+      'Can significantly reduce your monthly outgoing expenses',
+      'Can drop expensive Private Mortgage Insurance if your home\'s value has risen',
+      'Switching to a 15-year term can shave years off your debt'
+    ],
+    cons: [
+      'Closing costs are involved (though they can often be rolled into the loan)',
+      'Refinancing extends the clock; if you reset a 30-year term 5 years in, it takes 35 years total to pay off'
+    ],
+    whatToExpect: [
+      'Break-Even Analysis: We will calculate exactly how many months it will take for the monthly savings to pay for the closing costs.',
+      'Appraisal: Unless you qualify for an appraisal waiver, an appraiser will verify your home\'s current market value.',
+      'Closing: You can often close at your own kitchen table with a mobile notary.'
+    ],
+    faqs: [
+      {
+        question: 'Can I roll the closing costs into the loan?',
+        answer: 'Yes. Most commonly, borrowers do a "no out-of-pocket" refinance by rolling the title, appraisal, and lender fees into the total loan balance.'
+      },
+      {
+        question: 'When is a good time to refinance?',
+        answer: 'As a rule of thumb, if you can drop your interest rate by 0.75% or if you can eliminate your PMI, it is highly likely a refinance makes mathematical sense.'
+      },
+      {
+        question: 'Does refinancing hurt my credit score?',
+        answer: 'Refinancing involves a hard credit check, which may temporarily drop your score by a few points. However, successfully lowering your monthly debt obligations can improve your financial profile in the long run.'
+      },
+      {
+        question: 'What is a "cash-out" refinance vs. a "rate-and-term" refinance?',
+        answer: 'A rate-and-term refinance simply changes your interest rate or loan duration without changing the amount you owe. A cash-out refinance replaces your old mortgage with a larger one, giving you the difference in cash for expenses or renovations.'
+      },
+      {
+        question: 'Do I need a new appraisal to refinance?',
+        answer: 'In many cases, yes. The lender needs to verify the current market value of your home to calculate your Loan-to-Value (LTV) ratio. However, some automated underwriting systems may offer an appraisal waiver depending on your loan application.'
+      },
+      {
+        question: 'How long does the refinance process take?',
+        answer: 'A typical mortgage refinance takes between 21 and 45 days. The timeline depends on how quickly you provide requested documents and whether an appraisal is required.'
+      }
+    ],
+    comparison: [
+      { title: 'Rate-and-Term vs. Cash-Out', description: 'This program only changes your rate or term. If you actually want to extract $50,000 to remodel your kitchen, you want a Cash-Out Refinance.' }
+    ],
     metadata: {
       title: 'Mortgage Refinance | Lower Your Rate & Payment - Model Mortgage',
       description: 'Refinance your mortgage to lower your rate, reduce payments, or change loan terms. Calculate potential savings with our refinance calculator.',
@@ -500,6 +894,42 @@ With a cash-out refinance, you're replacing your current mortgage with a new, la
     ],
     icon: 'dollar',
     relatedCalculators: ['refinance', 'purchase'],
+    whoQualifies: [
+      'Homeowners who have built significant equity',
+      'Borrowers needing to consolidate high-interest credit card debt',
+      'Those looking to fund renovations or investment property purchases'
+    ],
+    minimumCreditScore: '620+',
+    downPayment: 'N/A',
+    closingTimeline: '30 Days',
+    pros: [
+      'Provides a massive lump sum of cash at mortgage interest rates (much cheaper than personal loans)',
+      'Consolidating debt can dramatically lower your total monthly financial obligations and improve your credit score',
+      'Interest may be tax deductible if the cash is used to improve the home'
+    ],
+    cons: [
+      'Increases the total debt owed on your home and resets the clock on your loan',
+      'Closing costs are assessed on the entire new loan amount',
+      'If you already have a very low rate, you lose it on the entire balance'
+    ],
+    whatToExpect: [
+      'Goal Assessment: Let us know exactly how much cash you need. We will pull comps to see if your home appraises high enough to get it.',
+      'Appraisal: A full interior/exterior appraisal is almost always required for cash-out.',
+      'Three-Day Rule: By law, for primary residences, you must wait 3 business days after closing before the funds are dispersed.'
+    ],
+    faqs: [
+      {
+        question: 'How much cash can I take out?',
+        answer: 'Generally, conventional lenders allow you to borrow up to 80% of your home\'s current value. (VA loans allow up to 90% or even 100% in certain cases).'
+      },
+      {
+        question: 'Are there restrictions on what I spend the money on?',
+        answer: 'No! Once the loan closes, the cash is wired directly into your personal bank account to use however you see fit.'
+      }
+    ],
+    comparison: [
+      { title: 'vs. HELOC (Home Equity Line of Credit)', description: 'A HELOC acts like a credit card tied to your house; it keeps your original low-rate 1st mortgage intact but has an adjustable rate. Cash-Out replaces the whole loan with a new fixed rate.' }
+    ],
     metadata: {
       title: 'Cash Out Refinance | Access Your Home Equity - Model Mortgage',
       description: 'Cash-out refinance lets you access home equity for debt consolidation, home improvements, or major expenses. Learn about requirements and benefits.',
@@ -552,6 +982,39 @@ The IRRRL is designed to help veterans lower their interest rate with minimal do
     ],
     icon: 'star',
     relatedCalculators: ['va-refinance', 'refinance'],
+    whoQualifies: [
+      'IRRRL: Must currently have a VA loan, must have made 6 continuous payments',
+      'VA Cash-Out: Must have VA entitlement, can be used to refinance ANY loan type (FHA, Conventional) into a VA loan'
+    ],
+    minimumCreditScore: 'No official minimum for IRRRL; 620 for Cash-Out',
+    downPayment: 'N/A',
+    closingTimeline: '21 to 30 Days',
+    pros: [
+      'The VA IRRRL is the easiest loan in the mortgage industry. No income verification, no appraisal, no W2s.',
+      'VA Cash-Out allows up to 100% financing, far higher than the 80% limit on conventional cash-outs',
+      'Significantly reduced VA Funding fees for streamline refinances'
+    ],
+    cons: [
+      'To use the IRRRL, the new loan MUST legally drop your interest rate or move you from an ARM to a fixed rate (Net Tangible Benefit rule)',
+      'Still requires a funding fee (unless disabled)'
+    ],
+    whatToExpect: [
+      'Fast Processing (IRRRL): Because we don\'t need to verify income or appraise the home, these loans move extremely fast.',
+      'Appraisal (Cash Out): If you are taking cash out, a full VA appraisal is required.'
+    ],
+    faqs: [
+      {
+        question: 'Wait, I don\'t need an appraisal for an IRRRL?',
+        answer: 'Correct! Even if your home has lost value and you are "underwater", the VA allows you to streamline refinance to a lower rate to help you save money.'
+      },
+      {
+        question: 'Do I have to use my current lender for a VA refinance?',
+        answer: 'Absolutely not. You can shop around to ensure Model Mortgage gets you the best possible rate and lowest fees.'
+      }
+    ],
+    comparison: [
+      { title: 'VA Cash-Out vs. Conventional Cash-Out', description: 'Conventional cash-outs cut you off at 80% of your home\'s value. VA allows you to cash out up to 90% or 100% depending on the lender.' }
+    ],
     metadata: {
       title: 'VA Refinance Options | IRRRL & Cash-Out for Veterans - Model Mortgage',
       description: 'VA refinance programs including IRRRL streamline refinance and VA cash-out refinance. Lower rates and access equity with no mortgage insurance.',

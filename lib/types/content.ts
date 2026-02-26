@@ -20,6 +20,16 @@ export interface LoanOption {
   icon: string
   relatedCalculators: string[]
   metadata: PageMetadata
+  // Content Depth Fields
+  whoQualifies?: string[]
+  minimumCreditScore?: string
+  downPayment?: string
+  closingTimeline?: string
+  pros?: string[]
+  cons?: string[]
+  faqs?: { question: string; answer: string }[]
+  whatToExpect?: string[]
+  comparison?: { title: string; description: string }[]
 }
 
 export interface BlogPost {

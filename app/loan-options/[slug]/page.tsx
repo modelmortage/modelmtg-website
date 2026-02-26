@@ -5,7 +5,19 @@ import { loanOptions } from '@/lib/content/loanOptions'
 import Link from 'next/link'
 import InlineCta from '@/components/shared/InlineCta'
 import { Card, Icon, Button } from '@/components/design-system'
-import { FaCheckCircle, FaCircle, FaCalculator, FaArrowRight } from 'react-icons/fa'
+import {
+  FaCheckCircle,
+  FaCircle,
+  FaCalculator,
+  FaArrowRight,
+  FaCreditCard,
+  FaMoneyBillWave,
+  FaClock,
+  FaCheck,
+  FaTimes,
+  FaQuestionCircle,
+  FaExchangeAlt
+} from 'react-icons/fa'
 import styles from './LoanOptionPage.module.css'
 
 interface LoanOptionPageProps {
@@ -23,7 +35,8 @@ export async function generateStaticParams() {
 
 // Generate metadata for each loan option page
 export async function generateMetadata({ params }: LoanOptionPageProps): Promise<Metadata> {
-  const loanOption = loanOptions.find((option) => option.slug === params.slug)
+  const { slug } = await params
+  const loanOption = loanOptions.find((option) => option.slug === slug)
 
   if (!loanOption) {
     return {
@@ -94,6 +107,41 @@ export default async function LoanOptionPage({ params }: LoanOptionPageProps) {
           buttonHref: '/schedule-a-call',
         }}
       >
+        {/* Quick Facts Section */}
+        {(loanOption.minimumCreditScore || loanOption.downPayment || loanOption.closingTimeline) && (
+          <section className={styles.section}>
+            <div className={styles.quickFactsGrid}>
+              {loanOption.minimumCreditScore && (
+                <div className={styles.factCard}>
+                  <div className={styles.factLabel}>Minimum Credit Score</div>
+                  <div className={styles.factValue}>
+                    <Icon icon={FaCreditCard} size="md" className={styles.calculatorIcon} />
+                    {loanOption.minimumCreditScore}
+                  </div>
+                </div>
+              )}
+              {loanOption.downPayment && (
+                <div className={styles.factCard}>
+                  <div className={styles.factLabel}>Down Payment</div>
+                  <div className={styles.factValue}>
+                    <Icon icon={FaMoneyBillWave} size="md" className={styles.calculatorIcon} />
+                    {loanOption.downPayment}
+                  </div>
+                </div>
+              )}
+              {loanOption.closingTimeline && (
+                <div className={styles.factCard}>
+                  <div className={styles.factLabel}>Typical Timeline</div>
+                  <div className={styles.factValue}>
+                    <Icon icon={FaClock} size="md" className={styles.calculatorIcon} />
+                    {loanOption.closingTimeline}
+                  </div>
+                </div>
+              )}
+            </div>
+          </section>
+        )}
+
         {/* Overview Section */}
         <section className={styles.section}>
           <h2 className={styles.sectionTitle}>Overview</h2>
@@ -123,6 +171,25 @@ export default async function LoanOptionPage({ params }: LoanOptionPageProps) {
           </ul>
         </section>
 
+        {/* Who Qualifies Section */}
+        {loanOption.whoQualifies && loanOption.whoQualifies.length > 0 && (
+          <section className={styles.section}>
+            <h2 className={styles.sectionTitle}>Who Qualifies?</h2>
+            <ul className={styles.list}>
+              {loanOption.whoQualifies.map((item, index) => (
+                <li key={index} className={styles.listItem}>
+                  <Icon
+                    icon={FaCircle}
+                    size="sm"
+                    className={styles.bulletIcon}
+                  />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
         {/* Requirements Section */}
         <section className={styles.section}>
           <h2 className={styles.sectionTitle}>Requirements</h2>
@@ -148,25 +215,120 @@ export default async function LoanOptionPage({ params }: LoanOptionPageProps) {
           buttonHref="/pre-qualify"
         />
 
+        {/* Pros & Cons Section */}
+        {((loanOption.pros && loanOption.pros.length > 0) || (loanOption.cons && loanOption.cons.length > 0)) && (
+          <section className={styles.section}>
+            <h2 className={styles.sectionTitle}>Pros & Cons</h2>
+            <div className={styles.prosConsGrid}>
+              {loanOption.pros && loanOption.pros.length > 0 && (
+                <div className={styles.proCard}>
+                  <div className={styles.proTitle}>
+                    <Icon icon={FaCheck} size="md" />
+                    Advantages
+                  </div>
+                  <ul className={styles.list}>
+                    {loanOption.pros.map((pro, index) => (
+                      <li key={`pro-${index}`} className={styles.listItem}>
+                        <Icon icon={FaCircle} size="sm" className={styles.blackBullet} />
+                        <span>{pro}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {loanOption.cons && loanOption.cons.length > 0 && (
+                <div className={styles.conCard}>
+                  <div className={styles.conTitle}>
+                    <Icon icon={FaTimes} size="md" />
+                    Drawbacks
+                  </div>
+                  <ul className={styles.list}>
+                    {loanOption.cons.map((con, index) => (
+                      <li key={`con-${index}`} className={styles.listItem}>
+                        <Icon icon={FaCircle} size="sm" className={styles.blackBullet} />
+                        <span>{con}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </section>
+        )}
+
+        {/* What to Expect Timeline Section */}
+        {loanOption.whatToExpect && loanOption.whatToExpect.length > 0 && (
+          <section className={styles.section}>
+            <h2 className={styles.sectionTitle}>What to Expect</h2>
+            <div className={styles.timelineList}>
+              {loanOption.whatToExpect.map((step, index) => (
+                <div key={index} className={styles.timelineItem}>
+                  {step}
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Compare Loan Options Section */}
+        {loanOption.comparison && loanOption.comparison.length > 0 && (
+          <section className={styles.section}>
+            <h2 className={styles.sectionTitle}>Compare Loan Options</h2>
+            <div className={styles.comparisonGrid}>
+              {loanOption.comparison.map((comp, index) => (
+                <div key={index} className={styles.compareCard}>
+                  <div className={styles.compareTitle}>
+                    <Icon icon={FaExchangeAlt} size="md" className={styles.calculatorIcon} />
+                    {comp.title}
+                  </div>
+                  <p className={styles.compareDesc}>{comp.description}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* FAQs Section */}
+        {loanOption.faqs && loanOption.faqs.length > 0 && (
+          <section className={styles.section}>
+            <h2 className={styles.sectionTitle}>Frequently Asked Questions</h2>
+            <div>
+              {loanOption.faqs.map((faq, index) => (
+                <div key={index} className={styles.faqItem}>
+                  <div className={styles.faqQuestion}>
+                    <Icon icon={FaQuestionCircle} size="md" className={styles.calculatorIcon} />
+                    <span>{faq.question}</span>
+                  </div>
+                  <div className={styles.faqAnswer}>
+                    {faq.answer}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
         {/* Ideal For Section */}
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Ideal For</h2>
-          <ul className={styles.list}>
-            {loanOption.idealFor.map((item, index) => (
-              <li key={index} className={styles.listItem}>
-                <Icon
-                  icon={FaCircle}
-                  size="sm"
-                  className={styles.bulletIcon}
-                />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
+        {loanOption.idealFor && loanOption.idealFor.length > 0 && (
+          <section className={styles.section}>
+            <h2 className={styles.sectionTitle}>Ideal For</h2>
+            <ul className={styles.list}>
+              {loanOption.idealFor.map((item, index) => (
+                <li key={index} className={styles.listItem}>
+                  <Icon
+                    icon={FaCircle}
+                    size="sm"
+                    className={styles.bulletIcon}
+                  />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         {/* Related Calculators Section */}
-        {loanOption.relatedCalculators.length > 0 && (
+        {loanOption.relatedCalculators && loanOption.relatedCalculators.length > 0 && (
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Related Calculators</h2>
             <p className={styles.paragraph}>
@@ -274,6 +436,27 @@ export default async function LoanOptionPage({ params }: LoanOptionPageProps) {
           })
         }}
       />
+
+      {/* FAQ Structured Data */}
+      {loanOption.faqs && loanOption.faqs.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": loanOption.faqs.map((faq) => ({
+                "@type": "Question",
+                "name": faq.question,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": faq.answer
+                }
+              }))
+            })
+          }}
+        />
+      )}
     </>
   )
 }
