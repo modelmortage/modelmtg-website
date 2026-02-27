@@ -4,6 +4,7 @@ import ContentPage from '@/components/shared/ContentPage'
 import { loanOptions } from '@/lib/content/loanOptions'
 import Link from 'next/link'
 import InlineCta from '@/components/shared/InlineCta'
+import { safeJsonLd } from '@/lib/safeJsonLd'
 import { Card, Icon, Button } from '@/components/design-system'
 import {
   FaCheckCircle,
@@ -410,7 +411,7 @@ export default async function LoanOptionPage({ params }: LoanOptionPageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+          __html: safeJsonLd({
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             "itemListElement": [
@@ -442,7 +443,7 @@ export default async function LoanOptionPage({ params }: LoanOptionPageProps) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
+            __html: safeJsonLd({
               "@context": "https://schema.org",
               "@type": "FAQPage",
               "mainEntity": loanOption.faqs.map((faq) => ({
