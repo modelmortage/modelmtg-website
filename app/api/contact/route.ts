@@ -1,25 +1,9 @@
+export const runtime = 'edge'
+
 import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
 
-// ─── In-memory rate limiter ────────────────────────────────────────────────
-// Simple per-IP window: max 5 submissions per 10 minutes
-const WINDOW_MS = 10 * 60 * 1000
-const MAX_REQUESTS = 5
-const ipMap = new Map<string, { count: number; resetAt: number }>()
-
-function isRateLimited(ip: string): boolean {
-    const now = Date.now()
-    const entry = ipMap.get(ip)
-    if (!entry || now > entry.resetAt) {
-        ipMap.set(ip, { count: 1, resetAt: now + WINDOW_MS })
-        return false
-    }
-    if (entry.count >= MAX_REQUESTS) return true
-    entry.count++
-    return false
-}
-
-// ─── Zod schema ───────────────────────────────────────────────────────────
+// ─── Zod schema ────────────────────────────────────────────────────────────
 const ContactSchema = z.object({
     full_name: z.string().min(1).max(120),
     email: z.string().email().max(254),
@@ -38,6 +22,7 @@ const ContactSchema = z.object({
         (val) => (val === null || val === '' ? undefined : val),
         z.string().max(250).optional()
     ),
+    // Honeypot — filled by bots, empty for humans
     company: z.preprocess(
         (val) => (val === null ? undefined : val),
         z.string().max(0).optional()
@@ -46,15 +31,17 @@ const ContactSchema = z.object({
 
 // ─── Route handler ─────────────────────────────────────────────────────────
 export async function POST(req: NextRequest) {
-    // 1. Rate limiting
-    const forwarded = req.headers.get('x-forwarded-for')
-    const ip = forwarded ? forwarded.split(',')[0].trim() : 'unknown'
+    // 1. Origin check — block non-browser callers
+    const origin = req.headers.get('origin') ?? ''
+    const referer = req.headers.get('referer') ?? ''
+    const isAllowedOrigin =
+        origin.includes('modelmtg.com') ||
+        origin.includes('localhost') ||
+        referer.includes('modelmtg.com') ||
+        referer.includes('localhost')
 
-    if (isRateLimited(ip)) {
-        return NextResponse.json(
-            { error: 'Too many requests. Please try again later.' },
-            { status: 429 }
-        )
+    if (!isAllowedOrigin) {
+        return NextResponse.json({ error: 'Forbidden.' }, { status: 403 })
     }
 
     // 2. Parse & validate body
@@ -73,13 +60,12 @@ export async function POST(req: NextRequest) {
         )
     }
 
-    // 3. Honeypot check — bots fill this field, humans don't
+    // 3. Honeypot check — silently accept bots so they think they succeeded
     if (parsed.data.company) {
-        // Silently accept so bots think they succeeded
         return NextResponse.json({ ok: true })
     }
 
-    // 4. Forward to Supabase Edge Function (server-side only)
+    // 4. Forward to Supabase Edge Function (server-side only, never exposed to browser)
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
     const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 

@@ -1,3 +1,5 @@
+export const runtime = 'edge'
+
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import ContentPage from '@/components/shared/ContentPage'
