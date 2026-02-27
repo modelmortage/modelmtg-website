@@ -1,6 +1,24 @@
 import { MetadataRoute } from 'next'
-import { getAllPosts } from '@/lib/blog'
 import { loanOptions } from '@/lib/content/loanOptions'
+
+export const runtime = 'edge'
+
+// Static blog slugs — update this list when adding new blog posts
+const blogSlugs: { slug: string; publishDate: string }[] = [
+  { slug: 'complete-guide-to-va-loans', publishDate: '2024-01-01' },
+  { slug: 'credit-score-impact-on-mortgage-rates', publishDate: '2024-01-01' },
+  { slug: 'down-payment-options-and-strategies', publishDate: '2024-01-01' },
+  { slug: 'fha-vs-conventional-loans-which-is-right', publishDate: '2024-01-01' },
+  { slug: 'first-time-homebuyer-checklist-houston', publishDate: '2024-01-01' },
+  { slug: 'first-time-homebuyer-mistakes-to-avoid', publishDate: '2024-01-01' },
+  { slug: 'how-much-house-can-i-afford', publishDate: '2024-01-01' },
+  { slug: 'how-refinancing-works-in-texas', publishDate: '2024-01-01' },
+  { slug: 'refinancing-your-mortgage-when-does-it-make-sense', publishDate: '2024-01-01' },
+  { slug: 'step-by-step-guide-shopping-new-home', publishDate: '2024-01-01' },
+  { slug: 'understanding-closing-costs-what-to-expect', publishDate: '2024-01-01' },
+  { slug: 'understanding-mortgage-pre-approval', publishDate: '2024-01-01' },
+  { slug: 'understanding-mortgage-rates-how-they-work', publishDate: '2024-01-01' },
+]
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://modelmtg.com'
@@ -113,6 +131,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
+    {
+      url: `${baseUrl}/calculator/fix-flip`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
   ]
 
   // Team member pages
@@ -147,9 +171,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
-  // Individual blog posts
-  const posts = getAllPosts()
-  const blogPostPages: MetadataRoute.Sitemap = posts.map((post) => ({
+  // Individual blog posts (static list — no fs access needed for Edge Runtime)
+  const blogPostPages: MetadataRoute.Sitemap = blogSlugs.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
     lastModified: new Date(post.publishDate),
     changeFrequency: 'monthly' as const,
