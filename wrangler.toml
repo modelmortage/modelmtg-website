@@ -1,0 +1,6 @@
+# wrangler.toml for Cloudflare Pages
+# Enables Node.js compatibility so that Node.js built-in modules (like
+# async_hooks, used by @next/request-context) are available at runtime
+# in the Cloudflare Workers runtime.
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]

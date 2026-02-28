@@ -8,11 +8,12 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "pages:build": "npx vercel build && node scripts/patch-cf-output.js && npx @cloudflare/next-on-pages --skip-build",
+    "pages:build": "npx @cloudflare/next-on-pages",
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "postinstall": "node scripts/patch-next-on-pages.js"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
