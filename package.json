@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "pages:build": "npx @cloudflare/next-on-pages",
+    "pages:build": "npx vercel build && node scripts/patch-cf-output.js && npx @cloudflare/next-on-pages --skip-build",
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
