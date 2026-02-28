@@ -22,9 +22,9 @@ import {
 import styles from './LoanOptionPage.module.css'
 
 interface LoanOptionPageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 // Generate static params for all loan options

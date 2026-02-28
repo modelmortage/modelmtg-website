@@ -11,10 +11,10 @@ import { FaCheckCircle, FaCircle } from 'react-icons/fa'
 import styles from '@/app/loan-options/[slug]/LoanOptionPage.module.css'
 
 interface LocationServicePageProps {
-    params: {
+    params: Promise<{
         city: string
         service: string
-    }
+    }>
 }
 
 // Helper to format city slugs (e.g., 'the-woodlands' -> 'The Woodlands')
