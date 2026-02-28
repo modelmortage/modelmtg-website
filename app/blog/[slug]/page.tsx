@@ -13,6 +13,7 @@ import { safeJsonLd } from '@/lib/safeJsonLd'
 import styles from './BlogPostPage.module.css'
 
 export const dynamic = 'force-static'
+export const dynamicParams = false
 
 interface BlogPostPageProps {
   params: Promise<{

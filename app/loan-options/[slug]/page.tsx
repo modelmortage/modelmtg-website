@@ -22,6 +22,7 @@ import {
 import styles from './LoanOptionPage.module.css'
 
 export const dynamic = 'force-static'
+export const dynamicParams = false
 
 interface LoanOptionPageProps {
   params: Promise<{
