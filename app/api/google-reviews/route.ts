@@ -1,7 +1,5 @@
 import { NextResponse } from 'next/server'
 
-export const runtime = 'edge'
-
 // Simple in-memory cache
 let reviewsCache: { data: any; timestamp: number } | null = null
 const CACHE_DURATION = 5 * 60 * 1000 // 5 minutes
