@@ -13,8 +13,6 @@ import { HoustonNuances } from '@/src/components/home/HoustonNuances'
 import { LocationMap } from '@/src/components/home/LocationMap'
 import { FinalCta } from '@/src/components/home/FinalCta'
 
-export const runtime = 'edge'
-
 export const metadata: Metadata = {
     title: 'Model Mortgage | Houston Mortgage Broker | Home Loans & Refinancing',
     description: 'Expert mortgage broker in Houston, TX. Get personalized home loan solutions including FHA, VA, conventional, jumbo loans, and refinancing. Matthew Bramow provides expert guidance. Call (832) 727-4128.',

@@ -1,8 +1,6 @@
 import { MetadataRoute } from 'next'
 import { loanOptions } from '@/lib/content/loanOptions'
 
-export const runtime = 'edge'
-
 // Static blog slugs — update this list when adding new blog posts
 const blogSlugs: { slug: string; publishDate: string }[] = [
   { slug: 'complete-guide-to-va-loans', publishDate: '2024-01-01' },
