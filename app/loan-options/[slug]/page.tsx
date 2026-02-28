@@ -21,6 +21,8 @@ import {
 } from 'react-icons/fa'
 import styles from './LoanOptionPage.module.css'
 
+export const dynamic = 'force-static'
+
 interface LoanOptionPageProps {
   params: Promise<{
     slug: string

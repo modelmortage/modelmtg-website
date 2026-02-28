@@ -12,6 +12,8 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 import { safeJsonLd } from '@/lib/safeJsonLd'
 import styles from './BlogPostPage.module.css'
 
+export const dynamic = 'force-static'
+
 interface BlogPostPageProps {
   params: Promise<{
     slug: string
