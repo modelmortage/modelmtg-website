@@ -7,7 +7,10 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build && node scripts/cleanup-cache.js",
+    "build": "npx @cloudflare/next-on-pages",
+    "preview": "npm run build && wrangler pages dev",
+    "deploy": "npm run build && wrangler pages deploy",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv env.d.ts",
     "start": "next start",
     "lint": "next lint"
   },
@@ -31,6 +34,7 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
+    "@cloudflare/next-on-pages": "^1",
     "@fast-check/jest": "^2.1.1",
     "@opennextjs/cloudflare": "latest",
     "@tailwindcss/postcss": "^4.1.18",
