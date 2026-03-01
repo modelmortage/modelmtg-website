@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "pages:build": "npx @cloudflare/next-on-pages",
+    "pages:build": "open-next build --minify",
     "start": "next start",
     "lint": "next lint"
   },
@@ -32,7 +32,7 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
-    "@cloudflare/next-on-pages": "^1",
+    "open-next": "^3",
     "@opennextjs/cloudflare": "latest",
     "@fast-check/jest": "^2.1.1",
     "@tailwindcss/postcss": "^4.1.18",
