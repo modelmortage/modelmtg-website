@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createMockRates, RateResponse } from '@/src/lib/rates/provider';
 
+export const runtime = 'edge';
+
 /**
  * GET /api/tx-rates
  *
