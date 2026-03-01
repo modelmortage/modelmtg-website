@@ -8,8 +8,6 @@ import { Card, Icon, Button } from '@/components/design-system'
 import { FaCheckCircle, FaCircle } from 'react-icons/fa'
 import styles from '@/app/loan-options/[slug]/LoanOptionPage.module.css'
 
-export const runtime = 'edge'
-
 interface LocationServicePageProps {
     params: Promise<{
         city: string
