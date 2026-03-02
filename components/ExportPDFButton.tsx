@@ -48,16 +48,49 @@ export default function ExportPDFButton({ getCalculatorData, className = '' }: E
       const pdfUrl = await exportCalculatorPDF(calculatorData)
       console.log('PDF URL received:', pdfUrl)
 
-      // Download the PDF
-      const link = document.createElement('a')
-      link.href = pdfUrl
-      link.download = `${calculatorData.calculatorType}-calculator-${Date.now()}.pdf`
-      link.target = '_blank' // Open in new tab as fallback
-      document.body.appendChild(link)
-      link.click()
-      document.body.removeChild(link)
+      // Mobile-friendly download approach
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+      const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent)
+      
+      if (isIOS) {
+        // iOS: Open in new window which allows viewing and sharing
+        const newWindow = window.open(pdfUrl, '_blank')
+        if (!newWindow) {
+          // Fallback if popup blocked
+          window.location.href = pdfUrl
+        }
+      } else if (isMobile) {
+        // Android: Try download, fallback to opening
+        try {
+          const response = await fetch(pdfUrl)
+          const blob = await response.blob()
+          const blobUrl = URL.createObjectURL(blob)
+          
+          const link = document.createElement('a')
+          link.href = blobUrl
+          link.download = `${calculatorData.calculatorType}-calculator-${Date.now()}.pdf`
+          document.body.appendChild(link)
+          link.click()
+          document.body.removeChild(link)
+          
+          // Clean up blob URL after a delay
+          setTimeout(() => URL.revokeObjectURL(blobUrl), 100)
+        } catch (fetchError) {
+          // Fallback: open in new tab
+          window.open(pdfUrl, '_blank')
+        }
+      } else {
+        // Desktop: Use download link
+        const link = document.createElement('a')
+        link.href = pdfUrl
+        link.download = `${calculatorData.calculatorType}-calculator-${Date.now()}.pdf`
+        link.target = '_blank'
+        document.body.appendChild(link)
+        link.click()
+        document.body.removeChild(link)
+      }
 
-      console.log('Download link clicked')
+      console.log('Download initiated')
 
       // Refresh rate limit info after successful export
       // TEMPORARILY DISABLED FOR TESTING
