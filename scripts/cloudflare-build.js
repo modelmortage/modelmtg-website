@@ -16,12 +16,13 @@ try {
   console.log('📦 Running opennextjs-cloudflare build...');
   execSync('npx opennextjs-cloudflare build', { stdio: 'inherit' });
 
-  // Clean up cache files that exceed Cloudflare's 25MB limit
+  // Clean up cache directory that exceeds Cloudflare's 25MB limit
   console.log('\n🧹 Cleaning up cache files...');
-  const cacheDir = path.join(process.cwd(), '.open-next', 'assets', 'cache');
+  
+  const cacheDir = path.join(process.cwd(), '.open-next', 'cache');
   if (fs.existsSync(cacheDir)) {
     fs.rmSync(cacheDir, { recursive: true, force: true });
-    console.log('✓ Removed .open-next/assets/cache/');
+    console.log(`✓ Removed .open-next/cache/`);
   }
 
   console.log('\n✅ Build completed successfully!');
