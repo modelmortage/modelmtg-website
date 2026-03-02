@@ -13,7 +13,8 @@
     "deploy": "npm run pages:build && wrangler pages deploy .open-next/worker",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv env.d.ts",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "node scripts/patch-next-on-pages.js"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
