@@ -1,3 +1,17 @@
+# Build caches
 .next/cache/
 cache/
-.open-next/
+.open-next/assets/cache/
+**/.next/cache/
+**/cache/webpack/
+
+# Development files
+node_modules/
+.git/
+.env*
+!.env.example
+
+# Test files
+**/__tests__/
+*.test.*
+*.spec.*
