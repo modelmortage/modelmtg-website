@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "pages:build": "opennextjs-cloudflare build",
+    "pages:build": "node scripts/cloudflare-build.js",
     "preview": "npm run pages:build && wrangler pages dev .open-next/worker",
     "deploy": "npm run pages:build && wrangler pages deploy .open-next/worker",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv env.d.ts",
