@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
 
+export const runtime = 'edge'
+
 // ─── Zod schema ────────────────────────────────────────────────────────────
 const ContactSchema = z.object({
     full_name: z.string().min(1).max(120),
