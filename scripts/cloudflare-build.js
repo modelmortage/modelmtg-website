@@ -9,21 +9,37 @@ const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
-console.log('🚀 Building for Cloudflare Pages...\n');
+function findAndRemoveCacheDirs(dir) {
+  if (!fs.existsSync(dir)) return;
+  
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+  
+  for (const entry of entries) {
+    const fullPath = path.join(dir, entry.name);
+    
+    if (entry.isDirectory()) {
+      if (entry.name === 'cache') {
+        // Remove cache directory
+        fs.rmSync(fullPath, { recursive: true, force: true });
+        console.log(`✓ Removed ${path.relative(process.cwd(), fullPath)}`);
+      } else {
+        // Recursively search subdirectories
+        findAndRemoveCacheDirs(fullPath);
+      }
+    }
+  }
+}
+
+console.log('� Building for Cloudflare Pages...\n');
 
 try {
   // Run OpenNext Cloudflare build
   console.log('📦 Running opennextjs-cloudflare build...');
   execSync('npx opennextjs-cloudflare build', { stdio: 'inherit' });
 
-  // Clean up cache directory that exceeds Cloudflare's 25MB limit
+  // Clean up all cache directories that exceed Cloudflare's 25MB limit
   console.log('\n🧹 Cleaning up cache files...');
-  
-  const cacheDir = path.join(process.cwd(), '.open-next', 'cache');
-  if (fs.existsSync(cacheDir)) {
-    fs.rmSync(cacheDir, { recursive: true, force: true });
-    console.log(`✓ Removed .open-next/cache/`);
-  }
+  findAndRemoveCacheDirs(path.join(process.cwd(), '.open-next'));
 
   console.log('\n✅ Build completed successfully!');
   console.log('📁 Output directory: .open-next/worker');
