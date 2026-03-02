@@ -36,8 +36,10 @@ export async function POST(req: NextRequest) {
     const referer = req.headers.get('referer') ?? ''
     const isAllowedOrigin =
         origin.includes('modelmtg.com') ||
+        origin.includes('pages.dev') ||
         origin.includes('localhost') ||
         referer.includes('modelmtg.com') ||
+        referer.includes('pages.dev') ||
         referer.includes('localhost')
 
     if (!isAllowedOrigin) {
