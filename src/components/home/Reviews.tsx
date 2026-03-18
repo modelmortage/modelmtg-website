@@ -115,7 +115,7 @@ export function Reviews({ reviews: initialReviews = [] }: ReviewsProps) {
         <div className={styles.ratingPanel}>
           <div className={styles.labelContainer}>
             <span className={styles.labelLine}></span>
-            <span className={styles.label}>Trusted by Houston Homebuyers</span>
+            <span className={styles.label}>Trusted by Homebuyers and Homeowners</span>
           </div>
 
           <div className={styles.ratingContainer}>
@@ -135,7 +135,7 @@ export function Reviews({ reviews: initialReviews = [] }: ReviewsProps) {
 
           <div className={styles.quoteSection}>
             <p className={styles.tagline}>
-              "Model Mortgage has consistently set the standard for high-net-worth lending in the Houston market."
+              "Model Mortgage has consistently set the standard for professional mortgage lending and client service."
             </p>
             <div className={styles.verifiedBadge}>
               <div className={styles.googleIcon}>

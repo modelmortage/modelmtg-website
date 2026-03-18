@@ -23,7 +23,7 @@ export function LocationMap() {
           >
             <span className={styles.label}>Visit Us</span>
             <h2 id="location-heading" className={styles.title}>
-              Our Houston Location
+              Office Location
             </h2>
             <div className={styles.divider}></div>
             <address className={styles.address}>

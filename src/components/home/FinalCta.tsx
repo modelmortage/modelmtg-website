@@ -57,7 +57,7 @@ export function FinalCta() {
         </motion.h2>
 
         <motion.p className={styles.subtext} variants={itemVariants}>
-          Request a private consultation with our Houston mortgage team to explore customized strategies for your next acquisition.
+          Request a private consultation to explore customized mortgage strategies for your next purchase or refinance.
         </motion.p>
 
         <motion.div className={styles.cardGroup} variants={itemVariants}>

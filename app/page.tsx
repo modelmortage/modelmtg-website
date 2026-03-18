@@ -9,14 +9,14 @@ import { Reviews } from '@/src/components/home/Reviews'
 
 import { Resources } from '@/src/components/home/Resources'
 import { LocalAreas } from '@/src/components/home/LocalAreas'
-import { HoustonNuances } from '@/src/components/home/HoustonNuances'
+import { MortgageInsights } from@/src/components/home/MortgageInsightsghts'
 import { LocationMap } from '@/src/components/home/LocationMap'
 import { FinalCta } from '@/src/components/home/FinalCta'
 
 export const metadata: Metadata = {
-    title: 'Model Mortgage | Houston Mortgage Broker | Home Loans & Refinancing',
-    description: 'Expert mortgage broker in Houston, TX. Get personalized home loan solutions including FHA, VA, conventional, jumbo loans, and refinancing. Matthew Bramow provides expert guidance. Call (832) 727-4128.',
-    keywords: 'Houston mortgage broker, home loans Houston, mortgage rates Texas, FHA loans, VA loans, refinancing Houston, jumbo loans, Matthew Bramow, Model Mortgage, Spring TX',
+    title: 'Model Mortgage | Trusted Mortgage Lending Solutions',
+    description: 'Expert mortgage lender providing personalized home loan solutions including FHA, VA, conventional, jumbo loans, and refinancing. Matthew Bramow provides expert guidance. Call (832) 727-4128.',
+    keywords: 'mortgage lender, home loans, mortgage rates, FHA loans, VA loans, refinancing, jumbo loans, Matthew Bramow, Model Mortgage, Texas mortgage',
     alternates: {
         canonical: 'https://modelmtg.com',
     },
@@ -39,7 +39,7 @@ export default function Home() {
 
                 <Reviews />
 
-                <HoustonNuances />
+                <MortgageInsights />
                 <LocalAreas />
                 <LocationMap />
                 <Resources />

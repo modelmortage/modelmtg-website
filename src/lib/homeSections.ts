@@ -8,23 +8,23 @@
 
 export const homeSections = {
   hero: {
-    headline: "Houston Mortgage Lender for Home Purchase & Refinance",
-    subheadline: "Helping homebuyers structure smart financing with competitive pricing, efficient approvals, and informed market insight.",
+    headline: "Mortgage Broker for Home Purchase & Refinance",
+    subheadline: "Helping homebuyers and homeowners structure smart financing with competitive pricing, efficient approvals, and clear lending strategy.",
     bullets: [
       "Personalized mortgage advice",
       "Access to multiple loan programs",
-      "Local Houston expertise"
+      "Market-aware lending strategy"
     ],
     trustPoints: [
       "Personalized Mortgage Advice—We walk you through every step — from pre-approval to closing.",
       "Access to Multiple Loan Programs—Conventional, FHA, VA, jumbo, and investor loan options.",
-      "Local Market Expertise—We understand regional property taxes, insurance variables, and housing trends."
+      "Market-Aware Lending Strategy—We evaluate taxes, insurance, loan structure, and market conditions to help you make informed financing decisions."
     ]
   },
 
   credibilityStrip: {
-    title: "Trusted by Houston Buyers",
-    tagline: "NMLS Licensed • Google Rated • Local Advisory"
+    title: "Trusted by Homebuyers and Homeowners",
+    tagline: "NMLS Licensed • Google Rated • Professional Advisory"
   },
 
   pillars: {
@@ -40,8 +40,8 @@ export const homeSections = {
         text: "Access to diverse loan programs. We evaluate which structure works best for your unique scenario."
       },
       {
-        title: "Houston Expertise",
-        text: "Local market knowledge combined with clear communication ensures you understand every step."
+        title: "Market Expertise",
+        text: "Lending knowledge combined with clear communication ensures you understand every step."
       }
     ]
   },
@@ -90,8 +90,8 @@ export const homeSections = {
   },
 
   reviews: {
-    title: "What Clients Say",
-    subtitle: "Trusted by Houston buyers who value clarity and professionalism."
+    title: "Client Experiences",
+    subtitle: "Trusted by clients who value clarity and professionalism."
   },
 
   transactions: {
@@ -127,12 +127,12 @@ export const homeSections = {
   },
 
   localAreas: {
-    title: "Serving Greater Houston",
-    intro: "Proudly serving Houston and surrounding areas with personalized mortgage guidance."
+    title: "Serving Clients Across Texas",
+    intro: "Licensed mortgage solutions across Texas with personalized guidance."
   },
 
   finalCta: {
     headline: "Begin the Conversation",
-    subheadline: "Request a private consultation with our Houston mortgage team."
+    subheadline: "Request a private consultation to explore customized mortgage strategies for your next purchase or refinance."
   }
 } as const;

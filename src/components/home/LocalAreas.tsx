@@ -62,13 +62,13 @@ export function LocalAreas() {
             <div className={styles.headerContent}>
               <span className={styles.label}>Locations</span>
               <h2 className={styles.title}>
-                Serving Houston's <br />
-                <span className={styles.titleItalic}>Premier</span> Communities
+                Serving Clients <br />
+                <span className={styles.titleItalic}>Across</span> Texas
               </h2>
             </div>
             <div className={styles.divider}></div>
             <p className={styles.description}>
-              Exceptional mortgage solutions tailored for the most prestigious enclaves across the Greater Houston area. Institutional precision, local expertise.
+              Exceptional mortgage solutions tailored for homebuyers and property owners throughout Texas. Institutional precision, market expertise.
             </p>
           </motion.div>
 

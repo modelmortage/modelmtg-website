@@ -1,10 +1,10 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import styles from './HoustonNuances.module.css'
+import styles from './MortgageInsights.module.css'
 import { FaFileInvoiceDollar, FaWater, FaHome } from 'react-icons/fa'
 
-export function HoustonNuances() {
+export function MortgageInsights() {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -38,7 +38,7 @@ export function HoustonNuances() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          Local Insight for <span className={styles.accent}>Houston Buyers.</span>
+          Mortgage Insights <span className={styles.accent}>That Matter.</span>
         </motion.h2>
 
         <motion.div 
@@ -59,7 +59,7 @@ export function HoustonNuances() {
             </div>
             <h3 className={styles.cardTitle}>PROPERTY TAXES</h3>
             <p className={styles.cardText}>
-              Texas property taxes are unique. We help you calculate true monthly costs including homestead exemptions and school district assessments.
+              We help you calculate true monthly ownership costs, including exemptions and local tax impacts.
             </p>
           </motion.div>
 
@@ -74,7 +74,7 @@ export function HoustonNuances() {
             </div>
             <h3 className={styles.cardTitle}>FLOOD ZONES</h3>
             <p className={styles.cardText}>
-              Essential guidance on FEMA maps, flood insurance requirements, and how different zones affect your lending eligibility.
+              Guidance on flood insurance requirements and lending considerations.
             </p>
           </motion.div>
 
@@ -89,7 +89,7 @@ export function HoustonNuances() {
             </div>
             <h3 className={styles.cardTitle}>HOA NAVIGATION</h3>
             <p className={styles.cardText}>
-              Understanding Houston's complex HOA landscape and how mandatory dues impact your debt-to-income ratios.
+              Understanding how HOA dues affect affordability and debt-to-income ratios.
             </p>
           </motion.div>
         </motion.div>

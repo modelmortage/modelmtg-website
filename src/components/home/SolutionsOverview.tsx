@@ -42,7 +42,7 @@ export function SolutionsOverview() {
     },
     {
       title: 'First-Time Home Buyer',
-      description: 'Programs designed to support new buyers entering the Houston market.',
+      description: 'Programs designed to support new buyers entering the housing market.',
       profile: 'Down Payment Assistance Options • Flexible Qualification • Education Programs',
       href: '/loan-options/conventional'
     },
@@ -130,7 +130,7 @@ export function SolutionsOverview() {
             Loan Options
           </motion.h1>
           <motion.p className={styles.description} variants={itemVariants}>
-            Strategic mortgage solutions tailored for Houston homebuyers and property owners.
+            Strategic mortgage solutions tailored for homebuyers, homeowners, and investors.
           </motion.p>
         </motion.header>
 
@@ -152,7 +152,7 @@ export function SolutionsOverview() {
                 Purchase Programs
               </motion.h2>
               <motion.p className={styles.categoryDescription} variants={itemVariants}>
-                Financing structured for primary residences, second homes, and investment properties across Houston.
+                Financing structured for primary residences, second homes, and investment properties.
               </motion.p>
             </div>
             <motion.div

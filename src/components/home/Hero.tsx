@@ -126,7 +126,7 @@ export function Hero() {
       <div className={styles.skylineContainer} ref={skylineRef}>
         <Image
           src="/skyline.jpg"
-          alt="Houston Skyline at Night"
+          alt="City Skyline at Night"
           fill
           className={styles.skylineImage}
           priority
@@ -144,7 +144,7 @@ export function Hero() {
           {/* Eyebrow with decorative line */}
           <div className={styles.eyebrowGroup} ref={eyebrowRef}>
             <div className={styles.eyebrowLine}></div>
-            <p className={styles.eyebrow}>Trusted Mortgage Guidance in Texas</p>
+            <p className={styles.eyebrow}>Trusted Mortgage Broker</p>
           </div>
 
           {/* Headline with italic accent */}
