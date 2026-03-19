@@ -40,16 +40,16 @@ export const siteData = {
     phone: "(832) 727-4128",
     email: "info@modelmortgage.com",
     address: {
-      street: "1177 West Loop South, Suite 1700",
+      street: "5251 Westheimer Rd. Suite 830",
       city: "Houston",
       state: "TX",
-      zip: "77027",
+      zip: "77056",
       country: "US",
-      fullAddress: "1177 West Loop South, Suite 1700, Houston, TX 77027",
+      fullAddress: "5251 Westheimer Rd. Suite 830, Houston, TX 77056",
     },
     coordinates: {
-      lat: 29.7589,
-      lng: -95.4086,
+      lat: 29.7409,
+      lng: -95.4618,
     },
   },
 
@@ -104,15 +104,15 @@ export const siteData = {
   serviceAreas: {
     primary: [
       "Houston",
-      "River Oaks",
-      "Memorial",
-      "The Heights",
-      "West University",
+      "Dallas",
+      "Austin",
+      "San Antonio",
+      "Fort Worth",
     ],
-    secondary: ["Sugar Land", "Katy", "Cypress", "Woodlands"],
+    secondary: ["Plano", "Arlington", "Corpus Christi", "El Paso", "Lubbock", "Irving"],
     state: ["Texas"],
     allFormatted:
-      "Houston, River Oaks, Memorial, The Heights, West University, Sugar Land, and Katy",
+      "Houston, Dallas, Austin, San Antonio, Fort Worth, and major cities across Texas",
   },
 
   // === LOAN PROGRAMS ===

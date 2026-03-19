@@ -29,38 +29,38 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(3px 3px at 5% 10%, rgba(197, 160, 89, 0.8), transparent 50%),
-    radial-gradient(2px 2px at 12% 25%, rgba(255, 255, 255, 0.7), transparent 50%),
-    radial-gradient(3px 3px at 20% 5%, rgba(197, 160, 89, 0.7), transparent 50%),
-    radial-gradient(2px 2px at 28% 15%, rgba(255, 255, 255, 0.6), transparent 50%),
-    radial-gradient(3px 3px at 35% 30%, rgba(197, 160, 89, 0.8), transparent 50%),
-    radial-gradient(2px 2px at 42% 10%, rgba(255, 255, 255, 0.7), transparent 50%),
-    radial-gradient(3px 3px at 50% 25%, rgba(197, 160, 89, 0.75), transparent 50%),
-    radial-gradient(2px 2px at 58% 5%, rgba(255, 255, 255, 0.65), transparent 50%),
-    radial-gradient(3px 3px at 65% 20%, rgba(197, 160, 89, 0.8), transparent 50%),
-    radial-gradient(2px 2px at 72% 35%, rgba(255, 255, 255, 0.7), transparent 50%),
-    radial-gradient(3px 3px at 80% 10%, rgba(197, 160, 89, 0.75), transparent 50%),
-    radial-gradient(2px 2px at 88% 25%, rgba(255, 255, 255, 0.65), transparent 50%),
-    radial-gradient(3px 3px at 95% 40%, rgba(197, 160, 89, 0.8), transparent 50%),
+    radial-gradient(5px 5px at 5% 10%, rgba(197, 160, 89, 0.8), transparent 50%),
+    radial-gradient(4px 4px at 12% 25%, rgba(255, 255, 255, 0.7), transparent 50%),
+    radial-gradient(5px 5px at 20% 5%, rgba(197, 160, 89, 0.7), transparent 50%),
+    radial-gradient(4px 4px at 28% 15%, rgba(255, 255, 255, 0.6), transparent 50%),
+    radial-gradient(5px 5px at 35% 30%, rgba(197, 160, 89, 0.8), transparent 50%),
+    radial-gradient(4px 4px at 42% 10%, rgba(255, 255, 255, 0.7), transparent 50%),
+    radial-gradient(5px 5px at 50% 25%, rgba(197, 160, 89, 0.75), transparent 50%),
+    radial-gradient(4px 4px at 58% 5%, rgba(255, 255, 255, 0.65), transparent 50%),
+    radial-gradient(5px 5px at 65% 20%, rgba(197, 160, 89, 0.8), transparent 50%),
+    radial-gradient(4px 4px at 72% 35%, rgba(255, 255, 255, 0.7), transparent 50%),
+    radial-gradient(5px 5px at 80% 10%, rgba(197, 160, 89, 0.75), transparent 50%),
+    radial-gradient(4px 4px at 88% 25%, rgba(255, 255, 255, 0.65), transparent 50%),
+    radial-gradient(5px 5px at 95% 40%, rgba(197, 160, 89, 0.8), transparent 50%),
 
-    radial-gradient(2px 2px at 8% 55%, rgba(255, 255, 255, 0.7), transparent 50%),
-    radial-gradient(3px 3px at 15% 70%, rgba(197, 160, 89, 0.75), transparent 50%),
-    radial-gradient(2px 2px at 22% 85%, rgba(255, 255, 255, 0.65), transparent 50%),
-    radial-gradient(3px 3px at 30% 60%, rgba(197, 160, 89, 0.8), transparent 50%),
-    radial-gradient(2px 2px at 38% 75%, rgba(255, 255, 255, 0.7), transparent 50%),
-    radial-gradient(3px 3px at 45% 90%, rgba(197, 160, 89, 0.75), transparent 50%),
-    radial-gradient(2px 2px at 52% 65%, rgba(255, 255, 255, 0.65), transparent 50%),
-    radial-gradient(3px 3px at 60% 80%, rgba(197, 160, 89, 0.8), transparent 50%),
-    radial-gradient(2px 2px at 68% 95%, rgba(255, 255, 255, 0.7), transparent 50%),
-    radial-gradient(3px 3px at 75% 55%, rgba(197, 160, 89, 0.75), transparent 50%),
-    radial-gradient(2px 2px at 82% 70%, rgba(255, 255, 255, 0.65), transparent 50%),
-    radial-gradient(3px 3px at 90% 85%, rgba(197, 160, 89, 0.8), transparent 50%),
-    radial-gradient(2px 2px at 98% 60%, rgba(255, 255, 255, 0.7), transparent 50%),
+    radial-gradient(4px 4px at 8% 55%, rgba(255, 255, 255, 0.7), transparent 50%),
+    radial-gradient(5px 5px at 15% 70%, rgba(197, 160, 89, 0.75), transparent 50%),
+    radial-gradient(4px 4px at 22% 85%, rgba(255, 255, 255, 0.65), transparent 50%),
+    radial-gradient(5px 5px at 30% 60%, rgba(197, 160, 89, 0.8), transparent 50%),
+    radial-gradient(4px 4px at 38% 75%, rgba(255, 255, 255, 0.7), transparent 50%),
+    radial-gradient(5px 5px at 45% 90%, rgba(197, 160, 89, 0.75), transparent 50%),
+    radial-gradient(4px 4px at 52% 65%, rgba(255, 255, 255, 0.65), transparent 50%),
+    radial-gradient(5px 5px at 60% 80%, rgba(197, 160, 89, 0.8), transparent 50%),
+    radial-gradient(4px 4px at 68% 95%, rgba(255, 255, 255, 0.7), transparent 50%),
+    radial-gradient(5px 5px at 75% 55%, rgba(197, 160, 89, 0.75), transparent 50%),
+    radial-gradient(4px 4px at 82% 70%, rgba(255, 255, 255, 0.65), transparent 50%),
+    radial-gradient(5px 5px at 90% 85%, rgba(197, 160, 89, 0.8), transparent 50%),
+    radial-gradient(4px 4px at 98% 60%, rgba(255, 255, 255, 0.7), transparent 50%),
 
-    radial-gradient(3px 3px at 3% 45%, rgba(197, 160, 89, 0.7), transparent 50%),
-    radial-gradient(2px 2px at 97% 90%, rgba(255, 255, 255, 0.6), transparent 50%);
+    radial-gradient(5px 5px at 3% 45%, rgba(197, 160, 89, 0.7), transparent 50%),
+    radial-gradient(4px 4px at 97% 90%, rgba(255, 255, 255, 0.6), transparent 50%);
   opacity: 1;
-  animation: dust 20s linear infinite;
+  animation: dust 15s ease-in-out infinite;
 }
 
 .successMessage {
@@ -129,15 +129,23 @@
 
 @keyframes dust {
   0% {
-    transform: translateY(0);
+    transform: translateY(0) translateX(0);
+  }
+
+  25% {
+    transform: translateY(-20px) translateX(10px);
   }
 
   50% {
-    transform: translateY(-14px);
+    transform: translateY(-30px) translateX(-10px);
+  }
+
+  75% {
+    transform: translateY(-20px) translateX(10px);
   }
 
   100% {
-    transform: translateY(0);
+    transform: translateY(0) translateX(0);
   }
 }
 
@@ -374,7 +382,7 @@
 
 @media (prefers-color-scheme: dark) {
   .formLabel {
-    color: #cbd5e1;
+    color: rgba(255, 255, 255, 0.9);
   }
 }
 
@@ -401,8 +409,8 @@
   .formInput,
   .formSelect,
   .formTextarea {
-    border-bottom-color: #334155;
-    color: #e2e8f0;
+    border-bottom-color: rgba(203, 213, 225, 0.4);
+    color: #ffffff;
   }
 }
 
@@ -415,7 +423,7 @@
 
   .formInput::placeholder,
   .formTextarea::placeholder {
-    color: rgba(148, 163, 184, 0.5);
+    color: rgba(203, 213, 225, 0.6);
   }
 }
 

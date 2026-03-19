@@ -1,7 +1,7 @@
 .sectionWrapper {
   position: relative;
   width: 100%;
-  padding: 100px 0;
+  padding: 75px 0;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -19,31 +19,31 @@
 }
 
 .headerContent {
-  margin-bottom: 60px;
+  margin-bottom: 45px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 30px;
+  padding-bottom: 22px;
 }
 
 .title {
   font-family: var(--font-serif);
-  font-size: clamp(3rem, 6vw, 5rem);
+  font-size: clamp(2.25rem, 6vw, 3.75rem);
   font-style: italic;
   font-weight: 400;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   color: #ffffff;
 }
 
 .description {
   font-family: var(--font-sans);
-  font-size: 1.1rem;
-  color: #a1a1a1;
+  font-size: 1rem;
+  color: #E2E8F0;
   max-width: 650px;
   line-height: 1.6;
 }
 
 .categorySection {
-  margin-top: 80px;
-  padding: 60px 40px;
+  margin-top: 60px;
+  padding: 45px 30px;
   border-radius: 8px;
   transition: background-color 0.3s ease;
 }
@@ -61,9 +61,9 @@
 
 .categoryTitle {
   font-family: var(--font-serif);
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
   font-weight: 400;
-  margin-bottom: 15px;
+  margin-bottom: 11px;
   color: #ffffff;
 }
 
@@ -77,11 +77,11 @@
 
 .categoryDescription {
   font-family: var(--font-sans);
-  font-size: 1rem;
-  color: #a1a1a1;
+  font-size: 0.95rem;
+  color: #E2E8F0;
   max-width: 650px;
   line-height: 1.6;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 .loanList {
@@ -92,7 +92,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  padding: 28px 0;
+  padding: 21px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
   text-decoration: none;
@@ -113,9 +113,9 @@
 
 .loanTitle {
   font-family: var(--font-serif);
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
   font-weight: 400;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   color: #ffffff;
 }
 
@@ -143,7 +143,7 @@
 }
 
 .dealSpecs {
-  color: #a1a1a1;
+  color: #E2E8F0;
   font-size: 0.85rem;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -165,8 +165,8 @@
 
 @media (max-width: 768px) {
   .categorySection {
-    padding: 40px 20px;
-    margin-top: 60px;
+    padding: 30px 15px;
+    margin-top: 45px;
   }
 
   .categorySection:first-of-type {
@@ -176,7 +176,7 @@
   .loanRow {
     flex-direction: column;
     align-items: flex-start;
-    gap: 20px;
+    gap: 15px;
   }
 
   .loanRow:hover {
@@ -201,9 +201,9 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 2rem;
+  gap: 1.5rem;
   transition: opacity 0.2s ease;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .accordionHeader:hover {

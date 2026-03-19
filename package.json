@@ -14,6 +14,8 @@
     "cf-typegen": "wrangler types --env-interface CloudflareEnv env.d.ts",
     "start": "next start",
     "lint": "next lint",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "postinstall": "node scripts/patch-next-on-pages.js"
   },
   "dependencies": {

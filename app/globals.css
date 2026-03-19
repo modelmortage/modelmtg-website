@@ -30,9 +30,9 @@
   /* Gold accent color */
 
   /* === TEXT - Refined Light Hierarchy === */
-  --mm-text: rgba(255, 255, 255, 0.78);
+  --mm-text: rgba(255, 255, 255, 0.95);
   /* Primary text */
-  --mm-text-subtle: rgba(255, 255, 255, 0.55);
+  --mm-text-subtle: rgba(255, 255, 255, 0.85);
   /* Secondary text */
 
   /* Borders & Dividers */

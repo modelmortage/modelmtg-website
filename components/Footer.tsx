@@ -101,8 +101,8 @@ export default function Footer() {
                             <span>matthew@modelmtg.com</span>
                         </a>
                         <p className={styles.address}>
-                            18 Augusta Pines Dr #203<br />
-                            Spring, TX 77389
+                            5251 Westheimer Rd. Suite 830<br />
+                            Houston, TX 77056
                         </p>
                         <div className={styles.socialIcons}>
                             <a

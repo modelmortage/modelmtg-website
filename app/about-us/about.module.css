@@ -1,9 +1,79 @@
 /* About Us Page */
 
 .main {
-    background: #000000;
+    background: #0a0a0a;
     color: #ffffff;
     min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Dust Effect Background */
+.main::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(5px 5px at 5% 10%, rgba(197, 160, 89, 0.6), transparent 50%),
+        radial-gradient(4px 4px at 12% 25%, rgba(255, 255, 255, 0.5), transparent 50%),
+        radial-gradient(5px 5px at 20% 5%, rgba(197, 160, 89, 0.5), transparent 50%),
+        radial-gradient(4px 4px at 28% 15%, rgba(255, 255, 255, 0.4), transparent 50%),
+        radial-gradient(5px 5px at 35% 30%, rgba(197, 160, 89, 0.6), transparent 50%),
+        radial-gradient(4px 4px at 42% 10%, rgba(255, 255, 255, 0.5), transparent 50%),
+        radial-gradient(5px 5px at 50% 25%, rgba(197, 160, 89, 0.55), transparent 50%),
+        radial-gradient(4px 4px at 58% 5%, rgba(255, 255, 255, 0.45), transparent 50%),
+        radial-gradient(5px 5px at 65% 20%, rgba(197, 160, 89, 0.6), transparent 50%),
+        radial-gradient(4px 4px at 72% 35%, rgba(255, 255, 255, 0.5), transparent 50%),
+        radial-gradient(5px 5px at 80% 10%, rgba(197, 160, 89, 0.55), transparent 50%),
+        radial-gradient(4px 4px at 88% 25%, rgba(255, 255, 255, 0.45), transparent 50%),
+        radial-gradient(5px 5px at 95% 40%, rgba(197, 160, 89, 0.6), transparent 50%),
+        radial-gradient(4px 4px at 8% 55%, rgba(255, 255, 255, 0.5), transparent 50%),
+        radial-gradient(5px 5px at 15% 70%, rgba(197, 160, 89, 0.55), transparent 50%),
+        radial-gradient(4px 4px at 22% 85%, rgba(255, 255, 255, 0.45), transparent 50%),
+        radial-gradient(5px 5px at 30% 60%, rgba(197, 160, 89, 0.6), transparent 50%),
+        radial-gradient(4px 4px at 38% 75%, rgba(255, 255, 255, 0.5), transparent 50%),
+        radial-gradient(5px 5px at 45% 90%, rgba(197, 160, 89, 0.55), transparent 50%),
+        radial-gradient(4px 4px at 52% 65%, rgba(255, 255, 255, 0.45), transparent 50%),
+        radial-gradient(5px 5px at 60% 80%, rgba(197, 160, 89, 0.6), transparent 50%),
+        radial-gradient(4px 4px at 68% 95%, rgba(255, 255, 255, 0.5), transparent 50%),
+        radial-gradient(5px 5px at 75% 55%, rgba(197, 160, 89, 0.55), transparent 50%),
+        radial-gradient(4px 4px at 82% 70%, rgba(255, 255, 255, 0.45), transparent 50%),
+        radial-gradient(5px 5px at 90% 85%, rgba(197, 160, 89, 0.6), transparent 50%),
+        radial-gradient(4px 4px at 98% 60%, rgba(255, 255, 255, 0.5), transparent 50%),
+        radial-gradient(5px 5px at 3% 45%, rgba(197, 160, 89, 0.5), transparent 50%),
+        radial-gradient(4px 4px at 97% 90%, rgba(255, 255, 255, 0.4), transparent 50%);
+    opacity: 1;
+    animation: dust 15s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes dust {
+    0% {
+        transform: translateY(0) translateX(0);
+    }
+
+    25% {
+        transform: translateY(-20px) translateX(10px);
+    }
+
+    50% {
+        transform: translateY(-30px) translateX(-10px);
+    }
+
+    75% {
+        transform: translateY(-20px) translateX(10px);
+    }
+
+    100% {
+        transform: translateY(0) translateX(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .main::before {
+        animation: none;
+    }
 }
 
 /* Hero Section */
@@ -11,6 +81,8 @@
     padding: 10rem 2rem 6rem;
     text-align: left;
     border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+    position: relative;
+    z-index: 1;
 }
 
 @media (max-width: 767px) {
@@ -67,7 +139,7 @@
 .heroSubtitle {
     font-size: 1.125rem;
     line-height: 1.6;
-    color: #a0a0a0;
+    color: rgba(255, 255, 255, 0.85);
     font-weight: 300;
     max-width: 700px;
     margin: 0;
@@ -82,6 +154,8 @@
 /* Mission Section */
 .missionSection {
     padding: 8rem 2rem;
+    position: relative;
+    z-index: 1;
 }
 
 @media (max-width: 767px) {
@@ -138,7 +212,7 @@
     gap: 1.5rem;
     font-size: 1rem;
     line-height: 1.8;
-    color: #a0a0a0;
+    color: rgba(255, 255, 255, 0.8);
     font-weight: 300;
 }
 
@@ -196,15 +270,17 @@
 .approachItemText {
     font-size: 0.9375rem;
     line-height: 1.6;
-    color: #a0a0a0;
+    color: rgba(255, 255, 255, 0.75);
     font-weight: 300;
 }
 
 /* Expertise Section */
 .expertiseSection {
     padding: 8rem 2rem;
-    background: #0a0a0a;
+    background: rgba(0, 0, 0, 0.4);
     border-top: 1px solid rgba(197, 160, 89, 0.2);
+    position: relative;
+    z-index: 1;
 }
 
 @media (max-width: 767px) {
@@ -254,14 +330,17 @@
 
 .expertiseCard {
     padding: 2.5rem;
-    border: 1px solid rgba(197, 160, 89, 0.15);
-    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(197, 160, 89, 0.2);
+    background: rgba(10, 10, 10, 0.6);
+    backdrop-filter: blur(10px);
     transition: all 0.3s ease;
 }
 
 .expertiseCard:hover {
-    border-color: #c5a059;
+    border-color: rgba(197, 160, 89, 0.6);
+    background: rgba(10, 10, 10, 0.8);
     transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(197, 160, 89, 0.15);
 }
 
 @media (max-width: 767px) {
@@ -274,13 +353,13 @@
     font-size: 1.25rem;
     font-weight: 500;
     margin-bottom: 1rem;
-    color: #ffffff;
+    color: #c5a059;
 }
 
 .expertiseCardText {
     font-size: 0.9375rem;
     line-height: 1.6;
-    color: #a0a0a0;
+    color: rgba(255, 255, 255, 0.8);
     font-weight: 300;
 }
 
@@ -289,6 +368,8 @@
     padding: 8rem 2rem;
     text-align: center;
     border-top: 1px solid rgba(197, 160, 89, 0.2);
+    position: relative;
+    z-index: 1;
 }
 
 @media (max-width: 767px) {
@@ -325,7 +406,7 @@
 .ctaSubtitle {
     font-size: 1.125rem;
     line-height: 1.6;
-    color: #a0a0a0;
+    color: rgba(255, 255, 255, 0.8);
     font-weight: 300;
     margin-bottom: 1rem;
 }
@@ -371,7 +452,7 @@
 .secondaryButton {
     display: inline-block;
     padding: 1rem 2.5rem;
-    border: 1px solid #404040;
+    border: 1px solid rgba(197, 160, 89, 0.4);
     color: #ffffff;
     font-size: 0.875rem;
     font-weight: 700;
@@ -383,5 +464,6 @@
 
 .secondaryButton:hover {
     border-color: #c5a059;
+    background: rgba(197, 160, 89, 0.1);
     color: #c5a059;
 }

@@ -76,7 +76,7 @@
 
 @media (prefers-color-scheme: dark) {
   .subtitle {
-    color: #94a3b8;
+    color: #E2E8F0;
   }
 }
 
@@ -188,7 +188,7 @@
 
 @media (prefers-color-scheme: dark) {
   .categoryDesc {
-    color: #94a3b8;
+    color: #E2E8F0;
   }
 }
 
@@ -308,7 +308,7 @@
 
 @media (prefers-color-scheme: dark) {
   .programSubtitle {
-    color: #94a3b8;
+    color: #E2E8F0;
   }
 }
 
@@ -366,7 +366,7 @@
 
 @media (prefers-color-scheme: dark) {
   .memoText {
-    color: #94a3b8;
+    color: #E2E8F0;
   }
 }
 

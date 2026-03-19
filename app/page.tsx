@@ -9,7 +9,7 @@ import { Reviews } from '@/src/components/home/Reviews'
 
 import { Resources } from '@/src/components/home/Resources'
 import { LocalAreas } from '@/src/components/home/LocalAreas'
-import { MortgageInsights } from@/src/components/home/MortgageInsightsghts'
+import { MortgageInsights } from '@/src/components/home/MortgageInsights'
 import { LocationMap } from '@/src/components/home/LocationMap'
 import { FinalCta } from '@/src/components/home/FinalCta'
 
