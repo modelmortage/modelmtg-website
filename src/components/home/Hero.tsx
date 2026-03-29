@@ -219,7 +219,7 @@ export function Hero() {
           {/* Insider Home Lottie Animation */}
           <div className={styles.lottieWrapper}>
             <DotLottieReact
-              src="/Insider Home.lottie"
+              src="/insider-home.lottie"
               loop
               autoplay
             />
