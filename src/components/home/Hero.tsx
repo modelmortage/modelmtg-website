@@ -213,18 +213,13 @@ export function Hero() {
               })}
             </div>
 
-            {/* Memo Footer */}
-            <div className={styles.memoFooter}>
-              <div className={styles.memoFooterText}>
-                <p className={styles.memoAvailability}>Experience Over Assumptions</p>
-              </div>
-            </div>
+
           </div>
 
-          {/* House Lottie Animation */}
+          {/* Insider Home Lottie Animation */}
           <div className={styles.lottieWrapper}>
             <DotLottieReact
-              src="/house.lottie"
+              src="/Insider Home.lottie"
               loop
               autoplay
             />

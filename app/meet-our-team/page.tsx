@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import Image from 'next/image'
 import Link from 'next/link'
+import { TeamMember } from './TeamMember'
 
 export const metadata: Metadata = {
     title: 'Meet Our Team | Model Mortgage Houston',
@@ -22,151 +22,148 @@ export default function MeetOurTeamPage() {
     return (
         <>
             <Header />
-            <main className="min-h-screen bg-[#f9f9f8] pt-28 pb-20">
-                {/* Hero Section */}
-                <section className="max-w-7xl mx-auto px-8 mb-12">
-                    <div className="flex flex-col md:flex-row items-start gap-16">
-                        <div className="flex-1">
-                            <span className="text-[#c5a059] font-bold uppercase tracking-[0.2em] mb-4 block text-xs">
+            <main style={{ minHeight: '100vh', background: '#f9f9f8', paddingTop: '112px', paddingBottom: '80px' }}>
+
+                {/* Page header */}
+                <section style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 40px 56px' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'flex-start' }}>
+                        <div>
+                            <span
+                                style={{
+                                    display: 'block',
+                                    fontSize: '10px',
+                                    fontWeight: 700,
+                                    letterSpacing: '0.2em',
+                                    textTransform: 'uppercase',
+                                    color: '#c5a059',
+                                    marginBottom: '14px',
+                                }}
+                            >
                                 Our People
                             </span>
-                            <h1 className="font-serif text-5xl md:text-6xl text-[#1a1a1a] leading-tight mb-6">
+                            <h1
+                                style={{
+                                    fontFamily: 'Georgia, serif',
+                                    fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+                                    fontWeight: 400,
+                                    color: '#1a1a1a',
+                                    lineHeight: 1.1,
+                                    margin: '0 0 20px',
+                                }}
+                            >
                                 Meet the Team
                             </h1>
-                            <div className="w-0.5 h-12 bg-[#c5a059]"></div>
+                            <div style={{ width: '2px', height: '48px', background: '#c5a059' }} />
                         </div>
-                        <div className="flex-1 pt-10">
-                            <p className="text-[#6b6b6b] text-lg md:text-xl font-light leading-relaxed">
+                        <div style={{ paddingTop: '56px' }}>
+                            <p
+                                style={{
+                                    fontSize: '1rem',
+                                    lineHeight: 1.8,
+                                    color: '#6b6b6b',
+                                    fontWeight: 300,
+                                    margin: 0,
+                                }}
+                            >
                                 Based in the heart of Houston, our team blends deep financial heritage with modern precision to guide you through every step of your homeownership journey.
                             </p>
                         </div>
                     </div>
                 </section>
 
-                {/* Team Profiles Grid */}
-                <section className="max-w-7xl mx-auto px-8 space-y-20">
-                    {/* Matthew Bramow */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-                        {/* Left: image + nameplate stacked */}
-                        <div>
-                            <div className="overflow-hidden rounded-lg bg-[#e8e8e8] w-full" style={{ height: '480px' }}>
-                                <Image
-                                    src="/matthew-bramow.png"
-                                    alt="Professional portrait of Matthew Bramow"
-                                    width={500}
-                                    height={480}
-                                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
-                                    style={{ objectPosition: 'center 15%' }}
-                                />
-                            </div>
-                            <div className="mt-4 bg-white p-5 shadow border border-[#e0e0e0] rounded-md inline-block">
-                                <span className="text-[#c5a059] font-bold text-[10px] tracking-widest uppercase mb-1 block">
-                                    Founding Partner
-                                </span>
-                                <h2 className="font-serif text-2xl text-[#1a1a1a] mb-0.5">Matthew Bramow</h2>
-                                <p className="text-xs text-[#888888]">NMLS #1373388</p>
-                            </div>
-                        </div>
-                        {/* Right: bio */}
-                        <div>
-                            <h3 className="font-serif text-xl text-[#1a1a1a] mb-4 italic">Strategic Loan Management</h3>
-                            <p className="text-[#6b6b6b] leading-relaxed mb-6 text-base">
-                                With over 15 years of experience in the Houston mortgage landscape, Matthew specializes in navigating complex financial profiles for high-net-worth individuals and first-time buyers alike.
-                            </p>
-                            <div className="space-y-3 mb-8">
-                                <div className="flex items-center gap-3">
-                                    <span className="text-[#c5a059] text-lg">✓</span>
-                                    <span className="text-sm text-[#1a1a1a]">Jumbo & Conventional Financing</span>
-                                </div>
-                                <div className="flex items-center gap-3">
-                                    <span className="text-[#c5a059] text-lg">✓</span>
-                                    <span className="text-sm text-[#1a1a1a]">Refinancing Strategy</span>
-                                </div>
-                                <div className="flex items-center gap-3">
-                                    <span className="text-[#c5a059] text-lg">✓</span>
-                                    <span className="text-sm text-[#1a1a1a]">Houston Market Specialist</span>
-                                </div>
-                            </div>
-                            <Link
-                                href="/matthew-bramow"
-                                className="text-xs font-bold text-[#c5a059] uppercase tracking-widest border-b-2 border-[#c5a059]/20 pb-1 hover:border-[#c5a059] transition-all inline-block"
-                            >
-                                View Full Profile
-                            </Link>
-                        </div>
-                    </div>
+                {/* Team members */}
+                <section style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 40px', display: 'flex', flexDirection: 'column', gap: '80px' }}>
+                    <TeamMember
+                        imageSrc="/matthew-bramow.png"
+                        imageAlt="Professional portrait of Matthew Bramow"
+                        role="Founding Partner"
+                        name="Matthew Bramow"
+                        nmls="NMLS #1373388"
+                        bioTitle="Strategic Loan Management"
+                        bio="With over 15 years of experience in the Houston mortgage landscape, Matthew specializes in navigating complex financial profiles for high-net-worth individuals and first-time buyers alike."
+                        bullets={[
+                            { icon: 'check', text: 'Jumbo & Conventional Financing' },
+                            { icon: 'camera', text: 'Refinancing Strategy' },
+                            { icon: 'building', text: 'Houston Market Specialist' },
+                        ]}
+                        profileHref="/matthew-bramow"
+                    />
 
-                    {/* Rolston Nicholls */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-                        {/* Right: image + nameplate (reversed on desktop) */}
-                        <div className="md:order-2">
-                            <div className="overflow-hidden rounded-lg bg-[#e8e8e8] w-full" style={{ height: '480px' }}>
-                                <Image
-                                    src="/rolston-nicholls.png"
-                                    alt="Professional portrait of Rolston Nicholls"
-                                    width={500}
-                                    height={480}
-                                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
-                                    style={{ objectPosition: 'center 15%' }}
-                                />
-                            </div>
-                            <div className="mt-4 bg-white p-5 shadow border border-[#e0e0e0] rounded-md inline-block">
-                                <span className="text-[#c5a059] font-bold text-[10px] tracking-widest uppercase mb-1 block">
-                                    Senior Loan Officer
-                                </span>
-                                <h2 className="font-serif text-2xl text-[#1a1a1a] mb-0.5">Rolston Nicholls</h2>
-                                <p className="text-xs text-[#888888]">NMLS #2516810</p>
-                            </div>
-                        </div>
-                        {/* Left: bio */}
-                        <div className="md:order-1">
-                            <h3 className="font-serif text-xl text-[#1a1a1a] mb-4 italic">The Precision Architect</h3>
-                            <p className="text-[#6b6b6b] leading-relaxed mb-6 text-base">
-                                Rolston is renowned for his meticulous attention to detail and his ability to structure loans that others find impossible. His client-first approach has earned him a top-tier reputation in Texas.
-                            </p>
-                            <div className="space-y-3 mb-8">
-                                <div className="flex items-center gap-3">
-                                    <span className="text-[#c5a059] text-lg">✓</span>
-                                    <span className="text-sm text-[#1a1a1a]">Investment Property Portfolio</span>
-                                </div>
-                                <div className="flex items-center gap-3">
-                                    <span className="text-[#c5a059] text-lg">✓</span>
-                                    <span className="text-sm text-[#1a1a1a]">FHA & VA Loan Expert</span>
-                                </div>
-                                <div className="flex items-center gap-3">
-                                    <span className="text-[#c5a059] text-lg">✓</span>
-                                    <span className="text-sm text-[#1a1a1a]">Rate Lock Optimization</span>
-                                </div>
-                            </div>
-                            <Link
-                                href="/rolston-nicholls"
-                                className="text-xs font-bold text-[#c5a059] uppercase tracking-widest border-b-2 border-[#c5a059]/20 pb-1 hover:border-[#c5a059] transition-all inline-block"
-                            >
-                                View Full Profile
-                            </Link>
-                        </div>
-                    </div>
+                    <TeamMember
+                        imageSrc="/matthew-bramow.png"
+                        imageAlt="Professional portrait of Rolston Nicholls"
+                        role="Senior Loan Officer"
+                        name="Rolston Nicholls"
+                        nmls="NMLS #2516810"
+                        bioTitle="The Precision Architect"
+                        bio="Rolston is renowned for his meticulous attention to detail and his ability to structure loans that others find impossible. His client-first approach has earned him a top-tier reputation in Texas."
+                        bullets={[
+                            { icon: 'check', text: 'Investment Property Portfolio' },
+                            { icon: 'camera', text: 'FHA & VA Loan Expert' },
+                            { icon: 'building', text: 'Rate Lock Optimization' },
+                        ]}
+                        profileHref="/rolston-nicholls"
+                        reversed
+                    />
                 </section>
 
-                {/* Contact CTA Section */}
-                <section className="mt-32 max-w-7xl mx-auto px-8">
-                    <div className="bg-[#f3f3f1] p-12 md:p-16 rounded-lg flex flex-col items-center text-center">
-                        <h2 className="font-serif text-3xl md:text-4xl text-[#1a1a1a] mb-6">
+                {/* CTA */}
+                <section style={{ maxWidth: '1100px', margin: '80px auto 0', padding: '0 40px' }}>
+                    <div
+                        style={{
+                            background: '#f3f3f1',
+                            padding: '64px',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            textAlign: 'center',
+                        }}
+                    >
+                        <h2
+                            style={{
+                                fontFamily: 'Georgia, serif',
+                                fontSize: '2rem',
+                                fontWeight: 400,
+                                color: '#1a1a1a',
+                                marginBottom: '16px',
+                            }}
+                        >
                             Ready to start your journey?
                         </h2>
-                        <p className="text-[#6b6b6b] max-w-2xl text-base mb-10">
+                        <p style={{ color: '#6b6b6b', fontSize: '0.9rem', maxWidth: '560px', marginBottom: '36px', lineHeight: 1.7 }}>
                             Our team is available for one-on-one consultations to discuss your unique financial goals and property aspirations.
                         </p>
-                        <div className="flex flex-col sm:flex-row gap-4">
-                            <Link 
+                        <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
+                            <Link
                                 href="/schedule-a-call"
-                                className="bg-[#c5a059] text-white px-8 py-3 rounded-md text-xs font-bold uppercase tracking-[0.15em] hover:bg-[#b08f4a] transition-colors"
+                                style={{
+                                    background: '#c5a059',
+                                    color: '#fff',
+                                    padding: '12px 32px',
+                                    fontSize: '10px',
+                                    fontWeight: 700,
+                                    letterSpacing: '0.15em',
+                                    textTransform: 'uppercase',
+                                    textDecoration: 'none',
+                                    display: 'inline-block',
+                                }}
                             >
                                 Schedule Consultation
                             </Link>
-                            <Link 
+                            <Link
                                 href="/contact"
-                                className="bg-transparent text-[#c5a059] px-8 py-3 rounded-md text-xs font-bold uppercase tracking-[0.15em] border border-[#c5a059]/30 hover:bg-white transition-colors"
+                                style={{
+                                    background: 'transparent',
+                                    color: '#c5a059',
+                                    padding: '12px 32px',
+                                    fontSize: '10px',
+                                    fontWeight: 700,
+                                    letterSpacing: '0.15em',
+                                    textTransform: 'uppercase',
+                                    textDecoration: 'none',
+                                    border: '1px solid rgba(197,160,89,0.35)',
+                                    display: 'inline-block',
+                                }}
                             >
                                 Call (832) 727-4128
                             </Link>
@@ -175,6 +172,15 @@ export default function MeetOurTeamPage() {
                 </section>
             </main>
             <Footer />
+            <style>{`
+                @media (max-width: 768px) {
+                    .team-member-grid {
+                        grid-template-columns: 1fr !important;
+                        gap: 32px !important;
+                        direction: ltr !important;
+                    }
+                }
+            `}</style>
         </>
     )
 }
