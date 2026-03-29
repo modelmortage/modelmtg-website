@@ -27,6 +27,7 @@ export default function Header() {
 
     const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false)
     const [calculatorDropdownOpen, setCalculatorDropdownOpen] = useState(false)
+    const [loanOptionsDropdownOpen, setLoanOptionsDropdownOpen] = useState(false)
     const pathname = usePathname()
     const headerRef = useRef<HTMLElement>(null)
 
@@ -120,14 +121,76 @@ export default function Header() {
                     >
                         Home
                     </Link>
-                    <Link
-                        href="/loan-options"
-                        className={`${styles.navLink} ${isActive('/loan-options') ? styles.active : ''}`}
-                        aria-current={isActive('/loan-options') ? 'page' : undefined}
-                        onClick={handleLinkClick}
-                    >
-                        Loan Options
-                    </Link>
+                    {/* Loan Options Dropdown */}
+                    <div className={styles.navDropdown}>
+                        <Link
+                            href="/loan-options"
+                            className={`${styles.navLink} ${styles.dropdownToggle} ${isActive('/loan-options') ? styles.active : ''}`}
+                            onClick={(e) => {
+                                if (window.innerWidth <= 768) {
+                                    e.preventDefault()
+                                    setLoanOptionsDropdownOpen(!loanOptionsDropdownOpen)
+                                } else {
+                                    handleLinkClick()
+                                }
+                            }}
+                            aria-expanded={loanOptionsDropdownOpen}
+                        >
+                            Loan Options
+                            <FaChevronDown className={`${styles.chevron} ${loanOptionsDropdownOpen ? styles.chevronOpen : ''}`} />
+                        </Link>
+                        <div className={`${styles.dropdownMenu} ${loanOptionsDropdownOpen ? styles.dropdownMenuOpen : ''}`}>
+                            <Link
+                                href="/loan-options/conventional"
+                                className={styles.dropdownItem}
+                                onClick={handleLinkClick}
+                            >
+                                Conventional Loans
+                            </Link>
+                            <Link
+                                href="/loan-options/fha"
+                                className={styles.dropdownItem}
+                                onClick={handleLinkClick}
+                            >
+                                FHA Loans
+                            </Link>
+                            <Link
+                                href="/loan-options/va"
+                                className={styles.dropdownItem}
+                                onClick={handleLinkClick}
+                            >
+                                VA Loans
+                            </Link>
+                            <Link
+                                href="/loan-options/jumbo"
+                                className={styles.dropdownItem}
+                                onClick={handleLinkClick}
+                            >
+                                Jumbo Loans
+                            </Link>
+                            <Link
+                                href="/loan-options/usda"
+                                className={styles.dropdownItem}
+                                onClick={handleLinkClick}
+                            >
+                                USDA Loans
+                            </Link>
+                            <Link
+                                href="/loan-options/investment"
+                                className={styles.dropdownItem}
+                                onClick={handleLinkClick}
+                            >
+                                Investment Property
+                            </Link>
+                            <Link
+                                href="/loan-options/dscr"
+                                className={styles.dropdownItem}
+                                onClick={handleLinkClick}
+                            >
+                                DSCR Loans
+                            </Link>
+                        </div>
+                    </div>
                     {/* Calculator Dropdown */}
                     <div className={styles.navDropdown}>
                         <Link

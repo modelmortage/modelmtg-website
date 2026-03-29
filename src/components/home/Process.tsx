@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import ProcessStepsBackground from '@/src/components/three/ProcessStepsBackground'
 import styles from './Process.module.css'
 
 export function Process() {
@@ -52,6 +53,7 @@ export function Process() {
 
   return (
     <section className={styles.section}>
+      <ProcessStepsBackground />
       <div className={styles.container}>
         {/* Header */}
         <motion.div 

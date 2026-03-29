@@ -1,6 +1,7 @@
 'use client'
 
 import { getGoogleProof, Review } from '@/src/lib/proof'
+import LuxuryArchitecturalBackground from '@/src/components/ui/LuxuryArchitecturalBackground'
 import styles from './Reviews.module.css'
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
@@ -110,6 +111,7 @@ export function Reviews({ reviews: initialReviews = [] }: ReviewsProps) {
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6 }}
     >
+      <LuxuryArchitecturalBackground />
       <div className={styles.container}>
         {/* LEFT: Institutional Rating Block */}
         <div className={styles.ratingPanel}>

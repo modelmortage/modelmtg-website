@@ -1,0 +1,398 @@
+/* === LUXURY 3D SCULPTURAL BACKGROUND === */
+.sculptureBackground {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  --mouse-x: 0px;
+  --mouse-y: 0px;
+  background: #000000;
+}
+
+/* === ONE SCULPTURAL OBJECT - Enters from Left === */
+.sculptureObject {
+  position: absolute;
+  top: 0;
+  left: -5%;
+  width: 35%;
+  height: 100%;
+  transform-style: preserve-3d;
+  perspective: 1200px;
+}
+
+/* === LAYERED RELIEF STRUCTURE - One Coherent Form === */
+
+/* Back Plane - Deepest layer of the sculpture */
+.backPlane {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(
+      to right,
+      rgba(6, 6, 6, 1) 0%,
+      rgba(8, 8, 8, 1) 20%,
+      rgba(10, 10, 10, 0.98) 40%,
+      rgba(12, 12, 12, 0.95) 60%,
+      rgba(10, 10, 10, 0.85) 80%,
+      transparent 100%
+    );
+  clip-path: polygon(
+    0% 0%,
+    90% 0%,
+    85% 15%,
+    88% 30%,
+    82% 45%,
+    86% 60%,
+    80% 75%,
+    84% 90%,
+    78% 100%,
+    0% 100%
+  );
+  transform: 
+    translateZ(-60px) 
+    rotateY(3deg)
+    translate(calc(var(--mouse-x, 0) * 0.2), calc(var(--mouse-y, 0) * 0.2));
+  animation: sculptureBreath1 50s ease-in-out infinite;
+  will-change: transform;
+  filter: blur(1px);
+}
+
+/* Mid Relief - Middle dimensional layer */
+.midRelief {
+  position: absolute;
+  top: 5%;
+  left: 8%;
+  width: 85%;
+  height: 90%;
+  background: 
+    linear-gradient(
+      to right,
+      rgba(12, 12, 12, 1) 0%,
+      rgba(15, 15, 15, 1) 25%,
+      rgba(18, 18, 18, 0.98) 45%,
+      rgba(20, 20, 20, 0.92) 65%,
+      rgba(16, 16, 16, 0.8) 85%,
+      transparent 100%
+    );
+  clip-path: polygon(
+    0% 5%,
+    85% 0%,
+    82% 18%,
+    86% 35%,
+    80% 52%,
+    84% 68%,
+    78% 85%,
+    75% 100%,
+    0% 95%
+  );
+  transform: 
+    translateZ(-30px) 
+    rotateY(2deg)
+    translate(calc(var(--mouse-x, 0) * 0.4), calc(var(--mouse-y, 0) * 0.4));
+  animation: sculptureBreath2 48s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Front Surface - Closest layer, most defined */
+.frontSurface {
+  position: absolute;
+  top: 10%;
+  left: 15%;
+  width: 75%;
+  height: 80%;
+  background: 
+    linear-gradient(
+      to right,
+      rgba(18, 18, 18, 1) 0%,
+      rgba(22, 22, 22, 1) 30%,
+      rgba(26, 26, 26, 0.95) 50%,
+      rgba(24, 24, 24, 0.88) 70%,
+      rgba(20, 20, 20, 0.75) 90%,
+      transparent 100%
+    );
+  clip-path: polygon(
+    0% 8%,
+    80% 0%,
+    78% 22%,
+    82% 40%,
+    76% 58%,
+    80% 76%,
+    72% 95%,
+    0% 92%
+  );
+  transform: 
+    translateZ(0px) 
+    rotateY(1deg)
+    translate(calc(var(--mouse-x, 0) * 0.6), calc(var(--mouse-y, 0) * 0.6));
+  animation: sculptureBreath3 46s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* === EDGE LIGHTING - Reveals Sculptural Form === */
+.edgeLighting {
+  position: absolute;
+  top: 12%;
+  left: 48%;
+  width: 2px;
+  height: 76%;
+  background: 
+    linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(38, 38, 38, 0.25) 10%,
+      rgba(42, 42, 42, 0.35) 25%,
+      rgba(45, 45, 45, 0.4) 40%,
+      rgba(42, 42, 42, 0.35) 60%,
+      rgba(38, 38, 38, 0.25) 80%,
+      transparent 100%
+    );
+  filter: blur(1.5px);
+  transform: 
+    rotate(-2deg)
+    translate(calc(var(--mouse-x, 0) * 0.5), calc(var(--mouse-y, 0) * 0.5));
+  animation: edgeGlow 55s ease-in-out infinite;
+  will-change: opacity;
+  mix-blend-mode: screen;
+}
+
+/* === DEPTH SHADOW - Layer Separation === */
+.depthShadow {
+  position: absolute;
+  top: 8%;
+  left: 20%;
+  width: 50%;
+  height: 84%;
+  background: 
+    radial-gradient(
+      ellipse 60% 80% at 40% 50%,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0.5) 30%,
+      rgba(0, 0, 0, 0.3) 60%,
+      transparent 85%
+    );
+  filter: blur(25px);
+  transform: translate(calc(var(--mouse-x, 0) * 0.3), calc(var(--mouse-y, 0) * 0.3));
+  animation: shadowPulse 52s ease-in-out infinite;
+  will-change: opacity;
+}
+
+/* === NATURAL FADE TO BLACK === */
+.fadeGradient {
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(
+      to right,
+      transparent 0%,
+      transparent 25%,
+      rgba(0, 0, 0, 0.3) 35%,
+      rgba(0, 0, 0, 0.7) 50%,
+      rgba(0, 0, 0, 0.95) 70%,
+      #000000 85%
+    );
+  pointer-events: none;
+}
+
+/* === ANIMATIONS - Micro Breathing Movement === */
+
+/* Sculpture breathes with tiny depth shifts */
+@keyframes sculptureBreath1 {
+  0%, 100% {
+    transform: translateZ(-60px) rotateY(3deg) translate(0%, 0%);
+  }
+  50% {
+    transform: translateZ(-62px) rotateY(3.2deg) translate(0.3%, -0.2%);
+  }
+}
+
+@keyframes sculptureBreath2 {
+  0%, 100% {
+    transform: translateZ(-30px) rotateY(2deg) translate(0%, 0%);
+  }
+  50% {
+    transform: translateZ(-32px) rotateY(2.2deg) translate(0.5%, 0.3%);
+  }
+}
+
+@keyframes sculptureBreath3 {
+  0%, 100% {
+    transform: translateZ(0px) rotateY(1deg) translate(0%, 0%);
+  }
+  50% {
+    transform: translateZ(-2px) rotateY(1.2deg) translate(0.8%, 0.5%);
+  }
+}
+
+/* Edge lighting pulses subtly */
+@keyframes edgeGlow {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.75;
+  }
+}
+
+/* Shadow breathes with sculpture */
+@keyframes shadowPulse {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+
+/* === INTENSITY VARIANTS === */
+.subtle .backPlane,
+.subtle .midRelief,
+.subtle .frontSurface {
+  opacity: 0.75;
+}
+
+.subtle .edgeLighting {
+  opacity: 0.5;
+}
+
+.subtle .depthShadow {
+  opacity: 0.7;
+}
+
+.medium .backPlane,
+.medium .midRelief,
+.medium .frontSurface {
+  opacity: 0.9;
+}
+
+.medium .edgeLighting {
+  opacity: 0.65;
+}
+
+.medium .depthShadow {
+  opacity: 0.85;
+}
+
+.strong .backPlane,
+.strong .midRelief,
+.strong .frontSurface {
+  opacity: 1;
+}
+
+.strong .edgeLighting {
+  opacity: 0.8;
+}
+
+.strong .depthShadow {
+  opacity: 1;
+}
+
+/* === SPEED VARIANTS === */
+.slow .backPlane {
+  animation-duration: 50s;
+}
+
+.slow .midRelief {
+  animation-duration: 48s;
+}
+
+.slow .frontSurface {
+  animation-duration: 46s;
+}
+
+.slow .edgeLighting {
+  animation-duration: 55s;
+}
+
+.slow .depthShadow {
+  animation-duration: 52s;
+}
+
+.medium .backPlane {
+  animation-duration: 38s;
+}
+
+.medium .midRelief {
+  animation-duration: 36s;
+}
+
+.medium .frontSurface {
+  animation-duration: 34s;
+}
+
+.medium .edgeLighting {
+  animation-duration: 42s;
+}
+
+.medium .depthShadow {
+  animation-duration: 40s;
+}
+
+.fast .backPlane {
+  animation-duration: 28s;
+}
+
+.fast .midRelief {
+  animation-duration: 26s;
+}
+
+.fast .frontSurface {
+  animation-duration: 24s;
+}
+
+.fast .edgeLighting {
+  animation-duration: 30s;
+}
+
+.fast .depthShadow {
+  animation-duration: 28s;
+}
+
+/* === REDUCED MOTION SUPPORT === */
+@media (prefers-reduced-motion: reduce) {
+  .backPlane,
+  .midRelief,
+  .frontSurface,
+  .edgeLighting,
+  .depthShadow {
+    animation: none;
+  }
+}
+
+/* === MOBILE OPTIMIZATION === */
+@media (max-width: 768px) {
+  .sculptureObject {
+    width: 45%;
+  }
+  
+  .backPlane,
+  .midRelief,
+  .frontSurface {
+    opacity: 0.6;
+  }
+  
+  .edgeLighting {
+    opacity: 0.3;
+  }
+  
+  .depthShadow {
+    opacity: 0.5;
+  }
+  
+  .subtle .backPlane,
+  .subtle .midRelief,
+  .subtle .frontSurface {
+    opacity: 0.5;
+  }
+  
+  .subtle .edgeLighting {
+    opacity: 0.25;
+  }
+  
+  .subtle .depthShadow {
+    opacity: 0.4;
+  }
+}

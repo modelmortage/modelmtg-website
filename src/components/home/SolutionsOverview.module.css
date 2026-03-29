@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #0a0a0a;
+  background-color: #0B0B0D;
   color: #ffffff;
   overflow-x: hidden;
 }
@@ -30,13 +30,13 @@
   font-style: italic;
   font-weight: 400;
   margin-bottom: 15px;
-  color: #ffffff;
+  color: #F5F1E8;
 }
 
 .description {
   font-family: var(--font-sans);
   font-size: 1rem;
-  color: #E2E8F0;
+  color: #B8BCC6;
   max-width: 650px;
   line-height: 1.6;
 }
@@ -45,17 +45,17 @@
   margin-top: 60px;
   padding: 45px 30px;
   border-radius: 8px;
+  background-color: #121316;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   transition: background-color 0.3s ease;
 }
 
 .categorySection:first-of-type {
   margin-top: 0;
-  background-color: rgba(197, 160, 89, 0.03);
-  border: 1px solid rgba(197, 160, 89, 0.1);
 }
 
 .categorySection:last-of-type {
-  background-color: rgba(255, 255, 255, 0.02);
+  background-color: #121316;
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -64,21 +64,21 @@
   font-size: clamp(1.5rem, 4vw, 2.25rem);
   font-weight: 400;
   margin-bottom: 11px;
-  color: #ffffff;
+  color: #F5F1E8;
 }
 
 .categorySection:first-of-type .categoryTitle {
-  color: #c5a059;
+  color: #F5F1E8;
 }
 
 .categorySection:last-of-type .categoryTitle {
-  color: #e5e5e5;
+  color: #F5F1E8;
 }
 
 .categoryDescription {
   font-family: var(--font-sans);
   font-size: 0.95rem;
-  color: #E2E8F0;
+  color: #B8BCC6;
   max-width: 650px;
   line-height: 1.6;
   margin-bottom: 30px;

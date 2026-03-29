@@ -10,8 +10,8 @@ interface LuxurySilkBackgroundProps {
 }
 
 /**
- * Premium black silk/smoke background animation with subtle gold shimmer
- * Designed for luxury branding - Rolls-Royce / Bentley aesthetic
+ * Premium 3D architectural sculpture - ONE coherent dimensional object
+ * Enters from left edge, fades into black. Feels like a luxury installation.
  */
 export function LuxurySilkBackground({
   intensity = 'subtle',
@@ -32,8 +32,9 @@ export function LuxurySilkBackground({
       const xPercent = (clientX / innerWidth - 0.5) * 2
       const yPercent = (clientY / innerHeight - 0.5) * 2
       
-      containerRef.current.style.setProperty('--mouse-x', `${xPercent * 20}px`)
-      containerRef.current.style.setProperty('--mouse-y', `${yPercent * 20}px`)
+      // Subtle depth-based parallax
+      containerRef.current.style.setProperty('--mouse-x', `${xPercent * 2}px`)
+      containerRef.current.style.setProperty('--mouse-y', `${yPercent * 2}px`)
     }
 
     window.addEventListener('mousemove', handleMouseMove)
@@ -43,20 +44,29 @@ export function LuxurySilkBackground({
   return (
     <div 
       ref={containerRef}
-      className={`${styles.silkBackground} ${styles[intensity]} ${styles[speed]}`}
+      className={`${styles.sculptureBackground} ${styles[intensity]} ${styles[speed]}`}
       aria-hidden="true"
     >
-      {/* Multiple silk wave layers */}
-      <div className={styles.silkLayer1}></div>
-      <div className={styles.silkLayer2}></div>
-      <div className={styles.silkLayer3}></div>
+      {/* ONE sculptural 3D object - layered relief structure */}
+      <div className={styles.sculptureObject}>
+        {/* Back plane - deepest layer */}
+        <div className={styles.backPlane}></div>
+        
+        {/* Mid relief - dimensional layer */}
+        <div className={styles.midRelief}></div>
+        
+        {/* Front surface - closest layer */}
+        <div className={styles.frontSurface}></div>
+        
+        {/* Edge lighting - reveals form */}
+        <div className={styles.edgeLighting}></div>
+        
+        {/* Depth shadows - layer separation */}
+        <div className={styles.depthShadow}></div>
+      </div>
       
-      {/* Gold shimmer accents */}
-      <div className={styles.goldShimmer1}></div>
-      <div className={styles.goldShimmer2}></div>
-      
-      {/* Vignette mask */}
-      <div className={styles.vignette}></div>
+      {/* Natural fade to black */}
+      <div className={styles.fadeGradient}></div>
     </div>
   )
 }

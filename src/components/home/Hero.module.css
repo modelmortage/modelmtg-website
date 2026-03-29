@@ -222,6 +222,7 @@
 /* RIGHT COLUMN - Institutional Memo Card (40%) */
 .rightContent {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     max-width: 520px;
@@ -442,4 +443,11 @@
     .memoText p {
         font-size: 0.8125rem;
     }
+}
+
+/* Lottie Animation */
+.lottieWrapper {
+    width: 100%;
+    max-width: 320px;
+    margin: 1.5rem auto 0;
 }

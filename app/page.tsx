@@ -7,7 +7,6 @@ import { Process } from '@/src/components/home/Process'
 
 import { Reviews } from '@/src/components/home/Reviews'
 
-import { Resources } from '@/src/components/home/Resources'
 import { LocalAreas } from '@/src/components/home/LocalAreas'
 import { MortgageInsights } from '@/src/components/home/MortgageInsights'
 import { LocationMap } from '@/src/components/home/LocationMap'
@@ -42,7 +41,6 @@ export default function Home() {
                 <MortgageInsights />
                 <LocalAreas />
                 <LocationMap />
-                <Resources />
                 <FinalCta />
             </main>
             <Footer />

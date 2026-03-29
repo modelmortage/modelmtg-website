@@ -2,12 +2,14 @@
 
 import { useEffect, useRef } from 'react'
 import Image from 'next/image'
+import { DotLottieReact } from '@lottiefiles/dotlottie-react'
 import { FaLock, FaBuilding } from 'react-icons/fa'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { siteData } from '@/src/lib/siteData'
 import { homeSections } from '@/src/lib/homeSections'
 import { Button } from '@/src/components/ui/Button'
+import { LuxurySilkBackground } from '@/src/components/ui/LuxurySilkBackground'
 import { ANIMATION_DURATION, EASING, checkReducedMotion } from '@/src/utils/animations'
 import styles from './Hero.module.css'
 
@@ -121,6 +123,7 @@ export function Hero() {
     <section className={styles.hero} id="hero">
       {/* Background layers */}
       <div className={styles.bgLayer}></div>
+      <LuxurySilkBackground intensity="subtle" speed="slow" enableParallax />
 
       {/* Skyline background image */}
       <div className={styles.skylineContainer} ref={skylineRef}>
@@ -216,6 +219,15 @@ export function Hero() {
                 <p className={styles.memoAvailability}>Experience Over Assumptions</p>
               </div>
             </div>
+          </div>
+
+          {/* House Lottie Animation */}
+          <div className={styles.lottieWrapper}>
+            <DotLottieReact
+              src="/house.lottie"
+              loop
+              autoplay
+            />
           </div>
         </div>
       </div>
