@@ -88,7 +88,6 @@ export default function CalculatorHub() {
         <>
             <Header />
             <main className={styles.main}>
-                <div className={styles.dustBg}></div>
                 {/* Hero Section */}
                 <section className={styles.hero}>
                     <div className={styles.heroContainer}>
