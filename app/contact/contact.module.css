@@ -177,6 +177,17 @@
   font-weight: 400;
 }
 
+.titleWrapper {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.titleLottie {
+  width: clamp(60px, 10vw, 120px);
+  height: clamp(60px, 10vw, 120px);
+}
+
 
 
 .titleAccent {

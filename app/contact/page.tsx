@@ -3,6 +3,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import styles from './contact.module.css'
 import ContactForm from './ContactForm'
+import ContactTitle from './ContactTitle'
 
 export const metadata: Metadata = {
     title: 'Contact Us | Model Mortgage Houston',
@@ -26,10 +27,7 @@ export default function ContactPage() {
                 <div className={styles.dustBg}></div>
                 <div className={styles.container}>
                     <div className={styles.headerSection}>
-                        <h1 className={styles.title}>
-                            Begin the <br />
-                            <span className={styles.titleAccent}>Conversation</span>
-                        </h1>
+                        <ContactTitle />
                         <p className={styles.subtitle}>
                             Strategic mortgage guidance for Houston buyers, homeowners, and investors.
                         </p>
