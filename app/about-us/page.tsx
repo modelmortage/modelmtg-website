@@ -36,11 +36,11 @@ export default function AboutPage() {
                                 Precision-Structured{' '}
                                 <span className={styles.heroTitleAccent}>Residential Financing</span>
                             </h1>
+                            <p className={styles.heroSubtitle}>
+                                Model Mortgage specializes in institutional-grade financing for primary residences, second homes, and investment properties all across Texas.
+                            </p>
                             <span className={styles.heroGoldBar} />
                         </div>
-                        <p className={styles.heroSubtitle}>
-                            Model Mortgage specializes in institutional-grade financing for primary residences, second homes, and investment properties across Houston and surrounding markets.
-                        </p>
                     </div>
                 </section>
 

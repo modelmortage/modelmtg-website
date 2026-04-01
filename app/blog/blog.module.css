@@ -1,15 +1,15 @@
 /* Blog Editorial Page */
 
 .main {
-    background: #000000;
-    color: #ffffff;
+    background: #f9f9f8;
+    color: #1a1a1a;
     min-height: 100vh;
 }
 
 /* Hero Header */
 .hero {
     padding: 8rem 2rem 5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 @media (max-width: 767px) {
@@ -50,7 +50,7 @@
     font-weight: 400;
     line-height: 1.1;
     margin-bottom: 1.5rem;
-    color: #ffffff;
+    color: #1a1a1a;
 }
 
 .heroBreak {
@@ -66,14 +66,14 @@
 .heroAmpersand {
     font-style: italic;
     font-weight: 300;
-    color: #808080;
+    color: #999999;
 }
 
 .heroSubtitle {
     max-width: 42rem;
     font-size: 1.125rem;
     line-height: 1.6;
-    color: #a0a0a0;
+    color: #6b6b6b;
     font-weight: 300;
 }
 
@@ -131,13 +131,13 @@
 .featuredOverlay {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.25);
     z-index: 10;
     transition: background 0.5s ease;
 }
 
 .featuredCard:hover .featuredOverlay {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.1);
 }
 
 .featuredImg {
@@ -160,7 +160,7 @@
 .featuredBadge span {
     display: inline-block;
     background: #c5a059;
-    color: #000000;
+    color: #ffffff;
     font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -169,7 +169,7 @@
 }
 
 .featuredContent {
-    background: #0a0a0a;
+    background: #f3f3f1;
     padding: 3rem;
     display: flex;
     flex-direction: column;
@@ -217,7 +217,7 @@
     font-weight: 400;
     line-height: 1.3;
     margin-bottom: 1.5rem;
-    color: #ffffff;
+    color: #1a1a1a;
     transition: color 0.3s ease;
 }
 
@@ -234,7 +234,7 @@
 .featuredExcerpt {
     font-size: 1rem;
     line-height: 1.6;
-    color: #a0a0a0;
+    color: #6b6b6b;
     font-weight: 300;
     margin-bottom: 2rem;
 }
@@ -266,7 +266,7 @@
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 2rem 3rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 @media (max-width: 767px) {
@@ -298,11 +298,11 @@
 }
 
 .filterButton {
-    color: #808080;
+    color: #999999;
 }
 
 .filterButton:hover {
-    color: #ffffff;
+    color: #1a1a1a;
 }
 
 /* Articles Section */
@@ -338,11 +338,12 @@
 
 /* Article Card */
 .articleCard {
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     transition: border-color 0.3s ease;
     display: flex;
     flex-direction: column;
     height: 100%;
+    background: #ffffff;
 }
 
 .articleCard:hover {
@@ -366,7 +367,7 @@
 .articleOverlay {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.1);
     z-index: 10;
     transition: background 0.3s ease;
 }
@@ -414,7 +415,7 @@
 
 .articleDate {
     font-size: 0.75rem;
-    color: #808080;
+    color: #999999;
     font-family: monospace;
 }
 
@@ -424,7 +425,7 @@
     font-weight: 400;
     line-height: 1.3;
     margin-bottom: 1rem;
-    color: #ffffff;
+    color: #1a1a1a;
     transition: color 0.3s ease;
 }
 
@@ -435,7 +436,7 @@
 .articleExcerpt {
     font-size: 0.875rem;
     line-height: 1.6;
-    color: #a0a0a0;
+    color: #6b6b6b;
     font-weight: 300;
     margin-bottom: 1.5rem;
     display: -webkit-box;
@@ -447,7 +448,7 @@
 .articleFooter {
     margin-top: auto;
     padding-top: 1.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .articleReadMore {

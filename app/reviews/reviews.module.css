@@ -1,7 +1,7 @@
 .main {
-    background: #000000;
+    background: #14181D;
     min-height: 100vh;
-    color: white;
+    color: #F7F5F1;
 }
 
 /* Hero Section */
@@ -45,7 +45,7 @@
     font-style: italic;
     line-height: 1.1;
     margin-bottom: 1.5rem;
-    color: white;
+    color: #F7F5F1;
     max-width: 900px;
 }
 
@@ -56,7 +56,7 @@
 .heroSubtitle {
     font-size: 1.125rem;
     line-height: 1.8;
-    color: rgba(255, 255, 255, 0.7);
+    color: #CFCAC2;
     max-width: 700px;
     margin: 0;
 }
@@ -78,12 +78,11 @@
     margin-bottom: 4rem;
 }
 
-/* Google Rating Card - Special Styling */
+/* Google Rating Card */
 .googleRatingCard {
     grid-column: span 1;
-    background: #050505;
-    /* Dark background matching screenshot */
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #191d23;
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 8px;
     padding: 2rem;
     display: flex;
@@ -97,7 +96,7 @@
 }
 
 .googleRatingCard:hover {
-    background: #0a0a0a;
+    background: #1e2329;
     border-color: rgba(197, 160, 89, 0.3);
 }
 
@@ -115,7 +114,6 @@
     font-family: 'Playfair Display', serif;
     font-style: italic;
     color: #c5a059;
-    /* Gold color */
     line-height: 1;
 }
 
@@ -137,7 +135,7 @@
 
 .ratingCount {
     font-size: 1rem;
-    color: rgba(255, 255, 255, 0.7);
+    color: #CFCAC2;
     font-weight: 500;
 }
 
@@ -157,9 +155,8 @@
 
 /* Individual Review Cards */
 .reviewCard {
-    background: #050505;
-    /* Match screenshot dark background */
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #191d23;
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 8px;
     padding: 2rem;
     display: flex;
@@ -169,7 +166,7 @@
 }
 
 .reviewCard:hover {
-    background: #0a0a0a;
+    background: #1e2329;
     border-color: rgba(197, 160, 89, 0.3);
     transform: translateY(-5px);
 }
@@ -199,7 +196,7 @@
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    background: #1a1a1a;
+    background: #2a2f38;
     border: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     align-items: center;
@@ -207,7 +204,6 @@
     font-size: 1.25rem;
     font-weight: 600;
     color: #c5a059;
-    /* Gold initial */
 }
 
 .authorDetails {
@@ -218,14 +214,14 @@
 .authorName {
     font-size: 1rem;
     font-weight: 700;
-    color: white;
+    color: #F7F5F1;
     margin: 0;
     line-height: 1.2;
 }
 
 .reviewDate {
     font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.5);
+    color: #8B8B8B;
     margin: 2px 0 0 0;
 }
 
@@ -246,7 +242,7 @@
 .reviewText {
     font-size: 0.95rem;
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.8);
+    color: #CFCAC2;
     margin: 0;
     flex-grow: 1;
 }
@@ -255,7 +251,7 @@
 .noReviews {
     text-align: center;
     padding: 4rem 2rem;
-    color: rgba(255, 255, 255, 0.6);
+    color: #8B8B8B;
     font-size: 1.125rem;
 }
 
@@ -306,13 +302,13 @@
     font-style: italic;
     line-height: 1.2;
     margin-bottom: 1.5rem;
-    color: white;
+    color: #F7F5F1;
 }
 
 .ctaSubtitle {
     font-size: 1.125rem;
     line-height: 1.8;
-    color: rgba(255, 255, 255, 0.7);
+    color: #CFCAC2;
     margin-bottom: 2.5rem;
 }
 
@@ -327,7 +323,7 @@
     display: inline-block;
     padding: 1rem 2.5rem;
     background: #c5a059;
-    color: #000000;
+    color: #ffffff;
     text-decoration: none;
     font-weight: 600;
     font-size: 0.9375rem;
@@ -336,7 +332,7 @@
 }
 
 .ctaButton:hover {
-    background: #d4b06a;
+    background: #b08f4a;
     transform: translateY(-2px);
     box-shadow: 0 0 20px rgba(197, 160, 89, 0.3);
 }

@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion'
 import { siteData } from '@/src/lib/siteData'
 import Link from 'next/link'
-import CtaMonolithBackground from '@/src/components/three/CtaMonolithBackground'
 import styles from './FinalCta.module.css'
 
 /**
@@ -39,7 +38,6 @@ export function FinalCta() {
 
   return (
     <section className={styles.section}>
-      <CtaMonolithBackground />
       <div className={styles.pinstripeBg}></div>
       <div className={styles.radialGlow}></div>
 

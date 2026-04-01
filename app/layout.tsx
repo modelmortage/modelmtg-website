@@ -90,10 +90,10 @@ export default function RootLayout({
                 "email": "matthew@modelmtg.com",
                 "address": {
                     "@type": "PostalAddress",
-                    "streetAddress": "18 Augusta Pines Dr #203",
-                    "addressLocality": "Spring",
+                    "streetAddress": "5251 Westheimer Rd #830",
+                    "addressLocality": "Houston",
                     "addressRegion": "TX",
-                    "postalCode": "77389",
+                    "postalCode": "77056",
                     "addressCountry": "US"
                 },
                 "geo": {
@@ -162,10 +162,10 @@ export default function RootLayout({
                 "url": "https://modelmtg.com/matthew-bramow",
                 "address": {
                     "@type": "PostalAddress",
-                    "streetAddress": "18 Augusta Pines Dr #203",
-                    "addressLocality": "Spring",
+                    "streetAddress": "5251 Westheimer Rd #830",
+                    "addressLocality": "Houston",
                     "addressRegion": "TX",
-                    "postalCode": "77389",
+                    "postalCode": "77056",
                     "addressCountry": "US"
                 }
             },

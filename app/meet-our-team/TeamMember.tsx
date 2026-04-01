@@ -42,7 +42,6 @@ export interface TeamMemberProps {
     bio: string
     bullets: BulletItem[]
     profileHref: string
-    reversed?: boolean
 }
 
 const iconMap: Record<BulletType, React.ReactNode> = {
@@ -51,111 +50,88 @@ const iconMap: Record<BulletType, React.ReactNode> = {
     building: <BuildingIcon />,
 }
 
-export function TeamMember({ imageSrc, imageAlt, role, name, nmls, bioTitle, bio, bullets, profileHref, reversed }: TeamMemberProps) {
-    const [hovered, setHovered] = useState(false)
+export function TeamMember({ imageSrc, imageAlt, role, name, nmls, bioTitle, bio, bullets, profileHref }: TeamMemberProps) {
 
     return (
-        <div
-            style={{
-                display: 'grid',
-                gridTemplateColumns: '1fr 1fr',
-                gap: '80px',
-                alignItems: 'flex-start',
-                direction: reversed ? 'rtl' : 'ltr',
-            }}
-            className="team-member-grid"
-        >
-            {/* Portrait + nameplate */}
-            <div style={{ direction: 'ltr' }}>
-                <div
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+            {/* Portrait */}
+            <div
+                style={{
+                    width: '100%',
+                    aspectRatio: '4/3',
+                    overflow: 'hidden',
+                    background: '#f3f3f5',
+                }}
+            >
+                <Image
+                    src={imageSrc}
+                    alt={imageAlt}
+                    width={560}
+                    height={420}
                     style={{
                         width: '100%',
-                        aspectRatio: '3/4',
-                        maxHeight: '380px',
-                        overflow: 'hidden',
-                        background: '#e0e0e0',
+                        height: '100%',
+                        objectFit: 'cover',
+                        objectPosition: 'center 15%',
+
+                    }}
+                    onMouseEnter={() => {}}
+                    onMouseLeave={() => {}}
+                />
+            </div>
+
+            {/* Nameplate */}
+            <div style={{ marginTop: '16px', marginBottom: '20px' }}>
+                <span
+                    style={{
+                        display: 'block',
+                        fontSize: '10px',
+                        fontWeight: 700,
+                        letterSpacing: '0.18em',
+                        textTransform: 'uppercase',
+                        color: '#c5a059',
+                        marginBottom: '4px',
                     }}
                 >
-                    <Image
-                        src={imageSrc}
-                        alt={imageAlt}
-                        width={420}
-                        height={380}
-                        style={{
-                            width: '100%',
-                            height: '100%',
-                            objectFit: 'cover',
-                            objectPosition: 'center 15%',
-                            filter: hovered ? 'grayscale(0%)' : 'grayscale(100%)',
-                            transition: 'filter 0.5s ease',
-                        }}
-                        onMouseEnter={() => setHovered(true)}
-                        onMouseLeave={() => setHovered(false)}
-                    />
-                </div>
-                {/* Nameplate below image */}
-                <div style={{ marginTop: '16px' }}>
-                    <span
-                        style={{
-                            display: 'block',
-                            fontSize: '10px',
-                            fontWeight: 700,
-                            letterSpacing: '0.18em',
-                            textTransform: 'uppercase',
-                            color: '#c5a059',
-                            marginBottom: '4px',
-                        }}
-                    >
-                        {role}
-                    </span>
-                    <h2
-                        style={{
-                            fontFamily: 'Georgia, serif',
-                            fontSize: '1.9rem',
-                            fontWeight: 400,
-                            color: '#1a1a1a',
-                            margin: 0,
-                            lineHeight: 1.1,
-                        }}
-                    >
-                        {name}
-                    </h2>
-                    <p style={{ fontSize: '11px', color: '#999', marginTop: '4px' }}>{nmls}</p>
-                </div>
+                    {role}
+                </span>
+                <h2
+                    style={{
+                        fontFamily: 'Georgia, serif',
+                        fontSize: '1.6rem',
+                        fontWeight: 400,
+                        color: '#1a1a1a',
+                        margin: 0,
+                        lineHeight: 1.1,
+                    }}
+                >
+                    {name}
+                </h2>
+                <p style={{ fontSize: '11px', color: '#999', marginTop: '4px' }}>{nmls}</p>
             </div>
 
             {/* Bio */}
-            <div style={{ direction: 'ltr', paddingTop: '8px' }}>
-                <h3
-                    style={{
-                        fontFamily: 'Georgia, serif',
-                        fontSize: '1.1rem',
-                        fontStyle: 'italic',
-                        color: '#1a1a1a',
-                        marginBottom: '12px',
-                        fontWeight: 400,
-                    }}
-                >
-                    {bioTitle}
-                </h3>
+            <div style={{ borderTop: '1px solid rgba(0,0,0,0.08)', paddingTop: '20px' }}>
                 <p
                     style={{
                         fontSize: '0.85rem',
                         lineHeight: 1.75,
-                        color: '#6b6b6b',
-                        marginBottom: '24px',
+                        color: '#3a3a3a',
+                        marginBottom: '20px',
                     }}
                 >
                     {bio}
                 </p>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '28px' }}>
-                    {bullets.map((b, i) => (
-                        <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                            {iconMap[b.icon]}
-                            <span style={{ fontSize: '0.8rem', color: '#1a1a1a' }}>{b.text}</span>
-                        </div>
-                    ))}
-                </div>
+                {bullets && bullets.length > 0 && (
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '20px' }}>
+                        {bullets.map((b: any, i: number) => (
+                            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                {iconMap[b.icon as BulletType]}
+                                <span style={{ fontSize: '0.8rem', color: '#1a1a1a' }}>{b.text}</span>
+                            </div>
+                        ))}
+                    </div>
+                )}
                 <Link
                     href={profileHref}
                     style={{

@@ -59,8 +59,8 @@ export default function ContactPage() {
                                     <div className={styles.infoItem}>
                                         <label className={styles.itemLabel}>Houston Headquarters</label>
                                         <address className={styles.address}>
-                                            18 Augusta Pines Dr #203<br />
-                                            Spring, Texas 77389
+                                            5251 Westheimer Rd #830<br />
+                                            Houston, TX 77056
                                         </address>
                                         <div className={styles.mapWrapper}>
                                             <iframe
