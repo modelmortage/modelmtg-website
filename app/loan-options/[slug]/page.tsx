@@ -95,7 +95,7 @@ export default async function LoanOptionPage({ params }: LoanOptionPageProps) {
       <ContentPage
         title={loanOption.title}
         subtitle={loanOption.shortDescription}
-        heroBackground="var(--midnight-black)"
+        heroBackground="#f9f9f8"
         breadcrumbs={[
           { label: 'Loan Options', href: '/loan-options' },
           { label: loanOption.title, href: `/loan-options/${loanOption.slug}` },

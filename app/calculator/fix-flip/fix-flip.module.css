@@ -94,19 +94,19 @@
 
 .topMetrics {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
 }
 
-@media (min-width: 640px) {
+@media (max-width: 900px) {
   .topMetrics {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (min-width: 1024px) {
+@media (max-width: 480px) {
   .topMetrics {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr;
   }
 }
 
@@ -114,6 +114,10 @@
   background: #e8f5e9 !important;
   text-align: center;
   padding: 1.5rem 1rem !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .metricLabelTop {
@@ -210,10 +214,6 @@
 @media (max-width: 1023px) {
   .calculatorWrapper {
     padding: 1rem;
-  }
-
-  .topMetrics {
-    grid-template-columns: 1fr;
   }
 
   .breakdownGrid {

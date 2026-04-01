@@ -22,7 +22,7 @@
 /* Ensure input text is visible */
 .inputFields input[type="number"],
 .inputFields input[type="text"] {
-    color: #ffffff !important;
+    color: #0f172a !important;
 }
 
 .inputFields input[type="number"]::-webkit-inner-spin-button,
@@ -82,7 +82,7 @@
 /* Ensure input text is visible */
 .inputFields input[type="number"],
 .inputFields input[type="text"] {
-    color: #ffffff !important;
+    color: #0f172a !important;
 }
 
 .inputFields input[type="number"]::-webkit-inner-spin-button,
@@ -154,12 +154,12 @@
 .centerPanel {}
 
 .breakdownCard {
-    background: rgba(255, 255, 255, 0.03) !important;
+    background: #ffffff !important;
     height: fit-content;
 }
 
 .breakdownCard h3 {
-    color: #ffffff !important;
+    color: #1a1a1a !important;
 }
 
 .pieChart {
@@ -234,12 +234,12 @@
 
 .legendLabel {
     flex: 1;
-    color: #E2E8F0;
+    color: #1a1a1a;
 }
 
 .legendValue {
     font-weight: 600;
-    color: #ffffff;
+    color: #1a1a1a;
 }
 
 /* Right Panel - Results */

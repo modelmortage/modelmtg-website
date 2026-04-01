@@ -17,13 +17,13 @@
 .title {
   font-size: clamp(2.5rem, 5vw, 4rem);
   margin-bottom: 1rem;
-  color: #FFFFFF;
+  color: #1a1a1a;
   line-height: 1.2;
 }
 
 .subtitle {
   font-size: clamp(1.125rem, 2vw, 1.5rem);
-  color: #FFFFFF;
+  color: #3a3a3a;
   opacity: 0.9;
   max-width: 800px;
   line-height: 1.6;

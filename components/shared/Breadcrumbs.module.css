@@ -21,11 +21,10 @@
 .link {
   font-family: var(--font-sans);
   font-size: 0.875rem;
-  color: var(--ivory-white);
+  color: #3a3a3a;
   text-decoration: none;
   opacity: 0.7;
   transition: all var(--transition-fast);
-  /* Ensure adequate touch target size */
   padding: 12px 4px;
   min-height: 44px;
   display: inline-flex;

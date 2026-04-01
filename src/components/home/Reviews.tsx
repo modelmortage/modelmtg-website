@@ -147,9 +147,6 @@ export function Reviews({ reviews: initialReviews = [] }: ReviewsProps) {
               </div>
               <div>
                 <p className={styles.verifiedText}>Verified Google Reviews</p>
-                <p className={styles.verifiedSubtext}>
-                  Based on {proof.count !== null ? proof.count : '142'} client transactions
-                </p>
               </div>
             </div>
           </div>
