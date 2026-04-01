@@ -115,7 +115,7 @@ export default function Footer() {
                                 <Icon icon={FaFacebook} size="md" ariaLabel="" />
                             </a>
                             <a
-                                href="https://www.instagram.com/modelmortgage"
+                                href={siteData.social.instagram}
                                 aria-label="Follow us on Instagram"
                                 className={styles.socialIcon}
                                 target="_blank"

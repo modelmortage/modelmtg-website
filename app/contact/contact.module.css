@@ -6,21 +6,14 @@
   overflow: hidden;
   display: flex;
   align-items: center;
-  background: #FDFCFB;
+  background: #FFFFFF;
 }
 
-@media (prefers-color-scheme: dark) {
-  .main {
-    background: #0a0a0a;
-  }
-}
-
-/* Dust Effect */
 .dustBg {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
   overflow: hidden;
 }
 
@@ -30,35 +23,35 @@
   inset: 0;
   background:
     radial-gradient(5px 5px at 5% 10%, rgba(197, 160, 89, 0.8), transparent 50%),
-    radial-gradient(4px 4px at 12% 25%, rgba(255, 255, 255, 0.7), transparent 50%),
+    radial-gradient(4px 4px at 12% 25%, rgba(197, 160, 89, 0.7), transparent 50%),
     radial-gradient(5px 5px at 20% 5%, rgba(197, 160, 89, 0.7), transparent 50%),
-    radial-gradient(4px 4px at 28% 15%, rgba(255, 255, 255, 0.6), transparent 50%),
+    radial-gradient(4px 4px at 28% 15%, rgba(197, 160, 89, 0.6), transparent 50%),
     radial-gradient(5px 5px at 35% 30%, rgba(197, 160, 89, 0.8), transparent 50%),
-    radial-gradient(4px 4px at 42% 10%, rgba(255, 255, 255, 0.7), transparent 50%),
+    radial-gradient(4px 4px at 42% 10%, rgba(197, 160, 89, 0.7), transparent 50%),
     radial-gradient(5px 5px at 50% 25%, rgba(197, 160, 89, 0.75), transparent 50%),
-    radial-gradient(4px 4px at 58% 5%, rgba(255, 255, 255, 0.65), transparent 50%),
+    radial-gradient(4px 4px at 58% 5%, rgba(197, 160, 89, 0.65), transparent 50%),
     radial-gradient(5px 5px at 65% 20%, rgba(197, 160, 89, 0.8), transparent 50%),
-    radial-gradient(4px 4px at 72% 35%, rgba(255, 255, 255, 0.7), transparent 50%),
+    radial-gradient(4px 4px at 72% 35%, rgba(197, 160, 89, 0.7), transparent 50%),
     radial-gradient(5px 5px at 80% 10%, rgba(197, 160, 89, 0.75), transparent 50%),
-    radial-gradient(4px 4px at 88% 25%, rgba(255, 255, 255, 0.65), transparent 50%),
+    radial-gradient(4px 4px at 88% 25%, rgba(197, 160, 89, 0.65), transparent 50%),
     radial-gradient(5px 5px at 95% 40%, rgba(197, 160, 89, 0.8), transparent 50%),
 
-    radial-gradient(4px 4px at 8% 55%, rgba(255, 255, 255, 0.7), transparent 50%),
+    radial-gradient(4px 4px at 8% 55%, rgba(197, 160, 89, 0.7), transparent 50%),
     radial-gradient(5px 5px at 15% 70%, rgba(197, 160, 89, 0.75), transparent 50%),
-    radial-gradient(4px 4px at 22% 85%, rgba(255, 255, 255, 0.65), transparent 50%),
+    radial-gradient(4px 4px at 22% 85%, rgba(197, 160, 89, 0.65), transparent 50%),
     radial-gradient(5px 5px at 30% 60%, rgba(197, 160, 89, 0.8), transparent 50%),
-    radial-gradient(4px 4px at 38% 75%, rgba(255, 255, 255, 0.7), transparent 50%),
+    radial-gradient(4px 4px at 38% 75%, rgba(197, 160, 89, 0.7), transparent 50%),
     radial-gradient(5px 5px at 45% 90%, rgba(197, 160, 89, 0.75), transparent 50%),
-    radial-gradient(4px 4px at 52% 65%, rgba(255, 255, 255, 0.65), transparent 50%),
+    radial-gradient(4px 4px at 52% 65%, rgba(197, 160, 89, 0.65), transparent 50%),
     radial-gradient(5px 5px at 60% 80%, rgba(197, 160, 89, 0.8), transparent 50%),
-    radial-gradient(4px 4px at 68% 95%, rgba(255, 255, 255, 0.7), transparent 50%),
+    radial-gradient(4px 4px at 68% 95%, rgba(197, 160, 89, 0.7), transparent 50%),
     radial-gradient(5px 5px at 75% 55%, rgba(197, 160, 89, 0.75), transparent 50%),
-    radial-gradient(4px 4px at 82% 70%, rgba(255, 255, 255, 0.65), transparent 50%),
+    radial-gradient(4px 4px at 82% 70%, rgba(197, 160, 89, 0.65), transparent 50%),
     radial-gradient(5px 5px at 90% 85%, rgba(197, 160, 89, 0.8), transparent 50%),
-    radial-gradient(4px 4px at 98% 60%, rgba(255, 255, 255, 0.7), transparent 50%),
+    radial-gradient(4px 4px at 98% 60%, rgba(197, 160, 89, 0.7), transparent 50%),
 
     radial-gradient(5px 5px at 3% 45%, rgba(197, 160, 89, 0.7), transparent 50%),
-    radial-gradient(4px 4px at 97% 90%, rgba(255, 255, 255, 0.6), transparent 50%);
+    radial-gradient(4px 4px at 97% 90%, rgba(197, 160, 89, 0.6), transparent 50%);
   opacity: 1;
   animation: dust 15s ease-in-out infinite;
 }
@@ -179,16 +172,12 @@
 .title {
   font-family: var(--font-serif);
   font-size: clamp(2.5rem, 6vw, 4rem);
-  color: #1e293b;
+  color: #000000;
   line-height: 1.1;
   font-weight: 400;
 }
 
-@media (prefers-color-scheme: dark) {
-  .title {
-    color: #ffffff;
-  }
-}
+
 
 .titleAccent {
   font-style: italic;
@@ -197,18 +186,14 @@
 
 .subtitle {
   margin-top: 1.5rem;
-  color: #64748b;
+  color: #000000;
   max-width: 42rem;
   font-size: 1rem;
   font-weight: 300;
   line-height: 1.7;
 }
 
-@media (prefers-color-scheme: dark) {
-  .subtitle {
-    color: #cbd5e1;
-  }
-}
+
 
 /* Content Grid */
 .contentGrid {
@@ -265,20 +250,16 @@
   font-size: 0.625rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: #94a3b8;
+  color: #000000;
   font-weight: 600;
 }
 
-@media (prefers-color-scheme: dark) {
-  .itemLabel {
-    color: #cbd5e1;
-  }
-}
+
 
 .itemValue {
   font-family: var(--font-serif);
   font-size: 1.25rem;
-  color: #1e293b;
+  color: #000000;
   text-decoration: none;
   transition: color 0.2s ease;
 }
@@ -287,25 +268,38 @@
   color: #c5a059;
 }
 
-@media (prefers-color-scheme: dark) {
-  .itemValue {
-    color: #ffffff;
-  }
-}
+
 
 .address {
   font-style: normal;
   font-size: 1rem;
-  color: #475569;
+  color: #000000;
   font-weight: 300;
   line-height: 1.7;
 }
 
-@media (prefers-color-scheme: dark) {
-  .address {
-    color: #e2e8f0;
-  }
+.mapWrapper {
+  margin-top: 1.5rem;
+  position: relative;
+  width: 100%;
+  padding-bottom: 75%; /* 4:3 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(197, 160, 89, 0.4);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
+
+.map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+
 
 .badge {
   padding-top: 1.5rem;
@@ -327,18 +321,14 @@
   background: #1e293b;
 }
 
-@media (prefers-color-scheme: dark) {
-  .badgeLine {
-    background: #e2e8f0;
-  }
-}
+
 
 .badgeText {
   font-size: 0.625rem;
   text-transform: uppercase;
   letter-spacing: 0.2em;
   line-height: 1.8;
-  color: #64748b;
+  color: #000000;
 }
 
 /* Form Section */
@@ -375,16 +365,12 @@
   font-size: 0.625rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: #64748b;
+  color: #000000;
   font-weight: 700;
   transition: color 0.2s ease;
 }
 
-@media (prefers-color-scheme: dark) {
-  .formLabel {
-    color: rgba(255, 255, 255, 0.9);
-  }
-}
+
 
 .formGroup:focus-within .formLabel {
   color: #c5a059;
@@ -396,36 +382,22 @@
   width: 100%;
   background: transparent;
   border: none;
-  border-bottom: 1px solid #cbd5e1;
+  border-bottom: 1px solid #000000;
   padding: 0.5rem 0;
   font-size: 1rem;
-  color: #1e293b;
+  color: #000000;
   transition: all 0.3s ease;
   outline: none;
 }
 
-@media (prefers-color-scheme: dark) {
 
-  .formInput,
-  .formSelect,
-  .formTextarea {
-    border-bottom-color: rgba(203, 213, 225, 0.4);
-    color: #ffffff;
-  }
-}
 
 .formInput::placeholder,
 .formTextarea::placeholder {
-  color: rgba(100, 116, 139, 0.3);
+  color: #000000;
 }
 
-@media (prefers-color-scheme: dark) {
 
-  .formInput::placeholder,
-  .formTextarea::placeholder {
-    color: rgba(203, 213, 225, 0.6);
-  }
-}
 
 .formInput:focus,
 .formSelect:focus,
@@ -444,8 +416,8 @@
 }
 
 .formSelect option {
-  background: #121212;
-  color: #e2e8f0;
+  background: #ffffff;
+  color: #000000;
 }
 
 .formTextarea {

@@ -1,7 +1,8 @@
 .section {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #14181D;
+  color: #F7F5F1;
   padding: 6rem 2rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
 }
 
 .container {
@@ -18,7 +19,7 @@
 }
 
 .accent {
-  color: #d4af37;
+  color: #C6A96B;
   font-style: italic;
 }
 
@@ -42,7 +43,7 @@
 
 .icon {
   font-size: 3rem;
-  color: #d4af37;
+  color: #C6A96B;
 }
 
 .cardTitle {
@@ -56,7 +57,7 @@
 .cardText {
   font-size: 0.95rem;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.8);
+  color: #CFCAC2;
   max-width: 400px;
   margin: 0 auto;
 }

@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
 import { motion } from 'framer-motion'
 import styles from './LocalAreas.module.css'
 
@@ -37,17 +36,7 @@ export function LocalAreas() {
 
   return (
     <section className={styles.section}>
-      {/* Background Map Image */}
-      <div className={styles.bg} aria-hidden="true">
-        <Image
-          src="/houston-map-white.jpg"
-          alt=""
-          fill
-          className={styles.mapImage}
-          quality={100}
-          priority={false}
-        />
-      </div>
+
 
       <div className={styles.container}>
         <div className={styles.grid}>

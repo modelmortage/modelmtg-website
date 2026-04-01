@@ -1,9 +1,10 @@
 .section {
-  background-color: #0a0a0a;
-  color: #ffffff;
+  background-color: #15171B;
+  color: #F7F5F1;
   padding: 6rem 2rem 8rem;
   position: relative;
   overflow: hidden;
+  border-top: 1px solid rgba(255,255,255,0.05);
 }
 
 .container {
@@ -86,13 +87,13 @@
 
 .quoteSection {
   padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255,255,255,0.07);
 }
 
 .tagline {
   font-size: 1.25rem;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.6);
+  color: #CFCAC2;
   font-style: italic;
   font-weight: 300;
   margin-bottom: 1.5rem;
@@ -146,15 +147,16 @@
 
 .reviewCard {
   position: absolute;
-  background: #16130d;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #1C2026;
+  border: 1px solid rgba(255,255,255,0.06);
   border-radius: 0.5rem;
   padding: 2rem;
   transition: all 0.5s ease;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
 }
 
 .reviewCard:hover {
-  border-color: rgba(201, 164, 76, 0.4);
+  border-color: rgba(198, 169, 107, 0.3);
 }
 
 /* Card 1: Wise / Top Left */
@@ -215,7 +217,7 @@
 .reviewText {
   font-size: 1rem;
   line-height: 1.5;
-  color: rgba(255, 255, 255, 0.9);
+  color: #F7F5F1;
   font-style: italic;
   font-weight: 300;
   margin-bottom: 1.5rem;
@@ -245,7 +247,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255,255,255,0.07);
   padding-top: 1rem;
   gap: 1rem;
 }
@@ -341,7 +343,7 @@
   max-width: 1400px;
   margin: 6rem auto 0;
   text-align: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255,255,255,0.07);
   padding-top: 3rem;
 }
 
@@ -366,7 +368,7 @@
 .copyright {
   margin-top: 1.5rem;
   font-size: 0.625rem;
-  color: rgba(255, 255, 255, 0.4);
+  color: #D2CCC4;
   text-transform: uppercase;
   letter-spacing: 0.4em;
 }

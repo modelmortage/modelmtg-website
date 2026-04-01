@@ -7,57 +7,58 @@
 
 /* === PRIVATE CLIENT DESIGN SYSTEM - DARK MODE === */
 :root {
-  /* === SURFACES - Dark Institutional Palette (PURE BLACK - No Blue Undertones) === */
+  /* === SURFACES === */
   --mm-ink: #000000;
-  /* Primary background - pure black */
-  --mm-ink-soft: #0a0a0a;
-  /* Alternate section background - charcoal */
-  --mm-surface: #1a1a1a;
-  /* Raised surfaces (cards, panels) */
-  --mm-surface-alt: #252525;
-  /* Subtle highlight surface */
+  --mm-ink-soft: #050505;
+  --mm-surface: #0a0a0a;
+  --mm-surface-alt: #111111;
+  /* Elevated card / testimonial bg */
+
+  /* === SECTION BACKGROUNDS === */
+  --mm-section-1: #14181D;  /* Loan Options */
+  --mm-section-2: #181C22;  /* Process */
+  --mm-section-3: #15171B;  /* Testimonials */
+  --mm-section-map: #1A1D22; /* Texas / service area */
+  --mm-section-office: #161A1F; /* Office location */
+  --mm-ivory: #F5F1EA;      /* Final CTA - off-white */
 
   /* === LIGHT BACKGROUNDS === */
   --ivory-white: #FFFFFF;
-  /* White background for content pages */
-  
-  /* === COLORS === */
-  --midnight-black: #0a0a0a;
-  /* Dark text color */
-  --deep-charcoal: #2a2a2a;
-  /* Secondary dark color */
-  --gold-main: #c5a059;
-  /* Gold accent color */
 
-  /* === TEXT - Refined Light Hierarchy === */
-  --mm-text: rgba(255, 255, 255, 0.95);
-  /* Primary text */
-  --mm-text-subtle: rgba(255, 255, 255, 0.85);
-  /* Secondary text */
+  /* === COLORS === */
+  --midnight-black: #000000;
+  --deep-charcoal: #0a0a0a;
+  --gold-main: #C6A96B;
+
+  /* === TEXT === */
+  --mm-text: #F7F5F1;
+  /* Primary heading text on dark */
+  --mm-text-subtle: #CFCAC2;
+  /* Body text on dark */
+
+  /* === LIGHT SECTION TEXT === */
+  --mm-text-light-heading: #17191D;
+  --mm-text-light-body: #5D5A55;
 
   /* Borders & Dividers */
-  --mm-line: rgba(255, 255, 255, 0.08);
-  /* Subtle dividers */
-  --mm-border: rgba(255, 255, 255, 0.10);
-  /* Card borders - subtle */
+  --mm-line: rgba(255,255,255,0.06);
+  --mm-border: rgba(255,255,255,0.07);
 
   /* === ACCENT - Gold === */
-  --mm-gold: #C9A44C;
-  /* Primary CTA and micro accents */
-  --mm-gold-dark: #B89139;
-  /* Hover state */
+  --mm-gold: #C6A96B;
+  --mm-gold-hover: #E2C78F;
+  --mm-gold-dark: #A8893F;
 
-  /* Footer - Even darker (pure black) */
-  --mm-footer-bg: #000000;
-  /* Pure black for footer */
+  /* Footer */
+  --mm-footer-bg: #141318;
 
-  /* Legacy aliases for backward compatibility */
+  /* Legacy aliases */
   --background-primary: var(--mm-surface);
   --text-primary: var(--mm-text);
   --text-secondary: var(--mm-text-subtle);
   --gold-accent: var(--mm-gold);
   --border-light: var(--mm-line);
-  --border-lighter: rgba(255, 255, 255, 0.12);
+  --border-lighter: rgba(255,255,255,0.08);
   --background-light-gray: var(--mm-ink-soft);
   --mm-page: var(--mm-ink);
   --mm-muted: var(--mm-ink-soft);
@@ -100,26 +101,13 @@ html {
 body {
   font-family: var(--font-sans);
   color: var(--mm-text);
-  background: linear-gradient(135deg, #070A0F 0%, #0B1220 100%);
+  background: #000000;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   min-height: 100vh;
   position: relative;
-}
-
-/* Subtle noise overlay */
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' result='noise' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.025'/%3E%3C/svg%3E");
-  z-index: -1;
 }
 
 /* === TYPOGRAPHY === */

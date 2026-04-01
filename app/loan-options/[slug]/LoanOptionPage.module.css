@@ -7,7 +7,7 @@
 .sectionTitle {
   font-size: 2rem;
   font-weight: 700;
-  color: var(--midnight-black);
+  color: #ffffff;
   margin-bottom: 1.5rem;
   padding-bottom: 0.75rem;
   border-bottom: 3px solid var(--gold-main);
@@ -16,13 +16,13 @@
 .overview {
   font-size: 1.125rem;
   line-height: 1.8;
-  color: var(--midnight-black);
+  color: #ffffff;
 }
 
 .paragraph {
   margin-bottom: 1.5rem;
   line-height: 1.8;
-  color: var(--midnight-black);
+  color: #ffffff;
 }
 
 .list {
@@ -40,7 +40,7 @@
   gap: 1rem;
   font-size: 1.0625rem;
   line-height: 1.6;
-  color: var(--midnight-black);
+  color: #ffffff;
 }
 
 .checkIcon {
@@ -56,7 +56,7 @@
 }
 
 .blackBullet {
-  color: var(--midnight-black);
+  color: #ffffff;
   flex-shrink: 0;
   margin-top: 0.375rem;
 }
@@ -84,7 +84,7 @@
   flex: 1;
   font-size: 1.0625rem;
   font-weight: 600;
-  color: var(--midnight-black);
+  color: #ffffff;
 }
 
 .calculatorArrow {
@@ -139,7 +139,7 @@
   width: 2.5rem;
   height: 2.5rem;
   background: var(--gold-main);
-  color: var(--midnight-black);
+  color: #ffffff;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -205,7 +205,7 @@
   padding-left: 3.5rem;
   font-size: 1.0625rem;
   line-height: 1.6;
-  color: var(--midnight-black);
+  color: #ffffff;
 }
 
 .timelineItem::before {
@@ -216,7 +216,7 @@
   width: 2.5rem;
   height: 2.5rem;
   background: var(--gold-main);
-  color: var(--midnight-black);
+  color: #ffffff;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -226,7 +226,7 @@
 }
 
 .timelineItem strong {
-  color: var(--midnight-black);
+  color: #ffffff;
 }
 
 /* Quick Facts Grid */
@@ -238,7 +238,7 @@
 }
 
 .factCard {
-  background: var(--light-gray, #f9fafb);
+  background: rgba(255, 255, 255, 0.03);
   border-left: 4px solid var(--gold-main);
   padding: 1.5rem;
   border-radius: 4px;
@@ -248,15 +248,15 @@
   font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--midnight-black);
-  opacity: 0.7;
+  color: #ffffff;
+  opacity: 0.8;
   margin-bottom: 0.5rem;
 }
 
 .factValue {
   font-size: 1.125rem;
   font-weight: 700;
-  color: var(--midnight-black);
+  color: #ffffff;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -277,14 +277,14 @@
 
 .proCard,
 .conCard {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 8px;
   padding: 1.5rem;
 }
 
 .proTitle {
-  color: var(--midnight-black);
+  color: #ffffff;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -294,7 +294,7 @@
 }
 
 .conTitle {
-  color: var(--midnight-black);
+  color: #ffffff;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -306,8 +306,8 @@
 /* FAQs */
 .faqItem {
   margin-bottom: 1.5rem;
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 8px;
   padding: 1.5rem;
 }
@@ -315,7 +315,7 @@
 .faqQuestion {
   font-size: 1.125rem;
   font-weight: 600;
-  color: var(--midnight-black);
+  color: #ffffff;
   margin-bottom: 0.75rem;
   display: flex;
   align-items: flex-start;
@@ -325,7 +325,7 @@
 .faqAnswer {
   font-size: 1rem;
   line-height: 1.6;
-  color: var(--midnight-black);
+  color: #ffffff;
   padding-left: 2.25rem;
 }
 
@@ -337,9 +337,9 @@
 }
 
 .compareCard {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-left: 4px solid var(--deep-charcoal);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 4px solid var(--gold-main);
   border-radius: 8px;
   padding: 1.5rem;
 }
@@ -347,7 +347,7 @@
 .compareTitle {
   font-size: 1.125rem;
   font-weight: 600;
-  color: var(--midnight-black);
+  color: #ffffff;
   margin-bottom: 0.5rem;
   display: flex;
   align-items: center;
@@ -357,5 +357,5 @@
 .compareDesc {
   font-size: 1rem;
   line-height: 1.6;
-  color: var(--midnight-black);
+  color: #ffffff;
 }

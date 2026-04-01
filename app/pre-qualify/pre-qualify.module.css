@@ -1,9 +1,8 @@
 /* Pre-Qualify Page */
 
 .main {
-    background: #000000;
-    color: #ffffff;
-    min-height: 100vh;
+  min-height: 100vh;
+  background-color: #14181D;
 }
 
 /* Hero Section */
@@ -64,7 +63,7 @@
 .heroSubtitle {
     font-size: clamp(1rem, 2vw, 1.25rem);
     line-height: 1.6;
-    color: #a0a0a0;
+    color: #CFCAC2;
     font-weight: 300;
     font-style: italic;
     max-width: 42rem;
@@ -116,7 +115,7 @@
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.2em;
-    color: #808080;
+    color: rgba(255,255,255,0.5);
 }
 
 .memoTitle {
@@ -138,7 +137,7 @@
     gap: 2rem;
     font-size: 1.125rem;
     line-height: 1.6;
-    color: #d0d0d0;
+    color: #ffffff;
     font-weight: 300;
 }
 
@@ -171,12 +170,12 @@
 }
 
 .memoSection p {
-    color: #a0a0a0;
+    color: #CFCAC2;
     transition: color 0.3s ease;
 }
 
 .memoSection:hover p {
-    color: #d0d0d0;
+    color: #ffffff;
 }
 
 .memoActions {
@@ -213,8 +212,8 @@
 .secondaryButton {
     display: inline-block;
     padding: 1rem 2.5rem;
-    border: 1px solid #404040;
-    color: #d0d0d0;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #ffffff;
     font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -247,7 +246,7 @@
 .creditCard {
     padding: 2.5rem;
     border: 1px solid rgba(197, 160, 89, 0.3);
-    background: rgba(26, 26, 26, 0.4);
+    background: rgba(25, 29, 35, 0.8);
     backdrop-filter: blur(12px);
     position: relative;
 }
@@ -323,7 +322,7 @@
     font-size: 0.625rem;
     text-transform: uppercase;
     letter-spacing: 0.2em;
-    color: #808080;
+    color: #CFCAC2;
 }
 
 .cardDescription {
@@ -332,7 +331,7 @@
     gap: 1rem;
     font-size: 0.875rem;
     line-height: 1.6;
-    color: #a0a0a0;
+    color: #CFCAC2;
     font-weight: 300;
     margin-bottom: 3rem;
 }
@@ -362,7 +361,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 0.75rem;
-    border: 1px solid #2a2a2a;
+    border: 1px solid rgba(255,255,255,0.1);
     text-decoration: none;
     color: #ffffff;
     font-size: 0.625rem;
@@ -378,7 +377,7 @@
 .resourceLink svg {
     width: 0.75rem;
     height: 0.75rem;
-    color: #606060;
+    color: rgba(255,255,255,0.4);
     transition: color 0.3s ease;
 }
 
@@ -415,7 +414,7 @@
 
 .widgetText {
     font-size: 0.75rem;
-    color: #a0a0a0;
+    color: rgba(255, 255, 255, 0.6);
     font-style: italic;
     line-height: 1.5;
 }

@@ -31,6 +31,8 @@ export interface ContentPageProps {
     text: string
     href: string
   }
+  /** Whether to show gold particle animation */
+  showOrbs?: boolean
 }
 
 export default function ContentPage({
@@ -42,6 +44,7 @@ export default function ContentPage({
   heroBackground,
   showCTA = true,
   heroCta,
+  showOrbs = false,
   cta = {
     title: 'Ready to Get Started?',
     description: 'Contact us today to discuss your mortgage needs and get personalized guidance.',
@@ -62,6 +65,7 @@ export default function ContentPage({
     <>
       <Header />
       <main id="main-content" className={styles.main}>
+        {showOrbs && <div className={styles.dustBg}></div>}
         {/* Hero Section */}
         <section className={styles.hero} style={heroStyle}>
           <div className={styles.heroContainer}>

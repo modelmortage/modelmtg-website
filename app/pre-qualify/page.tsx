@@ -23,6 +23,7 @@ export default function PreQualifyPage() {
         <>
             <Header />
             <main className={styles.main}>
+                
                 {/* Hero Section */}
                 <section className={styles.hero}>
                     <div className={styles.heroContainer}>

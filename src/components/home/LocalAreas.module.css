@@ -5,32 +5,11 @@
   align-items: center;
   overflow: hidden;
   padding: 6rem 1.5rem;
-  background-color: #1a1a1c;
+  background-color: #1A1D22;
+  border-top: 1px solid rgba(255,255,255,0.05);
 }
 
-/* Background Map Image */
-.bg {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.12;
-  z-index: 0;
-}
 
-.mapImage {
-  object-fit: cover;
-  filter: grayscale(100%) brightness(1.4) contrast(1.1);
-}
-
-/* Readability scrim - full width solid overlay */
-.section::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.25);
-  pointer-events: none;
-  z-index: 1;
-}
 
 .container {
   max-width: 1400px;
@@ -86,7 +65,7 @@
   font-size: 2.25rem;
   line-height: 1.1;
   font-weight: 500;
-  color: #ffffff;
+  color: #F7F5F1;
 }
 
 @media (min-width: 768px) {
@@ -120,7 +99,7 @@
 }
 
 .description {
-  color: rgba(255, 255, 255, 0.6);
+  color: #CFCAC2;
   max-width: 28rem;
   font-size: 1.125rem;
   line-height: 1.6;
@@ -167,7 +146,7 @@
 
 .neighborhoodName {
   font-size: 1.25rem;
-  color: rgba(255, 255, 255, 0.9);
+  color: #F7F5F1;
   transition: color 0.3s ease;
 }
 

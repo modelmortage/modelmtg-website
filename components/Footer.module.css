@@ -1,9 +1,9 @@
 /* === CONSERVATIVE FOOTER DESIGN === */
 .footer {
     background: #141318;
-    color: #E2E8F0;
+    color: #CFCAC2;
     padding: 4rem 2rem 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255,255,255,0.06);
 }
 
 .container {
@@ -39,7 +39,7 @@
 
 .tagline {
     font-size: 0.875rem;
-    color: #E2E8F0;
+    color: #CFCAC2;
     font-weight: 400;
 }
 
@@ -47,7 +47,7 @@
 .divider {
     width: 100%;
     height: 1px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255,255,255,0.06);
 }
 
 /* === LINKS GRID === */
@@ -67,7 +67,7 @@
     font-family: var(--font-sans);
     font-size: 0.875rem;
     font-weight: 600;
-    color: #E5E7EB;
+    color: #F7F3EE;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-bottom: 0.5rem;
@@ -96,7 +96,7 @@
 }
 
 .address {
-    color: #E2E8F0;
+    color: #CFCAC2;
     font-size: 0.875rem;
     line-height: 1.6;
     margin: 0.5rem 0;

@@ -1,16 +1,16 @@
 /* About Us Page — Light Premium Theme */
 
 .main {
-    background: #f9f9f8;
-    color: #1a1a1a;
+    background: #14181D;
+    color: #F7F5F1;
     min-height: 100vh;
 }
 
 /* ── Hero ────────────────────────────────────────── */
 .hero {
     padding: 9rem 2rem 5rem;
-    background: #f9f9f8;
-    border-bottom: 1px solid #e8e4dc;
+    background: #14181D;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
     position: relative;
 }
 
@@ -58,7 +58,7 @@
     font-size: clamp(2.2rem, 4.5vw, 3.75rem);
     font-weight: 400;
     letter-spacing: -0.01em;
-    color: #1a1a1a;
+    color: #F7F5F1;
     line-height: 1.1;
     margin: 0 0 20px;
 }
@@ -78,7 +78,7 @@
 
 .heroTagline {
     font-size: 1.1rem;
-    color: #555;
+    color: #CFCAC2;
     font-weight: 300;
     margin: 10px 0 0;
     font-style: italic;
@@ -87,7 +87,7 @@
 .heroSubtitle {
     font-size: 1rem;
     line-height: 1.8;
-    color: #6b6b6b;
+    color: #CFCAC2;
     font-weight: 300;
     margin: 0;
     padding-top: 40px;
@@ -99,8 +99,8 @@
 
 /* ── Stats bar ───────────────────────────────────── */
 .statsBar {
-    background: #fff;
-    border-bottom: 1px solid #e8e4dc;
+    background: #191d23;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
     padding: 0 2rem;
 }
 
@@ -117,7 +117,7 @@
 
 .statItem {
     padding: 36px 24px;
-    border-right: 1px solid #e8e4dc;
+    border-right: 1px solid rgba(255,255,255,0.06);
     text-align: center;
 }
 
@@ -138,13 +138,13 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.18em;
-    color: #999;
+    color: #8B8B8B;
 }
 
 /* ── Story section ───────────────────────────────── */
 .storySection {
     padding: 7rem 2rem 8rem;
-    background: #f9f9f8;
+    background: #14181D;
 }
 
 @media (max-width: 767px) {
@@ -182,7 +182,7 @@
     gap: 22px;
     font-size: 1rem;
     line-height: 1.9;
-    color: #555;
+    color: #CFCAC2;
     font-weight: 300;
     max-width: 760px;
 }
@@ -192,7 +192,7 @@
 /* ── Mission ─────────────────────────────────────── */
 .missionSection {
     padding: 7rem 2rem;
-    background: #f9f9f8;
+    background: #14181D;
 }
 
 @media (max-width: 767px) {
@@ -229,7 +229,7 @@
     gap: 20px;
     font-size: 0.95rem;
     line-height: 1.85;
-    color: #555;
+    color: #CFCAC2;
     font-weight: 300;
 }
 
@@ -261,7 +261,7 @@
     gap: 24px;
     align-items: flex-start;
     padding-bottom: 36px;
-    border-bottom: 1px solid #e8e4dc;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
 .approachItem:last-child { border-bottom: none; padding-bottom: 0; }
@@ -285,14 +285,14 @@
 .approachItemTitle {
     font-size: 1rem;
     font-weight: 600;
-    color: #1a1a1a;
+    color: #F7F5F1;
     margin: 0;
 }
 
 .approachItemText {
     font-size: 0.875rem;
     line-height: 1.7;
-    color: #777;
+    color: #CFCAC2;
     font-weight: 300;
     margin: 0;
 }
@@ -300,9 +300,9 @@
 /* ── Expertise ───────────────────────────────────── */
 .expertiseSection {
     padding: 7rem 2rem;
-    background: #fff;
-    border-top: 1px solid #e8e4dc;
-    border-bottom: 1px solid #e8e4dc;
+    background: #191d23;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
 @media (max-width: 767px) {
@@ -331,7 +331,7 @@
     font-size: clamp(1.75rem, 3vw, 2.5rem);
     font-weight: 400;
     margin-bottom: 52px;
-    color: #1a1a1a;
+    color: #F7F5F1;
     text-align: left;
 }
 
@@ -339,8 +339,8 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 1px;
-    background: #e8e4dc;
-    border: 1px solid #e8e4dc;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.06);
 }
 
 @media (min-width: 768px) {
@@ -353,7 +353,7 @@
 
 .expertiseCard {
     padding: 36px 32px;
-    background: #fff;
+    background: #191d23;
     transition: background 0.25s ease;
     position: relative;
 }
@@ -369,20 +369,20 @@
     transition: height 0.3s ease;
 }
 
-.expertiseCard:hover { background: #faf8f4; }
+.expertiseCard:hover { background: rgba(255,255,255,0.02); }
 .expertiseCard:hover::before { height: 100%; }
 
 .expertiseCardTitle {
     font-size: 0.95rem;
     font-weight: 600;
     margin-bottom: 10px;
-    color: #1a1a1a;
+    color: #F7F5F1;
 }
 
 .expertiseCardText {
     font-size: 0.85rem;
     line-height: 1.7;
-    color: #777;
+    color: #CFCAC2;
     font-weight: 300;
     margin: 0;
 }
@@ -391,7 +391,7 @@
 .ctaSection {
     padding: 7rem 2rem;
     text-align: center;
-    background: #f9f9f8;
+    background: #14181D;
 }
 
 @media (max-width: 767px) {
@@ -419,7 +419,7 @@
     font-family: Georgia, serif;
     font-size: clamp(1.75rem, 3.5vw, 2.5rem);
     font-weight: 400;
-    color: #1a1a1a;
+    color: #F7F5F1;
     line-height: 1.25;
     margin: 0;
 }
@@ -427,7 +427,7 @@
 .ctaSubtitle {
     font-size: 0.95rem;
     line-height: 1.75;
-    color: #777;
+    color: #CFCAC2;
     font-weight: 300;
     margin-bottom: 8px;
 }

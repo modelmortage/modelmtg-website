@@ -22,7 +22,7 @@
 /* Ensure input text is visible */
 .inputFields input[type="number"],
 .inputFields input[type="text"] {
-    color: #1f2937 !important;
+    color: #ffffff !important;
 }
 
 .inputFields input[type="number"]::-webkit-inner-spin-button,
@@ -32,7 +32,7 @@
 .inputPanel {}
 
 .inputCard {
-    background: #1f2937;
+    background: #191d23;
     color: white;
 }
 
@@ -53,7 +53,7 @@
 
 .loanTypeTab {
     padding: 0.5rem 1rem;
-    background: #374151;
+    background: #14181D;
     border: none;
     border-radius: 4px;
     color: #9ca3af;
@@ -68,7 +68,7 @@
 }
 
 .loanTypeTab.active {
-    background: #8B6F14;
+    background: var(--gold-main);
     color: white;
 }
 
@@ -82,7 +82,7 @@
 /* Ensure input text is visible */
 .inputFields input[type="number"],
 .inputFields input[type="text"] {
-    color: #1f2937 !important;
+    color: #ffffff !important;
 }
 
 .inputFields input[type="number"]::-webkit-inner-spin-button,
@@ -110,7 +110,7 @@
 .toggleBtn {
     flex: 1;
     padding: 0.5rem;
-    background: #374151;
+    background: #14181D;
     border: none;
     border-radius: 4px;
     color: #9ca3af;
@@ -125,7 +125,7 @@
 }
 
 .toggleBtn.active {
-    background: #8B6F14;
+    background: var(--gold-main);
     color: white;
 }
 
@@ -137,7 +137,7 @@
 
 .select {
     padding: 0.75rem;
-    background: #374151;
+    background: #14181D;
     border: 1px solid #4b5563;
     border-radius: 4px;
     color: white;
@@ -154,12 +154,12 @@
 .centerPanel {}
 
 .breakdownCard {
-    background: white !important;
+    background: rgba(255, 255, 255, 0.03) !important;
     height: fit-content;
 }
 
 .breakdownCard h3 {
-    color: #000000 !important;
+    color: #ffffff !important;
 }
 
 .pieChart {
@@ -191,7 +191,7 @@
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    background: white;
+    background: #14181D;
 }
 
 .centerAmount {
@@ -203,12 +203,12 @@
 .paymentAmount {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #000000;
+    color: #ffffff;
 }
 
 .perMonth {
     font-size: 0.875rem;
-    color: #374151;
+    color: #E2E8F0;
 }
 
 .breakdownLegend {
@@ -234,12 +234,12 @@
 
 .legendLabel {
     flex: 1;
-    color: #1f2937;
+    color: #E2E8F0;
 }
 
 .legendValue {
     font-weight: 600;
-    color: #000000;
+    color: #ffffff;
 }
 
 /* Right Panel - Results */
@@ -256,7 +256,7 @@
 }
 
 .resultCard {
-    background: #3b82f6 !important;
+    background: var(--gold-main) !important;
     color: white;
     text-align: center;
 }
@@ -283,7 +283,7 @@
 }
 
 .sliderCard {
-    background: white !important;
+    background: rgba(255, 255, 255, 0.03) !important;
 }
 
 .sliderLabel {
@@ -292,12 +292,12 @@
     align-items: center;
     margin-bottom: 0.75rem;
     font-size: 0.875rem;
-    color: #1f2937;
+    color: #E2E8F0;
 }
 
 .sliderValue {
     font-weight: 600;
-    color: #000000;
+    color: #ffffff;
 }
 
 .slider {
@@ -329,23 +329,23 @@
 }
 
 .summaryCard {
-    background: white !important;
+    background: rgba(255, 255, 255, 0.03) !important;
 }
 
 .summaryTitle {
     font-weight: 600;
     margin-bottom: 0.75rem;
-    color: #000000;
+    color: #ffffff;
 }
 
 .summaryText {
     font-size: 0.875rem;
     line-height: 1.6;
-    color: #1f2937;
+    color: #E2E8F0;
 }
 
 .summaryText strong {
-    color: #000000;
+    color: #ffffff;
 }
 
 /* Responsive */
