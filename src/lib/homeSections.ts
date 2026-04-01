@@ -50,13 +50,13 @@ export const homeSections = {
     title: "Loan Programs",
     subtitle: "Explore mortgage solutions designed for a range of buyer profiles and lending needs.",
     items: [
-      { title: "Conventional Loans", text: "Flexible options for qualified buyers.", href: "/loan-options/conventional" },
-      { title: "FHA Loans", text: "Accessible financing with flexible requirements.", href: "/loan-options/fha" },
-      { title: "VA Loans", text: "Loan options for eligible veterans and service members.", href: "/loan-options/va" },
-      { title: "Jumbo Loans", text: "Financing for higher-value homes.", href: "/loan-options/jumbo" },
-      { title: "USDA Loans", text: "0% down options in qualifying areas.", href: "/loan-options/usda" },
+      { title: "Conventional Loans", text: "Flexible options for qualified buyers.", href: "/loan-options/fixed-rate-mortgage" },
+      { title: "FHA Loans", text: "Accessible financing with flexible requirements.", href: "/loan-options/fha-home-loan" },
+      { title: "VA Loans", text: "Loan options for eligible veterans and service members.", href: "/loan-options/va-home-loan" },
+      { title: "Jumbo Loans", text: "Financing for higher-value homes.", href: "/loan-options/jumbo-home-loan" },
+      { title: "USDA Loans", text: "0% down options in qualifying areas.", href: "/loan-options/usda-loan" },
       { title: "First-Time Buyers", text: "Guidance and planning for your first purchase.", href: "/loan-options/first-time-home-buyer" },
-      { title: "Investment Properties", text: "Financing options for rentals and second homes.", href: "/loan-options/investment-property" },
+      { title: "Investment Properties", text: "Financing options for rentals and second homes.", href: "/loan-options/investment-property-loans" },
       { title: "Refinance", text: "Explore rate/term or cash-out refinance paths.", href: "/loan-options/refinance" }
     ]
   },

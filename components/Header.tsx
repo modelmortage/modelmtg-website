@@ -139,56 +139,27 @@ export default function Header() {
                             Loan Options
                             <FaChevronDown className={`${styles.chevron} ${loanOptionsDropdownOpen ? styles.chevronOpen : ''}`} />
                         </Link>
-                        <div className={`${styles.dropdownMenu} ${loanOptionsDropdownOpen ? styles.dropdownMenuOpen : ''}`}>
-                            <Link
-                                href="/loan-options/conventional"
-                                className={styles.dropdownItem}
-                                onClick={handleLinkClick}
-                            >
-                                Conventional Loans
-                            </Link>
-                            <Link
-                                href="/loan-options/fha"
-                                className={styles.dropdownItem}
-                                onClick={handleLinkClick}
-                            >
-                                FHA Loans
-                            </Link>
-                            <Link
-                                href="/loan-options/va"
-                                className={styles.dropdownItem}
-                                onClick={handleLinkClick}
-                            >
-                                VA Loans
-                            </Link>
-                            <Link
-                                href="/loan-options/jumbo"
-                                className={styles.dropdownItem}
-                                onClick={handleLinkClick}
-                            >
-                                Jumbo Loans
-                            </Link>
-                            <Link
-                                href="/loan-options/usda"
-                                className={styles.dropdownItem}
-                                onClick={handleLinkClick}
-                            >
-                                USDA Loans
-                            </Link>
-                            <Link
-                                href="/loan-options/investment"
-                                className={styles.dropdownItem}
-                                onClick={handleLinkClick}
-                            >
-                                Investment Property
-                            </Link>
-                            <Link
-                                href="/loan-options/dscr"
-                                className={styles.dropdownItem}
-                                onClick={handleLinkClick}
-                            >
-                                DSCR Loans
-                            </Link>
+                        <div className={`${styles.dropdownMenu} ${styles.dropdownMenuWide} ${loanOptionsDropdownOpen ? styles.dropdownMenuOpen : ''}`}>
+                            <div className={styles.loanColumns}>
+                                <div className={styles.loanColumn}>
+                                    <span className={styles.loanColumnHeading}>Purchase</span>
+                                    <Link href="/loan-options/fixed-rate-mortgage" className={styles.dropdownItem} onClick={handleLinkClick}>Fixed Rate Mortgage</Link>
+                                    <Link href="/loan-options/fha-home-loan" className={styles.dropdownItem} onClick={handleLinkClick}>FHA Loan</Link>
+                                    <Link href="/loan-options/va-home-loan" className={styles.dropdownItem} onClick={handleLinkClick}>VA Loan</Link>
+                                    <Link href="/loan-options/usda-loan" className={styles.dropdownItem} onClick={handleLinkClick}>USDA Loan</Link>
+                                    <Link href="/loan-options/jumbo-home-loan" className={styles.dropdownItem} onClick={handleLinkClick}>Jumbo Loan</Link>
+                                    <Link href="/loan-options/first-time-home-buyer" className={styles.dropdownItem} onClick={handleLinkClick}>First-Time Home Buyer</Link>
+                                    <Link href="/loan-options/low-down-payment-purchase-options" className={styles.dropdownItem} onClick={handleLinkClick}>Low Down Payment Options</Link>
+                                    <Link href="/loan-options/investment-property-loans" className={styles.dropdownItem} onClick={handleLinkClick}>Investment Property</Link>
+                                </div>
+                                <div className={styles.loanColumnDivider} />
+                                <div className={styles.loanColumn}>
+                                    <span className={styles.loanColumnHeading}>Refinance</span>
+                                    <Link href="/loan-options/rate-term-refinance" className={styles.dropdownItem} onClick={handleLinkClick}>Rate & Term Refinance</Link>
+                                    <Link href="/loan-options/cash-out-refinance" className={styles.dropdownItem} onClick={handleLinkClick}>Cash-Out Refinance</Link>
+                                    <Link href="/loan-options/va-irrrl" className={styles.dropdownItem} onClick={handleLinkClick}>VA Refinance (IRRRL / Cash-Out)</Link>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     {/* Calculator Dropdown */}

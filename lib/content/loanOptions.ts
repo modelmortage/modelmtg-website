@@ -758,6 +758,101 @@ Investment property loans typically require larger down payments and have strict
     }
   },
   {
+    id: 'rate-term-refinance',
+    slug: 'rate-term-refinance',
+    title: 'Rate & Term Refinance',
+    shortDescription: 'Restructure your mortgage to potentially lower payments or adjust loan terms',
+    fullDescription: `A rate and term refinance replaces your existing mortgage with a new loan that has a different interest rate, loan term, or both — without changing the amount you owe. It's the most straightforward type of refinance and is typically used to lower your monthly payment, shorten your payoff timeline, or remove private mortgage insurance.
+
+Unlike a cash-out refinance, you're not pulling equity from your home. The goal is purely to improve the structure of your loan — whether that means locking in a lower rate, switching from an adjustable-rate to a fixed-rate mortgage, or shortening a 30-year term to 15 years to build equity faster.`,
+    benefits: [
+      'Potentially lower your interest rate and monthly payment',
+      'Shorten your loan term to pay off your home faster',
+      'Switch from an adjustable-rate to a fixed-rate mortgage',
+      'Remove private mortgage insurance (PMI) if equity allows',
+      'Reduce total interest paid over the life of the loan',
+      'Improve long-term financial stability'
+    ],
+    requirements: [
+      'Credit score typically 620 or higher',
+      'Sufficient home equity (typically 5–20% depending on program)',
+      'Debt-to-income ratio generally below 43–50%',
+      'Stable income and employment history',
+      'Property appraisal may be required',
+      'Closing costs apply (can often be rolled into the loan)',
+      'Net tangible benefit must be demonstrated'
+    ],
+    idealFor: [
+      'Homeowners with rates higher than current market rates',
+      'Those wanting to shorten their loan term',
+      'Borrowers switching from ARM to fixed-rate',
+      'Homeowners looking to remove PMI',
+      'Anyone seeking to reduce total interest paid'
+    ],
+    icon: 'refresh',
+    relatedCalculators: ['refinance'],
+    whoQualifies: [
+      'Existing homeowners with a current mortgage',
+      'Borrowers who have improved their credit since their original loan',
+      'Homeowners whose property has appreciated enough to remove PMI',
+      'Those who want to switch from an adjustable to a fixed rate'
+    ],
+    minimumCreditScore: '620',
+    downPayment: 'N/A',
+    closingTimeline: '21 to 30 Days',
+    pros: [
+      'Can meaningfully reduce your monthly payment and total interest cost',
+      'Switching to a shorter term builds equity dramatically faster',
+      'No cash is taken out — you keep your equity intact'
+    ],
+    cons: [
+      'Closing costs must be recouped through monthly savings (break-even analysis required)',
+      'Resetting to a new 30-year term extends your total payoff timeline',
+      'If rates have risen since your original loan, refinancing may not make sense'
+    ],
+    whatToExpect: [
+      'Break-Even Analysis: We calculate exactly how many months it takes for your monthly savings to cover closing costs.',
+      'Appraisal: Most rate-and-term refinances require a current appraisal to confirm your home\'s value.',
+      'Closing: You can often close with a mobile notary at your home or office.'
+    ],
+    faqs: [
+      {
+        question: 'How do I know if a rate-and-term refinance makes sense?',
+        answer: 'The key metric is your break-even point — how many months until your monthly savings cover the closing costs. If you plan to stay in the home past that point, it typically makes sense.'
+      },
+      {
+        question: 'Can I roll closing costs into the loan?',
+        answer: 'Yes. Most borrowers do a "no out-of-pocket" refinance by rolling lender fees, title, and appraisal costs into the new loan balance.'
+      },
+      {
+        question: 'Will I need a new appraisal?',
+        answer: 'In most cases, yes. However, some automated underwriting systems may issue an appraisal waiver depending on your loan profile and equity position.'
+      },
+      {
+        question: 'Can I refinance if I have PMI?',
+        answer: 'Yes — and if your home has appreciated enough to bring your loan-to-value below 80%, a refinance is a great way to eliminate PMI entirely.'
+      }
+    ],
+    comparison: [
+      { title: 'vs. Cash-Out Refinance', description: 'A cash-out refinance increases your loan balance to give you cash. A rate-and-term refinance keeps your balance the same and only improves your rate or term.' },
+      { title: 'vs. Loan Modification', description: 'A loan modification changes the terms of your existing loan with your current lender. A refinance replaces the loan entirely, often with better terms and a lender of your choice.' }
+    ],
+    metadata: {
+      title: 'Rate & Term Refinance | Lower Your Mortgage Rate - Model Mortgage',
+      description: 'Refinance your mortgage to lower your interest rate, shorten your term, or remove PMI. Expert guidance on rate and term refinance in Houston, TX.',
+      keywords: [
+        'rate and term refinance',
+        'rate term refinance',
+        'lower mortgage rate',
+        'refinance mortgage Houston',
+        'shorten loan term',
+        'remove PMI refinance'
+      ],
+      ogImage: '/images/loan-options/rate-term-refinance-og.jpg',
+      canonical: '/loan-options/rate-term-refinance'
+    }
+  },
+  {
     id: 'refinance',
     slug: 'refinance',
     title: 'Refinance',

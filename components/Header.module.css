@@ -358,6 +358,39 @@
     display: none;
 }
 
+/* Wide two-column loan options dropdown */
+.dropdownMenuWide {
+    min-width: 480px;
+}
+
+.loanColumns {
+    display: flex;
+    gap: 0;
+    padding: 8px 0;
+}
+
+.loanColumn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.loanColumnHeading {
+    display: block;
+    padding: 10px 20px 8px;
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-main);
+}
+
+.loanColumnDivider {
+    width: 1px;
+    background: rgba(201, 164, 76, 0.15);
+    margin: 8px 0;
+}
+
 /* Mobile Dropdown Styles */
 @media (max-width: 768px) {
     .navDropdown {
@@ -415,5 +448,19 @@
         opacity: 1;
         visibility: visible;
         max-height: 1000px;
+    }
+
+    .dropdownMenuWide {
+        min-width: unset;
+    }
+
+    .loanColumns {
+        flex-direction: column;
+    }
+
+    .loanColumnDivider {
+        width: 100%;
+        height: 1px;
+        margin: 4px 0;
     }
 }

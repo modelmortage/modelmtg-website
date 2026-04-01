@@ -10,49 +10,49 @@ const purchasePrograms = [
     title: 'Fixed-Rate Mortgage',
     description: 'Stable financing with consistent payments over the life of the loan.',
     profile: '15–30 Year Terms • Predictable Payments • Long-Term Ownership',
-    href: '/loan-options/conventional'
+    href: '/loan-options/fixed-rate-mortgage'
   },
   {
     title: 'FHA Loan',
     description: 'Government-insured financing designed to expand access to homeownership.',
     profile: '3.5% Down • Flexible Credit Guidelines • Primary Residence',
-    href: '/loan-options/fha'
+    href: '/loan-options/fha-home-loan'
   },
   {
     title: 'VA Loan',
     description: 'Exclusive financing for eligible veterans, active-duty service members, and qualifying spouses.',
     profile: '0% Down • No PMI • Competitive Rates',
-    href: '/loan-options/va'
+    href: '/loan-options/va-home-loan'
   },
   {
     title: 'USDA Loan',
     description: 'Zero-down financing for eligible rural and select suburban properties.',
     profile: '0% Down • Geographic Eligibility Required • Income Limits Apply',
-    href: '/loan-options/conventional'
+    href: '/loan-options/usda-loan'
   },
   {
     title: 'Jumbo Loan',
     description: 'Financing for high-value properties exceeding conforming loan limits.',
     profile: 'High Loan Balances • Strong Credit Profile • Luxury Properties',
-    href: '/loan-options/jumbo'
+    href: '/loan-options/jumbo-home-loan'
   },
   {
     title: 'First-Time Home Buyer',
     description: 'Programs designed to support new buyers entering the housing market.',
     profile: 'Down Payment Assistance Options • Flexible Qualification • Education Programs',
-    href: '/loan-options/conventional'
+    href: '/loan-options/first-time-home-buyer'
   },
   {
     title: 'Low Down Payment Options',
     description: 'Solutions designed to minimize upfront capital requirements.',
     profile: '3–5% Down • Conventional & Government Options • Primary Residence',
-    href: '/loan-options/conventional'
+    href: '/loan-options/low-down-payment-purchase-options'
   },
   {
     title: 'Investment Property',
     description: 'Financing structured for rental properties and long-term portfolio growth.',
     profile: 'Single-Family to Multi-Unit • DSCR Options Available • Portfolio Expansion',
-    href: '/loan-options/investment'
+    href: '/loan-options/investment-property-loans'
   }
 ]
 
@@ -61,19 +61,19 @@ const refinancePrograms = [
     title: 'Rate & Term Refinance',
     description: 'Restructure your mortgage to potentially lower payments or adjust loan terms.',
     profile: 'Lower Rate Potential • Shorten or Extend Term • Primary or Secondary Homes',
-    href: '/loan-options/conventional'
+    href: '/loan-options/rate-term-refinance'
   },
   {
     title: 'Cash-Out Refinance',
     description: 'Access home equity to fund renovations, investments, or major expenses.',
     profile: 'Equity Conversion • Flexible Use of Funds • Competitive Loan Limits',
-    href: '/loan-options/conventional'
+    href: '/loan-options/cash-out-refinance'
   },
   {
     title: 'VA Loan Refinance',
     description: 'Specialized refinancing options available for existing VA borrowers.',
     profile: 'IRRRL Streamline Option • Cash-Out Available • No PMI',
-    href: '/loan-options/va'
+    href: '/loan-options/va-loan-refinance-options'
   }
 ]
 

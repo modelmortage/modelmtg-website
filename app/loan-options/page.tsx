@@ -32,7 +32,7 @@ const purchasePrograms = [
             'Primary & second homes eligible',
             'Ideal for long-term ownership'
         ],
-        href: '/loan-options/conventional'
+        href: '/loan-options/fixed-rate-mortgage'
     },
     {
         number: '02',
@@ -47,7 +47,7 @@ const purchasePrograms = [
             'Seller concessions often allowed',
             'Primary residence only'
         ],
-        href: '/loan-options/fha'
+        href: '/loan-options/fha-home-loan'
     },
     {
         number: '03',
@@ -62,7 +62,7 @@ const purchasePrograms = [
             'Fixed or adjustable options',
             'Primary residence only'
         ],
-        href: '/loan-options/va'
+        href: '/loan-options/va-home-loan'
     },
     {
         number: '04',
@@ -77,7 +77,7 @@ const purchasePrograms = [
             'Income limits may apply',
             'Primary residence only'
         ],
-        href: '/loan-options/conventional'
+        href: '/loan-options/usda-loan'
     },
     {
         number: '05',
@@ -92,7 +92,7 @@ const purchasePrograms = [
             'Fixed & adjustable options',
             'Second homes may qualify'
         ],
-        href: '/loan-options/jumbo'
+        href: '/loan-options/jumbo-home-loan'
     },
     {
         number: '06',
@@ -107,7 +107,7 @@ const purchasePrograms = [
             'Credit & debt-to-income review',
             'Offer strategy support'
         ],
-        href: '/loan-options/conventional'
+        href: '/loan-options/first-time-home-buyer'
     },
     {
         number: '07',
@@ -122,7 +122,7 @@ const purchasePrograms = [
             'Seller concession strategies',
             'Reserve planning guidance'
         ],
-        href: '/loan-options/conventional'
+        href: '/loan-options/low-down-payment-purchase-options'
     },
     {
         number: '08',
@@ -137,7 +137,7 @@ const purchasePrograms = [
             'DSCR programs available (when applicable)',
             'LLC eligibility varies by lender'
         ],
-        href: '/loan-options/investment'
+        href: '/loan-options/investment-property-loans'
     }
 ]
 
@@ -155,7 +155,7 @@ const refinancePrograms = [
             'MI removal review',
             'Break-even calculation included'
         ],
-        href: '/loan-options/conventional'
+        href: '/loan-options/rate-term-refinance'
     },
     {
         number: '10',
@@ -170,7 +170,7 @@ const refinancePrograms = [
             'Common uses: remodel, reserves, debt payoff',
             'Clear cost breakdown before you decide'
         ],
-        href: '/loan-options/conventional'
+        href: '/loan-options/cash-out-refinance'
     },
     {
         number: '11',
@@ -185,7 +185,7 @@ const refinancePrograms = [
             'No PMI (VA structure)',
             'Faster approval process'
         ],
-        href: '/loan-options/va'
+        href: '/loan-options/va-loan-refinance-options'
     }
 ]
 
