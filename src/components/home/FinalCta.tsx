@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion'
 import { siteData } from '@/src/lib/siteData'
 import Link from 'next/link'
-import Script from 'next/script'
 import styles from './FinalCta.module.css'
 
 /**
@@ -28,13 +27,6 @@ export function FinalCta() {
       transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }
     }
   }
-
-  const posts = [
-    'https://www.instagram.com/p/DD0FNcZvR7y/',
-    'https://www.instagram.com/p/DAJogPCS8t-/',
-    'https://www.instagram.com/p/C9n97LovUnJ/',
-    'https://www.instagram.com/p/C6yunqULJYN/',
-  ]
 
   return (
     <section className={styles.section}>
@@ -77,22 +69,7 @@ export function FinalCta() {
             </Link>
           </motion.div>
         </motion.div>
-
-        {/* Instagram Feed */}
-        <motion.div className={styles.instaGrid} variants={itemVariants}>
-          {posts.map((url) => (
-            <blockquote
-              key={url}
-              className="instagram-media"
-              data-instgrm-captioned
-              data-instgrm-permalink={`${url}?utm_source=ig_embed&utm_campaign=loading`}
-              data-instgrm-version="14"
-            />
-          ))}
-        </motion.div>
       </motion.div>
-
-      <Script src="//www.instagram.com/embed.js" strategy="lazyOnload" />
     </section>
   )
 }

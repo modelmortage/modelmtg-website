@@ -10,6 +10,7 @@ import { Reviews } from '@/src/components/home/Reviews'
 import { LocalAreas } from '@/src/components/home/LocalAreas'
 import { MortgageInsights } from '@/src/components/home/MortgageInsights'
 import { LocationMap } from '@/src/components/home/LocationMap'
+import { InstagramFeed } from '@/src/components/home/InstagramFeed'
 import { FinalCta } from '@/src/components/home/FinalCta'
 
 export const metadata: Metadata = {
@@ -41,6 +42,7 @@ export default function Home() {
                 <MortgageInsights />
                 <LocalAreas />
                 <LocationMap />
+                <InstagramFeed />
                 <FinalCta />
             </main>
             <Footer />
