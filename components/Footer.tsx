@@ -65,12 +65,26 @@ export default function Footer() {
                     {/* Column 2: Loan Options */}
                     <div className={styles.linkColumn}>
                         <h3>Loan Options</h3>
-                        <Link href="/loan-options">All Loan Programs</Link>
-                        <Link href="/loan-options/fixed-rate-mortgage">Conventional Loans</Link>
-                        <Link href="/loan-options/fha-home-loan">FHA Loans</Link>
-                        <Link href="/loan-options/va-home-loan">VA Loans</Link>
-                        <Link href="/loan-options/jumbo-home-loan">Jumbo Loans</Link>
-                        <Link href="/loan-options/investment-property-loans">Investment Property</Link>
+                        <Link href="/loan-options" className={styles.allProgramsLink}>All Loan Programs</Link>
+                        
+                        <div className={styles.loanCategory}>
+                            <span className={styles.subLabel}>Purchase Programs</span>
+                            <Link href="/loan-options/conventional">Conventional Loans</Link>
+                            <Link href="/loan-options/fha">FHA Loans</Link>
+                            <Link href="/loan-options/va">VA Loans</Link>
+                            <Link href="/loan-options/jumbo">Jumbo Loans</Link>
+                            <Link href="/loan-options/investment">Investment Property</Link>
+                            <Link href="/loan-options/first-time-homebuyer">First-Time Homebuyer</Link>
+                            <Link href="/loan-options/usda">USDA Loans</Link>
+                            <Link href="/loan-options/down-payment-assistance">Down Payment Assistance</Link>
+                        </div>
+
+                        <div className={styles.loanCategory}>
+                            <span className={styles.subLabel}>Refinance Programs</span>
+                            <Link href="/loan-options/cash-out-refinance">Cash-Out Refinance</Link>
+                            <Link href="/loan-options/rate-term-refinance">Rate-Term Refinance</Link>
+                            <Link href="/loan-options/va-irrrl">VA IRRRL</Link>
+                        </div>
                     </div>
 
                     {/* Column 3: Calculators */}
