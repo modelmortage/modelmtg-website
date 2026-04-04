@@ -266,7 +266,7 @@ export default function RootLayout({
     }
 
     return (
-        <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
+        <html lang="en" className={`${playfair.variable} ${inter.variable}`} data-scroll-behavior="smooth">
             <head>
                 <script
                     type="application/ld+json"

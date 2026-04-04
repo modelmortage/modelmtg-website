@@ -1,7 +1,7 @@
 .section {
-  background: #161A1F;
+  background: #ffffff;
   padding: 4rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .container {
@@ -33,7 +33,7 @@
   min-height: 480px;
   overflow: hidden;
   position: relative;
-  background: #1c2026;
+  background: #f8f7f5;
 }
 
 .postWrapper :global(.instagram-media) {

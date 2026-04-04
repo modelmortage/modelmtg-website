@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import {
     FaPhone,
     FaEnvelope,
@@ -27,13 +26,11 @@ export default function Footer() {
             <div className={styles.container}>
                 {/* Logo Section */}
                 <div className={styles.logoSection}>
-                    <Image
+                    <img
                         src="/model-mortage-logo.png"
                         alt="Model Mortgage - Houston Mortgage Broker"
-                        width={50}
-                        height={17}
-                        loading="lazy"
                         className={styles.footerLogo}
+                        loading="lazy"
                     />
                     <p className={styles.tagline}>Model Mortgage</p>
                 </div>
@@ -142,13 +139,11 @@ export default function Footer() {
                 <div className={styles.bottomSection}>
                     {/* American-Owned Business Badge - Bottom Left */}
                     <div className={styles.badgeContainer}>
-                        <Image
+                        <img
                             src="/american-owned-business.png"
                             alt="American-owned business"
-                            width={150}
-                            height={150}
-                            loading="lazy"
                             className={styles.businessBadge}
+                            loading="lazy"
                         />
                     </div>
 

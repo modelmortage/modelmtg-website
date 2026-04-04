@@ -62,7 +62,7 @@ export function WhyChooseUs() {
           }}
         >
           <DotLottieReact
-            src="/Insider Home.lottie"
+            src="/insider-home.lottie"
             loop
             autoplay
             style={{ width: '100%', maxWidth: '420px' }}

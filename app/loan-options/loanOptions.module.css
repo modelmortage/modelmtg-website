@@ -2,14 +2,14 @@
 
 .page {
   min-height: 100vh;
-  background-color: #14181D;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #1a1a1a;
 }
 
 /* Header Section */
 .header {
   padding: 7rem 2rem 2.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .headerContainer {
@@ -39,7 +39,7 @@
   font-weight: 400;
   line-height: 1.05;
   margin-bottom: 1.5rem;
-  color: #ffffff;
+  color: #1a1a1a;
 }
 
 .titleAccent {
@@ -52,7 +52,7 @@
   font-weight: 300;
   line-height: 1.6;
   max-width: 42rem;
-  color: #E2E8F0;
+  color: #5a5a5a;
 }
 
 /* Column Headers */
@@ -62,8 +62,8 @@
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 4rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  background-color: #0d1014;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  background-color: #f0f0ee;
 }
 
 @media (min-width: 768px) {
@@ -83,14 +83,15 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   opacity: 0.5;
+  color: #1a1a1a;
 }
 
 .colName {
-  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .colMemo {
-  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
   padding-left: 2rem;
 }
 
@@ -99,7 +100,7 @@
 }
 
 .colInquire {
-  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 1px solid rgba(0, 0, 0, 0.08);
   text-align: center;
 }
 
@@ -108,8 +109,8 @@
   max-width: 1400px;
   margin: 0 auto;
   padding: 2rem 4rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  background-color: #1a1d22;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  background-color: #f5f5f3;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -135,7 +136,7 @@
 .categoryDesc {
   font-size: 0.875rem;
   font-weight: 300;
-  color: #E2E8F0;
+  color: #5a5a5a;
 }
 
 /* Program Row */
@@ -145,7 +146,7 @@
   max-width: 1400px;
   margin: 0 auto;
   padding: 3rem 4rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   transition: background-color 0.3s ease;
   gap: 2rem;
 }
@@ -173,7 +174,7 @@
 
 @media (min-width: 768px) {
   .programName {
-    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    border-right: 1px solid rgba(0, 0, 0, 0.08);
     padding-right: 2rem;
   }
 }
@@ -182,7 +183,7 @@
   font-family: var(--font-serif);
   font-size: clamp(1.75rem, 3vw, 2.5rem);
   font-weight: 400;
-  color: #ffffff;
+  color: #1a1a1a;
   margin-bottom: 0.5rem;
   line-height: 1.2;
 }
@@ -191,7 +192,7 @@
   font-family: var(--font-sans);
   font-size: 1rem;
   font-weight: 500;
-  color: #E2E8F0;
+  color: #3a3a3a;
   margin-bottom: 1.5rem;
   line-height: 1.4;
 }
@@ -204,12 +205,13 @@
 
 .tag {
   padding: 0.25rem 0.5rem;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(0, 0, 0, 0.05);
   font-family: var(--font-mono), monospace;
   font-size: 0.625rem;
   font-weight: 500;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+  color: #3a3a3a;
 }
 
 /* Program Memo Column */
@@ -222,7 +224,7 @@
 
 @media (min-width: 768px) {
   .programMemo {
-    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    border-right: 1px solid rgba(0, 0, 0, 0.08);
     padding: 0 2rem;
   }
 }
@@ -231,7 +233,7 @@
   font-family: var(--font-sans);
   font-size: 1rem;
   line-height: 1.6;
-  color: #E2E8F0;
+  color: #5a5a5a;
   margin-bottom: 1.5rem;
 }
 
@@ -316,7 +318,7 @@
 
 @media (min-width: 768px) {
   .programInquire {
-    border-left: 1px solid rgba(255, 255, 255, 0.08);
+    border-left: 1px solid rgba(0, 0, 0, 0.08);
   }
 }
 
@@ -324,7 +326,7 @@
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;

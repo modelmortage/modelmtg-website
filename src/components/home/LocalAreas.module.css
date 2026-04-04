@@ -5,8 +5,8 @@
   align-items: center;
   overflow: hidden;
   padding: 6rem 1.5rem;
-  background-color: #1A1D22;
-  border-top: 1px solid rgba(255,255,255,0.05);
+  background-color: #ffffff;
+  border-top: 1px solid rgba(0,0,0,0.08);
 }
 
 
@@ -65,7 +65,7 @@
   font-size: 2.25rem;
   line-height: 1.1;
   font-weight: 500;
-  color: #F7F5F1;
+  color: #141318;
 }
 
 @media (min-width: 768px) {
@@ -99,7 +99,7 @@
 }
 
 .description {
-  color: #CFCAC2;
+  color: #555555;
   max-width: 28rem;
   font-size: 1.125rem;
   line-height: 1.6;
@@ -146,7 +146,7 @@
 
 .neighborhoodName {
   font-size: 1.25rem;
-  color: #F7F5F1;
+  color: #141318;
   transition: color 0.3s ease;
 }
 

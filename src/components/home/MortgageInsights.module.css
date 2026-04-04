@@ -1,8 +1,8 @@
 .section {
-  background-color: #14181D;
-  color: #F7F5F1;
+  background-color: #ffffff;
+  color: #1a1a1a;
   padding: 6rem 2rem;
-  border-top: 1px solid rgba(255,255,255,0.05);
+  border-top: 1px solid rgba(0,0,0,0.08);
 }
 
 .container {
@@ -57,7 +57,7 @@
 .cardText {
   font-size: 0.95rem;
   line-height: 1.6;
-  color: #CFCAC2;
+  color: #444444;
   max-width: 400px;
   margin: 0 auto;
 }

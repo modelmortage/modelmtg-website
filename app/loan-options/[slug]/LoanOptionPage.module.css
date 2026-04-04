@@ -7,7 +7,7 @@
 .sectionTitle {
   font-size: 2rem;
   font-weight: 700;
-  color: #ffffff;
+  color: #141318;
   margin-bottom: 1.5rem;
   padding-bottom: 0.75rem;
   border-bottom: 3px solid var(--gold-main);
@@ -16,13 +16,13 @@
 .overview {
   font-size: 1.125rem;
   line-height: 1.8;
-  color: #ffffff;
+  color: #3a3a3a;
 }
 
 .paragraph {
   margin-bottom: 1.5rem;
   line-height: 1.8;
-  color: #ffffff;
+  color: #3a3a3a;
 }
 
 .list {
@@ -40,7 +40,7 @@
   gap: 1rem;
   font-size: 1.0625rem;
   line-height: 1.6;
-  color: #ffffff;
+  color: #3a3a3a;
 }
 
 .checkIcon {
@@ -56,7 +56,7 @@
 }
 
 .blackBullet {
-  color: #ffffff;
+  color: #141318;
   flex-shrink: 0;
   margin-top: 0.375rem;
 }
@@ -84,7 +84,7 @@
   flex: 1;
   font-size: 1.0625rem;
   font-weight: 600;
-  color: #ffffff;
+  color: #141318;
 }
 
 .calculatorArrow {
@@ -128,7 +128,7 @@
   padding-left: 3.5rem;
   font-size: 1.0625rem;
   line-height: 1.6;
-  color: #FFFFFF;
+  color: #3a3a3a;
 }
 
 .orderedListItem::before {
@@ -149,7 +149,7 @@
 }
 
 .orderedListItem strong {
-  color: var(--gold-light);
+  color: #141318;
 }
 
 .ctaButtons {
@@ -205,7 +205,7 @@
   padding-left: 3.5rem;
   font-size: 1.0625rem;
   line-height: 1.6;
-  color: #ffffff;
+  color: #3a3a3a;
 }
 
 .timelineItem::before {
@@ -226,7 +226,7 @@
 }
 
 .timelineItem strong {
-  color: #ffffff;
+  color: #141318;
 }
 
 /* Quick Facts Grid */
@@ -238,7 +238,7 @@
 }
 
 .factCard {
-  background: rgba(255, 255, 255, 0.03);
+  background: #f8f7f5;
   border-left: 4px solid var(--gold-main);
   padding: 1.5rem;
   border-radius: 4px;
@@ -248,7 +248,7 @@
   font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #ffffff;
+  color: #555555;
   opacity: 0.8;
   margin-bottom: 0.5rem;
 }
@@ -256,7 +256,7 @@
 .factValue {
   font-size: 1.125rem;
   font-weight: 700;
-  color: #ffffff;
+  color: #141318;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -277,14 +277,14 @@
 
 .proCard,
 .conCard {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #f8f7f5;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 8px;
   padding: 1.5rem;
 }
 
 .proTitle {
-  color: #ffffff;
+  color: #141318;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -294,7 +294,7 @@
 }
 
 .conTitle {
-  color: #ffffff;
+  color: #141318;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -306,8 +306,8 @@
 /* FAQs */
 .faqItem {
   margin-bottom: 1.5rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #f8f7f5;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 8px;
   padding: 1.5rem;
 }
@@ -315,7 +315,7 @@
 .faqQuestion {
   font-size: 1.125rem;
   font-weight: 600;
-  color: #ffffff;
+  color: #141318;
   margin-bottom: 0.75rem;
   display: flex;
   align-items: flex-start;
@@ -325,7 +325,7 @@
 .faqAnswer {
   font-size: 1rem;
   line-height: 1.6;
-  color: #ffffff;
+  color: #3a3a3a;
   padding-left: 2.25rem;
 }
 
@@ -337,8 +337,8 @@
 }
 
 .compareCard {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #f8f7f5;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-left: 4px solid var(--gold-main);
   border-radius: 8px;
   padding: 1.5rem;
@@ -347,7 +347,7 @@
 .compareTitle {
   font-size: 1.125rem;
   font-weight: 600;
-  color: #ffffff;
+  color: #141318;
   margin-bottom: 0.5rem;
   display: flex;
   align-items: center;
@@ -357,5 +357,5 @@
 .compareDesc {
   font-size: 1rem;
   line-height: 1.6;
-  color: #ffffff;
-}
+  color: #3a3a3a;
+}

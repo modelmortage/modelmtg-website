@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
 import { useState, useEffect, useRef } from 'react'
 import { usePathname } from 'next/navigation'
 import {
@@ -97,12 +96,9 @@ export default function Header() {
         >
             <div className={styles.container}>
                 <Link href="/" className={styles.logo} onClick={handleLinkClick}>
-                    <Image
+                    <img
                         src="/model-mortage-logo.png"
                         alt="Model Mortgage - Houston Mortgage Broker"
-                        width={180}
-                        height={60}
-                        priority
                         className={styles.logoImage}
                     />
                     <span className={styles.logoText}>MODEL MORTGAGE</span>

@@ -1,9 +1,9 @@
 .section {
-  background-color: #161A1F;
+  background-color: #ffffff;
   padding: 4rem 1.5rem;
   position: relative;
   overflow: hidden;
-  border-top: 1px solid rgba(255,255,255,0.05);
+  border-top: 1px solid rgba(0,0,0,0.08);
 }
 
 /* Houston skyline background - reduced opacity so map is focal point */
@@ -15,7 +15,7 @@
   background-position: center 60%;
   background-repeat: no-repeat;
   background-size: 150%;
-  opacity: 0.10;
+  opacity: 0;
   pointer-events: none;
   z-index: 0;
 }
@@ -74,7 +74,7 @@
   font-size: 2.5rem;
   line-height: 1.1;
   font-weight: 500;
-  color: #F7F5F1;
+  color: #141318;
   margin: 0;
 }
 
@@ -93,7 +93,7 @@
 
 .address {
   font-style: normal;
-  color: #CFCAC2;
+  color: #555555;
   font-size: 1.125rem;
   line-height: 1.8;
 }
