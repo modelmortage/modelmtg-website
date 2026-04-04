@@ -70,8 +70,8 @@
 
 .heroTagline {
     font-size: 1.1rem;
-    color: #5a5a5a;
-    font-weight: 300;
+    color: #000000 !important;
+    font-weight: 500 !important;
     margin: 10px 0 0;
     font-style: italic;
 }
@@ -79,8 +79,8 @@
 .heroSubtitle {
     font-size: 1rem;
     line-height: 1.8;
-    color: #5a5a5a;
-    font-weight: 300;
+    color: #000000 !important;
+    font-weight: 500 !important;
     margin: 16px 0 24px;
     max-width: 560px;
 }
@@ -126,7 +126,7 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.18em;
-    color: #8B8B8B;
+    color: #3a3a3a;
 }
 
 /* ── Story section ───────────────────────────────── */
@@ -170,12 +170,14 @@
     gap: 22px;
     font-size: 1rem;
     line-height: 1.9;
-    color: #5a5a5a;
-    font-weight: 300;
     max-width: 760px;
 }
 
-.storyText p { margin: 0; }
+.storyText p {
+    color: #000000 !important;
+    font-weight: 500 !important;
+    margin: 0;
+}
 
 /* ── Mission ─────────────────────────────────────── */
 .missionSection {
@@ -215,13 +217,15 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    font-size: 0.95rem;
-    line-height: 1.85;
-    color: #5a5a5a;
-    font-weight: 300;
 }
 
-.missionText p { margin: 0; }
+.missionText p {
+    font-size: 0.95rem;
+    line-height: 1.85;
+    color: #000000 !important;
+    font-weight: 500 !important;
+    margin: 0;
+}
 
 /* Approach */
 .approachSection {
@@ -280,8 +284,8 @@
 .approachItemText {
     font-size: 0.875rem;
     line-height: 1.7;
-    color: #5a5a5a;
-    font-weight: 300;
+    color: #000000 !important;
+    font-weight: 500 !important;
     margin: 0;
 }
 
@@ -370,8 +374,8 @@
 .expertiseCardText {
     font-size: 0.85rem;
     line-height: 1.7;
-    color: #5a5a5a;
-    font-weight: 300;
+    color: #000000 !important;
+    font-weight: 500 !important;
     margin: 0;
 }
 
@@ -415,8 +419,8 @@
 .ctaSubtitle {
     font-size: 0.95rem;
     line-height: 1.75;
-    color: #5a5a5a;
-    font-weight: 300;
+    color: #000000 !important;
+    font-weight: 500 !important;
     margin-bottom: 8px;
 }
 

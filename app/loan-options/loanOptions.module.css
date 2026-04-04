@@ -52,7 +52,7 @@
   font-weight: 300;
   line-height: 1.6;
   max-width: 42rem;
-  color: #5a5a5a;
+  color: #3a3a3a;
 }
 
 /* Column Headers */
@@ -82,7 +82,7 @@
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  opacity: 0.5;
+  opacity: 0.75;
   color: #1a1a1a;
 }
 
@@ -136,7 +136,7 @@
 .categoryDesc {
   font-size: 0.875rem;
   font-weight: 300;
-  color: #5a5a5a;
+  color: #3a3a3a;
 }
 
 /* Program Row */
@@ -233,7 +233,7 @@
   font-family: var(--font-sans);
   font-size: 1rem;
   line-height: 1.6;
-  color: #5a5a5a;
+  color: #3a3a3a;
   margin-bottom: 1.5rem;
 }
 
@@ -303,8 +303,9 @@
 
 .specText {
   font-size: 0.875rem;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.5;
+  color: #3a3a3a;
 }
 
 /* Program Inquire Column */
