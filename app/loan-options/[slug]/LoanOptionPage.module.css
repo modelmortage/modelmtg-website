@@ -100,6 +100,8 @@
 .nextStepsCard {
   background: var(--deep-charcoal);
   color: #FFFFFF;
+  border-radius: 0.5rem;
+  padding: 2rem;
 }
 
 .nextStepsCard .sectionTitle {
@@ -150,6 +152,14 @@
 
 .orderedListItem strong {
   color: #141318;
+}
+
+.nextStepsCard .orderedListItem {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.nextStepsCard .orderedListItem strong {
+  color: #ffffff;
 }
 
 .ctaButtons {
@@ -358,4 +368,4 @@
   font-size: 1rem;
   line-height: 1.6;
   color: #3a3a3a;
-}
+}

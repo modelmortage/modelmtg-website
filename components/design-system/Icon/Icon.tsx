@@ -64,7 +64,7 @@ export const Icon: React.FC<IconProps> = ({
   return (
     <IconComponent
       className={combinedClassName}
-      style={{ color: color || 'currentColor' }}
+      style={color ? { color } : undefined}
       aria-label={ariaLabel}
       aria-hidden={isDecorative}
       role={isDecorative ? 'presentation' : undefined}

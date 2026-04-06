@@ -375,7 +375,7 @@ export default async function LoanOptionPage({ params }: LoanOptionPageProps) {
 
         {/* Next Steps Section */}
         <section className={styles.section}>
-          <Card variant="flat" padding="lg" className={styles.nextStepsCard}>
+          <div className={styles.nextStepsCard}>
             <h2 className={styles.sectionTitle}>Next Steps</h2>
             <p className={styles.paragraph}>
               Ready to move forward with a {loanOption.title}? Here's how to get started:
@@ -406,7 +406,7 @@ export default async function LoanOptionPage({ params }: LoanOptionPageProps) {
                 </Button>
               </Link>
             </div>
-          </Card>
+          </div>
         </section>
       </ContentPage>
 
