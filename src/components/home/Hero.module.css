@@ -11,32 +11,17 @@
 
 /* Subtle warm gold glow behind headline area */
 .hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 35% 40%,
-            rgba(212, 175, 55, 0.12),
-            transparent 60%);
-    pointer-events: none;
-    z-index: 1;
+    display: none;
 }
 
-/* Neutral dark readability scrim */
+/* Neutral dark readability scrim — removed */
 .hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, rgba(15,18,24,0.78), rgba(15,18,24,0.52));
-    pointer-events: none;
-    z-index: 1;
+    display: none;
 }
 
 /* Solid background layer */
 .bgLayer {
-    position: absolute;
-    inset: 0;
-    background: #0F1218;
-    z-index: 0;
+    display: none;
 }
 
 /* Skyline background image container */
@@ -48,19 +33,13 @@
 
 .skylineImage {
     object-fit: cover;
-    opacity: 0.55;
-    /* Increased visibility — warmer overlay handles readability */
+    object-position: center top;
+    opacity: 1;
 }
 
 /* Background radial gradient overlay */
 .bgGradient {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 70% 30%,
-            rgba(201, 164, 76, 0.08) 0%,
-            rgba(11, 18, 32, 0) 60%);
-    pointer-events: none;
-    z-index: 1;
+    display: none;
 }
 
 /* === CONTAINER: Main 2-Column Layout === */
@@ -74,6 +53,119 @@
     position: relative;
     z-index: 2;
     padding: 0 2rem;
+}
+
+/* Centered CTA overlay */
+.ctaCenter {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    gap: 0.75rem;
+    margin-top: 45vh;
+}
+
+@keyframes cinemaExpand {
+  0% {
+    opacity: 0;
+    letter-spacing: 0.6em;
+    filter: blur(8px);
+    transform: scaleY(0.85);
+    clip-path: inset(0 20% 0 20%);
+  }
+  60% {
+    opacity: 1;
+    filter: blur(0);
+    transform: scaleY(1);
+  }
+  100% {
+    opacity: 1;
+    letter-spacing: 0.02em;
+    clip-path: inset(0 0% 0 0%);
+  }
+}
+
+@keyframes goldSweep {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+    clip-path: inset(0 100% 0 0);
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+    clip-path: inset(0 0% 0 0);
+  }
+}
+
+@keyframes popUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  70% {
+    transform: translateY(-4px) scale(1.01);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.heroTitle {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 700;
+    color: #c5a059;
+    margin: 0;
+    background: rgba(0,0,0,0.55);
+    padding: 0em 0.2em 0.1em;
+    border-radius: 4px;
+    line-height: 1.2;
+    overflow: visible;
+    animation: cinemaExpand 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 0.1s;
+}
+
+.heroTagline {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    font-weight: 600;
+    color: #c5a059;
+    margin: 0 0 1.5rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: rgba(0,0,0,0.55);
+    padding: 0.2em 0.75em;
+    border-radius: 4px;
+    animation: goldSweep 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 0.9s;
+}
+
+.heroTitle {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 700;
+    color: #c5a059;
+    margin: 0;
+    letter-spacing: 0.02em;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.8), 0 0 40px rgba(0,0,0,0.6);
+}
+
+.heroTagline {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    font-weight: 600;
+    color: #c5a059;
+    margin: 0 0 1.5rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-shadow: 0 0 20px rgba(197,160,89,0.9), 0 0 40px rgba(197,160,89,0.6), 0 2px 8px rgba(0,0,0,0.8);
 }
 
 /* LEFT COLUMN - 60% Content */
@@ -141,6 +233,8 @@
     margin-top: 1rem;
     flex-wrap: wrap;
     align-items: center;
+    animation: popUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 1.5s;
 }
 
 .primaryButton {
@@ -168,14 +262,17 @@
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
-    color: #ffffff;
+    color: #c5a059;
     font-size: 0.875rem;
-    font-weight: 500;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.15em;
     text-decoration: none;
     transition: all 0.3s ease;
     position: relative;
+    background: rgba(0,0,0,0.55);
+    padding: 0.4em 1em;
+    border-radius: 50px;
 }
 
 .buttonText {
@@ -380,6 +477,10 @@
     .hero {
         padding: 8rem 1.5rem 3rem;
         min-height: 100vh;
+    }
+
+    .ctaCenter {
+        margin-top: 20vh;
     }
 
     .container {
