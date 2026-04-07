@@ -119,22 +119,23 @@ export default function Header() {
                     </Link>
                     {/* Loan Options Dropdown */}
                     <div className={styles.navDropdown}>
-                        <Link
-                            href="/loan-options"
-                            className={`${styles.navLink} ${styles.dropdownToggle} ${isActive('/loan-options') ? styles.active : ''}`}
-                            onClick={(e) => {
-                                if (window.innerWidth <= 768) {
-                                    e.preventDefault()
-                                    setLoanOptionsDropdownOpen(!loanOptionsDropdownOpen)
-                                } else {
-                                    handleLinkClick()
-                                }
-                            }}
-                            aria-expanded={loanOptionsDropdownOpen}
-                        >
-                            Loan Options
-                            <FaChevronDown className={`${styles.chevron} ${loanOptionsDropdownOpen ? styles.chevronOpen : ''}`} />
-                        </Link>
+                        <div className={styles.dropdownToggleRow}>
+                            <Link
+                                href="/loan-options"
+                                className={`${styles.navLink} ${isActive('/loan-options') ? styles.active : ''}`}
+                                onClick={handleLinkClick}
+                            >
+                                Loan Options
+                            </Link>
+                            <button
+                                className={styles.chevronButton}
+                                onClick={() => setLoanOptionsDropdownOpen(!loanOptionsDropdownOpen)}
+                                aria-expanded={loanOptionsDropdownOpen}
+                                aria-label="Toggle loan options menu"
+                            >
+                                <FaChevronDown className={`${styles.chevron} ${loanOptionsDropdownOpen ? styles.chevronOpen : ''}`} />
+                            </button>
+                        </div>
                         <div className={`${styles.dropdownMenu} ${styles.dropdownMenuWide} ${loanOptionsDropdownOpen ? styles.dropdownMenuOpen : ''}`}>
                             <div className={styles.loanColumns}>
                                 <div className={styles.loanColumn}>
@@ -160,22 +161,23 @@ export default function Header() {
                     </div>
                     {/* Calculator Dropdown */}
                     <div className={styles.navDropdown}>
-                        <Link
-                            href="/calculator"
-                            className={`${styles.navLink} ${styles.dropdownToggle} ${isActive('/calculator') ? styles.active : ''}`}
-                            onClick={(e) => {
-                                if (window.innerWidth <= 768) {
-                                    e.preventDefault()
-                                    setCalculatorDropdownOpen(!calculatorDropdownOpen)
-                                } else {
-                                    handleLinkClick()
-                                }
-                            }}
-                            aria-expanded={calculatorDropdownOpen}
-                        >
-                            Calculators
-                            <FaChevronDown className={`${styles.chevron} ${calculatorDropdownOpen ? styles.chevronOpen : ''}`} />
-                        </Link>
+                        <div className={styles.dropdownToggleRow}>
+                            <Link
+                                href="/calculator"
+                                className={`${styles.navLink} ${isActive('/calculator') ? styles.active : ''}`}
+                                onClick={handleLinkClick}
+                            >
+                                Calculators
+                            </Link>
+                            <button
+                                className={styles.chevronButton}
+                                onClick={() => setCalculatorDropdownOpen(!calculatorDropdownOpen)}
+                                aria-expanded={calculatorDropdownOpen}
+                                aria-label="Toggle calculators menu"
+                            >
+                                <FaChevronDown className={`${styles.chevron} ${calculatorDropdownOpen ? styles.chevronOpen : ''}`} />
+                            </button>
+                        </div>
                         <div className={`${styles.dropdownMenu} ${calculatorDropdownOpen ? styles.dropdownMenuOpen : ''}`}>
                             <Link
                                 href="/calculator/purchase"

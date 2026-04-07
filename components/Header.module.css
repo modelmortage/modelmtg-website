@@ -464,3 +464,59 @@
         margin: 4px 0;
     }
 }
+
+/* Split toggle row: link + chevron button side by side */
+.dropdownToggleRow {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.dropdownToggleRow .navLink {
+    flex: 1;
+}
+
+.chevronButton {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #E2E8F0;
+    padding: 12px;
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 150ms ease-out;
+}
+
+.chevronButton:hover {
+    color: var(--gold-main);
+}
+
+.chevronButton:focus-visible {
+    outline: 2px solid var(--gold-main);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/* On desktop, keep chevron button visible but styled inline */
+@media (min-width: 769px) {
+    .dropdownToggleRow {
+        display: inline-flex;
+        width: auto;
+    }
+
+    .chevronButton {
+        padding: 0 4px;
+        min-width: unset;
+        min-height: unset;
+    }
+
+    /* Re-attach chevron visually to the link on desktop via the existing hover */
+    .dropdownToggleRow .navLink {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+}
