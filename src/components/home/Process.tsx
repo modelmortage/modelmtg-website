@@ -107,10 +107,39 @@ export function Process() {
               initial="hidden"
               animate={inView ? 'visible' : 'hidden'}
             >
-              <div className={styles.stepHeader}>
-                <h3 className={styles.stepTitle}>{step.title}</h3>
+              {/* Mobile Connector (visible only on mobile) */}
+              <div className={styles.mobileConnector}>
+                <motion.div
+                  className={styles.connectorBubble}
+                  initial={{ scale: 0.5, opacity: 0 }}
+                  animate={inView ? { scale: 1, opacity: 1 } : {}}
+                  transition={{ duration: 0.4, delay: 0.3 + index * 0.18 }}
+                >
+                  {step.number}
+                </motion.div>
+                {index < steps.length - 1 && (
+                  <div className={styles.mobileLine}>
+                    <motion.div
+                      className={styles.mobileLineFill}
+                      initial={{ scaleY: 0 }}
+                      animate={inView ? { scaleY: 1 } : {}}
+                      transition={{
+                        duration: 0.55,
+                        delay: 0.5 + index * 0.18,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
+                      style={{ transformOrigin: 'top' }}
+                    />
+                  </div>
+                )}
               </div>
-              <p className={styles.stepDescription}>{step.description}</p>
+
+              <div className={styles.stepContent}>
+                <div className={styles.stepHeader}>
+                  <h3 className={styles.stepTitle}>{step.title}</h3>
+                </div>
+                <p className={styles.stepDescription}>{step.description}</p>
+              </div>
             </motion.div>
           ))}
         </div>

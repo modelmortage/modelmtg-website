@@ -140,6 +140,14 @@
   padding: 1.5rem 2rem;
   transition: background-color 0.3s ease;
   position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .step {
+    display: block; /* Keep original desktop layout */
+  }
 }
 
 .step:hover {
@@ -235,20 +243,65 @@
   transition: transform 0.3s ease;
 }
 
+.mobileConnector {
+  display: none;
+}
+
 @media (max-width: 767px) {
   .section {
-    padding: 2rem 1.5rem;
+    padding: 4rem 1.5rem;
   }
 
   .header {
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
   }
 
   .step {
-    padding: 1.5rem 1rem;
+    padding: 0.5rem 0;
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .stepBorder {
+    border-top: none;
   }
 
   .stepTitle {
     font-size: 1.25rem;
+    margin-top: 0.25rem;
+  }
+
+  .mobileConnector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 1.5rem;
+    width: 44px;
+    flex-shrink: 0;
+  }
+
+  .mobileLine {
+    flex: 1;
+    width: 2px;
+    background: rgba(197, 160, 89, 0.1);
+    margin: 8px 0;
+    position: relative;
+    overflow: hidden;
+    min-height: 2rem;
+  }
+
+  .mobileLineFill {
+    position: absolute;
+    inset: 0;
+    background: rgba(197, 160, 89, 0.4);
+  }
+
+  .stepContent {
+    flex: 1;
+    padding-bottom: 2.5rem;
+  }
+
+  .step:last-child .stepContent {
+    padding-bottom: 0;
   }
 }
